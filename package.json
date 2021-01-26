@@ -20,7 +20,7 @@
     "dev": "next dev -p 4200",
     "dev:inspect": "npm --node-options=--inspect=0.0.0.0:9229 run dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start -p 4200"
   },
   "author": "",
   "license": "ISC",

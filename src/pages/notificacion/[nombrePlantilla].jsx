@@ -54,7 +54,7 @@ const PantallaNotificacion = ({ plantilla }) => {
                         <Col s={10} m={12}>
                             <Image
                                 alt="Icono notificación"
-                                src={`/public/images/alerts/${nombreImagen}`}
+                                src={`/images/alerts/${nombreImagen}`}
                                 width="200px"
                                 height="auto"
                             />
