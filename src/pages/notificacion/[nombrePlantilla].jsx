@@ -5,6 +5,12 @@ import { Row, Col } from 'react-materialize';
 import Styles from '@styles/modules/notificacion.module.css'
 import Plantillas from '@constants/PlantillasNotificaciones'
 
+/**
+ * Este método nos permite generar páginas estáticas dinámicas, en tiempo de construcción (npm run build).
+ * 
+ * @param {*} nombrePlantilla. Es el nombre de la plantilla de notificaciones que se pasa por medio
+ * de la url así: /notificacion/nombrePlantilla
+ */
 export const getStaticProps = async ({ params }) => {
     const { nombrePlantilla } = params;
     const plantilla = Plantillas.find(plantilla => plantilla.nombre === nombrePlantilla);
@@ -15,6 +21,9 @@ export const getStaticProps = async ({ params }) => {
     }
 }
 
+/**
+ * Este método nos permite indicarle a Nextjs cuantas páginas estáticas debe generar para esta ruta dinámica.
+ */
 export const getStaticPaths = async () => {
     const paths = Plantillas.map(({ nombre }) => ({
         params: {
@@ -31,10 +40,9 @@ export const getStaticPaths = async () => {
 }
 
 const PantallaNotificacion = ({ plantilla }) => {
+
     const { padre } = Styles;
 
-    // const { query: { nombrePlantilla } } = useRouter()
-    // const plantilla = Plantillas.find(plantilla => plantilla.nombre === nombrePlantilla);
     const { nombreImagen, titulo, descripcion, tituloBoton, rutaBoton } = plantilla;
 
     return (
