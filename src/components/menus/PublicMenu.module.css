@@ -1,0 +1,120 @@
+
+  .navigation{
+    position: absolute;
+    top:-16px;
+    width:100%;
+    height:103%;
+    background:white;
+    z-index:200;
+    clip-path:circle(25px at calc(45px) 45px);
+    transition:all 300ms ease-in-out;
+  }
+  
+  .active{
+    clip-path:circle(75%);
+    left: 0px !important;
+    background:var(--primary-color);
+    position: fixed;
+  }
+  
+  .hamBtn{
+    position:absolute;
+    top:20px;
+    left:20px;
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    cursor:pointer;
+  }
+  
+  .navigation .hamBtn span{
+    position:absolute;
+    right:0%;
+    transform:translate(-50%,-50%);
+    width:50%;
+    height:2px;
+    background:black;
+    transition:all 200ms ease-in-out;
+  }
+  
+  .span1{
+    top:30%;
+  }
+  
+  .span2{
+    top:50%;
+  }
+  
+  .span3{
+    top:70%;
+  }
+  
+  .navigation.active .span1{
+    top:50%;
+    transform:translate(-50%,-50%) rotate(45deg);
+  }
+  
+  .navigation.active .span2{
+    display:none;
+  }
+  
+.navigation.active .span3{
+    top:50%;
+    transform:translate(-50%,-50%) rotate(-45deg);
+  }
+  
+  .links{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+  }
+  
+  .links a{
+    position:relative;
+    display:inline-block;
+    margin:20px 0px;
+    font-size:20px;
+    font-weight:600;
+    text-decoration:none;
+    color:#f5f5f5;
+    text-transform:uppercase;
+    letter-spacing:5px;
+  }
+  
+ .link:after{
+    content:"";
+    position:absolute;
+    left:0px;
+    bottom:0px;
+    height:2px;
+    width:0%;
+    background:tomato;
+    transition:all 300ms ease-in-out;
+  }
+  
+  .link:hover{
+    width:100% !important;
+  }
+  
+  @media only screen and (max-width:992px){
+    .navigation{
+      /*visibility: ;*/
+      display: inline;
+    }
+  }
+
+  @media only screen and  (min-width:601px) and (max-width:992px){
+      .navigation{
+        left: 44px;
+      }
+  }
+
+  @media only screen and  (min-width:992px){
+    .navigation{
+      /*visibility: hidden;*/
+      display: none;
+      
+    }
+  }   

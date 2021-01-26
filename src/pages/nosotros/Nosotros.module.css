@@ -1,0 +1,40 @@
+
+.colorH4{
+    color: #000000;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+    margin: 80px auto 40px auto;
+    
+}
+.centrar{
+    align-items: center;
+    text-align: center;
+} 
+
+.imagenSvg{
+    background: url('/public/images/fondo.svg') no-repeat;
+}
+
+.posicionImagen{
+    margin-top: 80px;
+}
+
+.botonEmpezar{
+    border: 1px solid  rgb(52, 122, 52) ;
+    border-radius: 3px;
+    color: white;
+    font-size: 14px;
+    background: rgb(52, 122, 52);
+    padding: 8px;
+    width: auto;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.botonEmpezar:hover{
+    background: #28A728;
+    border: 1px solid #28A728;
+}
+.botonEmpezar:focus{
+    background: #28A728;
+}
+

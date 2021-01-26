@@ -1,0 +1,13 @@
+a.simpleLink {
+    text-decoration: none;
+    color: azure;
+    margin-bottom: 20px;
+}
+
+a.socialLink {
+    margin-left: 10px;
+}
+
+footer.footerPrincipal {
+    background-color: var(--primary-color);
+}

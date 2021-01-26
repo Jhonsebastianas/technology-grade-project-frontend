@@ -1,0 +1,9 @@
+.padre {
+    background: rgb(244, 253, 255);
+    height: 100vh;
+    max-height: 1000px;
+    /*IMPORTANTE*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
