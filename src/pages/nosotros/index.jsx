@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image'
 import { Row, Col, Container } from 'react-materialize';
 import Layout from '@components/layouts/PublicLayout';
-import styles from './Nosotros.module.css';
+import styles from '@styles/modules/nosotros.module.css';
 
 const Nosotros = () => {
     const { centrar, colorH4, imagenSvg, posicionImagen, botonEmpezar, icono } = styles;

@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image'
 import { Row, Col, Card, Preloader } from 'react-materialize';
 import Layout from '@components/layouts/PublicLayout';
-import styles from './Contactanos.module.css';
+import styles from '@styles/modules/contactanos.module.css';
 
 const Contactanos = () => {
     const { parallaxContainer, cardRegistro, parallax, apodoAlmacen, light, iconPhone, ladoInforamcion, nombreAlmacen, googleMaps,
