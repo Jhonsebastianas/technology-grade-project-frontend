@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { GoogleLogin } from 'react-google-login';
-import { Button, TextInput } from 'react-materialize';
+import { Form, Button, Input } from 'semantic-ui-react';
 import { useToasts } from 'react-toast-notifications';
 import Services from '@services/serviciosRegistro'
 import { PasswordField } from '@components/commons/inputs/password/PasswordField'
@@ -97,23 +97,32 @@ const RegistrarUsuario = () => {
     }
 
     return (
-        <form onSubmit={formik.handleSubmit} className='form-control'>
+        <Form onSubmit={formik.handleSubmit} className='form-control'>
             <h2 className="center"><strong>Crear</strong> una cuenta.</h2>
-            <TextInput label='Nombres:' name="nombres" id='nombres'
-                {...formik.getFieldProps('nombres')}
-                children={formik.touched.nombres && formik.errors.nombres ? (<span className="helper-text red-text">{formik.errors.nombres}</span>) : null}
-            />
-            <TextInput label='Apellidos:' name="apellidos" id='apellidos'
-                {...formik.getFieldProps('apellidos')}
-                children={formik.touched.apellidos && formik.errors.apellidos ? (<span className="helper-text red-text">{formik.errors.apellidos}</span>) : null}
-            />
-            <TextInput label='Correo:' email name="correo" id='correo'
-                {...formik.getFieldProps('correo')}
-                children={formik.touched.correo && formik.errors.correo ? (<span className="helper-text red-text">{formik.errors.correo}</span>) : null}
-            />
-            <PasswordField label='Clave:' name='clave' id='clave' s={12} m={5} l={5}
+            <Form.Field>
+                <label>Nombres:</label>
+                <Input type="text" name="nombres" id='nombres' placeholder="Armando"
+                    {...formik.getFieldProps('nombres')}
+                />
+                {formik.touched.nombres && formik.errors.nombres ? (<div class="ui pointing red basic label">{formik.errors.nombres}</div>) : null}
+            </Form.Field>
+            <Form.Field>
+                <label>Apellidos:</label>
+                <Input type="text" name="apellidos" id='apellidos' placeholder="Hogares"
+                    {...formik.getFieldProps('apellidos')}
+                />
+                {formik.touched.apellidos && formik.errors.apellidos ? (<div class="ui pointing red basic label">{formik.errors.apellidos}</div>) : null}
+            </Form.Field>
+            <Form.Field>
+                <label>Correo:</label>
+                <Input type="email" name="correo" id='correo' placeholder="ejemplo@ejemplo.com"
+                    {...formik.getFieldProps('correo')}
+                />
+                {formik.touched.correo && formik.errors.correo ? (<div class="ui pointing red basic label">{formik.errors.correo}</div>) : null}
+            </Form.Field>
+            <PasswordField label='Clave:' name='clave' id='clave'
                 {...formik.getFieldProps('clave')}
-                children={formik.touched.clave && formik.errors.clave ? (<span className="helper-text red-text">{formik.errors.clave}</span>) : null}
+                validator={formik.touched.clave && formik.errors.clave ? (<div class="ui pointing red basic label">{formik.errors.clave}</div>) : null}
             />
             <Button style={{ width: "100%" }} type='submit' disabled={!formik.isValid} >
                 Registrarse
@@ -138,7 +147,7 @@ const RegistrarUsuario = () => {
             <br></br>
             <br></br>
             <Link className="already" href='/login' ><a>¿Ya tienes una cuenta? Ingresa aquí.</a></Link>
-        </form>
+        </Form>
     )
 }
 

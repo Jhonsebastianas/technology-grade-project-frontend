@@ -5,13 +5,13 @@
   "dependencies": {
     "axios": "^0.21.1",
     "formik": "^2.2.6",
-    "materialize-css": "^1.0.0-rc.2",
     "next": "^10.0.5",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-google-login": "^5.2.2",
-    "react-materialize": "^3.9.6",
     "react-toast-notifications": "^2.4.0",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^2.0.3",
     "yup": "^0.32.8"
   },
   "devDependencies": {},
@@ -19,8 +19,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "next dev -p 4200",
     "dev:inspect": "npm --node-options=--inspect=0.0.0.0:9229 run dev",
+    "start": "next start -p 4200",
     "build": "next build",
-    "start": "next start -p 4200"
+    "export": "next export"
   },
   "author": "",
   "license": "ISC",

@@ -6,7 +6,7 @@
   .register-photo .image-holder {
     display: table-cell;
     width: auto;
-    background: url(/public/images/JP_9.webp);
+    background: url(/images/JP_9.webp);
     background-size: cover;
   }
   

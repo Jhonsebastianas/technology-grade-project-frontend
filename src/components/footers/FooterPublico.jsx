@@ -1,32 +1,36 @@
 import React from 'react';
 import Link from 'next/link'
-import { Row, Col, Icon, Footer } from 'react-materialize';
 import { APP_NAME } from '@constants/Constants'
-import styles from './FooterPublico.module.css';
+import { Button, Container, Grid, Header, List, Segment } from 'semantic-ui-react';
 
 export default function FooterPublico() {
     return (
-        <Footer
-            className={`example ${styles.footerPrincipal}`}
-            copyrights={`© 2020 Copyright ${APP_NAME} All Rights Reserved - Versión 1.0`}
-            links={<div><h5>Redes sociales</h5>
-                <a className={`grey-text text-lighten-3 ${styles.socialLink}`} target="_blank" href="https://www.facebook.com/Arjeware-753778911629883"><Icon small>facebook</Icon></a>
-            </div>}
-            moreLinks={<a className="grey-text text-lighten-4 right" href="#!">Política de privacidad</a>}
-        >
-            <Row m={12}>
-                <Col m={12}>
-                    <h5>{APP_NAME}</h5>
-                    <ul>
-                        <li>
-                            <Link href='/nosotros' className={styles.simpleLink}><a>Acerca de</a></Link>
-                        </li>
-                        <li>
-                            <Link href='/contactanos' className={styles.simpleLink}><a>Contactanos</a></Link>
-                        </li>
-                    </ul>
-                </Col>
-            </Row>
-        </Footer>
+        <Segment inverted vertical style={{ padding: '5em 0em' }}>
+            <Container>
+                <Grid divided inverted stackable>
+                    <Grid.Row>
+                        <Grid.Column width={3}>
+                            <Header inverted as='h4' content={APP_NAME} />
+                            <List link inverted>
+                                <List.Item><Link href='/nosotros'><a>Acerca de</a></Link></List.Item>
+                                <List.Item as='a'><Link href='/nosotros'><a>Contactanos</a></Link></List.Item>
+                            </List>
+                        </Grid.Column>
+                        <Grid.Column width={3}></Grid.Column>
+                        <Grid.Column width={7}>
+                            <Header as='h4' inverted>
+                                Redes sociales
+                                </Header>
+                                <p>
+                                {/* <Link href="https://www.facebook.com/Arjeware-753778911629883"><a>A</a></Link> */}
+                                <Button circular color='facebook' icon='facebook'
+                                    href="https://www.facebook.com/Arjeware-753778911629883" target="_blank"
+                                />
+                                </p>
+                        </Grid.Column>
+                    </Grid.Row>
+                </Grid>
+            </Container>
+        </Segment>
     );
 }

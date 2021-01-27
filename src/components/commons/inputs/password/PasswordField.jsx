@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TextInput, Icon } from 'react-materialize';
+import { Form, Input } from 'semantic-ui-react';
 
 const styles = {
     showPasswordDiv: {
@@ -20,11 +20,7 @@ const styles = {
 export function PasswordField(props) {
 
     const { showPasswordDiv, showPasswordIcon } = styles;
-
-    // let visiblePassword = 'password';
-    // let setVisiblePassword = (visiblePassword) => {
-    //     this.visiblePassword = visiblePassword;
-    // }
+    const { label, validator } = props
 
     /**  Mostramos y no mostramos la clave */
     const [visiblePassword, setVisiblePassword] = useState('password');
@@ -34,9 +30,16 @@ export function PasswordField(props) {
     }
 
     return (
-        <TextInput type={visiblePassword}
-            icon={<div style={showPasswordDiv} onClick={showPassword}><Icon style={showPasswordIcon}>visibility</Icon></div>}
-            {...props}
-        />
+        <>
+            <Form.Field>
+                <label>{label}</label>
+                <Input type={visiblePassword} {...props} />
+                {validator}
+            </Form.Field>
+            {/* <TextInput type={visiblePassword}
+                icon={<div style={showPasswordDiv} onClick={showPassword}><Icon style={showPasswordIcon}>visibility</Icon></div>}
+                {...props}
+            /> */}
+        </>
     );
 }

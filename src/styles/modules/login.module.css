@@ -1,0 +1,19 @@
+div.cardLogin {
+    margin-top: 17%;
+}
+
+.parallaxContainer {
+    height: 100%;
+    width: 100% ;
+    background: no-repeat fixed center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100vh;
+}
+
+.parallax img {
+    opacity: 0.6 !important;
+}
+
