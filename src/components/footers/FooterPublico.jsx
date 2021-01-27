@@ -25,6 +25,7 @@ export default function FooterPublico() {
                                 {/* <Link href="https://www.facebook.com/Arjeware-753778911629883"><a>A</a></Link> */}
                                 <Button circular color='facebook' icon='facebook'
                                     href="https://www.facebook.com/Arjeware-753778911629883" target="_blank"
+                                    rel="noreferrer"
                                 />
                                 </p>
                         </Grid.Column>

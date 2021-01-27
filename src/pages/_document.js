@@ -6,8 +6,12 @@ class MyDocument extends Document {
       <Html lang="es">
         <Head>
           {/** FavIcon */}
+          <link rel="icon" href="/favicon.ico"/>
           {/** WebFont */}
           {/** stylesheets */}
+          {/*manifest.json provides metadata used when your web app is installed on a
+             user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/ */}
+          <link rel="manifest" href="/manifest.json" />
           <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"></link>
           {/** scripts */}
         </Head>

@@ -98,23 +98,23 @@ const RegistrarUsuario = () => {
 
     return (
         <Form onSubmit={formik.handleSubmit} className='form-control'>
-            <h2 className="center"><strong>Crear</strong> una cuenta.</h2>
+            <h2 className="center aligned"><strong>Crear</strong> una cuenta</h2>
             <Form.Field>
-                <label>Nombres:</label>
+                <label htmlFor='nombres'>Nombres:</label>
                 <Input type="text" name="nombres" id='nombres' placeholder="Armando"
                     {...formik.getFieldProps('nombres')}
                 />
                 {formik.touched.nombres && formik.errors.nombres ? (<div class="ui pointing red basic label">{formik.errors.nombres}</div>) : null}
             </Form.Field>
             <Form.Field>
-                <label>Apellidos:</label>
+                <label htmlFor='apellidos'>Apellidos:</label>
                 <Input type="text" name="apellidos" id='apellidos' placeholder="Hogares"
                     {...formik.getFieldProps('apellidos')}
                 />
                 {formik.touched.apellidos && formik.errors.apellidos ? (<div class="ui pointing red basic label">{formik.errors.apellidos}</div>) : null}
             </Form.Field>
             <Form.Field>
-                <label>Correo:</label>
+                <label htmlFor='correo'>Correo:</label>
                 <Input type="email" name="correo" id='correo' placeholder="ejemplo@ejemplo.com"
                     {...formik.getFieldProps('correo')}
                 />
@@ -146,7 +146,7 @@ const RegistrarUsuario = () => {
             />
             <br></br>
             <br></br>
-            <Link className="already" href='/login' ><a>¿Ya tienes una cuenta? Ingresa aquí.</a></Link>
+            <Link href='/login' ><a className="already">¿Ya tienes una cuenta? Ingresa aquí.</a></Link>
         </Form>
     )
 }

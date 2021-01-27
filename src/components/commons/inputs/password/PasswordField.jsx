@@ -20,7 +20,7 @@ const styles = {
 export function PasswordField(props) {
 
     const { showPasswordDiv, showPasswordIcon } = styles;
-    const { label, validator } = props
+    const { label, validator, id } = props
 
     /**  Mostramos y no mostramos la clave */
     const [visiblePassword, setVisiblePassword] = useState('password');
@@ -32,8 +32,8 @@ export function PasswordField(props) {
     return (
         <>
             <Form.Field>
-                <label>{label}</label>
-                <Input type={visiblePassword} {...props} />
+                <label htmlFor={id} >{label}</label>
+                <Input type={visiblePassword} id={id} {...props} />
                 {validator}
             </Form.Field>
             {/* <TextInput type={visiblePassword}

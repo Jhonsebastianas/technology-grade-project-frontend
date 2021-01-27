@@ -76,7 +76,7 @@ const Home = ({ mobile }) => {
                             </p>
                         </Grid.Column>
                         <Grid.Column floated='right' width={6}>
-                            <Image bordered rounded size='large' src='/images/JP_8.webp' />
+                            <Image bordered rounded size='large' src='/images/JP_8.webp' alt='ahorro en el hogar' />
                         </Grid.Column>
                     </Grid.Row>
                     <Grid.Row>
@@ -101,7 +101,7 @@ const Home = ({ mobile }) => {
                                 "I shouldn't have gone with their competitor."
                             </Header>
                             <p style={{ fontSize: '1.33em' }}>
-                                <Image avatar src='/images/avatar/large/nan.jpg' />
+                                {/* <Image avatar src='/images/avatar/large/nan.jpg' /> */}
                                 <b>Nan</b> Chief Fun Officer Acme Toys
                             </p>
                         </Grid.Column>
