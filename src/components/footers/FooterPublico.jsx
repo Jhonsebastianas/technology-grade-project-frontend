@@ -16,7 +16,6 @@ export default function FooterPublico() {
                                 <List.Item as='a'><Link href='/nosotros'><a>Contactanos</a></Link></List.Item>
                             </List>
                         </Grid.Column>
-                        <Grid.Column width={3}></Grid.Column>
                         <Grid.Column width={7}>
                             <Header as='h4' inverted>
                                 Redes sociales

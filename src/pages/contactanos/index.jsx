@@ -1,41 +1,41 @@
 import React from 'react';
 import Image from 'next/image'
-import { Row, Col, Card, Preloader } from 'react-materialize';
+import { Grid, Segment } from 'semantic-ui-react';
 import Layout from '@components/layouts/PublicLayout';
 import styles from '@styles/modules/contactanos.module.css';
 
 const Contactanos = () => {
-    const { parallaxContainer, cardRegistro, parallax, apodoAlmacen, light, iconPhone, ladoInforamcion, nombreAlmacen, googleMaps,
-        responsiveIframe, informacionContacto, textContactanos, map } = styles;
+    const { cardRegistro, apodoAlmacen, light, iconPhone, ladoInforamcion, nombreAlmacen, googleMaps,
+        responsiveIframe, textContactanos, map } = styles;
 
     return (
         <Layout>
-            <div className={"parallax-container " + parallaxContainer}>
-                <Row>
-                    <Col s={2}></Col>
-                    <Col s={12} m={8} l={8}>
-                        <Card className={cardRegistro}>
-                            <div className="card-content">
-                                <div class="row">
-                                    <div className="col s12 m12 l6 xl6">
+            <Segment vertical>
+                <Grid stackable>
+                    <Grid.Column width={3}></Grid.Column>
+                    {/* s={12} m={8} l={8} */}
+                    <Grid.Column width={10}>
+                        <div className={cardRegistro}>
+                                <Grid stackable>
+                                    <Grid.Column width={8}>
                                         <div class="icon-block">
                                             <Image
-                                                layout='fill'
-                                                // height='280dv'
+                                                width='auto'
+                                                height='280dv'
                                                 src="/images/contactanos.svg"
                                                 alt="Unsplashed background img 1"
                                                 className={'responsive-img animate__animated animate__backInLeft'}
                                             />
                                         </div>
                                         <h1 className={textContactanos + " animate__animated animate__backInLeft"}>Contáctenos</h1>
-                                    </div>
-                                    <Col s={12} m={12} l={6} xl={6} className={ladoInforamcion + " animate__animated animate__backInRight"}>
+                                    </Grid.Column>
+                                    <Grid.Column width={8} className={ladoInforamcion + " animate__animated animate__backInRight"}>
                                         <h2 class={apodoAlmacen + " center"}><strong>SECOPS</strong></h2>
                                         <h5 className={nombreAlmacen + " center nombre-almacen"}>(Prototipo para el seguimiento y control de los servicios públicos a través de un aplicativo web)</h5>
                                         <h2 className={light + " light-blue-text"}><i className={iconPhone + " material-icons"}>email</i></h2>
                                         <p className="">Canales de comunicación <br />Gmail: jhon_agudelo23191@elpoli.edu.co<br /></p>
-                                    </Col>
-                                </div>
+                                    </Grid.Column>
+                                </Grid>
                                 <section>
                                     <div className={map + " animate__animated animate__backInUp"}>
                                         <h5>
@@ -56,12 +56,11 @@ const Contactanos = () => {
                                         </div>
                                     </div>
                                 </section>
-                            </div>
-                        </Card>
-                    </Col>
-                    <Col s={4}></Col>
-                </Row>
-            </div>
+                        </div>
+                    </Grid.Column>
+                    <Grid.Column width={3}></Grid.Column>
+                </Grid>
+            </Segment>
         </Layout >
 
     )

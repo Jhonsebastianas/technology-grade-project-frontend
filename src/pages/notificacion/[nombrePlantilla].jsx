@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link'
 import Image from 'next/image';
-import { Row, Col } from 'react-materialize';
+import { Grid } from 'semantic-ui-react'
 import Styles from '@styles/modules/notificacion.module.css'
 import Plantillas from '@constants/PlantillasNotificaciones'
 
@@ -48,40 +48,28 @@ const PantallaNotificacion = ({ plantilla }) => {
     return (
         <div className={padre}>
             <div className="valign-wrapper center-align">
-                <Row>
-                    <Row>
-                        <Col s={1}></Col>
-                        <Col s={10} m={12}>
-                            <Image
-                                alt="Icono notificación"
-                                src={`/images/alerts/${nombreImagen}`}
-                                width="200px"
-                                height="auto"
-                            />
-                        </Col>
-                        <Col s={1}></Col>
-                    </Row>
-
-                    <Col className="center-align" m={12}>
+                <Grid stackable>
+                    <Grid.Column width={16} className="ui centered grid">
+                        <Image
+                            alt="Icono notificación"
+                            src={`/images/alerts/${nombreImagen}`}
+                            width="228px"
+                            height="183px"
+                        />
+                    </Grid.Column>
+                    {/* center aligned */}
+                    <Grid.Column className="center aligned" width={16}>
                         <h3>{titulo}</h3>
-                    </Col>
-                    <Col m={12}>
-                        <Col m={3}></Col>
-                        <Col m={6}>
-                            <p className="flow-text">{descripcion}</p>
-                        </Col>
-                        <Col m={3}></Col>
-                    </Col>
-                    <Row>
-                        <Col s={1}></Col>
-                        <Col className="center-align" m={12} s={10} >
-                            <Link href={rutaBoton} className="btn waves-effect waves-light btn-secundario">
-                                <a>{tituloBoton}</a>
-                            </Link>
-                        </Col>
-                        <Col s={1}></Col>
-                    </Row>
-                </Row>
+                    </Grid.Column>
+                    <Grid.Column className="center aligned" width={16}>
+                        <p>{descripcion}</p>
+                    </Grid.Column>
+                    <Grid.Column width={16} className="ui centered grid">
+                        <Link href={rutaBoton}>
+                            <a className="ui primary button">{tituloBoton}</a>
+                        </Link>
+                    </Grid.Column>
+                </Grid>
             </div>
         </div>
     )
