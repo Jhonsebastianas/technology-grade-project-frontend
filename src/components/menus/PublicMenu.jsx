@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
-import { APP_NAME } from '@constants/Constants'
 import styles from './PublicMenu.module.css'
 
-const PublicMenu = ({ children }) => {
+const PublicMenu = () => {
 
     const { navigation, hamBtn, links, link, span1, span2, span3, active } = styles;
     const [actualizarMenuCelular, setMenuCelular] = useState(false);

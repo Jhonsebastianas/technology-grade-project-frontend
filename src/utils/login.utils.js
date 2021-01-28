@@ -5,6 +5,7 @@ export default class LoginUtils { };
 LoginUtils.getUsernameUser = getUsernameUser;
 LoginUtils.getFullName = getFullName;
 LoginUtils.SignOff = SignOff;
+LoginUtils.verifyAuth = verifyAuth;
 
 function getUsernameUser() {
     const { USER_NAME } = Constants;
@@ -22,4 +23,14 @@ function getFullName() {
 function SignOff() {
     const { USER_NAME } = Constants;
     localStorage.removeItem(USER_NAME);
+}
+
+function verifyAuth() {
+    const { TOKEN_NAME, USER_NAME } = Constants;
+    const user = JSON.parse(localStorage.getItem(USER_NAME));
+    if (user && user[TOKEN_NAME]) {
+        return true;
+    } else {
+        return false;
+    }
 }

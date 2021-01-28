@@ -8,11 +8,7 @@ import {
     Header,
     Icon,
     Image,
-    List,
-    Menu,
     Segment,
-    Sidebar,
-    Visibility,
 } from 'semantic-ui-react'
 import { APP_NAME } from '@constants/Constants';
 import Link from 'next/link';
@@ -49,7 +45,7 @@ const Home = ({ mobile }) => {
                         }}
                     />
                     <Button primary size='huge'>
-                        Inicia la aplicación
+                        <Link href="/home"><a>Inicia la aplicación</a></Link>
                         <Icon name='right arrow' />
                     </Button>
                 </Container>
