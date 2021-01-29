@@ -1,0 +1,71 @@
+  
+.fondoBlanco{
+    background-color: white;
+    margin-top: 2%;
+}
+
+.imagen{
+    max-width: 100%;
+    border: solid 2px;
+    border-radius: 100%;
+    /*width: 119px;*/
+    width: 238px;
+    margin-top: 5%;
+}
+
+.nombre{
+    font-size: 2em;
+    padding-top: 0;
+    margin-top: 3%;
+}
+
+.logoServicio{
+    width: 25px;
+    margin-left: 6%;
+}
+/*Propio de materialize*/
+#numeroContrato label{
+    font-size: 1.3rem !important;
+    color: black;
+}
+
+
+@media only screen and  (min-width:300px) and (max-width:411px){
+    /*.imagen{
+        float: left;
+        margin-left: 8%;
+    }*/
+
+   /* .nombre{
+        text-align: center;
+       padding-left: 57%;
+        padding-top: 20.5%;
+    }*/
+}
+
+/*393*/
+@media only screen and  (min-width:661px) and (max-width:799px){
+    img.imagen{
+        float: none !important;
+    }
+
+    .nombre{
+        text-align: center !important;
+        padding-left: 0 !important;
+        padding-top: 0 !important;
+    }
+}
+
+/*
+@media only screen and  (min-width:460px) and (max-width:660px){
+    .imagen{
+        float: left;
+        margin-left: 8%;
+    }
+    .nombre{
+        text-align: justify;
+        padding-left: 40%;
+        padding-top: 14.5%;
+    }
+}
+*/

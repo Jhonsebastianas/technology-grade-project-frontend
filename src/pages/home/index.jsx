@@ -1,6 +1,7 @@
 import React from 'react'
 import Layout from '@components/layouts/LayoutPrivado'
 import { Container, Grid } from 'semantic-ui-react'
+import ListaHogares from '@components/hooks/ListaHogares'
 
 const Home = () => {
     return (
@@ -9,7 +10,7 @@ const Home = () => {
             <Container>
                 <h1>Resumen consumo de servicios públicos</h1>
                 <p>En esta sección encontrarás un resumen de tus gastos</p>
-                {/* <ListaHogares /> */}
+                <ListaHogares />
                 <Grid.Column width={12}>
                     {/* <ButtonOutline onClick={() => history.push("agregar-un-hogar")}>Agregar un hogar [+]</ButtonOutline> */}
                 </Grid.Column>

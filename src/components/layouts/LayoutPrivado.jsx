@@ -9,7 +9,7 @@ const Layout = ({ children }) => {
 
     useEffect(() => {
         if(!loginUtils.verifyAuth()) {
-            router.push('login');
+            router.push('/login');
         }
     }, [])
 

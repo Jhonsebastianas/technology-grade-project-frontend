@@ -1,4 +1,6 @@
 import React from 'react'
+import Link from 'next/link';
+import { useRouter } from 'next/router'
 import Layout from '@components/layouts/PublicLayout';
 import {
     Button,
@@ -11,9 +13,20 @@ import {
     Segment,
 } from 'semantic-ui-react'
 import { APP_NAME } from '@constants/Constants';
-import Link from 'next/link';
+import loginUtils from '@utils/login.utils'
 
 const Home = ({ mobile }) => {
+
+    const router = useRouter();
+
+    const goToApp = () => {
+        if (loginUtils.verifyAuth()) {
+            router.push('/home');
+        } else {
+            router.push('/login');
+        }
+    }
+
     return (
         <Layout>
             <Segment
@@ -44,8 +57,8 @@ const Home = ({ mobile }) => {
                             marginTop: mobile ? '0.5em' : '1.5em',
                         }}
                     />
-                    <Button primary size='huge'>
-                        <Link href="/home"><a>Inicia la aplicación</a></Link>
+                    <Button primary size='huge' onClick={goToApp}>
+                        Inicia la aplicación
                         <Icon name='right arrow' />
                     </Button>
                 </Container>
@@ -77,7 +90,7 @@ const Home = ({ mobile }) => {
                     </Grid.Row>
                     <Grid.Row>
                         <Grid.Column textAlign='center'>
-                            <Button size='huge'><Link href="/registrar/usuario">Registrate</Link></Button>
+                        <Link href="/registrar/usuario"><Button size='huge'>Registrate</Button></Link>
                         </Grid.Column>
                     </Grid.Row>
                 </Grid>
