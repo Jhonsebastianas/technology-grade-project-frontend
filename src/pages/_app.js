@@ -4,6 +4,7 @@ import Head from 'next/head'
 import { APP_NAME } from '@constants/Constants'
 import 'semantic-ui-css/semantic.min.css'
 /** Estilos propios */
+import '@styles/variables.css'
 import '@styles/RegistroUsuario.css'
 import '@styles/menuPublico.css'
 

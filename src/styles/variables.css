@@ -1,0 +1,10 @@
+:root {
+    /* COLORES */
+    --primary-color: #00aae4;
+    --primary-color-light: #bceeff;
+    --primary-color-dark: #005a79;
+    --secundary-color: #727272;
+    --success-color: rgb(122, 212, 52);
+    --danger-color: #dc3545;
+    /* FIN COLORES */
+}
