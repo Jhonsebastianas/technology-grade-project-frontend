@@ -1,10 +1,23 @@
 import React, { useState } from 'react'
-import Link from 'next/link'
-import styles from './PublicMenu.module.css'
+// import Link from 'next/link'
+import { Grid } from 'semantic-ui-react';
+import { APP_NAME } from '@constants/Constants'
+
+const style = {
+    menuColor: {
+        backgroundColor: 'white',
+    },
+    colorNegro: {
+        color: 'black'
+    },
+    link: {
+
+    }
+}
 
 const PublicMenu = () => {
 
-    const { navigation, hamBtn, links, link, span1, span2, span3, active } = styles;
+    const { menuColor, colorNegro } = style;
     const [actualizarMenuCelular, setMenuCelular] = useState(false);
 
     const menuCelular = () => {
@@ -13,29 +26,36 @@ const PublicMenu = () => {
     }
 
     return (
-        <>
-            <div className={(actualizarMenuCelular) ? navigation + " " + active : navigation}>
-                <div className={hamBtn} onClick={menuCelular}>
-                    <span className={span1}></span>
-                    <span className={span2}></span>
-                    <span className={span3}></span>
+        <Grid>
+            <nav className="banner-superior">
+                <div>
+                    <ul className="banner-lista">
+                        <li><a>{APP_NAME}</a></li>
+                        <li><a>Inicio</a></li>
+                        <li><a>Nosotros</a></li>
+                        <li><a>Contáctanos</a></li>
+                    </ul>
                 </div>
-                <div className={links}>
-                    <div >
-                        <a className={link} href="#">Home</a>
+            </nav>
+            <div class={(actualizarMenuCelular) ? "navigation active" : "navigation"} onClick={menuCelular}>
+                <div class={"ham-btn"}>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="links">
+                    <div class="link">
+                        <a href="#">Inicio</a>
                     </div>
-                    <div >
-                        <a className={link} href="#">Dashb</a>
+                    <div class="link">
+                        <a href="#">Nosotros</a>
                     </div>
-                    <div >
-                        <a className={link} href="#">About</a>
-                    </div>
-                    <div >
-                        <a className={link} href="#">Contac</a>
+                    <div class="link">
+                        <a href="#">Contáctanos</a>
                     </div>
                 </div>
             </div>
-        </>
+        </Grid>
     )
 }
 

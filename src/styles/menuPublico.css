@@ -1,0 +1,134 @@
+nav{
+  background-color: white;
+}
+
+.navigation{
+position:fixed;
+top:-16px;
+width:100%;
+height:103%;
+background:white;
+z-index:200;
+clip-path:circle(25px at calc(45px) 45px);
+transition:all 300ms ease-in-out;
+}
+
+.navigation.active{
+clip-path:circle(75%);
+left: 0px !important;
+background:var(--primary-color);
+position: fixed;
+color: white;
+height: 105%;
+}
+
+.navigation .ham-btn{
+position:absolute;
+top:19px;
+left:20px;
+width:50px;
+height:50px;
+border-radius:50%;
+cursor:pointer;
+}
+
+.navigation .ham-btn span{
+position:absolute;
+right:0%;
+transform:translate(-50%,-50%);
+width:50%;
+height:2px;
+background: #111111;;
+transition:all 200ms ease-in-out;
+}
+
+.navigation .ham-btn span:nth-child(1){
+top:30%;
+}
+
+.navigation .ham-btn span:nth-child(2){
+top:50%;
+}
+
+.navigation .ham-btn span:nth-child(3){
+top:70%;
+}
+
+.navigation.active .ham-btn span:nth-child(1){
+top:50%;
+transform:translate(-50%,-50%) rotate(45deg);
+background: white;
+}
+
+.navigation.active .ham-btn span:nth-child(2){
+display:none;
+background: white;
+}
+
+.navigation.active .ham-btn span:nth-child(3){
+top:50%;
+transform:translate(-50%,-50%) rotate(-45deg);
+background: white;
+}
+
+.navigation .links{
+position: absolute;
+top: 45%;
+left: 50%;
+transform: translate(-50%,-50%);
+text-align: center;
+}
+
+.navigation .links a{
+position:relative;
+display:inline-block;
+margin:20px 0px;
+font-size:20px;
+font-weight:600;
+text-decoration:none;
+color:white;
+text-transform:uppercase;
+letter-spacing:5px;
+}
+
+.navigation .links a:after{
+content:"";
+position:absolute;
+left:0px;
+bottom:0px;
+height:2px;
+width:0%;
+background: white;;
+transition:all 300ms ease-in-out;
+}
+
+.navigation .links a:hover:after{
+width:100%;
+}
+
+@media only screen and  (min-width:601px) and (max-width:992px){
+  .navigation{
+    left: 44px;
+  }
+
+  .nombreProyecto{
+    position: absolute;
+    left: 12%;
+  }
+}
+
+.banner-lista{
+ display: flex;
+ justify-content: flex-end;
+ background-color: white;
+}
+
+.banner-lista li a{
+color: black;
+}
+
+@media only screen and  (min-width:0px) and (max-width:499px){
+  .banner-lista li a{
+    display: none;
+  }
+}

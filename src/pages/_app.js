@@ -5,6 +5,7 @@ import { APP_NAME } from '@constants/Constants'
 import 'semantic-ui-css/semantic.min.css'
 /** Estilos propios */
 import '@styles/RegistroUsuario.css'
+import '@styles/menuPublico.css'
 
 import { ToastProvider } from 'react-toast-notifications';
 
