@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
@@ -16,6 +16,7 @@ const RegistrarUsuario = () => {
     const { boton, imagenGoogle } = stylesGoogle;
     const { addToast } = useToasts();
     const router = useRouter()
+    const [recuperarCuenta, setRecuperarCuenta] = useState(false)
 
     const registerSchema = Yup.object().shape({
         nombres: Yup.string().trim()
@@ -42,6 +43,7 @@ const RegistrarUsuario = () => {
                 const { status } = error.response;
                 if (status === 409) {
                     addToast('Cuenta actualmente existente', { appearance: 'info' });
+                    setRecuperarCuenta(true)
                 } else if (status === 422) {
                     addToast('Valida la información, por favor', { appearance: 'warning' });
                 } else if (status === 500) {
@@ -84,6 +86,7 @@ const RegistrarUsuario = () => {
                     const { status } = error.response;
                     if (status === 409) {
                         addToast('Cuenta actualmente existente', { appearance: 'info' });
+                        setRecuperarCuenta(true)
                     } else if (status === 422) {
                         addToast('Valida la información, por favor', { appearance: 'warning' });
                     } else if (status === 500) {
@@ -124,6 +127,17 @@ const RegistrarUsuario = () => {
                 {...formik.getFieldProps('clave')}
                 validator={formik.touched.clave && formik.errors.clave ? (<div class="ui pointing red basic label">{formik.errors.clave}</div>) : null}
             />
+            {
+                recuperarCuenta && 
+                <div>
+                    <div class="ui two column centered grid">
+                        <div class="column">
+                            <Link href='usuario/recuperar-cuenta' ><a className="text center">¿Olvidaste tu clave?</a></Link>
+                        </div>
+                    </div>
+                    <br></br>
+                </div>
+            }
             <Button style={{ width: "100%" }} type='submit' disabled={!formik.isValid} >
                 Registrarse
                 </Button>

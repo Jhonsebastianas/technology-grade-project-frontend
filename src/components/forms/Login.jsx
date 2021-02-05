@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -20,6 +20,7 @@ const FormularioLogin = () => {
     const { boton, imagenGoogle } = stylesGoogle;
 
     const router = useRouter()
+    const [recuperarCuenta, setRecuperarCuenta] = useState(false)
 
     const loginSchema = Yup.object().shape({
         correo: Yup.string().trim()
@@ -36,9 +37,11 @@ const FormularioLogin = () => {
                 if (status === 400) {
                     addToast('Cuenta registrada con Google', { appearance: 'warning' });
                 } else if (status === 401) {
+                    setRecuperarCuenta(true)
                     addToast('Valida la información por favor', { appearance: 'warning' });
                 } else if (status === 403) {
                     addToast('Aún no has activado tu cuenta', { appearance: 'info' });
+                    setRecuperarCuenta(true)
                 } else {
                     addToast('oh no :(, no eres tú somos nosotros, algo a ido mal', { appearance: 'error' });
                 }
@@ -65,8 +68,10 @@ const FormularioLogin = () => {
                 const { status } = error.response;
                 if (status === 401) {
                     addToast('Valida la información por favor', { appearance: 'warning' });
+                    setRecuperarCuenta(true)
                 } else if (status === 403) {
                     addToast('Aún no has activado tu cuenta', { appearance: 'info' });
+                    setRecuperarCuenta(true)
                 } else {
                     addToast('oh no :(, no eres tú somos nosotros, algo a ido mal', { appearance: 'error' });
                 }
@@ -99,10 +104,20 @@ const FormularioLogin = () => {
                 {...formik.getFieldProps('clave')}
                 validator={formik.touched.clave && formik.errors.clave ? (<div class="ui pointing red basic label">{formik.errors.clave}</div>) : null}
             />
-
+            {
+                recuperarCuenta &&
+                <div>
+                    <br></br>
+                    <div class="ui two column centered grid">
+                        <Link href='/registrar/usuario/recuperar-cuenta' ><a className="text center">¿Olvidaste tu clave?</a></Link>
+                    </div>
+                    <br></br>
+                    <br></br>
+                </div>
+            }
             <Button type='submit' style={{ width: "100%" }} disabled={!formik.isValid} >
                 Ingresar
-                </Button>
+            </Button>
 
             <GoogleLogin
                 clientId="31983275788-597slnqbnq71p45qajk27m718vqj13pq.apps.googleusercontent.com"
