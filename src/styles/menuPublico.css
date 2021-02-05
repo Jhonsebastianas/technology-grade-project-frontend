@@ -4,12 +4,12 @@ nav{
 
 .navigation{
 position:fixed;
-top:-16px;
+top:0px;
 width:100%;
 height:103%;
-background:white;
+background:var(--primary-color);
 z-index:200;
-clip-path:circle(25px at calc(45px) 45px);
+clip-path:circle(25px at calc(64px) 45px);
 transition:all 300ms ease-in-out;
 }
 
@@ -25,7 +25,7 @@ height: 105%;
 .navigation .ham-btn{
 position:absolute;
 top:19px;
-left:20px;
+left:39px;
 width:50px;
 height:50px;
 border-radius:50%;
@@ -38,7 +38,7 @@ right:0%;
 transform:translate(-50%,-50%);
 width:50%;
 height:2px;
-background: #111111;;
+background: white;;
 transition:all 200ms ease-in-out;
 }
 
@@ -95,7 +95,7 @@ letter-spacing:5px;
 content:"";
 position:absolute;
 left:0px;
-bottom:0px;
+bottom:-10px;
 height:2px;
 width:0%;
 background: white;;
@@ -107,9 +107,9 @@ width:100%;
 }
 
 @media only screen and  (min-width:601px) and (max-width:992px){
-  .navigation{
+  /*.navigation{
     left: 44px;
-  }
+  }*/
 
   .nombreProyecto{
     position: absolute;
@@ -117,7 +117,7 @@ width:100%;
   }
 }
 
-.banner-lista{
+nav.banner-superior .banner-lista{
  display: flex;
  justify-content: flex-end;
  background-color: white;
