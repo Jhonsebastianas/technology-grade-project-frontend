@@ -32,40 +32,40 @@ const Home = ({ mobile }) => {
 
     return (
         <Layout>
-                <Segment
-                    inverted
-                    textAlign='center'
-                    className={`${headersPrincipales}`}
-                    vertical
-                >
-                    <Container text style={ { backgroundColor: "rgba(0,0,0, 0.8)", paddingBottom: "20px"} }>
-                        <Header
-                            as='h1'
-                            content={APP_NAME}
-                            inverted
-                            style={{
-                                fontSize: mobile ? '2em' : '4em',
-                                fontWeight: 'normal',
-                                marginBottom: 0,
-                                marginTop: mobile ? '1.5em' : '3em',
-                            }}
-                        />
-                        <Header
-                            as='h2'
-                            content='Una forma moderna e interactiva de administrar tu consumo en servicios públicos del agua y energía.'
-                            inverted
-                            style={{
-                                fontSize: mobile ? '1.5em' : '1.7em',
-                                fontWeight: 'normal',
-                                marginTop: mobile ? '0.5em' : '1.5em',
-                            }}
-                        />
-                        <Button primary size='huge' onClick={goToApp}>
-                            Inicia la aplicación
+            <Segment
+                inverted
+                textAlign='center'
+                className={`${headersPrincipales}`}
+                vertical
+            >
+                <Container text style={{ backgroundColor: "rgba(0,0,0, 0.8)", paddingBottom: "20px" }}>
+                    <Header
+                        as='h1'
+                        content={APP_NAME}
+                        inverted
+                        style={{
+                            fontSize: mobile ? '2em' : '4em',
+                            fontWeight: 'normal',
+                            marginBottom: 0,
+                            marginTop: mobile ? '1.5em' : '3em',
+                        }}
+                    />
+                    <Header
+                        as='h2'
+                        content='Una forma moderna e interactiva de administrar tu consumo en servicios públicos del agua y energía.'
+                        inverted
+                        style={{
+                            fontSize: mobile ? '1.5em' : '1.7em',
+                            fontWeight: 'normal',
+                            marginTop: mobile ? '0.5em' : '1.5em',
+                        }}
+                    />
+                    <Button primary size='huge' onClick={goToApp}>
+                        Inicia la aplicación
                         <Icon name='right arrow' />
-                        </Button>
-                    </Container>
-                </Segment>
+                    </Button>
+                </Container>
+            </Segment>
             <Segment style={{ padding: '8em 0em' }} vertical>
                 <Grid container stackable verticalAlign='middle'>
                     <Grid.Row>
@@ -104,17 +104,24 @@ const Home = ({ mobile }) => {
                     <Grid.Row textAlign='center'>
                         <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
                             <Header as='h3' style={{ fontSize: '2em' }}>
-                                "What a Company"
+                                Un poco más de la app
                             </Header>
-                            <p style={{ fontSize: '1.33em' }}>That is what they all say about us</p>
+                            <p style={{ fontSize: '1.33em' }}>
+                                {APP_NAME} es un proyecto creado por jóvenes apasionados por el desarrollo de software,
+                                para incentivar y permitir a las personas, medir el consumo del agua y energía en sus
+                                hogares, de forma automática por medio de sensores, o manual,
+                                digitando los registros del contador público.
+                            </p>
                         </Grid.Column>
                         <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
                             <Header as='h3' style={{ fontSize: '2em' }}>
-                                "I shouldn't have gone with their competitor."
+                                "Fundadores"
                             </Header>
                             <p style={{ fontSize: '1.33em' }}>
                                 {/* <Image avatar src='/images/avatar/large/nan.jpg' /> */}
-                                <b>Nan</b> Chief Fun Officer Acme Toys
+                                <b>Jhon</b> Agudelo<br></br>
+                                <b>Sara</b> Cárdenas<br></br>
+                                <b>Breyner</b> Taborda
                             </p>
                         </Grid.Column>
                     </Grid.Row>
@@ -123,7 +130,7 @@ const Home = ({ mobile }) => {
 
             <Segment style={{ padding: '8em 0em' }} vertical>
                 <Container text>
-                    <Header as='h3' style={{ fontSize: '2em' }}>
+                    {/* <Header as='h3' style={{ fontSize: '2em' }}>
                         Breaking The Grid, Grabs Your Attention
                     </Header>
                     <p style={{ fontSize: '1.33em' }}>
@@ -133,7 +140,7 @@ const Home = ({ mobile }) => {
                     </p>
                     <Button as='a' size='large'>
                         Read More
-                    </Button>
+                    </Button> */}
 
                     <Divider
                         as='h4'
@@ -141,20 +148,21 @@ const Home = ({ mobile }) => {
                         horizontal
                         style={{ margin: '3em 0em', textTransform: 'uppercase' }}
                     >
-                        <a href='#'>Case Studies</a>
+                        <a href='#casoEstudio'>Casos de estudio</a>
                     </Divider>
 
-                    <Header as='h3' style={{ fontSize: '2em' }}>
-                        Did We Tell You About Our Bananas?
+                    <Header as='h3' style={{ fontSize: '2em' }} id="casoEstudio">
+                        ¿Conoces nuestros sensores?
                     </Header>
                     <p style={{ fontSize: '1.33em' }}>
-                        Yes I know you probably disregarded the earlier boasts as non-sequitur filler content, but
-                        it's really true. It took years of gene splicing and combinatory DNA research, but our
-                        bananas can really dance.
+                        Nuestros sensores te permiten llevar un registro automático de tu consumo
+                        en los servicios públicos del agua y energía, el cual puedes visualizar desde nuestra app.
+                        Actualmente nos encontramos en mejora constante pensando en el consumidor, para reducir costos
+                        de fabricación y venta.
                     </p>
-                    <Button as='a' size='large'>
+                    {/* <Button as='a' size='large'>
                         I'm Still Quite Interested
-                </Button>
+                    </Button> */}
                 </Container>
             </Segment>
         </Layout>
