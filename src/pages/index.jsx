@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from 'next/link';
+import ImageNext from 'next/image'
 import { useRouter } from 'next/router'
 import Layout from '@components/layouts/PublicLayout';
 import {
@@ -115,12 +116,36 @@ const Home = ({ mobile }) => {
                         </Grid.Column>
                         <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
                             <Header as='h3' style={{ fontSize: '2em' }}>
-                                "Fundadores"
+                                -Fundadores-
                             </Header>
                             <p style={{ fontSize: '1.33em' }}>
-                                {/* <Image avatar src='/images/avatar/large/nan.jpg' /> */}
-                                <b>Jhon</b> Agudelo<br></br>
-                                <b>Sara</b> Cárdenas<br></br>
+                                <ImageNext
+                                    src="/images/founders/JhonAgudelo.webp"
+                                    alt="Founder Jhon"
+                                    width="37"
+                                    height="37"
+                                    className="ui avatar image"
+                                />
+                                <b>Jhon</b> Agudelo
+                            </p>
+                            <p style={{ fontSize: '1.33em' }}>
+                                <ImageNext
+                                    src="/images/founders/SaraCardenas.webp"
+                                    alt="Founder Sara"
+                                    width="37"
+                                    height="37"
+                                    className="ui avatar image"
+                                />
+                                <b>Sara</b> Cárdenas
+                            </p>
+                            <p style={{ fontSize: '1.33em' }}>
+                                <ImageNext
+                                    src="/images/founders/BreynerTaborda.webp"
+                                    alt="Founder Breyner"
+                                    width="37"
+                                    height="37"
+                                    className="ui avatar image"
+                                />
                                 <b>Breyner</b> Taborda
                             </p>
                         </Grid.Column>

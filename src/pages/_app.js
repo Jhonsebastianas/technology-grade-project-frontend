@@ -31,9 +31,8 @@ const MyApp = ({ Component, pageProps }) => {
           <meta name="theme-color" content="#000000" />
           <meta
             name="description"
-            content="Web site created using nextjs and React"
+            content="Una forma moderna e interactiva de administrar tu consumo en servicios públicos del agua y energía."
           />
-
           <title>{APP_NAME}</title>
         </Head>
         <Component {...pageProps} />
