@@ -117,16 +117,18 @@ const RegistrarUsuario = () => {
                 {formik.touched.apellidos && formik.errors.apellidos ? (<div class="ui pointing red basic label">{formik.errors.apellidos}</div>) : null}
             </Form.Field>
             <Form.Field>
-                <label htmlFor='correo'>Correo:</label>
-                <Input type="email" name="correo" id='correo' placeholder="ejemplo@ejemplo.com"
-                    {...formik.getFieldProps('correo')}
+                <label htmlFor='clave'>Calve:</label>
+                <Input type="password" name="calve" id='clave'
+                    {...formik.getFieldProps('clave')}
+                    validator={formik.touched.clave && formik.errors.clave ? (<div class="ui pointing red basic label">{formik.errors.clave}</div>) : null}
                 />
-                {formik.touched.correo && formik.errors.correo ? (<div class="ui pointing red basic label">{formik.errors.correo}</div>) : null}
             </Form.Field>
-            <PasswordField label='Clave:' name='clave' id='clave'
+            
+
+            {/*<PasswordField label='Clave:' name='clave' id='clave'
                 {...formik.getFieldProps('clave')}
                 validator={formik.touched.clave && formik.errors.clave ? (<div class="ui pointing red basic label">{formik.errors.clave}</div>) : null}
-            />
+    />*/}
             {
                 recuperarCuenta && 
                 <div>
@@ -138,7 +140,7 @@ const RegistrarUsuario = () => {
                     <br></br>
                 </div>
             }
-            <Button style={{ width: "100%" }} type='submit' disabled={!formik.isValid} >
+            <Button  className="botonRegistrar" type='submit' disabled={!formik.isValid} >
                 Registrarse
                 </Button>
             <GoogleLogin
