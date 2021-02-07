@@ -37,20 +37,20 @@ const PublicMenu = () => {
                     </ul>
                 </div>
             </nav>
-            <div class={(actualizarMenuCelular) ? "navigation active" : "navigation"} onClick={menuCelular}>
-                <div class={"ham-btn"}>
+            <div className={(actualizarMenuCelular) ? "navigation active" : "navigation"} onClick={menuCelular}>
+                <div className={"ham-btn"}>
                     <span></span>
                     <span></span>
                     <span></span>
                 </div>
-                <div class="links">
-                    <div class="link">
+                <div className="links">
+                    <div className="link">
                         <a href="#">Inicio</a>
                     </div>
-                    <div class="link">
+                    <div className="link">
                         <a href="#">Nosotros</a>
                     </div>
-                    <div class="link">
+                    <div className="link">
                         <a href="#">Contáctanos</a>
                     </div>
                 </div>

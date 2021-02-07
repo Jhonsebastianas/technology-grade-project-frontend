@@ -18,7 +18,7 @@ const Contactanos = () => {
                         <div className={cardRegistro}>
                                 <Grid stackable>
                                     <Grid.Column width={8}>
-                                        <div class="icon-block">
+                                        <div className="icon-block">
                                             <Image
                                                 width='auto'
                                                 height='280dv'
@@ -30,7 +30,7 @@ const Contactanos = () => {
                                         <h1 className={textContactanos + " animate__animated animate__backInLeft"}>Contáctenos</h1>
                                     </Grid.Column>
                                     <Grid.Column width={8} className={ladoInforamcion + " animate__animated animate__backInRight"}>
-                                        <h2 class={apodoAlmacen + " center"}><strong>SECOPS</strong></h2>
+                                        <h2 className={apodoAlmacen + " center"}><strong>SECOPS</strong></h2>
                                         <h5 className={nombreAlmacen + " center nombre-almacen"}>(Prototipo para el seguimiento y control de los servicios públicos a través de un aplicativo web)</h5>
                                         <h2 className={light + " light-blue-text"}><i className={iconPhone + " material-icons"}>email</i></h2>
                                         <p className="">Canales de comunicación <br />Gmail: jhon_agudelo23191@elpoli.edu.co<br /></p>

@@ -98,17 +98,17 @@ const FormularioLogin = () => {
                 <Input type="email" name="correo" id='correo' placeholder="ejemplo@ejemplo.com"
                     {...formik.getFieldProps('correo')}
                 />
-                {formik.touched.correo && formik.errors.correo ? (<div class="ui pointing red basic label">{formik.errors.correo}</div>) : null}
+                {formik.touched.correo && formik.errors.correo ? (<div className="ui pointing red basic label">{formik.errors.correo}</div>) : null}
             </Form.Field>
             <PasswordField label='Clave:' name='clave' id='clave'
                 {...formik.getFieldProps('clave')}
-                validator={formik.touched.clave && formik.errors.clave ? (<div class="ui pointing red basic label">{formik.errors.clave}</div>) : null}
+                validator={formik.touched.clave && formik.errors.clave ? (<div className="ui pointing red basic label">{formik.errors.clave}</div>) : null}
             />
             {
                 recuperarCuenta &&
                 <div>
                     <br></br>
-                    <div class="ui two column centered grid">
+                    <div className="ui two column centered grid">
                         <Link href='/registrar/usuario/recuperar-cuenta' ><a className="text center">¿Olvidaste tu clave?</a></Link>
                     </div>
                     <br></br>

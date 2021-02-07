@@ -107,31 +107,31 @@ const RegistrarUsuario = () => {
                 <Input type="text" name="nombres" id='nombres' placeholder="Armando"
                     {...formik.getFieldProps('nombres')}
                 />
-                {formik.touched.nombres && formik.errors.nombres ? (<div class="ui pointing red basic label">{formik.errors.nombres}</div>) : null}
+                {formik.touched.nombres && formik.errors.nombres ? (<div className="ui pointing red basic label">{formik.errors.nombres}</div>) : null}
             </Form.Field>
             <Form.Field>
                 <label htmlFor='apellidos'>Apellidos:</label>
                 <Input type="text" name="apellidos" id='apellidos' placeholder="Hogares"
                     {...formik.getFieldProps('apellidos')}
                 />
-                {formik.touched.apellidos && formik.errors.apellidos ? (<div class="ui pointing red basic label">{formik.errors.apellidos}</div>) : null}
+                {formik.touched.apellidos && formik.errors.apellidos ? (<div className="ui pointing red basic label">{formik.errors.apellidos}</div>) : null}
             </Form.Field>
             <Form.Field>
                 <label htmlFor='correo'>Correo:</label>
                 <Input type="email" name="correo" id='correo' placeholder="ejemplo@ejemplo.com"
                     {...formik.getFieldProps('correo')}
                 />
-                {formik.touched.correo && formik.errors.correo ? (<div class="ui pointing red basic label">{formik.errors.correo}</div>) : null}
+                {formik.touched.correo && formik.errors.correo ? (<div className="ui pointing red basic label">{formik.errors.correo}</div>) : null}
             </Form.Field>
             <PasswordField label='Clave:' name='clave' id='clave'
                 {...formik.getFieldProps('clave')}
-                validator={formik.touched.clave && formik.errors.clave ? (<div class="ui pointing red basic label">{formik.errors.clave}</div>) : null}
+                validator={formik.touched.clave && formik.errors.clave ? (<div className="ui pointing red basic label">{formik.errors.clave}</div>) : null}
             />
             {
                 recuperarCuenta && 
                 <div>
-                    <div class="ui two column centered grid">
-                        <div class="column">
+                    <div className="ui two column centered grid">
+                        <div className="column">
                             <Link href='usuario/recuperar-cuenta' ><a className="text center">¿Olvidaste tu clave?</a></Link>
                         </div>
                     </div>

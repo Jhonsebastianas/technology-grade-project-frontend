@@ -60,11 +60,11 @@ const RestablecerClave = () => {
         <Form onSubmit={formik.handleSubmit}>
             <PasswordField label='Nueva contraseña:' name='clave' id='clave'
                 {...formik.getFieldProps('clave')}
-                validator={formik.touched.clave && formik.errors.clave ? (<div class="ui pointing red basic label">{formik.errors.clave}</div>) : null}
+                validator={formik.touched.clave && formik.errors.clave ? (<div className="ui pointing red basic label">{formik.errors.clave}</div>) : null}
             />
             <PasswordField label='Repetir contraseña:' name='claveConfirmada' id='claveConfirmada'
                 {...formik.getFieldProps('claveConfirmada')}
-                validator={formik.touched.claveConfirmada && formik.errors.claveConfirmada ? (<div class="ui pointing red basic label">{formik.errors.claveConfirmada}</div>) : null}
+                validator={formik.touched.claveConfirmada && formik.errors.claveConfirmada ? (<div className="ui pointing red basic label">{formik.errors.claveConfirmada}</div>) : null}
             />
             <Button type='submit'  disabled={!formik.isValid} >
                 Recuperar
