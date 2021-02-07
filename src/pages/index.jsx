@@ -18,7 +18,7 @@ import styles from '@styles/modules/inicio.module.css'
 
 const Home = ({ mobile }) => {
 
-    const { headersPrincipales } = styles;
+    const { headersPrincipales, containerPrincipal } = styles;
 
     const router = useRouter();
 
@@ -38,7 +38,7 @@ const Home = ({ mobile }) => {
                 className={`${headersPrincipales}`}
                 vertical
             >
-                <Container text style={{ backgroundColor: "rgba(0,0,0, 0.8)", paddingBottom: "20px" }}>
+                <Container text className={`${containerPrincipal}`}>
                     <Header
                         as='h1'
                         content={APP_NAME}
