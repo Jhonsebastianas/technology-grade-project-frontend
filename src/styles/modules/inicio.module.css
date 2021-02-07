@@ -1,0 +1,17 @@
+.headersPrincipales {
+    background-color: rgba(0, 0, 0, 1) !important;
+    background-image: url('/images/JP_1.webp') !important;
+    /* Background image doesn't tile */
+    background-repeat: no-repeat !important;
+    /* Background image is centered vertically and horizontally at all times */
+    background-position: center center !important;
+    /* Background image is fixed in the viewport so that it doesn't move when 
+     the content's height is greater than the image's height */
+    background-attachment: fixed !important;
+    /* This is what makes the background image rescale based
+     on the container's size */
+    background-size: cover !important;
+    /* Otros estilos */
+    padding: '1em 0em';
+    min-height: 700px;
+}

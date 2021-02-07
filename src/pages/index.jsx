@@ -14,8 +14,11 @@ import {
 } from 'semantic-ui-react'
 import { APP_NAME } from '@constants/Constants';
 import loginUtils from '@utils/login.utils'
+import styles from '@styles/modules/inicio.module.css'
 
 const Home = ({ mobile }) => {
+
+    const { headersPrincipales } = styles;
 
     const router = useRouter();
 
@@ -29,40 +32,40 @@ const Home = ({ mobile }) => {
 
     return (
         <Layout>
-            <Segment
-                inverted
-                textAlign='center'
-                style={{ minHeight: 700, padding: '1em 0em' }}
-                vertical
-            >
-                <Container text>
-                    <Header
-                        as='h1'
-                        content={APP_NAME}
-                        inverted
-                        style={{
-                            fontSize: mobile ? '2em' : '4em',
-                            fontWeight: 'normal',
-                            marginBottom: 0,
-                            marginTop: mobile ? '1.5em' : '3em',
-                        }}
-                    />
-                    <Header
-                        as='h2'
-                        content='Una forma moderna e interactiva de administrar tu consumo en servicios públicos del agua y energía.'
-                        inverted
-                        style={{
-                            fontSize: mobile ? '1.5em' : '1.7em',
-                            fontWeight: 'normal',
-                            marginTop: mobile ? '0.5em' : '1.5em',
-                        }}
-                    />
-                    <Button primary size='huge' onClick={goToApp}>
-                        Inicia la aplicación
+                <Segment
+                    inverted
+                    textAlign='center'
+                    className={`${headersPrincipales}`}
+                    vertical
+                >
+                    <Container text style={ { backgroundColor: "rgba(0,0,0, 0.8)", paddingBottom: "20px"} }>
+                        <Header
+                            as='h1'
+                            content={APP_NAME}
+                            inverted
+                            style={{
+                                fontSize: mobile ? '2em' : '4em',
+                                fontWeight: 'normal',
+                                marginBottom: 0,
+                                marginTop: mobile ? '1.5em' : '3em',
+                            }}
+                        />
+                        <Header
+                            as='h2'
+                            content='Una forma moderna e interactiva de administrar tu consumo en servicios públicos del agua y energía.'
+                            inverted
+                            style={{
+                                fontSize: mobile ? '1.5em' : '1.7em',
+                                fontWeight: 'normal',
+                                marginTop: mobile ? '0.5em' : '1.5em',
+                            }}
+                        />
+                        <Button primary size='huge' onClick={goToApp}>
+                            Inicia la aplicación
                         <Icon name='right arrow' />
-                    </Button>
-                </Container>
-            </Segment>
+                        </Button>
+                    </Container>
+                </Segment>
             <Segment style={{ padding: '8em 0em' }} vertical>
                 <Grid container stackable verticalAlign='middle'>
                     <Grid.Row>
@@ -90,7 +93,7 @@ const Home = ({ mobile }) => {
                     </Grid.Row>
                     <Grid.Row>
                         <Grid.Column textAlign='center'>
-                        <Link href="/registrar/usuario"><Button size='huge'>Registrate</Button></Link>
+                            <Link href="/registrar/usuario"><Button size='huge'>Registrate</Button></Link>
                         </Grid.Column>
                     </Grid.Row>
                 </Grid>
