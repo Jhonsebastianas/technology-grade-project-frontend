@@ -1,6 +1,7 @@
-nav{
+/*---ESTILOS MENU FLOTANTE---*/
+/*nav{
   background-color: white;
-}
+}*/
 
 .navigation{
 position:fixed;
@@ -116,15 +117,35 @@ width:100%;
     left: 12%;
   }
 }
+/*FIN ESTILOS MENU FLOTANTE---*/
+
+/*---ESTILOS MENU BARRA SUPERIOR TRANSPARENTE--- */
+.banner-superior{
+  position: absolute;
+    right: 40px;
+    top: 20px;
+    z-index: 9;
+    background: transparent;
+}
+
+.banner-lista{
+  list-style-type: none;
+  background: transparent;
+}
 
 nav.banner-superior .banner-lista{
  display: flex;
  justify-content: flex-end;
- background-color: white;
+ background-color: transparent;
+}
+
+.banner-lista li{
+  margin-left: 50px;
+  background: transparent;
 }
 
 .banner-lista li a{
-color: black;
+color: white;
 }
 
 @media only screen and  (min-width:0px) and (max-width:499px){
@@ -132,3 +153,5 @@ color: black;
     display: none;
   }
 }
+
+/*---FIN ESTILOS MENU BARRA SUPERIOR TRANSPARENTE---*/

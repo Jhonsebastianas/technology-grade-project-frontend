@@ -30,10 +30,10 @@ const PublicMenu = () => {
             <nav className="banner-superior">
                 <div>
                     <ul className="banner-lista">
-                        <li><a>{APP_NAME}</a></li>
-                        <li><a>Inicio</a></li>
-                        <li><a>Nosotros</a></li>
-                        <li><a>Contáctanos</a></li>
+                        <li><a href="">{APP_NAME}</a></li>
+                        <li><a href="">Inicio</a></li>
+                        <li><a href="">Nosotros</a></li>
+                        <li><a href="">Contáctanos</a></li>
                     </ul>
                 </div>
             </nav>
