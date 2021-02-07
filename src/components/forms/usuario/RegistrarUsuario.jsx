@@ -117,10 +117,9 @@ const RegistrarUsuario = () => {
                 {formik.touched.apellidos && formik.errors.apellidos ? (<div className="ui pointing red basic label">{formik.errors.apellidos}</div>) : null}
             </Form.Field>
             <Form.Field>
-                <label htmlFor='clave'>Calve:</label>
-                <Input type="password" name="calve" id='clave'
-                    {...formik.getFieldProps('clave')}
-                    validator={formik.touched.clave && formik.errors.clave ? (<div class="ui pointing red basic label">{formik.errors.clave}</div>) : null}
+                <label htmlFor='correo'>Correo:</label>
+                <Input type="text" name="correo" id='correo' placeholder="ejemplo@gmail.com"
+                    {...formik.getFieldProps('correo')}
                 />
                 {formik.touched.correo && formik.errors.correo ? (<div className="ui pointing red basic label">{formik.errors.correo}</div>) : null}
             </Form.Field>
