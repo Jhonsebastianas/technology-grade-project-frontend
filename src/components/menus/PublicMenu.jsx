@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-// import Link from 'next/link'
+import Link from 'next/link'
 import { Grid } from 'semantic-ui-react';
 import { APP_NAME } from '@constants/Constants'
 
@@ -30,10 +30,10 @@ const PublicMenu = () => {
             <nav className="banner-superior">
                 <div>
                     <ul className="banner-lista">
-                        <li><a href="">{APP_NAME}</a></li>
-                        <li><a href="">Inicio</a></li>
-                        <li><a href="">Nosotros</a></li>
-                        <li><a href="">Contáctanos</a></li>
+                        <li><Link href="/"><a>{APP_NAME}</a></Link></li>
+                        <li><Link href="/"><a>Inicio</a></Link></li>
+                        <li><Link href="/nosotros"><a>Nosotros</a></Link></li>
+                        <li><Link href="/contactanos"><a>Contáctanos</a></Link></li>
                     </ul>
                 </div>
             </nav>
@@ -45,13 +45,13 @@ const PublicMenu = () => {
                 </div>
                 <div className="links">
                     <div className="link">
-                        <a href="#">Inicio</a>
+                        <Link href="/"><a>Inicio</a></Link>
                     </div>
                     <div className="link">
-                        <a href="#">Nosotros</a>
+                        <Link href="/nosotros"><a>Nosotros</a></Link>
                     </div>
                     <div className="link">
-                        <a href="#">Contáctanos</a>
+                        <Link href="/contactanos"><a>Contáctanos</a></Link>
                     </div>
                 </div>
             </div>
