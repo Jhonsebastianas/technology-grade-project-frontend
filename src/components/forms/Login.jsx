@@ -9,7 +9,7 @@ import { GoogleLogin } from 'react-google-login';
 import ConstantsList from '@constants/Constants';
 import { serviciosLogin } from '@services/serviciosLogin'
 // CSS
-import { Form, Button, Input } from 'semantic-ui-react';
+import { Form, Button, Input, Divider } from 'semantic-ui-react';
 import stylesGoogle from '@styles/modules/stylesGoogle.module.css';
 import { useToasts } from 'react-toast-notifications';
 
@@ -118,7 +118,12 @@ const FormularioLogin = () => {
             <Button type='submit' style={{ width: "100%" }} disabled={!formik.isValid} >
                 Ingresar
             </Button>
-
+            <Divider
+                // className='header'
+                horizontal
+            >
+                o
+            </Divider>
             <GoogleLogin
                 clientId="31983275788-597slnqbnq71p45qajk27m718vqj13pq.apps.googleusercontent.com"
                 render={renderProps => (

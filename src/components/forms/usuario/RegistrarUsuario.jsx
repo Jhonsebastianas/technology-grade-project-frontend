@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { GoogleLogin } from 'react-google-login';
-import { Form, Button, Input } from 'semantic-ui-react';
+import { Form, Button, Input, Divider } from 'semantic-ui-react';
 import { useToasts } from 'react-toast-notifications';
 import Services from '@services/serviciosRegistro'
 import { PasswordField } from '@components/commons/inputs/password/PasswordField'
@@ -123,14 +123,12 @@ const RegistrarUsuario = () => {
                 />
                 {formik.touched.correo && formik.errors.correo ? (<div className="ui pointing red basic label">{formik.errors.correo}</div>) : null}
             </Form.Field>
-            
-
             <PasswordField label='Clave:' name='clave' id='clave'
                 {...formik.getFieldProps('clave')}
                 validator={formik.touched.clave && formik.errors.clave ? (<div className="ui pointing red basic label">{formik.errors.clave}</div>) : null}
             />
             {
-                recuperarCuenta && 
+                recuperarCuenta &&
                 <div>
                     <div className="ui two column centered grid">
                         <div className="column">
@@ -140,9 +138,15 @@ const RegistrarUsuario = () => {
                     <br></br>
                 </div>
             }
-            <Button  className="botonRegistrar" type='submit' disabled={!formik.isValid} >
+            <Button className="botonRegistrar" type='submit' disabled={!formik.isValid} >
                 Registrarse
-                </Button>
+            </Button>
+            <Divider
+                // className='header'
+                horizontal
+            >
+                o
+            </Divider>
             <GoogleLogin
                 clientId="31983275788-597slnqbnq71p45qajk27m718vqj13pq.apps.googleusercontent.com"
                 render={renderProps => (
