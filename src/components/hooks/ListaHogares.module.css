@@ -1,0 +1,8 @@
+.hogaresOcultos {
+    display: none;
+}
+
+.mostrarHogares {
+    /* Animaciones de aparición */
+    display: flex;
+}

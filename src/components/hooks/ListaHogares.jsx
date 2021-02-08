@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { Accordion, Card, Grid, Icon } from 'semantic-ui-react'
+import { Accordion, Button, Card, Divider, Grid, Header, Icon, Label, Segment } from 'semantic-ui-react'
 import ServiciosHogares from '@services/servicios.hogares'
 import loginUtils from '@utils/login.utils'
+// import styles from './ListaHogares.module.css'
 
 const ListaHogares = () => {
 
+    // const { hogaresOcultos } = styles
+
     const [listaHogares, setListaHogares] = useState([]);
+    const [cantidadHogares, setCantidadHogares] = useState(0);
+    /** Variable para el acordión */
     const [activeIndex, setActiveIndex] = useState(-1);
 
     const handleClick = (e, titleProps) => {
@@ -20,6 +25,7 @@ const ListaHogares = () => {
         ServiciosHogares.getHogaresByUsername(loginUtils.getUsernameUser(), ({ data }) => {
             if (mounted) {
                 setListaHogares(data);
+                setCantidadHogares(data.length);
             }
         }, (error) => {
         });
@@ -29,26 +35,47 @@ const ListaHogares = () => {
 
     return (
         <>
-            <Accordion fluid styled>
-                {listaHogares.map((hogar, index) => {
-                    return (
-                        <>
-                            <Accordion.Title
-                                active={activeIndex === index}
-                                index={index}
-                                onClick={handleClick}
-                            >
-                                <Icon name='dropdown' />
-                                <Icon name={(hogar.tipoHogar === 'casa') ? 'home' : 'building'} />
-                                {hogar.nombre}
-                            </Accordion.Title>
-                            <Accordion.Content active={activeIndex === index}>
-                                <Grid>
-                                    <Grid.Column width={16}>
-                                        <h4>Información de tu hogar</h4>
-                                        <p>Contrato: {hogar.numeroContrato} | Estrato: {hogar.estrato} | Tipo hogar: {hogar.tipoHogar}</p>
-                                        <h4>Información de tus servicios</h4>
-                                    </Grid.Column>
+            <Segment raised>
+                <Grid>
+                    <Grid.Column floated='left' width={10} verticalAlign="middle">
+                        <Header as='h5' >
+                            <Icon name="caret square down outline"></Icon>
+                                    Mis hogares
+                                </Header>
+                    </Grid.Column>
+                    <Grid.Column floated='right' width={5}>
+                        <Button as='div' floated="right" labelPosition='left'>
+                            <Label as='a' basic pointing='right'>
+                                {cantidadHogares}
+                            </Label>
+                            <Button icon>
+                                <Icon name='home' />
+                                {/* Like */}
+                            </Button>
+                        </Button>
+                    </Grid.Column>
+                </Grid>
+                <Divider />
+                <Accordion fluid styled>
+                    {listaHogares.map((hogar, index) => {
+                        return (
+                            <>
+                                <Accordion.Title
+                                    active={activeIndex === index}
+                                    index={index}
+                                    onClick={handleClick}
+                                >
+                                    <Icon name='dropdown' />
+                                    <Icon name={(hogar.tipoHogar === 'casa') ? 'home' : 'building'} />
+                                    {hogar.nombre}
+                                </Accordion.Title>
+                                <Accordion.Content active={activeIndex === index}>
+                                    <Grid>
+                                        <Grid.Column width={16}>
+                                            <h4>Información de tu hogar</h4>
+                                            <p>Contrato: {hogar.numeroContrato} | Estrato: {hogar.estrato} | Tipo hogar: {hogar.tipoHogar}</p>
+                                            <h4>Información de tus servicios</h4>
+                                        </Grid.Column>
                                         {hogar.servicios.map(servicio => {
                                             return (
                                                 <Grid.Column width={6}>
@@ -77,12 +104,13 @@ const ListaHogares = () => {
                                                 </Grid.Column>
                                             )
                                         })}
-                                </Grid>
-                            </Accordion.Content>
-                        </>
-                    )
-                })}
-            </Accordion>
+                                    </Grid>
+                                </Accordion.Content>
+                            </>
+                        )
+                    })}
+                </Accordion>
+            </Segment>
         </>
     )
 }

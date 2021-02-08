@@ -1,7 +1,7 @@
 import React from 'react'
 import { useRouter } from 'next/router'
 import Layout from '@components/layouts/LayoutPrivado'
-import { Button, Container, Grid, Icon, Segment } from 'semantic-ui-react'
+import { Button, Container, Grid, Icon } from 'semantic-ui-react'
 import ListaHogares from '@components/hooks/ListaHogares'
 
 const Home = () => {
@@ -18,9 +18,7 @@ const Home = () => {
                 <Container>
                     <h1>Resumen consumo de servicios públicos</h1>
                     <p>En esta sección encontrarás un resumen de tus gastos</p>
-                    <Segment>
-                        <ListaHogares />
-                    </Segment>
+                    <ListaHogares />
                     <Grid>
                         <Grid.Column textAlign="left" width={16}>
                             <Button animated basic color='green' onClick={goToAddHome}>
