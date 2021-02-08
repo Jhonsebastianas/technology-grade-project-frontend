@@ -7,6 +7,7 @@ import 'semantic-ui-css/semantic.min.css'
 import '@styles/variables.css'
 import '@styles/RegistroUsuario.css'
 import '@styles/menuPublico.css'
+import '@styles/editarCuenta.css'
 
 import { ToastProvider } from 'react-toast-notifications';
 

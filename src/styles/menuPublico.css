@@ -126,6 +126,8 @@ width:100%;
     top: 20px;
     z-index: 9;
     background: transparent;
+    width: 420px;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .banner-lista{
