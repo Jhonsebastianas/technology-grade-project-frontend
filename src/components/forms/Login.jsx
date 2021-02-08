@@ -123,11 +123,9 @@ const FormularioLogin = () => {
                 clientId="31983275788-597slnqbnq71p45qajk27m718vqj13pq.apps.googleusercontent.com"
                 render={renderProps => (
                     <button className={boton} onClick={renderProps.onClick} disabled={renderProps.disabled}>
-                        <Image
+                        <img
                             alt="google icon"
                             src='/images/google.svg'
-                            width="auto"
-                            height="20px"
                             className={imagenGoogle}
                         />
                         Inicia Sesión con Google</button>
