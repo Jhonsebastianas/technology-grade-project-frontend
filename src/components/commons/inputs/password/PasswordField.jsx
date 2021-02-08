@@ -1,26 +1,9 @@
 import React, { useState } from 'react';
-import { Form, Input } from 'semantic-ui-react';
-
-const styles = {
-    showPasswordDiv: {
-        // right: '0px',
-        cursor: 'pointer',
-        zIndex: '9999',
-        WebkitUserSelect: 'none',
-        MozUserSelect: 'none',
-        MsUserSelect: 'none',
-        UserSelect: 'none',
-    },
-    showPasswordIcon: {
-        cursor: 'pointer',
-        zIndex: '9999',
-    }
-};
+import { Form, Input, Icon } from 'semantic-ui-react';
 
 export function PasswordField(props) {
 
-    const { showPasswordDiv, showPasswordIcon } = styles;
-    const { label, validator, id } = props
+    const { validator, id, name, label, ...newProps } = props
 
     /**  Mostramos y no mostramos la clave */
     const [visiblePassword, setVisiblePassword] = useState('password');
@@ -32,14 +15,13 @@ export function PasswordField(props) {
     return (
         <>
             <Form.Field>
-                <label htmlFor={id} >{label}</label>
-                <Input type={visiblePassword} id={id} {...props} />
+                <label htmlFor={id}>Clave:</label>
+                <Input type={visiblePassword} name={name} id={id} 
+                    icon={<Icon name={(visiblePassword === 'password')? 'eye slash': 'eye'} circular link onClick={showPassword} />} iconPosition='left'
+                    {...newProps}
+                />
                 {validator}
             </Form.Field>
-            {/* <TextInput type={visiblePassword}
-                icon={<div style={showPasswordDiv} onClick={showPassword}><Icon style={showPasswordIcon}>visibility</Icon></div>}
-                {...props}
-            /> */}
         </>
     );
 }

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useFormik } from 'formik';
@@ -100,7 +99,7 @@ const FormularioLogin = () => {
                 />
                 {formik.touched.correo && formik.errors.correo ? (<div className="ui pointing red basic label">{formik.errors.correo}</div>) : null}
             </Form.Field>
-            <PasswordField label='Clave:' name='clave' id='clave'
+            <PasswordField name='clave' id='clave'
                 {...formik.getFieldProps('clave')}
                 validator={formik.touched.clave && formik.errors.clave ? (<div className="ui pointing red basic label">{formik.errors.clave}</div>) : null}
             />
