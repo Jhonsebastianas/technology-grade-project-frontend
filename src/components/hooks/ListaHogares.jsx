@@ -68,7 +68,7 @@ const ListaHogares = () => {
                                     <Grid>
                                         <Grid.Column floated='left' width={10} verticalAlign="middle">
                                             <Icon name='dropdown' />
-                                            <Icon name={(hogar.tipoHogar === 'casa') ? 'home' : 'building'} />
+                                            <Icon name={(hogar.tipo_hogar === 'casa') ? 'home' : 'building'} />
                                             {hogar.nombre}
                                         </Grid.Column>
                                         <Grid.Column floated='right' width={6} verticalAlign="middle" textAlign="right">
@@ -79,17 +79,18 @@ const ListaHogares = () => {
 
                                 </Accordion.Title>
                                 <Accordion.Content active={activeIndex === index}>
-                                    <Grid>
+                                    <Grid stackable>
                                         <Grid.Column width={16}>
                                             <Header as='h4' >
                                                 Información de tu hogar
                                             </Header>
-                                            <p>Contrato: {hogar.numeroContrato} | Estrato: {hogar.estrato} | Tipo hogar: {hogar.tipoHogar}</p>
+                                            <p><Icon name="address book" color="teal"></Icon><strong>Contrato:</strong> {hogar.numero_contrato} | Estrato: {hogar.estrato} | Tipo hogar: {hogar.tipo_hogar}</p>
+                                            <p><Icon name="globe" color="blue"></Icon><strong>Localidad:</strong> Colombia, Medellín</p>
                                             <h4>Información de tus servicios</h4>
                                         </Grid.Column>
                                         {hogar.servicios.map(servicio => {
                                             return (
-                                                <Grid.Column width={6}>
+                                                <Grid.Column width={6} >
                                                     <Card fluid>
                                                         {/* <Image 
                                                         src={`/images/servicios/${servicio.img}`}
@@ -98,18 +99,36 @@ const ListaHogares = () => {
                                                         alt={`imagen-${servicio}`}
                                                     /> */}
                                                         <Card.Content>
-                                                            <Card.Header>{servicio}</Card.Header>
+                                                            <Card.Header>
+                                                                <Grid>
+                                                                    <Grid.Column floated='left' width={10} verticalAlign="middle">
+                                                                        {servicio.principal}
+                                                                    </Grid.Column>
+                                                                    <Grid.Column floated='right' width={6} verticalAlign="middle" textAlign="right">
+                                                                        {(servicio.sensor.hasSensor) ? <Icon inverted name="wifi" color="green" size="small" ></Icon> : ""}
+                                                                    </Grid.Column>
+                                                                </Grid>
+                                                            </Card.Header>
                                                             <Card.Meta>
                                                                 <span className='date'>Última actualización 28/01/2021</span>
                                                             </Card.Meta>
                                                             <Card.Description>
-                                                                Esto es una descripción
-                                                        </Card.Description>
+                                                                {(servicio.secundario != "nn") ? <><strong>Subservicio:</strong> {servicio.secundario}</> : ""}
+                                                            </Card.Description>
                                                         </Card.Content>
                                                         <Card.Content extra>
-                                                            <a>
-                                                                ver al detalle
-                                                            </a>
+                                                            {servicio.sensor.hasSensor &&
+                                                                <Button icon labelPosition='right'>
+                                                                    ver detalle
+                                                                <Icon name='right arrow' />
+                                                                </Button>
+                                                                ||
+                                                                <Button.Group>
+                                                                    <Button>ver detalle</Button>
+                                                                    <Button.Or text="o" />
+                                                                    <Button positive>registrar consumo</Button>
+                                                                </Button.Group>
+                                                            }
                                                         </Card.Content>
                                                     </Card>
                                                 </Grid.Column>
