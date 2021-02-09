@@ -41,7 +41,7 @@ const ListaHogares = () => {
                         <Header as='h5' >
                             <Icon name="caret square down outline"></Icon>
                                     Mis hogares
-                                </Header>
+                        </Header>
                     </Grid.Column>
                     <Grid.Column floated='right' width={5}>
                         <Button as='div' floated="right" labelPosition='left'>
@@ -65,14 +65,25 @@ const ListaHogares = () => {
                                     index={index}
                                     onClick={handleClick}
                                 >
-                                    <Icon name='dropdown' />
-                                    <Icon name={(hogar.tipoHogar === 'casa') ? 'home' : 'building'} />
-                                    {hogar.nombre}
+                                    <Grid>
+                                        <Grid.Column floated='left' width={10} verticalAlign="middle">
+                                            <Icon name='dropdown' />
+                                            <Icon name={(hogar.tipoHogar === 'casa') ? 'home' : 'building'} />
+                                            {hogar.nombre}
+                                        </Grid.Column>
+                                        <Grid.Column floated='right' width={6} verticalAlign="middle" textAlign="right">
+                                            <Icon name="theme" color="blue" /> {index + 1 * 10}
+                                            <Icon name="plug" color="yellow" /> {(index + 1) + 4 * 60}
+                                        </Grid.Column>
+                                    </Grid>
+
                                 </Accordion.Title>
                                 <Accordion.Content active={activeIndex === index}>
                                     <Grid>
                                         <Grid.Column width={16}>
-                                            <h4>Información de tu hogar</h4>
+                                            <Header as='h4' >
+                                                Información de tu hogar
+                                            </Header>
                                             <p>Contrato: {hogar.numeroContrato} | Estrato: {hogar.estrato} | Tipo hogar: {hogar.tipoHogar}</p>
                                             <h4>Información de tus servicios</h4>
                                         </Grid.Column>
