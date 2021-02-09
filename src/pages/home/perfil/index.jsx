@@ -75,12 +75,12 @@ const Perfil = () => {
                                 return (
                                     <Table.Body>
                                         <Table.Row>
-                                            <Table.Cell>{hogar.numeroContrato}</Table.Cell>
+                                            <Table.Cell>{hogar.numero_contrato}</Table.Cell>
                                             <Table.Cell>{hogar.nombre}</Table.Cell>
                                             <Table.Cell>{hogar.estrato}</Table.Cell>
                                             <Table.Cell>
                                                 {hogar.servicios.map(servicio => {
-                                                    return (<h5>{servicio}</h5>
+                                                    return (<h5>{servicio.principal}</h5>
                                                     );
                                                 })}
                                             </Table.Cell>
@@ -109,8 +109,8 @@ const Perfil = () => {
                                             <Input name="nombreHogar" id='nombreHogar' placeholder={hogarQueSeEditara.nombre} />
                                         </Form.Field>
                                         <Form.Field width={7}>
-                                            <label htmlFor='correo'>{"# Contrato: " + ((hogarQueSeEditara) ? hogarQueSeEditara.numeroContrato : "")}</label>
-                                            <Input name="numeroContrato" id='numeroContrato' placeholder={hogarQueSeEditara.numeroContrato} autocomplete="off" />
+                                            <label htmlFor='correo'>{"# Contrato: " + ((hogarQueSeEditara) ? hogarQueSeEditara.numero_contrato : "")}</label>
+                                            <Input name="numeroContrato" id='numeroContrato' placeholder={hogarQueSeEditara.numero_contrato} autocomplete="off" />
                                         </Form.Field>
                                     </Form.Group>
                                     <Form.Group inline>
