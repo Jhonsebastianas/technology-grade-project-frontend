@@ -7,46 +7,34 @@ import { Button, Form, Grid, Header, Input, Modal, Table } from 'semantic-ui-rea
 
 const Perfil = () => {
     const [visibilidadFormulario, setVisibilidadformulario] = useState(false);
-    const [actualizarFormulario, setActualizarformulario] = useState(false);
     const [listaHogares, setListaHogares] = useState([]);
-    const [editarHogar, setEditarHogar] = useState(null);
+    const [hogarQueSeEditara, setHogarQueSeEditara] = useState({});
     const [open, setOpen] = useState(false)
     const [usuario, setUsuario] = useState({})
 
-    const actualizarInformacion = () => {
-        const formulario = (actualizarFormulario) ? false : true;
-        setActualizarformulario(formulario);
-    }
-
-    const openModal = (numeroContrato) => {
-        getHomeByNumeroContrato(numeroContrato);
-        actualizarInformacion();
+    const openModal = (index) => {
+        setHogarQueSeEditara(listaHogares[index])
         setOpen(true);
     }
 
     useEffect(() => {
         let mounted = true;
         console.log(mounted)
-        ServiciosHogares.getHogaresByUsername(loginUtils.getUsernameUser(), ({ data }) => {
-            if (mounted) {
-                setListaHogares(data);
+        if (mounted) {
+            ServiciosHogares.getHogaresByUsername(loginUtils.getUsernameUser(), ({ data }) => {
+                if (mounted) {
+                    setListaHogares(data);
+                    setHogarQueSeEditara(data[0]);
+                }
+            }, (error) => { });
+
+            const dataUser = {
+                fullName: loginUtils.getFullName()
             }
-        }, (error) => { });
-
-        const dataUser = {
-            fullName: loginUtils.getFullName()
+            setUsuario(dataUser)
         }
-        setUsuario(dataUser)
-
         return () => mounted = false;
     }, [])
-
-    function getHomeByNumeroContrato(numeroContrato) {
-        ServiciosHogares.getHogarByNumeroContrato(numeroContrato, ({ data }) => {
-            console.log(data);
-            setEditarHogar(data);
-        }, (error) => { });
-    }
 
     const formularioInformacionPersonal = () => {
         const formulario = (visibilidadFormulario) ? false : true;
@@ -57,9 +45,7 @@ const Perfil = () => {
         <Layout>
             <Grid>
                 <Grid.Row>
-
                     <Grid.Column width={6}>
-
                         <Grid.Column width={8} className="center">
                             <img className="imagen" src="/images/avatarUsuario.svg"></img>
                             <p className="nombre"><strong>{usuario.fullName}</strong></p>
@@ -69,20 +55,12 @@ const Perfil = () => {
                         </Grid.Column>
                         <Grid.Column width={8}>
                             {visibilidadFormulario && (<div id="contenidoFormulario">
-                                {/*<div>
-                                    <div className="input-field col s11">
-                                        <Input className="validate" value={loginUtils.getFullName()} />
-                                        <label htmlFor="icon_prefix"></label>
-                                    </div>
-                                </div>*/}
                                 <Input label='Nombre(s)' icon="account_circle" s={11} placeholder={loginUtils.getFullName()} />
                                 <Input label='Apellidos' icon="account_circle" s={11} placeholder={loginUtils.getFullName()} />
                             </div>)}
                         </Grid.Column>
-
                     </Grid.Column>
                     <Grid.Column width={9} className="espacioSuperiorTabla">
-
                         <Table celled fixed singleLine>
                             <Table.Header>
                                 <Table.Row>
@@ -93,9 +71,7 @@ const Perfil = () => {
                                     <Table.HeaderCell />
                                 </Table.Row>
                             </Table.Header>
-
-
-                            {listaHogares.map(hogar => {
+                            {listaHogares.map((hogar, index) => {
                                 return (
                                     <Table.Body>
                                         <Table.Row>
@@ -109,68 +85,61 @@ const Perfil = () => {
                                                 })}
                                             </Table.Cell>
                                             <Table.Cell className="center">
-                                                <Modal
-                                                    onClose={() => setOpen(false)}
-                                                    onOpen={openModal}
-                                                    open={open}
-                                                    trigger={<span className="material-icons  iconoColorAzul" node="button">mode_edit</span>}
-                                                >
-                                                    <Modal.Header>Edita tu hogar</Modal.Header>
-                                                    <Modal.Content>
-                                                        <Modal.Description>
-                                                            {/* <Header>Default Profile Image</Header> */}
-                                                            <Form>
-                                                                <Form.Group widths='equal'>
-                                                                    <Form.Field width={7}>
-                                                                        <label htmlFor='correo'>{"Nombre hogar: " + ((editarHogar) ? editarHogar.nombre : "")}</label>
-                                                                        <Input name="nombreHogar" id='nombreHogar' value={hogar.nombre} />
-                                                                    </Form.Field>
-                                                                    <Form.Field width={7}>
-                                                                        <label htmlFor='correo'>{"# Contrato: " + ((editarHogar) ? editarHogar.numeroContrato : "")}</label>
-                                                                        <Input name="numeroContrato" id='numeroContrato' value={hogar.numeroContrato} autocomplete="off" />
-                                                                    </Form.Field>
-                                                                </Form.Group>
-                                                                <Form.Group inline>
-                                                                    <label>Servicios</label>
-                                                                    <Form.Radio
-                                                                        label='Agua'
-                                                                        value='agua'
-                                                                    // checked={value === 'agua'}
-                                                                    // onChange={this.handleChange}
-                                                                    />
-                                                                    <Form.Radio
-                                                                        label='Energía'
-                                                                        value='Energía'
-                                                                    />
-                                                                </Form.Group>
-                                                            </Form>
-                                                        </Modal.Description>
-                                                    </Modal.Content>
-                                                    <Modal.Actions>
-                                                        <Button color='black' onClick={() => setOpen(false)}>
-                                                            Descartar
-                                                            </Button>
-                                                        <Button
-                                                            content="Modificar"
-                                                            labelPosition='right'
-                                                            icon='checkmark'
-                                                            onClick={() => setOpen(false)}
-                                                            positive
-                                                        />
-                                                    </Modal.Actions>
-                                                </Modal>
+                                                <span onClick={() => openModal(index)} className="material-icons  iconoColorAzul" node="button">mode_edit</span>
                                             </Table.Cell>
                                         </Table.Row>
                                     </Table.Body>
                                 );
                             })}
-
                         </Table>
                     </Grid.Column>
                     <Grid.Column width={1}>
                     </Grid.Column>
-
-
+                    <Modal
+                        onClose={() => setOpen(false)}
+                        open={open}
+                    >
+                        <Modal.Header>Edita tu hogar</Modal.Header>
+                        <Modal.Content>
+                            <Modal.Description>
+                                <Form>
+                                    <Form.Group widths='equal'>
+                                        <Form.Field width={7}>
+                                            <label htmlFor='correo'>{"Nombre hogar: " + ((hogarQueSeEditara) ? hogarQueSeEditara.nombre : "")}</label>
+                                            <Input name="nombreHogar" id='nombreHogar' placeholder={hogarQueSeEditara.nombre} />
+                                        </Form.Field>
+                                        <Form.Field width={7}>
+                                            <label htmlFor='correo'>{"# Contrato: " + ((hogarQueSeEditara) ? hogarQueSeEditara.numeroContrato : "")}</label>
+                                            <Input name="numeroContrato" id='numeroContrato' placeholder={hogarQueSeEditara.numeroContrato} autocomplete="off" />
+                                        </Form.Field>
+                                    </Form.Group>
+                                    <Form.Group inline>
+                                        <label>Servicios</label>
+                                        <Form.Radio
+                                            label='Agua'
+                                            value='agua'
+                                        />
+                                        <Form.Radio
+                                            label='Energía'
+                                            value='Energía'
+                                        />
+                                    </Form.Group>
+                                </Form>
+                            </Modal.Description>
+                        </Modal.Content>
+                        <Modal.Actions>
+                            <Button color='black' onClick={() => setOpen(false)}>
+                                Descartar
+                            </Button>
+                            <Button
+                                content="Modificar"
+                                labelPosition='right'
+                                icon='checkmark'
+                                onClick={() => setOpen(false)}
+                                positive
+                            />
+                        </Modal.Actions>
+                    </Modal>
                 </Grid.Row>
             </Grid>
         </Layout>
