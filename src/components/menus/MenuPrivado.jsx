@@ -22,7 +22,7 @@ const MenuPrivado = () => {
     }
 
     return (
-        <Menu stackable>
+        <Menu stackable id="menuPrivado">
             <Menu.Item>
                 <Image
                     alt="logo app"
@@ -39,22 +39,22 @@ const MenuPrivado = () => {
             >
                 <Link href="/home"><a>inicio</a></Link>
             </Menu.Item>
-
+            
             <Menu.Item
                 name='notificaciones'
                 active={activeItem === 'notificaciones'}
                 onClick={handleItemClick}
             >
-                notificaciones
+                <Link href="/home"><a>notificaciones</a></Link>
             </Menu.Item>
             
-                <Menu.Item
-                    name='perfil'
-                    active={activeItem === 'perfil'}
-                    onClick={handleItemClick}
-                >
-                    <Link href="/home/perfil"><a>perfil</a></Link>
-                </Menu.Item>
+            <Menu.Item
+                name='perfil'
+                active={activeItem === 'perfil'}
+                onClick={handleItemClick}
+            >
+                <Link href="/home/perfil"><a>perfil</a></Link>
+            </Menu.Item>
 
             <Menu.Item
                 name='cerrar-sesion'

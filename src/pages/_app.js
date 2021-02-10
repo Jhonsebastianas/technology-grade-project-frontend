@@ -8,6 +8,7 @@ import '@styles/variables.css'
 import '@styles/RegistroUsuario.css'
 import '@styles/menuPublico.css'
 import '@styles/editarCuenta.css'
+import '@styles/menuPrivado.css'
 
 import { ToastProvider } from 'react-toast-notifications';
 
