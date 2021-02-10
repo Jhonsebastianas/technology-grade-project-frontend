@@ -118,15 +118,15 @@ const ListaHogares = () => {
                                                         </Card.Content>
                                                         <Card.Content extra>
                                                             {servicio.sensor.hasSensor &&
-                                                                <Button icon labelPosition='right'>
+                                                                <Button icon labelPosition='right' fluid>
                                                                     ver detalle
                                                                 <Icon name='right arrow' />
                                                                 </Button>
                                                                 ||
-                                                                <Button.Group>
+                                                                <Button.Group fluid>
                                                                     <Button>ver detalle</Button>
                                                                     <Button.Or text="o" />
-                                                                    <Button positive>registrar consumo</Button>
+                                                                    <Button positive>consumo</Button>
                                                                 </Button.Group>
                                                             }
                                                         </Card.Content>

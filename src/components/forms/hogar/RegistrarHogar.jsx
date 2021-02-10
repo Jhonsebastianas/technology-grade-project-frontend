@@ -37,7 +37,7 @@ const RegistrarHogar = () => {
     }
 
     const handledServicio = (event) => {
-        // console.log(event.target);
+        console.log(event.target);
         if (event.target.checked) {
             setServicios([...servicios, event.target.value]);
         } else {
@@ -235,12 +235,12 @@ const RegistrarHogar = () => {
                             <Form.Field>
                                 <label>Servicios en el hogar:</label>
                                 <div className="ui checkbox">
-                                    <input type="checkbox" name="servicioAgua" id="servicioAgua" value="Agua"
+                                    <input type="checkbox" name="servicioAgua" id="servicioAgua" value="agua"
                                         onChange={handledServicio} />
                                     <label htmlFor="servicioAgua">Agua</label>
                                 </div>
                                 <div className="ui checkbox" style={{ marginLeft: '20px' }}>
-                                    <input type="checkbox" name="servicioEnergia" id="servicioEnergia" value="Energía"
+                                    <input type="checkbox" name="servicioEnergia" id="servicioEnergia" value="energia"
                                         onChange={handledServicio} />
                                     <label htmlFor="servicioEnergia">Energía</label>
                                 </div>
