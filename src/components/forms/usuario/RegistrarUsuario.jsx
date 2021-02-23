@@ -156,7 +156,8 @@ const RegistrarUsuario = () => {
                             src='/images/google.svg'
                             className={imagenGoogle}
                         />
-                        Registrate con Google</button>
+                        <span>Registrate con Google</span>
+                        </button>
                 )}
                 onSuccess={respuestaGoogle}
                 onFailure={respuestaGoogle}
