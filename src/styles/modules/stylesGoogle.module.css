@@ -1,20 +1,23 @@
 .boton{
     width: 100% ;
+    height: 40px;
     justify-content: center;
-    line-height: 30px;
+    position: relative;
+    line-height: normal;
     border:  1px solid rgba(43, 187, 173, 0.4);
     background-color: white;
     border-radius: 2px;
     display: inline-block !important;
     font-size:  13.3333px !important;
-    color: black;
+    color: #606366;
     overflow: visible; /* ie */
     padding: 3px !important;
     border-radius: .28571429rem;
+    font-weight: 700;
 }
 
 .boton:hover{
-    color: black;
+    color: #282829;
     background-color: rgba(23, 209, 190,0.4);
     border:  1px solid #d1e3fa;
     cursor: pointer;
@@ -27,8 +30,9 @@
 }
 
 .imagenGoogle{
-    width: auto;
+    width: 18px;
     height: 18px;
-    margin: 10px 10px auto auto;
+    margin-right: 2%;
+    vertical-align: middle;
 }
 

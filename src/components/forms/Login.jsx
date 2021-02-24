@@ -132,7 +132,8 @@ const FormularioLogin = () => {
                             src='/images/google.svg'
                             className={imagenGoogle}
                         />
-                        Inicia Sesión con Google</button>
+                        <span>Inicia Sesión con Google</span>
+                        </button>
                 )}
                 onSuccess={respuestaGoogle}
                 onFailure={respuestaGoogle}

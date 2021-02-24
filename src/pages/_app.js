@@ -9,6 +9,7 @@ import '@styles/RegistroUsuario.css'
 import '@styles/menuPublico.css'
 import '@styles/editarCuenta.css'
 import '@styles/menuPrivado.css'
+import '@styles/nosotros.css'
 
 import { ToastProvider } from 'react-toast-notifications';
 
