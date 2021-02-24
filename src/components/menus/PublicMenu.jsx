@@ -1,45 +1,16 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import Link from 'next/link'
 import { Grid } from 'semantic-ui-react';
-import { APP_NAME } from '@constants/Constants'
 
-const style = {
-    menuColor: {
-        backgroundColor: 'white',
-    },
-    colorNegro: {
-        color: 'black'
-    },
-    link: {
-
-    }
-}
-
-const visibilidadMenuBarra = (event) =>{
-    console.log(event);
-
-    var header = document.querySelector("header");
-    header.classList.toggle("sticky", window.scrollY > 0);
-
-}
 
 const PublicMenu = () => {
 
-    const { menuColor, colorNegro } = style;
     const [actualizarMenuCelular, setMenuCelular] = useState(false);
 
     const menuCelular = () => {
         const formulario = (actualizarMenuCelular) ? false : true;
         setMenuCelular(formulario);
     }
-
-    useEffect(() => {
-        let mounted = true;
-        if(mounted){
-            window.addEventListener("scroll", visibilidadMenuBarra);
-        }
-        return () => mounted = false;
-    }, [])
 
     return (
         <Grid>
