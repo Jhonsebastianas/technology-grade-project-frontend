@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Accordion, Button, Card, Divider, Grid, Header, Icon, Label, Segment } from 'semantic-ui-react'
+import ModalRegistroLectura from '@components/forms/lecturas/ModalRegistrarLecturaManual'
 import ServiciosHogares from '@services/servicios.hogares'
 import loginUtils from '@utils/login.utils'
 // import styles from './ListaHogares.module.css'
@@ -121,7 +122,7 @@ const ListaHogares = () => {
                                                                 <Button.Group fluid>
                                                                     <Button>ver detalle</Button>
                                                                     <Button.Or text="o" />
-                                                                    <Button positive>consumo</Button>
+                                                                    <ModalRegistroLectura servicio={servicio.principal} positive>consumo</ModalRegistroLectura>
                                                                 </Button.Group>
                                                             }
                                                         </Card.Content>
