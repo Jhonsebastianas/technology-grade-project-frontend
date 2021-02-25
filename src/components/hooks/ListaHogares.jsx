@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Accordion, Button, Card, Divider, Grid, Header, Icon, Label, Segment } from 'semantic-ui-react'
+import ModalRegistroLectura from '@components/forms/lecturas/ModalRegistrarLecturaManual'
 import ServiciosHogares from '@services/servicios.hogares'
 import loginUtils from '@utils/login.utils'
 // import styles from './ListaHogares.module.css'
@@ -24,6 +25,7 @@ const ListaHogares = () => {
         console.log(mounted)
         ServiciosHogares.getHogaresByUsername(loginUtils.getUsernameUser(), ({ data }) => {
             if (mounted) {
+                console.log(data)
                 setListaHogares(data);
                 setCantidadHogares(data.length);
             }
@@ -92,12 +94,6 @@ const ListaHogares = () => {
                                             return (
                                                 <Grid.Column width={6} >
                                                     <Card fluid>
-                                                        {/* <Image 
-                                                        src={`/images/servicios/${servicio.img}`}
-                                                        wrapped 
-                                                        ui={false}
-                                                        alt={`imagen-${servicio}`}
-                                                    /> */}
                                                         <Card.Content>
                                                             <Card.Header>
                                                                 <Grid>
@@ -105,7 +101,7 @@ const ListaHogares = () => {
                                                                         {servicio.principal}
                                                                     </Grid.Column>
                                                                     <Grid.Column floated='right' width={6} verticalAlign="middle" textAlign="right">
-                                                                        {(servicio.sensor.hasSensor) ? <Icon inverted name="wifi" color="green" size="small" ></Icon> : ""}
+                                                                        {(servicio.sensor.has_sensor) ? <Icon inverted name="wifi" color="green" size="small" ></Icon> : ""}
                                                                     </Grid.Column>
                                                                 </Grid>
                                                             </Card.Header>
@@ -117,7 +113,7 @@ const ListaHogares = () => {
                                                             </Card.Description>
                                                         </Card.Content>
                                                         <Card.Content extra>
-                                                            {servicio.sensor.hasSensor &&
+                                                            {servicio.sensor.has_sensor &&
                                                                 <Button icon labelPosition='right' fluid>
                                                                     ver detalle
                                                                 <Icon name='right arrow' />
@@ -126,7 +122,7 @@ const ListaHogares = () => {
                                                                 <Button.Group fluid>
                                                                     <Button>ver detalle</Button>
                                                                     <Button.Or text="o" />
-                                                                    <Button positive>consumo</Button>
+                                                                    <ModalRegistroLectura servicio={servicio.principal} positive>consumo</ModalRegistroLectura>
                                                                 </Button.Group>
                                                             }
                                                         </Card.Content>

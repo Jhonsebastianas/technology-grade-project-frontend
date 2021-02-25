@@ -45,9 +45,9 @@ const PublicMenu = () => {
             <header>
                 <a href="#" class="logo"></a>
                 <ul>
-                    <li><a href="/">Inicio</a></li>
-                    <li><a href="/nosotros">Nosotros</a></li>
-                    <li><a href="/contactanos">Contáctanos</a></li>
+                    <li><Link href="/"><a>Inicio</a></Link></li>
+                    <li><Link href="/nosotros"><a>Nosotros</a></Link></li>
+                    <li><Link href="/contactanos"><a>Contáctanos</a></Link></li>
                 </ul>
             </header>
         </Grid>
