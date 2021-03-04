@@ -128,7 +128,7 @@ const RegistrarUsuario = () => {
                 {...formik.getFieldProps('clave')}
                 validator={formik.touched.clave && formik.errors.clave ? (<div className="ui pointing red basic label">{formik.errors.clave}</div>) : null}
             />
-            <ModalTerminosCondiciones trigger={<a className="already">Al registrarte aceptas todos nuestros los <strong>términos y condiciones.</strong></a>} />
+            <ModalTerminosCondiciones trigger={<a className="already">Al registrarte aceptas todos nuestros <strong>términos y condiciones.</strong></a>} />
             <br></br>
             {
                 recuperarCuenta &&
