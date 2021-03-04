@@ -122,7 +122,7 @@ const ListaHogares = () => {
                                                                 <Button.Group fluid>
                                                                     <Button>ver detalle</Button>
                                                                     <Button.Or text="o" />
-                                                                    <ModalRegistroLectura servicio={servicio.principal} positive>consumo</ModalRegistroLectura>
+                                                                    <ModalRegistroLectura servicioPublico={servicio} numeroContrato={hogar.numero_contrato} positive>consumo</ModalRegistroLectura>
                                                                 </Button.Group>
                                                             }
                                                         </Card.Content>
