@@ -10,6 +10,7 @@ import { useToasts } from 'react-toast-notifications';
 import Services from '@services/serviciosRegistro'
 import { PasswordField } from '@components/commons/inputs/password/PasswordField'
 import stylesGoogle from '@styles/modules/stylesGoogle.module.css'
+import ModalTerminosCondiciones from '@components/hooks/TerminosCondiciones'
 
 const RegistrarUsuario = () => {
 
@@ -127,6 +128,8 @@ const RegistrarUsuario = () => {
                 {...formik.getFieldProps('clave')}
                 validator={formik.touched.clave && formik.errors.clave ? (<div className="ui pointing red basic label">{formik.errors.clave}</div>) : null}
             />
+            <ModalTerminosCondiciones trigger={<a className="already">Al registrarte aceptas todos nuestros los <strong>términos y condiciones.</strong></a>} />
+            <br></br>
             {
                 recuperarCuenta &&
                 <div>

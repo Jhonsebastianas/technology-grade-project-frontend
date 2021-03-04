@@ -44,6 +44,11 @@ const ModalRegistrarLecturaManual = (props) => {
         }
         ServiciosLecturas.addLecturaManual(parametros, ({ data, status }) => {
             console.log(status, data)
+            if(isLecturaFactura) {
+                addToast('Primer registro de factura añadido correctamente.', { appearance: 'success', autoDismiss: true });
+            } else {
+                addToast('Nueva lectura añadida correctamente, consumo actualizado', { appearance: 'success', autoDismiss: true });
+            }
             setIsLecturaFactura(false)
         }, (error) => {
             if (error.response) {
