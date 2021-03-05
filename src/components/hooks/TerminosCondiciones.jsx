@@ -11,20 +11,23 @@ const TerminosCondiciones = (props) => {
             open={openTerminosCondiciones}
             onClose={() => setOpenTerminosCondiciones(false)}
             onOpen={() => setOpenTerminosCondiciones(true)}
-        // trigger={<Button>Show Modal</Button>}
+            // trigger={<Button>Show Modal</Button>}
             {...props}
         >
             <Modal.Header>POLÍTICA DE PRIVACIDAD</Modal.Header>
             <Modal.Content>
                 <Modal.Description>
-                    {Terminos.map(termino => {
+                    {Object.keys(Terminos).map((key, i) => {
+                        return Terminos[key]
+                    })}
+                    {/* {Terminos.map(termino => {
                         return (
                             <>
                                 <h4>{termino.titulo}</h4>
                                 <p>{termino.descripcion}</p>
                             </>
                         )
-                    })}
+                    })} */}
                 </Modal.Description>
             </Modal.Content>
             <Modal.Actions>
