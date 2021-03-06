@@ -1,6 +1,7 @@
 import React from 'react'
 import { Button, Modal } from 'semantic-ui-react'
 import Terminos from '@constants/TerminosAndCondiciones'
+import { APP_NAME } from '@constants/Constants'
 
 const TerminosCondiciones = (props) => {
     const [openTerminosCondiciones, setOpenTerminosCondiciones] = React.useState(false)
@@ -11,20 +12,13 @@ const TerminosCondiciones = (props) => {
             open={openTerminosCondiciones}
             onClose={() => setOpenTerminosCondiciones(false)}
             onOpen={() => setOpenTerminosCondiciones(true)}
-        // trigger={<Button>Show Modal</Button>}
+            // trigger={<Button>Show Modal</Button>}
             {...props}
         >
-            <Modal.Header>POLÍTICA DE PRIVACIDAD</Modal.Header>
-            <Modal.Content>
+            <Modal.Header>Acuerdo de Condiciones de Servicio de {APP_NAME}</Modal.Header>
+            <Modal.Content scrolling>
                 <Modal.Description>
-                    {Terminos.map(termino => {
-                        return (
-                            <>
-                                <h4>{termino.titulo}</h4>
-                                <p>{termino.descripcion}</p>
-                            </>
-                        )
-                    })}
+                    {Terminos}
                 </Modal.Description>
             </Modal.Content>
             <Modal.Actions>

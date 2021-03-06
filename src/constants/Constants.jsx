@@ -6,7 +6,9 @@ const devConf = Object.freeze({
     //Tokens
     TOKEN_NAME: 'tkn_ha',
     //LocalStorage
-    USER_NAME: 'user'
+    USER_NAME: 'user',
+    // URL de la app desplegada:
+    URL_APP: 'http://localhost:4200/'
 })
 
 const prodConf = Object.freeze({
@@ -17,7 +19,9 @@ const prodConf = Object.freeze({
     //Tokens
     TOKEN_NAME: 'tkn_ha',
     //LocalStorage
-    USER_NAME: 'user'
+    USER_NAME: 'user',
+    // URL de la app desplegada:
+    URL_APP: 'https://controlsep-segaretsu.vercel.app/'
 });
 
 
