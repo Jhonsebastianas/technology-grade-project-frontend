@@ -1,13 +1,13 @@
 import { Fragment } from 'react'
-import { URL_APP } from '@constants/Constants'
+import { URL_APP, APP_NAME } from '@constants/Constants'
 
 const terminosCondiciones = (
     <Fragment>
         <Fragment>
-            <h3>Condiciones del aplicativo, servicios y sensores de Controlsep</h3>
+            <h3>Condiciones del aplicativo, servicios y sensores de {APP_NAME}</h3>
             <p>
-                Estas Condiciones son vinculantes para Controlsep y la entidad que celebra este Acuerdo (el "Usuario").
-                Este Acuerdo regula el uso por parte del Usuario de los Servicios, sensores y aplicaciones de Controlsep.
+                Estas Condiciones son vinculantes para {APP_NAME} y la entidad que celebra este Acuerdo (el "Usuario").
+                Este Acuerdo regula el uso por parte del Usuario de los Servicios, sensores y aplicaciones de {APP_NAME}.
                 AL COMPLETAR EL PROCESO DE REGISTRO O AL USAR EL SERVICIO O SENSORES, MANIFIESTA QUE HA REVISADO Y ACEPTA ESTE ACUERDO,
                 Y QUE ESTÁ AUTORIZADO PARA ACTUAR EN NOMBRE DEL PROPIETARIO DE ESTA CUENTA Y PARA VINCULARLE CON RESPECTO AL PRESENTE ACUERDO.
                 En virtud de lo anterior, las partes acuerdan lo siguiente:
@@ -24,7 +24,7 @@ const terminosCondiciones = (
                 llegado de forma independiente y sin hacer uso de ningún tipo de Información Confidencial.
             </p>
             <p>
-                Por <strong>"Datos de los Clientes"</strong> o "Datos de Controlsep" se entiende los datos relativos a las características
+                Por <strong>"Datos de los Clientes"</strong> o "Datos de {APP_NAME}" se entiende los datos relativos a las características
                 y actividades de los Usuarios que el Usuario recoja, trate o almacene mediante el Servicio.
             </p>
             <p>
@@ -41,10 +41,10 @@ const terminosCondiciones = (
                 Las palabras <strong>"incluye"</strong>, <strong>"incluido"</strong> y sus derivados se refieren a "incluido, pero sin limitarse a ello".
             </p>
             <p>
-                <strong>"Documentación"</strong> se refiere a cualquier documentación complementaria que Controlsep ponga a disposición del Usuario para utilizar con el Software de Tratamiento, incluida cualquier documentación disponible online.
+                <strong>"Documentación"</strong> se refiere a cualquier documentación complementaria que {APP_NAME} ponga a disposición del Usuario para utilizar con el Software de Tratamiento, incluida cualquier documentación disponible online.
             </p>
             <p>
-                <strong>"Software"</strong> se refiere al Software de Tratamiento, al aplicativo Constrolsep y/o a los sensores.
+                <strong>"Software"</strong> se refiere al Software de Tratamiento, al aplicativo {APP_NAME} y/o a los sensores.
             </p>
         </Fragment>
         <Fragment>
@@ -60,12 +60,12 @@ const terminosCondiciones = (
             <h3>03. Cuenta de en la aplicación, contraseña y seguridad</h3>
             <p>
                 Para registrarse en la aplicación, el Usuario deberá completar el proceso de registro proporcionando
-                a Controlsep información actualizada, completa y precisa, tal y como se indica en el formulario de registro,
+                a {APP_NAME} información actualizada, completa y precisa, tal y como se indica en el formulario de registro,
                 incluidas su dirección de correo electrónico (nombre de usuario) y su contraseña. El Usuario deberá proteger sus contraseñas
                 y asumir plena responsabilidad sobre el uso de sus cuentas tanto por su parte como por parte de terceros.
                 El Usuario es el único responsable de todas y cada una de las actividades que se lleven a cabo en Su Cuenta,
-                y deberá notificar inmediatamente a Controlsep cualquier uso no autorizado de Su Cuenta o cualquier otro incumplimiento
-                de la seguridad de los que tenga conocimiento y en cuanto lo tenga. Ocasionalmente, el personal de asistencia de Controlsep
+                y deberá notificar inmediatamente a {APP_NAME} cualquier uso no autorizado de Su Cuenta o cualquier otro incumplimiento
+                de la seguridad de los que tenga conocimiento y en cuanto lo tenga. Ocasionalmente, el personal de asistencia de {APP_NAME}
                 (o de las filiales) puede acceder al Servicio con la contraseña del Usuario con fines de mantenimiento o de mejora del Servicio,
                 así como para proporcionarle ayuda para resolver algún problema técnico o de facturación.
                         </p>
@@ -77,7 +77,7 @@ const terminosCondiciones = (
             </p>
             <ol type='a'>
                 <li>
-                    Controlsep otorga al Usuario una licencia limitada, revocable, no exclusiva y no susceptible de someterse a otras licencias para que instale, copie y utilice el Aplicativo y/o los Sensores en tanto en cuanto sean necesarios para utilizar el Software en sus Propiedades o en las Propiedades de un Tercero; y
+                    {APP_NAME} otorga al Usuario una licencia limitada, revocable, no exclusiva y no susceptible de someterse a otras licencias para que instale, copie y utilice el Aplicativo y/o los Sensores en tanto en cuanto sean necesarios para utilizar el Software en sus Propiedades o en las Propiedades de un Tercero; y
                 </li>
                 <li>
                     el Usuario puede acceder de manera remota y visualizar sus hogares e información en <a href={URL_APP} target="_blank">{URL_APP}</a>.
@@ -119,7 +119,7 @@ const terminosCondiciones = (
                 periódicamente a través de nuestro sitio con ofertas especiales, nuevos productos y otra información
                 publicitaria que consideremos relevante para usted o que pueda brindarle algún beneficio, estos
                 correos electrónicos serán enviados a la dirección que usted proporcione y podrán ser cancelados en cualquier momento.
-                Controlsep está altamente comprometido para cumplir con el compromiso de mantener su información segura.
+                {APP_NAME} está altamente comprometido para cumplir con el compromiso de mantener su información segura.
                 Usamos los sistemas más avanzados y los actualizamos constantemente para asegurarnos
                 que no exista ningún acceso no autorizado.
             </p>
@@ -147,7 +147,7 @@ const terminosCondiciones = (
         <Fragment>
             <h3>07. Indemnización</h3>
             <p>
-                En tanto en cuanto esté permitido por la legislación aplicable, el Usuario deberá, corriendo con los gastos pertinentes, indemnizar, eximir y defender a Controlsep (y a las filiales propiedad de Controlsep en su totalidad) frente a todo tipo de reclamaciones, acciones legales, procedimientos y pleitos de terceros contra Controlsep o cualesquiera de sus directivos, encargados, empleados, agentes o entidades asociadas, respecto de todos los daños, responsabilidades, sanciones, multas, costes o gastos relacionados, o resultados de acuerdos para realizar transacciones (incluyendo los honorarios razonables de abogados y otros gastos de pleitos) en los que incurran Controlsep o cualesquiera de sus directivos, encargados, empleados, agentes o entidades asociadas, que se originen por o en relación con
+                En tanto en cuanto esté permitido por la legislación aplicable, el Usuario deberá, corriendo con los gastos pertinentes, indemnizar, eximir y defender a {APP_NAME} (y a las filiales propiedad de {APP_NAME} en su totalidad) frente a todo tipo de reclamaciones, acciones legales, procedimientos y pleitos de terceros contra {APP_NAME} o cualesquiera de sus directivos, encargados, empleados, agentes o entidades asociadas, respecto de todos los daños, responsabilidades, sanciones, multas, costes o gastos relacionados, o resultados de acuerdos para realizar transacciones (incluyendo los honorarios razonables de abogados y otros gastos de pleitos) en los que incurran {APP_NAME} o cualesquiera de sus directivos, encargados, empleados, agentes o entidades asociadas, que se originen por o en relación con
             </p>
             <ol type='i' start='1'>
                 <li>
@@ -173,8 +173,8 @@ const terminosCondiciones = (
                 </li>
             </ol>
             <p>
-                Controlsep notificará al Usuario por escrito cualquier reclamación, denuncia o acción legal por la que deba indemnizarle.
-                El Usuario se compromete a cooperar tanto como sea razonablemente posible en la defensa de cualquier reclamación. Controlsep se reserva el derecho de asumir, por cuenta propia, el control y la defensa exclusivos de cualquier asunto sujeto a indemnizaciones imputables al Usuario.
+                {APP_NAME} notificará al Usuario por escrito cualquier reclamación, denuncia o acción legal por la que deba indemnizarle.
+                El Usuario se compromete a cooperar tanto como sea razonablemente posible en la defensa de cualquier reclamación. {APP_NAME} se reserva el derecho de asumir, por cuenta propia, el control y la defensa exclusivos de cualquier asunto sujeto a indemnizaciones imputables al Usuario.
             </p>
 
         </Fragment>
@@ -191,14 +191,14 @@ const terminosCondiciones = (
             </p>
             <h5>Uso por parte de terceros</h5>
             <p>
-                Si usa el Software, Servicio y/o Sensores en nombre de Terceros o si un Tercero usa el Software a través de Su Cuenta, independientemente de que Controlsep lo haya autorizado o no, el Usuario manifiesta y garantiza que
+                Si usa el Software, Servicio y/o Sensores en nombre de Terceros o si un Tercero usa el Software a través de Su Cuenta, independientemente de que {APP_NAME} lo haya autorizado o no, el Usuario manifiesta y garantiza que
             </p>
             <ol type="a">
                 <li>
                     está autorizado para actuar y aceptar todas las obligaciones que estipula el presente Acuerdo en nombre de Terceros,
                 </li>
                 <li>
-                    Controlsep puede compartir con los Terceros los Datos de los Clientes relacionados específicamente con las Propiedades de esos Terceros y
+                    {APP_NAME} puede compartir con los Terceros los Datos de los Clientes relacionados específicamente con las Propiedades de esos Terceros y
                 </li>
                 <li>
                     no revelará los Datos de los Clientes de Terceros a otras personas sin el consentimiento de los Terceros.
@@ -217,13 +217,13 @@ const terminosCondiciones = (
                 Esta compañía no venderá, cederá ni distribuirá la información personal que es recopilada sin su consentimiento,
                 salvo que sea requerido por un juez con un orden judicial.
             </p>
-            <span>Controlsep Se reserva el derecho de cambiar los términos de la presente Política de Privacidad en cualquier momento.</span>
+            <span>{APP_NAME} Se reserva el derecho de cambiar los términos de la presente Política de Privacidad en cualquier momento.</span>
         </Fragment>
         <Fragment>
             <h3>10. Aviso de derechos de propiedad</h3>
             <p>
-                El Servicio, que incluye el Software y todos los Derechos de Propiedad Intelectual respecto del mismo, es y continuará siendo propiedad de Controlsep (y de las filiales propiedad de Controlsep en su totalidad).
-                Controlsep y sus proveedores de licencias se reservan y conservan sin restricciones todos los derechos respecto del Software y Sensores que no sean otorgados expresamente al Usuario en el presente Acuerdo, incluido el derecho de Controlsep (y de las filiales propiedad de Controlsep en su totalidad) de ser el propietario exclusivo del Software y de la Documentación. Sin limitar la generalidad de lo antedicho, el Usuario acepta que no realizará las siguientes acciones (y que no permitirá que ningún tercero lo haga):
+                El Servicio, que incluye el Software y todos los Derechos de Propiedad Intelectual respecto del mismo, es y continuará siendo propiedad de {APP_NAME} (y de las filiales propiedad de {APP_NAME} en su totalidad).
+                {APP_NAME} y sus proveedores de licencias se reservan y conservan sin restricciones todos los derechos respecto del Software y Sensores que no sean otorgados expresamente al Usuario en el presente Acuerdo, incluido el derecho de {APP_NAME} (y de las filiales propiedad de {APP_NAME} en su totalidad) de ser el propietario exclusivo del Software y de la Documentación. Sin limitar la generalidad de lo antedicho, el Usuario acepta que no realizará las siguientes acciones (y que no permitirá que ningún tercero lo haga):
             </p>
             <ol type="a">
                 <li>
@@ -239,10 +239,10 @@ const terminosCondiciones = (
                     usar, publicar, transmitir o introducir cualquier tipo de dispositivo, software o rutina que interfiera o intente interferir en el funcionamiento del Servicio, del Software o Sensores;
                 </li>
                 <li>
-                    usar las marcas, los nombres comerciales, las marcas comerciales del servicio, los logotipos, los nombres de dominio y otros recursos distintivos de marca o cualquier derecho de autor u otros derechos de propiedad asociados al Software para fines de cualquier tipo sin el consentimiento expreso por escrito de Controlsep;
+                    usar las marcas, los nombres comerciales, las marcas comerciales del servicio, los logotipos, los nombres de dominio y otros recursos distintivos de marca o cualquier derecho de autor u otros derechos de propiedad asociados al Software para fines de cualquier tipo sin el consentimiento expreso por escrito de {APP_NAME};
                 </li>
                 <li>
-                    registrar, intentar registrar o ayudar a alguien para que registre marcas, nombres comerciales, marcas comerciales del servicio, logotipos, nombres de dominio y otros recursos distintivos de marca o cualquier derecho de autor u otros derechos de propiedad asociados a Constrolsep (o a las filiales propiedad de Constrolsep en su totalidad) excepto en nombre de Constrolsep (o de las filiales propiedad de Constrolsep en su totalidad, según corresponda);
+                    registrar, intentar registrar o ayudar a alguien para que registre marcas, nombres comerciales, marcas comerciales del servicio, logotipos, nombres de dominio y otros recursos distintivos de marca o cualquier derecho de autor u otros derechos de propiedad asociados a {APP_NAME} (o a las filiales propiedad de {APP_NAME} en su totalidad) excepto en nombre de {APP_NAME} (o de las filiales propiedad de {APP_NAME} en su totalidad, según corresponda);
                 </li>
                 <li>
                     quitar, oscurecer o modificar cualquier aviso de derechos de autor, de marca o de otro derecho de propiedad que aparezca en cualquier elemento incluido con el Servicio, el Software o Sensores, y
@@ -255,7 +255,7 @@ const terminosCondiciones = (
         <Fragment>
             <h3>11. Miscelánea; ley y jurisdicción aplicables</h3>
             <p>
-                Constrolsep quedará eximido del cumplimiento de lo previsto en el presente Acuerdo en tanto dicho cumplimiento se vea impedido, retrasado u obstruido por causas ajenas a su control razonable. Este Acuerdo (incluida cualquier modificación acordada por las partes por escrito) constituye el acuerdo completo entre el Usuario y Constrolsep en relación con la cuestión y sustituye a todos los acuerdos y declaraciones previos entre las partes al respecto.
+                {APP_NAME} quedará eximido del cumplimiento de lo previsto en el presente Acuerdo en tanto dicho cumplimiento se vea impedido, retrasado u obstruido por causas ajenas a su control razonable. Este Acuerdo (incluida cualquier modificación acordada por las partes por escrito) constituye el acuerdo completo entre el Usuario y {APP_NAME} en relación con la cuestión y sustituye a todos los acuerdos y declaraciones previos entre las partes al respecto.
 
                 Si alguna disposición del presente Acuerdo se considerara inaplicable por cualquier motivo, dicha disposición será reformada en la medida necesaria para que se aplique en la máxima extensión posible con el fin de cumplir la intención de las partes, y el resto de este Acuerdo seguirá teniendo total validez.
 
@@ -269,7 +269,7 @@ const terminosCondiciones = (
                 La renuncia a actuar o ejercer derechos frente a un incumplimiento no será considerada como renuncia alguna para llevar a cabo cualquier actuación o ejercer cualquier derecho frente a cualquier otro incumplimiento posterior.
             </p>
             <p>
-                El Usuario no debe ceder ni transferir de ningún otro modo ninguno de los derechos descritos en el presente Acuerdo sin el previo consentimiento por escrito de Controlsep, y cualquier intento de esa naturaleza será considerado no válido. La relación que existe entre Constrolsep y el Usuario no es la de una sociedad legal, sino una de contratistas independientes. Este Acuerdo vinculará a los respectivos sucesores y cesionarios de las partes y tendrá efecto en su beneficio.
+                El Usuario no debe ceder ni transferir de ningún otro modo ninguno de los derechos descritos en el presente Acuerdo sin el previo consentimiento por escrito de {APP_NAME}, y cualquier intento de esa naturaleza será considerado no válido. La relación que existe entre {APP_NAME} y el Usuario no es la de una sociedad legal, sino una de contratistas independientes. Este Acuerdo vinculará a los respectivos sucesores y cesionarios de las partes y tendrá efecto en su beneficio.
             </p>
         </Fragment>
         <Fragment>
