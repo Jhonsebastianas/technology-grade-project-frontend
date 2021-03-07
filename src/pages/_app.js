@@ -10,6 +10,7 @@ import '@styles/menuPublico.css'
 import '@styles/editarCuenta.css'
 import '@styles/menuPrivado.css'
 import '@styles/nosotros.css'
+import '@styles/ListaHogares.css'
 
 import { ToastProvider } from 'react-toast-notifications';
 

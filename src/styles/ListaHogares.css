@@ -6,3 +6,7 @@
     /* Animaciones de aparición */
     display: flex;
 }
+
+.contenedorHogares #tarjetaHogares:hover {
+    cursor: pointer;
+}

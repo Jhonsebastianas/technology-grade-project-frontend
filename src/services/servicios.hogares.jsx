@@ -15,6 +15,14 @@ const serviciosHogares = {
             .then(success)
             .catch(error);
     },
+    getCantidadHogaresByUsername,
+}
+
+function getCantidadHogaresByUsername (username, success, error) {
+    const { API_ENDPOINT } = ConstantsList;
+    axios.post(API_ENDPOINT + 'home/cantidad-hogares-usuario', {username: username})
+        .then(success)
+        .catch(error);
 }
 
 export default serviciosHogares
