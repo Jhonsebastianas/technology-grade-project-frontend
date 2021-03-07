@@ -2,7 +2,6 @@ const SEIS_DIGITOS = 6
 
 const validateLectura = lectura => {
     const errors = {};
-    console.log(lectura)
     if (!lectura) {
         errors.lectura = 'Este campo es obligatorio'
     } else if (lectura.toString().length > SEIS_DIGITOS) {
