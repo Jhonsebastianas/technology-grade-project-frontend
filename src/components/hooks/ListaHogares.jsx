@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { Accordion, Button, Card, Divider, Grid, Header, Icon, Label, Segment } from 'semantic-ui-react'
+import { Accordion, Button, Card, Dimmer, Divider, Grid, Header, Icon, Label, Loader, Segment } from 'semantic-ui-react'
 import ModalRegistroLectura from '@components/forms/lecturas/ModalRegistrarLecturaManual'
 import ServiciosHogares from '@services/servicios.hogares'
 import loginUtils from '@utils/login.utils'
 // import styles from './ListaHogares.module.css'
 
 const ListaHogares = () => {
-
-    // const { hogaresOcultos } = styles
-
+    
     const [listaHogares, setListaHogares] = useState([]);
     const [cantidadHogares, setCantidadHogares] = useState(0);
     const [mostrarHogares, setMostrarHogares] = useState(false)
+    const [cargandoHogares, setCargandoHogares] = useState(false)
     /** Variable para el acordión */
     const [activeIndex, setActiveIndex] = useState(-1);
 
@@ -35,10 +34,12 @@ const ListaHogares = () => {
 
     const handleClickMostrarHogares = () => {
         if (listaHogares.length < 1) {
+            setCargandoHogares(true)
             ServiciosHogares.getHogaresByUsername(loginUtils.getUsernameUser(), ({ data }) => {
                 setListaHogares(data)
                 setCantidadHogares(data.length)
                 setMostrarHogares(true)
+                setCargandoHogares(false)
             }, (error) => { });
         } else {
             setListaHogares([])
@@ -53,7 +54,7 @@ const ListaHogares = () => {
                     <Grid.Column floated='left' width={10} verticalAlign="middle">
                         <Header as='h5' >
                             {mostrarHogares && <Icon name="caret square down outline" id="iconHogaresDesplegados"></Icon>
-                            || <Icon name="caret square right outline"></Icon>}
+                                || <Icon name="caret square right outline"></Icon>}
                                     Mis hogares
                         </Header>
                     </Grid.Column>
@@ -69,6 +70,17 @@ const ListaHogares = () => {
                         </Button>
                     </Grid.Column>
                 </Grid>
+                {cargandoHogares &&
+                    <>
+                        <Divider />
+                        <Segment basic>
+                            <br></br>
+                            <Dimmer inverted active>
+                                <Loader inverted content='Cargando hogares' />
+                            </Dimmer>
+                        </Segment>
+                    </>
+                    || ''}
                 {mostrarHogares &&
                     <>
                         <Divider />
@@ -151,7 +163,7 @@ const ListaHogares = () => {
                             })}
                         </Accordion>
                     </>
-                || ''}
+                    || ''}
             </Segment>
         </>
     )
