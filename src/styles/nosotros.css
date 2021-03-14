@@ -65,7 +65,9 @@
 }
 
 .centrar{
-    justify-content: center;
+    justify-content: center !important;
+    text-align: center !important;
+    align-items: center;
 } 
 
 .tituloH4{
@@ -177,10 +179,9 @@
       font-size: 24px;
     }
   }
-  
    
   .people {
-    padding: 20px 0;
+    padding: 20px 0 !important; 
   }
   
   .items {
@@ -192,7 +193,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    width: 70%;
+    width: 100%;
     height: 280px;
     position: relative;
     overflow: hidden;

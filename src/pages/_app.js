@@ -10,6 +10,8 @@ import '@styles/menuPublico.css'
 import '@styles/editarCuenta.css'
 import '@styles/menuPrivado.css'
 import '@styles/nosotros.css'
+import '@styles/informeConsumo.css'
+import '@styles/graficas.css'
 import '@styles/ListaHogares.css'
 
 import { ToastProvider } from 'react-toast-notifications';
@@ -37,6 +39,9 @@ const MyApp = ({ Component, pageProps }) => {
             name="description"
             content="Una forma moderna e interactiva de administrar tu consumo en servicios públicos del agua y energía."
           />
+          <meta name="keywords" content="servicios públicos, consumo de agua, consumo de energía, sensores"/>
+          <meta name="author" content={APP_NAME} />
+          <meta name="copyright" content={APP_NAME} />
           <title>{APP_NAME}</title>
         </Head>
         <Component {...pageProps} />
