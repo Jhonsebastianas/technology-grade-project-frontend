@@ -72,16 +72,16 @@ const Nosotros = () => {
                 </Grid>
             </Segment>
             <Segment vertical>
-                <Grid container stackable columns={3} >
+                <Grid container stackable  columns={3}>
                     <div className="intro">
                         <h2>nuestro equipo </h2>
                     </div>
-                    <Grid.Row verticalAlign='middle' className="people">
+                    <Grid.Row verticalAlign='middle' className="people centrar" >
                         <Grid.Column className="items">
                             <div className="box" style={{ backgroundImage: 'url(/images/founders/JhonAgudelo.webp)' }}>
                                 <div className="cover">
                                     <h3 className="name">Jhon Agudelo</h3>
-                                    <p className="title">Musician</p>
+                                    <p className="title"></p>
                                     <div className="social">
                                         <a href="#"><Icon name="facebook f" /></a>
                                         <a href="#"><Icon name="twitter" /></a>
@@ -94,7 +94,7 @@ const Nosotros = () => {
                             <div className="box" style={{ backgroundImage: 'url(/images/founders/SaraCardenas.webp)' }}>
                                 <div className="cover">
                                     <h3 className="name">Sara Cárdenas</h3>
-                                    <p className="title">Artist </p>
+                                    <p className="title"> </p>
                                     <div className="social">
                                         <a href="#"><Icon name="facebook f" /></a>
                                         <a href="#"><Icon name="twitter" /></a>
@@ -107,7 +107,7 @@ const Nosotros = () => {
                             <div className="box" style={{ backgroundImage: 'url(/images/founders/BreynerTaborda.webp)' }}>
                                 <div className="cover">
                                     <h3 className="name">Breyner Taborda</h3>
-                                    <p className="title">Stylist </p>
+                                    <p className="title"> </p>
                                     <div className="social">
                                         <a href="#"><Icon name="facebook f" /></a>
                                         <a href="#"><Icon name="twitter" /></a>
