@@ -16,11 +16,19 @@ const serviciosHogares = {
             .catch(error);
     },
     getCantidadHogaresByUsername,
+    getHogaresAndLecturas,
 }
 
 function getCantidadHogaresByUsername (username, success, error) {
     const { API_ENDPOINT } = ConstantsList;
     axios.post(API_ENDPOINT + 'home/cantidad-hogares-usuario', {username: username})
+        .then(success)
+        .catch(error);
+}
+
+function getHogaresAndLecturas (username, success, error) {
+    const { API_ENDPOINT } = ConstantsList;
+    axios.post(API_ENDPOINT + 'home/hogares-y-lecturas-usuario', {username: username})
         .then(success)
         .catch(error);
 }
