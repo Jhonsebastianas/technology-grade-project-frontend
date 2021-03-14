@@ -12,6 +12,7 @@ import '@styles/menuPrivado.css'
 import '@styles/nosotros.css'
 import '@styles/informeConsumo.css'
 import '@styles/graficas.css'
+import '@styles/ListaHogares.css'
 
 import { ToastProvider } from 'react-toast-notifications';
 
