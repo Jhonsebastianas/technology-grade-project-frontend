@@ -120,27 +120,29 @@ const Contactanos = () => {
                 <h2>Canales de comunicación:</h2>
               </Segment>
               <Segment className="contactanosCorreo segmentosSinEstilos">
-                <Icon
-                  name="envelope"
-                  className="iconEmailContactanos"
-                  size="huge"
-                />
-                <p className="parrafoCorreo">JHON_AGUDELO23191@ELPOLI.EDU.CO</p>
+                <a href="mailto:scp.secops@gmail.com">
+                  <Icon
+                    name="envelope"
+                    className="iconEmailContactanos"
+                    size="huge"
+                  />
+                </a>
+                <p className="parrafoCorreo">scp.secops@gmail.com</p>
               </Segment>
-              <Segment className="contactanosCelular segmentosSinEstilos">
+              {/* <Segment className="contactanosCelular segmentosSinEstilos">
                 <Icon
                   name="phone"
                   className="iconCelularContactanos"
                   size="huge"
                 />
                 <p className="parrafoCelular">300-561-56-52</p>
-              </Segment>
+              </Segment> */}
             </Segment>
           </Grid.Column>
         </Grid>
       </Segment>
       <Segment className="segmentSinMargenInferior segmentosSinEstilos arcoAzulinferiorIzquierdo">
-        <div className= "map animate__animated animate__backInUp">
+        <div className="map animate__animated animate__backInUp">
           <h5>Estamos ubicados en:</h5>
           <p>San Javier, Medellín, Antioquia</p>
           <div className="responsiveIframe">
@@ -154,7 +156,7 @@ const Contactanos = () => {
             ></iframe>
           </div>
           <div className="contenedorArcoAzulContactanosInverso">
-            
+
           </div>
         </div>
       </Segment>
