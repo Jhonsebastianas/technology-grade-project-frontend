@@ -1,3 +1,14 @@
 #menuPrivado{
     justify-content: flex-end;
 }
+
+header.headerPrivado{
+  position: inherit;  
+  border: 1px solid;
+  margin-bottom: 7%;
+  padding: 30px 40px 20px 40px;
+}
+
+header.headerPrivado ul li a{
+    color: black;
+}

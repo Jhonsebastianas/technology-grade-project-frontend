@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { Menu } from 'semantic-ui-react'
+import { Grid } from 'semantic-ui-react'
 import loginUtils from '@utils/login.utils'
 import { useToasts } from 'react-toast-notifications';
 import Image from 'next/image'
@@ -21,8 +21,15 @@ const MenuPrivado = () => {
         router.push("/");
     }
 
+    const [actualizarMenuCelular, setMenuCelular] = useState(false);
+
+    const menuCelular = () => {
+        const formulario = (actualizarMenuCelular) ? false : true;
+        setMenuCelular(formulario);
+    }
+
     return (
-        <Menu stackable id="menuPrivado">
+        /*<Menu stackable id="menuPrivado">
             <Menu.Item>
                 <Image
                     alt="logo app"
@@ -63,7 +70,47 @@ const MenuPrivado = () => {
             >
                 cerrar sesión
             </Menu.Item>
-        </Menu>
+    </Menu>*/
+    <Grid>
+            <div className={(actualizarMenuCelular) ? "navigation active" : "navigation"} onClick={menuCelular}>
+                <div className={"ham-btn"}>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div className="links">
+                    <div className="link">
+                        <Link href="/home"><a>Inicio</a></Link>
+                    </div>
+                    <div className="link">
+                        <Link href="/home/perfil"><a>Perfil</a></Link>
+                    </div>
+                    <div className="link">
+                        <Link href="/home"><a>Notificaciones</a></Link>
+                    </div>
+                    <div className="link">
+                        <Link href="/" ><a onClick={singOff}>Cerrar sesion</a></Link>
+                    </div>
+                </div>
+            </div>
+            <header className="headerPrivado">
+                <a href="#" class="logo"></a>
+                <ul>
+                    <li><a href="/home">Inicio</a></li>
+                    <li><a href="/home">Notificaciones</a></li>
+                    <li><a href="/home/perfil">Perfil</a></li>
+                    <li><a href="/" onClick={singOff}>Cerrar sesion</a></li>
+                </ul>
+            </header>
+        </Grid>
+        /**
+         * 
+         *     background-image: url(/images/contactanos/arcoAzulContactanosInverso.svg);
+    background-position-x: right;
+    background-position-y: bottom;
+    background-repeat: no-repeat;
+    background-size: 54%;
+         */
     )
 }
 

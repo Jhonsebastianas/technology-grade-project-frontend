@@ -1,0 +1,243 @@
+
+/*Segment banner contactanosSectionOne */
+.contactanos{
+    margin-top: 100px  !important;
+    font-family: 'Lato', Helvetica Neue,Arial,Helvetica,sans-serif;
+    /*bottom: 100px !important;
+    background: url('/images/fondo.svg') no-repeat bottom;*/
+}
+
+.contactanosSectionOne{
+    background: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)),url('/images/JP_10.webp') !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    height: 400px;
+    justify-content: center !important;
+    text-align: center !important;
+    align-content: center;
+    
+}
+
+.contactanosSectionOneTitle{
+    color: white;
+    font-size: 5vw;
+    text-transform: capitalize;
+  
+  }
+  
+  .contactanosSectionOneSubtitulo{
+    color: white;
+    font-size: 1.4vw;
+  }
+
+  @media(max-width:992px){
+   .contactanosTitle{
+       font-size: 30px;
+   }
+   .contactanosSectionOneTitle{
+     font-size: 40px;
+   }
+   .contactanosSectionOneSubtitulo{
+     font-size: 14px;
+   }
+   }
+
+ /*Segment contactanosSectionTwo*/  
+ .contactanosSectionTwo{
+    justify-content: center !important;
+    text-align: center !important;
+    align-content: center;
+    height: 400px;
+  }
+
+  .contactanosColumnOne{
+    background: url(/images/contactanos/arcoAzulSuperiorIzquierdo.svg);
+    background-repeat: no-repeat;
+    margin-top: -2px;
+  }
+
+  .ui.ui.segment .canalesComunicacion{
+    border: 1px dashed;
+    padding: 0;
+    margin-right: 10%;
+    margin-top: 12%;
+  }
+
+  .ui.segment .contactanosCorreo, .ui.segment .contactanosCelular{
+    display: flex;
+    align-items: center;
+    color:#00aae4;
+    margin-left: 15%;
+  }
+
+  .arcoAzulSuperiorDerecho{
+    background-image: url(/images/contactanos/arcoAzulSuperiorDerecho.svg);
+    background-repeat: no-repeat;
+    background-position-x: right;
+    margin-top: -3px;
+    padding-right: 0;
+  }
+
+  .ui.segment.arcoAzulinferiorIzquierdo{
+    background: url(/images/contactanos/arcoAzulinferiorIzquierdo.svg);
+    background-repeat: no-repeat;
+    background-size: 44%;
+    background-position-x: left;
+    background-position-y: bottom;
+  }
+
+  .parrafoCorreo, .parrafoCelular{
+    font-size: 1.3em;
+    font-weight: bold; 
+    margin-left: 20px;
+    color: black
+  }
+
+  .ui.segment.segmentosSinEstilos{
+    border: none;
+    box-shadow:none;
+  }
+  /*PROPIEDADES PARA CONTACTANOS SEGMENTO DE CANALES DE COMUNICACION*/
+  @media(max-width:767px){
+    .column .contactanosColumnOne{
+      display: none !important;
+    }
+   
+    .ui.segment .contactanosCorreo, .ui.segment .contactanosCelular{
+      margin-left: 1% !important;
+    }
+
+    .parrafoCorreo, .parrafoCelular{
+      font-size: 1.2em;
+    }
+
+    i.huge.icon{
+      font-size: 3em;
+    }
+
+    .canalesComunicacion{
+      margin-right: 0 !important;
+    }
+  }
+
+  @media(min-width:768px) and (max-width:850px){
+    .ui.segment .contactanosCorreo, .ui.segment .contactanosCelular{
+      margin-left: 0 !important;
+    }
+
+    .parrafoCorreo, .parrafoCelular{
+      font-size: 14px;
+    }
+
+    i.huge.icon{
+      font-size: 2em;
+    }
+    
+
+  }
+
+  @media(min-width:851px) and (max-width:950px){
+    .ui.segment .contactanosCorreo, .ui.segment .contactanosCelular{
+      margin-left: 1% !important;
+    }
+
+    .parrafoCorreo, .parrafoCelular{
+      font-size: 15px;
+    }
+
+    i.huge.icon{
+      font-size: 2em;
+    }
+    
+  }
+
+  @media(min-width:951px) and (max-width:1050px){
+    .ui.segment .contactanosCorreo, .ui.segment .contactanosCelular{
+      margin-left: 1% !important;
+    }
+
+    .parrafoCorreo, .parrafoCelular{
+      font-size: 18px;
+    }
+
+    i.huge.icon{
+      font-size: 3em;
+    }
+    
+  }
+
+  @media(min-width:1051px) and (max-width:1150px){
+    .ui.segment .contactanosCorreo, .ui.segment .contactanosCelular{
+      margin-left: 1% !important;
+    }
+
+    .parrafoCorreo, .parrafoCelular{
+      font-size: 18px;
+    }
+
+    i.huge.icon{
+      font-size: 3em;
+    }
+    
+  }
+
+  @media(min-width:1151px) and (max-width:1250px){
+    .ui.segment .contactanosCorreo, .ui.segment .contactanosCelular{
+      margin-left: 7.5% !important;
+    } 
+  }
+
+  /*ESTILOS APARTADO DE GOOGLE*/
+  .ui.segment.segmentSinMargenInferior{
+    margin-bottom: 0 !important;
+  }
+  .googleMaps{
+    width:600px;
+    height:450px;
+    border:0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.responsiveIframe {
+    position: relative;
+    padding-top: 56.25%;
+    margin-left: 9%;
+  }
+  
+  .responsiveIframe iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 90%;
+    height: 90%;
+    border-radius: 8px;
+    z-index: 2;
+  }
+
+  div.contenedorArcoAzulContactanosInverso{
+    background: url(/images/contactanos/arcoAzulinferiorDerecho.svg);
+    background-repeat: no-repeat;
+    background-size: 44%;
+    background-position-x: right;
+    background-position-y: bottom;
+    width: 127%;
+    height: 100%;
+    position: absolute;
+    right: -49px;
+    bottom: -2px;
+    z-index: 1;
+  }
+
+  div.map h5{
+    font-size: 160%;
+    margin-left: 3%;
+  }
+
+  div.map p{
+    font-size: 110%;
+    margin-left: 3%;
+  }
