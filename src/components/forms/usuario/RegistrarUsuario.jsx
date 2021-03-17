@@ -38,7 +38,7 @@ const RegistrarUsuario = () => {
     const registerNewUser = (values) => {
         Services.newUser(values, ({ data }) => {
             addToast('¡Usuario registrado con exito!', { appearance: 'success' });
-            router.push("notificacion/activar-cuenta");
+            router.push("/notificacion/activar-cuenta");
         }, (error) => {
             if (error.response) {
                 const { status } = error.response;
@@ -81,7 +81,7 @@ const RegistrarUsuario = () => {
             };
             Services.newGoogleUser(googleUser, () => {
                 addToast('¡Usuario registrado y verificado con exito!', { appearance: 'success', autoDismiss: true });
-                router.push("login");
+                router.push("/login");
             }, (error) => {
                 if (error.response) {
                     const { status } = error.response;
