@@ -28,7 +28,7 @@ const ListaHogares = () => {
     const handleClickMostrarHogares = () => {
         if (listaHogares.length < 1) {
             setCargandoHogares(true)
-            ServiciosHogares.getHogaresByUsername(loginUtils.getUsernameUser(), ({ data }) => {
+            ServiciosHogares.getHogaresAndLecturas(loginUtils.getUsernameUser(), ({ data }) => {
                 setListaHogares(data)
                 setCantidadHogares(data.length)
                 setMostrarHogares(true)
@@ -103,7 +103,7 @@ const getIconoTipoHogar = (tipoHogar) => {
 const HogarDetalle = (props) => {
     const { hogar, index } = props
     const { estrato, nombre, numero_contrato, servicios, tipo_hogar } = hogar
-
+    // console.log(hogar)
     /** Variable para el acordión */
     const [activeIndex, setActiveIndex] = useState(-1);
 
@@ -111,6 +111,19 @@ const HogarDetalle = (props) => {
         const { index } = titleProps
         const newIndex = activeIndex === index ? -1 : index
         setActiveIndex(newIndex)
+    }
+
+    const getConsumoTotalServicio = () => {
+        return servicios.map(servicio => {
+            const { lectura: { suma_consumos }, principal } = servicio
+            const color = (principal === 'agua') ? 'blue' : 'yellow'
+            const icon = (principal === 'agua') ? 'theme' : 'plug'
+            return (
+                <>
+                    <Icon name={icon} color={color} /> {suma_consumos}
+                </>
+            )
+        })
     }
 
     return (
@@ -127,13 +140,12 @@ const HogarDetalle = (props) => {
                         {nombre}
                     </Grid.Column>
                     <Grid.Column floated='right' width={6} verticalAlign="middle" textAlign="right">
-                        <Icon name="theme" color="blue" /> {index + 1 * 10}
-                        <Icon name="plug" color="yellow" /> {(index + 1) + 4 * 60}
+                        {getConsumoTotalServicio()}
                     </Grid.Column>
                 </Grid>
 
             </Accordion.Title>
-            <Accordion.Content active={activeIndex === index}>
+            <Accordion.Content active={activeIndex === index} key={index.toString()}>
                 <Grid stackable>
                     <Grid.Column width={16}>
                         <Header as='h4' >
@@ -156,8 +168,9 @@ const HogarDetalle = (props) => {
 
 const ServicioHogar = (props) => {
     const { servicio, numeroContrato } = props
-    const { principal, secundario, sensor } = servicio
+    const { principal, secundario, sensor, lectura } = servicio
     const { has_sensor } = sensor
+    const { suma_consumos } = lectura
 
     return (
         <Grid.Column>
@@ -179,8 +192,8 @@ const ServicioHogar = (props) => {
                     <Card.Description>
                         {(secundario != "nn") ? <p><strong>Subservicio(s):</strong> {secundario}</p> : ""}
                         <p><strong>Consumo:</strong> {principal === 'agua'
-                            && <>{UTILS.formatoMedidaAgua(3)}<sup>3</sup></>
-                            || <>{UTILS.formatoMedidaEnergia(120)}</>}
+                            && <>{UTILS.formatoMedidaAgua(suma_consumos)}<sup>3</sup></>
+                            || <>{UTILS.formatoMedidaEnergia(suma_consumos)}</>}
                         </p>
                         <p>
                             <Popup content='Valor aproximado' trigger={<Icon name="question circle outline"></Icon>} />
