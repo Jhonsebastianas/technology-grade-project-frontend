@@ -168,7 +168,7 @@ const HogarDetalle = (props) => {
 
 const ServicioHogar = (props) => {
     const { servicio, numeroContrato } = props
-    const { principal, secundario, sensor, lectura } = servicio
+    const { lectura, principal, secundario, sensor, tarifas } = servicio
     const { has_sensor } = sensor
     const { suma_consumos } = lectura
 
@@ -196,8 +196,9 @@ const ServicioHogar = (props) => {
                             || <>{UTILS.formatoMedidaEnergia(suma_consumos)}</>}
                         </p>
                         <p>
-                            <Popup content='Valor aproximado' trigger={<Icon name="question circle outline"></Icon>} />
-                            <strong>Valor a pagar:</strong> {UTILS.formatoMoneda(18000.52)}
+                            {/* <Popup content='Valor aproximado' trigger={<Icon name="question circle outline"></Icon>} />
+                            <strong>Valor a pagar:</strong> {UTILS.formatoMoneda(18000.52)} */}
+                            <ValoresMonetarios tarifas={tarifas} lectura={lectura} />
                         </p>
 
                     </Card.Description>
@@ -218,6 +219,33 @@ const ServicioHogar = (props) => {
                 </Card.Content>
             </Card>
         </Grid.Column>
+    )
+}
+
+const ValoresMonetarios = (props) => {
+    const { tarifas, lectura: { suma_consumos } } = props
+    return (
+        <>
+            {tarifas.length > 0 && tarifas.map((tarifa) => {
+                let totalPagar = 0
+                if(suma_consumos <= tarifa.limite_subsidiado) {
+                    totalPagar = (tarifa.valor_consumo * suma_consumos) + tarifa.otros_valores_sumatoria
+                } else {
+                    totalPagar = (tarifa.valor_consumo * tarifa.limite_subsidiado) 
+                        + valor_consumo_exceso * (suma_consumos - tarifa.limite_subsidiado)
+                }
+                
+                return (
+                    <>
+                    <Popup content='Valor aproximado' trigger={<Icon name="question circle outline"></Icon>} />
+                        <strong>Valor total a pagar:</strong> {UTILS.formatoMoneda(totalPagar)}
+                    </>
+
+                )
+            })
+            || <p><strong>Sin tarifas</strong>, prontamente podrás calcular el valor monetario a pagar por tu consumo.</p>}
+
+        </>
     )
 }
 
