@@ -170,7 +170,14 @@ const ServicioHogar = (props) => {
     const { servicio, numeroContrato } = props
     const { lectura, principal, secundario, sensor, tarifas } = servicio
     const { has_sensor } = sensor
-    const { suma_consumos } = lectura
+    const { suma_consumos, mediciones } = lectura
+
+    const getUltimaActualizacion = () => {
+        if (mediciones.length > 0) {
+            return mediciones[mediciones.length - 1].fecha_hora.split('T')[0];
+        }
+        return 'No registra'
+    }
 
     return (
         <Grid.Column>
@@ -187,7 +194,7 @@ const ServicioHogar = (props) => {
                         </Grid>
                     </Card.Header>
                     <Card.Meta>
-                        <span className='date'>Última actualización 28/01/2021</span>
+                        <span className='date'>Última actualización: {getUltimaActualizacion()}</span>
                     </Card.Meta>
                     <Card.Description>
                         {(secundario != "nn") ? <p><strong>Subservicio(s):</strong> {secundario}</p> : ""}
@@ -228,22 +235,22 @@ const ValoresMonetarios = (props) => {
         <>
             {tarifas.length > 0 && tarifas.map((tarifa) => {
                 let totalPagar = 0
-                if(suma_consumos <= tarifa.limite_subsidiado) {
+                if (suma_consumos <= tarifa.limite_subsidiado) {
                     totalPagar = (tarifa.valor_consumo * suma_consumos) + tarifa.otros_valores_sumatoria
                 } else {
-                    totalPagar = (tarifa.valor_consumo * tarifa.limite_subsidiado) 
+                    totalPagar = (tarifa.valor_consumo * tarifa.limite_subsidiado)
                         + valor_consumo_exceso * (suma_consumos - tarifa.limite_subsidiado)
                 }
-                
+
                 return (
                     <>
-                    <Popup content='Valor aproximado' trigger={<Icon name="question circle outline"></Icon>} />
+                        <Popup content='Valor aproximado' trigger={<Icon name="question circle outline"></Icon>} />
                         <strong>Valor total a pagar:</strong> {UTILS.formatoMoneda(totalPagar)}
                     </>
 
                 )
             })
-            || <p><strong>Sin tarifas</strong>, prontamente podrás calcular el valor monetario a pagar por tu consumo.</p>}
+                || <p><strong>Sin tarifas</strong>, prontamente podrás calcular el valor monetario a pagar por tu consumo.</p>}
 
         </>
     )
