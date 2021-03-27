@@ -2,13 +2,28 @@
     justify-content: flex-end;
 }
 
-header.headerPrivado{
-  position: inherit;  
-  border: 1px solid;
-  margin-bottom: 7%;
-  padding: 30px 40px 20px 40px;
+header.menuPrivado{
+  position: inherit;
+  border: 6px solid #00aae4;
+  margin-bottom: 3%;
+  padding: 30px 40px 10px 40px;
 }
 
-header.headerPrivado ul li a{
+header.menuPrivado ul li a{
     color: black;
+}
+
+header.menuPrivado ul li a:hover{
+  color: var(--primary-color);
+}
+
+@media(min-width:0px) and (max-width:767px){
+  header.menuPrivado ul li a{
+    display: none;
+  }
+  
+  header.menuPrivado{
+    padding-top: 50px;
+    margin-bottom: 5%;
+  }
 }
