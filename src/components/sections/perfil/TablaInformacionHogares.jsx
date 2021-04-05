@@ -1,43 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { Button, Form, Input, Modal, Table, Icon } from "semantic-ui-react";
-import ServiciosHogares from "@services/servicios.hogares";
-import { useRouter } from 'next/router'
-import loginUtils from "@utils/login.utils";
-import ModalEditarHogar from '@components/sections/perfil/ModalEditarHogar'
+import { Button, Form, Input, Table, Icon } from "semantic-ui-react";
 
-const TablaInformacionHogares = () => {
-    const [hogarQueSeEditara, setHogarQueSeEditara] = useState({});
-    
+import ModalPerfil from '@components/sections/perfil/ModalPerfil'
+import ModalEditHogar from "./ModalEditHogar";
 
-    const [listaHogares, setListaHogares] = useState([]);
-    
+const TablaInformacionHogares = (props) => {
   
-    const router = useRouter()
-  
-      const goToAddHome = () => {
-          router.push("/registrar/hogar");
-      }
+  //const {handleHogarQueSeEditara} = props;
 
-    
-
-      useEffect(() => {
-        let mounted = true;
-    
-        if (mounted) {
-          
-            ServiciosHogares.getHogaresByUsername(
-              loginUtils.getUsernameUser(),
-              ({ data }) => {
-                
-                console.log("ENTRAMOOOOOOOOOOOS");
-                setListaHogares(data);
-                setHogarQueSeEditara(data[0]);
-              },
-              (error) => {}
-            );
-        }
-        return () => (mounted = false);
-      }, []);
+  function modalAndHogar(hogar){
+     props.onOpenModal()
+     props.handleHogarQueSeEditara(hogar)
+  }
 
   return (
     <>
@@ -51,8 +25,8 @@ const TablaInformacionHogares = () => {
             <Table.HeaderCell />
           </Table.Row>
         </Table.Header>
-        {listaHogares.length > 0 &&
-          listaHogares.map((hogar, index) => {
+        {props.listaHogares.length > 0 &&
+          props.listaHogares.map((hogar, index) => {
             return (
               <Table.Body>
                 <Table.Row>
@@ -65,20 +39,21 @@ const TablaInformacionHogares = () => {
                     })}
                   </Table.Cell>
                   <Table.Cell className="center">
-                    <ModalEditarHogar hogarQueSeEditara={listaHogares[index]} />
+                  <span key={index} onClick={() => modalAndHogar(hogar)} className="material-icons  iconoColorAzul" node="button">mode_edit</span>
+                    {/*<ModalPerfil hogarQueSeEditara={props.listaHogares[index]} />*/}
                   </Table.Cell>
                 </Table.Row>
               </Table.Body>
             );
           })}
       </Table>
-      {listaHogares.length < 1 && (
+      {props.listaHogares.length < 1 && (
               <div className="divPerfilSinHogar">
                 <p className="parrafoPerfilSinHogar">
                   En estos momentos no cuentas con un hogar, si deseas puedes
                   registar uno
                 </p>
-                <Button animated basic color='green' onClick={goToAddHome}>
+                <Button animated basic color='green' onClick={props.goToAddHome}>
                                 <Button.Content visible>Agregar un hogar [+]</Button.Content>
                                 <Button.Content hidden>
                                     <Icon name='arrow right' />
@@ -86,8 +61,14 @@ const TablaInformacionHogares = () => {
                 </Button>
               </div>
             )}
-      {listaHogares.length > 0 && (
-        <div></div>
+      {props.listaHogares.length > 0 && (
+        <ModalEditHogar 
+        modalIsOpen={props.modalIsOpen} 
+        onCloseModal={props.onCloseModal}
+        onEditHogar={props.onEditHogar}
+        hogarQueSeEditara={props.hogarQueSeEditara}
+  
+        />
       )}
     </>
   );
