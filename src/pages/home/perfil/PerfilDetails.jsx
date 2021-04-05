@@ -12,6 +12,19 @@ import {
   Icon
 } from "semantic-ui-react";
 const PerfilDetails = (props) => {
+
+  const {handleCloseModal,
+  handleOpenModal,
+  modalIsOpen, 
+  handleEditHogar,
+  listaHogares,
+  goToAddHome,
+  fullName,
+  formularioInformacionPersonal,
+  visibilidadFormulario,
+  hogarQueSeEditara,
+  handleHogarQueSeEditara} = props;
+
   return (
       <Layout>
         <Grid>
@@ -20,32 +33,32 @@ const PerfilDetails = (props) => {
               <Grid.Column width={8} className="center">
                 <img className="imagen" src="/images/avatarUsuario.svg"></img>
                 <p className="nombre">
-                  <strong>{props.fullName}</strong>
+                  <strong>{fullName}</strong>
                 </p>
                 <Grid.Column>
                   <Button
                     primary
                     className="editarDatosPersonales"
-                    onClick={props.formularioInformacionPersonal}
+                    onClick={formularioInformacionPersonal}
                   >
                     Editar
                   </Button>
                 </Grid.Column>
               </Grid.Column>
               <Grid.Column width={8}>
-                {props.visibilidadFormulario && (
+                {visibilidadFormulario && (
                   <div id="contenidoFormulario">
                     <Input
                       label="Nombre(s)"
                       icon="account_circle"
                       s={11}
-                      placeholder={props.fullName}
+                      placeholder={fullName}
                     />
                     <Input
                       label="Apellidos"
                       icon="account_circle"
                       s={11}
-                      placeholder={props.fullName}
+                      placeholder={fullName}
                     />
                   </div>
                 )}
@@ -53,15 +66,14 @@ const PerfilDetails = (props) => {
             </Grid.Column>
             <Grid.Column width={9} className="espacioSuperiorTabla">
               <TablaInformacionHogares
-                onCloseModal={props.onCloseModal}
-                onOpenModal={props.onOpenModal}
-                modalIsOpen={props.modalIsOpen}
-                onEditHogar={props.onEditHogar}
-                hogar={""}
-                listaHogares={props.listaHogares}
-                goToAddHome={props.goToAddHome}
-                hogarQueSeEditara={props.hogarQueSeEditara}
-                handleHogarQueSeEditara={props.handleHogarQueSeEditara}
+                handleCloseModal={handleCloseModal}
+                handleOpenModal={handleOpenModal}
+                modalIsOpen={modalIsOpen}
+                handleEditHogar={handleEditHogar}
+                listaHogares={listaHogares}
+                goToAddHome={goToAddHome}
+                hogarQueSeEditara={hogarQueSeEditara}
+                handleHogarQueSeEditara={handleHogarQueSeEditara}
               ></TablaInformacionHogares>
             </Grid.Column>
             <Grid.Column width={1}></Grid.Column>

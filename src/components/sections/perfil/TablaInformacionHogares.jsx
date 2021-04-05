@@ -5,12 +5,19 @@ import ModalPerfil from '@components/sections/perfil/ModalPerfil'
 import ModalEditHogar from "./ModalEditHogar";
 
 const TablaInformacionHogares = (props) => {
-  
-  //const {handleHogarQueSeEditara} = props;
+
+  const {handleCloseModal,
+    handleOpenModal,
+    modalIsOpen, 
+    handleEditHogar,
+    listaHogares,
+    goToAddHome,
+    hogarQueSeEditara,
+    handleHogarQueSeEditara} = props;
 
   function modalAndHogar(hogar){
-     props.onOpenModal()
-     props.handleHogarQueSeEditara(hogar)
+     handleOpenModal()
+     handleHogarQueSeEditara(hogar)
   }
 
   return (
@@ -25,8 +32,8 @@ const TablaInformacionHogares = (props) => {
             <Table.HeaderCell />
           </Table.Row>
         </Table.Header>
-        {props.listaHogares.length > 0 &&
-          props.listaHogares.map((hogar, index) => {
+        {listaHogares.length > 0 &&
+          listaHogares.map((hogar, index) => {
             return (
               <Table.Body>
                 <Table.Row>
@@ -40,20 +47,20 @@ const TablaInformacionHogares = (props) => {
                   </Table.Cell>
                   <Table.Cell className="center">
                   <span key={index} onClick={() => modalAndHogar(hogar)} className="material-icons  iconoColorAzul" node="button">mode_edit</span>
-                    {/*<ModalPerfil hogarQueSeEditara={props.listaHogares[index]} />*/}
+                    {/*<ModalPerfil hogarQueSeEditara={listaHogares[index]} />*/}
                   </Table.Cell>
                 </Table.Row>
               </Table.Body>
             );
           })}
       </Table>
-      {props.listaHogares.length < 1 && (
+      {listaHogares.length < 1 && (
               <div className="divPerfilSinHogar">
                 <p className="parrafoPerfilSinHogar">
                   En estos momentos no cuentas con un hogar, si deseas puedes
                   registar uno
                 </p>
-                <Button animated basic color='green' onClick={props.goToAddHome}>
+                <Button animated basic color='green' onClick={goToAddHome}>
                                 <Button.Content visible>Agregar un hogar [+]</Button.Content>
                                 <Button.Content hidden>
                                     <Icon name='arrow right' />
@@ -61,12 +68,12 @@ const TablaInformacionHogares = (props) => {
                 </Button>
               </div>
             )}
-      {props.listaHogares.length > 0 && (
+      {listaHogares.length > 0 && (
         <ModalEditHogar 
-        modalIsOpen={props.modalIsOpen} 
-        onCloseModal={props.onCloseModal}
-        onEditHogar={props.onEditHogar}
-        hogarQueSeEditara={props.hogarQueSeEditara}
+        modalIsOpen={modalIsOpen} 
+        handleCloseModal={handleCloseModal}
+        handleEditHogar={handleEditHogar}
+        hogarQueSeEditara={hogarQueSeEditara}
   
         />
       )}

@@ -93,11 +93,10 @@ const Perfil = () => {
 
       </div>
       <PerfilDetails 
-          onCloseModal={handleCloseModal} 
-          onOpenModal={handleOpenModal} 
+          handleCloseModal={handleCloseModal} 
+          handleOpenModal={handleOpenModal} 
           modalIsOpen={modalIsOpen} 
-          onEditHogar={handleEditHogar}
-          hogar={""}
+          handleEditHogar={handleEditHogar}
           listaHogares={listaHogares}
           goToAddHome={goToAddHome}
           fullName={usuario.fullName}

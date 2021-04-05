@@ -2,7 +2,10 @@ import React, { useState } from "react";
 import { Button, Form, Input, Modal } from "semantic-ui-react";
 import ReactDOM from 'react-dom';
 const ModalPerfil = (props) => {
-  const { hogarQueSeEditara } = props;
+  const { modalIsOpen,
+  handleCloseModal,
+  handleEditHogar,
+  children} = props;
 
   const [open, setOpenModal] = useState(false);
 
@@ -18,22 +21,22 @@ const ModalPerfil = (props) => {
       >
         mode_edit
       </span>*/}
-      <Modal onClose={props.onCloseModal} open={props.modalIsOpen}>
+      <Modal onClose={handleCloseModal} open={modalIsOpen}>
         <Modal.Header>Edita tu hogar</Modal.Header>
         <Modal.Content>
           <Modal.Description>
-            {props.children}
+            {children}
           </Modal.Description>
         </Modal.Content>
         <Modal.Actions>
-          <Button color="black" onClick={props.onCloseModal}>
+          <Button color="black" onClick={handleCloseModal}>
             Descartar
           </Button>
           <Button
             content="Modificar"
             labelPosition="right"
             icon="checkmark"
-            onClick={props.onEditHogar}
+            onClick={handleEditHogar}
             positive
           />
         </Modal.Actions>
