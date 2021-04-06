@@ -235,6 +235,17 @@ header ul li a:hover{
   font-weight: bold;
 }
 
+@media(min-width:0px) and (max-width:767px){
+  header.menuPublico ul li a{
+    display: none;
+  }
+  
+  header.menuPublico{
+    padding-top: 50px;
+    margin-bottom: 5%;
+  }
+}
+
 /*header.sticky .logo{
   display: none;
 }

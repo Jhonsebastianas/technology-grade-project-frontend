@@ -93,7 +93,7 @@ const MenuPrivado = () => {
                     </div>
                 </div>
             </div>
-            <header className="headerPrivado">
+            <header className="menuPrivado">
                 <a href="#" class="logo"></a>
                 <ul>
                     <li><a href="/home">Inicio</a></li>

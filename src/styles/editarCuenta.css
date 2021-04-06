@@ -69,3 +69,11 @@
     margin-top: 15px;
     width: 100%;
 }
+
+div.divPerfilSinHogar{
+   text-align: center; 
+}
+
+p.parrafoPerfilSinHogar{
+    font-size: 150%;
+}
