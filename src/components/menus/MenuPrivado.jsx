@@ -86,18 +86,18 @@ const MenuPrivado = () => {
                         <Link href="/home/perfil"><a>Perfil</a></Link>
                     </div>
                     <div className="link">
-                        <Link href="/home"><a>Notificaciones</a></Link>
+                        <Link href="/home/notificaciones"><a>Notificaciones</a></Link>
                     </div>
                     <div className="link">
                         <Link href="/" ><a onClick={singOff}>Cerrar sesion</a></Link>
                     </div>
                 </div>
             </div>
-            <header className="headerPrivado">
+            <header className="menuPrivado">
                 <a href="#" class="logo"></a>
                 <ul>
                     <li><a href="/home">Inicio</a></li>
-                    <li><a href="/home">Notificaciones</a></li>
+                    <li><a href="/home/notificaciones">Notificaciones</a></li>
                     <li><a href="/home/perfil">Perfil</a></li>
                     <li><a href="/" onClick={singOff}>Cerrar sesion</a></li>
                 </ul>

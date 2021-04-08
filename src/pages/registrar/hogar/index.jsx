@@ -1,7 +1,7 @@
 import React from 'react'
 import Layout from '@components/layouts/LayoutPrivado'
 import { Container } from 'semantic-ui-react'
-import Formulario from '@components/forms/hogar/RegistrarHogar'
+import Formulario from '@components/forms/hogar/RegistrarHogarContainer'
 
 const RegistroHogar = () => {
     return (
