@@ -296,7 +296,7 @@ const terminosCondiciones = (
                 </li>
             </ol>
             <p>
-                c) De acuerdo con las Subsecciones {numeroLimitacionResponsabilidad}a) y b) anteriores, la responsabilidad conjunta de cada parte con la otra, que surja en virtud de o en relación con el presente Contrato, no superará los 10 $ USD.
+                c) De acuerdo con las Subsecciones {numeroLimitacionResponsabilidad}a) y b) anteriores, la responsabilidad conjunta de cada parte con la otra, que surja en virtud de o en relación con el presente Contrato, no superará los $ 10.000 COP.
             </p>
         </Fragment>
         <Fragment>
