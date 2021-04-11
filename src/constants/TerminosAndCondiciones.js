@@ -1,6 +1,12 @@
 import { Fragment } from 'react'
 import { URL_APP, APP_NAME } from '@constants/Constants'
 
+const numeroDefiniciones = '01'
+const numeroInformacionRecogida = '02'
+const numeroCuentaAplicacion = '03'
+const numeroIndemnizacion = '07'
+const numeroLimitacionResponsabilidad = '11'
+
 const terminosCondiciones = (
     <Fragment>
         <Fragment>
@@ -14,7 +20,7 @@ const terminosCondiciones = (
             </p>
         </Fragment>
         <Fragment>
-            <h3>01. Definiciones</h3>
+            <h3>{numeroDefiniciones}. Definiciones</h3>
             <p>
                 Por <strong>"Información Confidencial"</strong> se entiende cualquier tipo de información privada y cualquier otra información
                 que una de las partes dé a conocer a la otra por escrito y que haya sido marcada como confidencial o que esa parte haya
@@ -48,7 +54,7 @@ const terminosCondiciones = (
             </p>
         </Fragment>
         <Fragment>
-            <h3>02. Información que es recogida</h3>
+            <h3>{numeroInformacionRecogida}. Información que es recogida</h3>
             <p>
                 Nuestro sitio web podrá recoger información personal por ejemplo:
                 Nombre,  información de contacto como  su dirección de correo electrónica e información demográfica.
@@ -57,7 +63,7 @@ const terminosCondiciones = (
                     </p>
         </Fragment>
         <Fragment>
-            <h3>03. Cuenta de en la aplicación, contraseña y seguridad</h3>
+            <h3>{numeroCuentaAplicacion}. Cuenta de en la aplicación, contraseña y seguridad</h3>
             <p>
                 Para registrarse en la aplicación, el Usuario deberá completar el proceso de registro proporcionando
                 a {APP_NAME} información actualizada, completa y precisa, tal y como se indica en el formulario de registro,
@@ -145,7 +151,7 @@ const terminosCondiciones = (
             </p>
         </Fragment>
         <Fragment>
-            <h3>07. Indemnización</h3>
+            <h3>{numeroIndemnizacion}. Indemnización</h3>
             <p>
                 En tanto en cuanto esté permitido por la legislación aplicable, el Usuario deberá, corriendo con los gastos pertinentes, indemnizar, eximir y defender a {APP_NAME} (y a las filiales propiedad de {APP_NAME} en su totalidad) frente a todo tipo de reclamaciones, acciones legales, procedimientos y pleitos de terceros contra {APP_NAME} o cualesquiera de sus directivos, encargados, empleados, agentes o entidades asociadas, respecto de todos los daños, responsabilidades, sanciones, multas, costes o gastos relacionados, o resultados de acuerdos para realizar transacciones (incluyendo los honorarios razonables de abogados y otros gastos de pleitos) en los que incurran {APP_NAME} o cualesquiera de sus directivos, encargados, empleados, agentes o entidades asociadas, que se originen por o en relación con
             </p>
@@ -253,7 +259,75 @@ const terminosCondiciones = (
             </ol>
         </Fragment>
         <Fragment>
-            <h3>11. Miscelánea; ley y jurisdicción aplicables</h3>
+            <h3>{numeroLimitacionResponsabilidad}. LIMITACIÓN DE RESPONSABILIDADES</h3>
+            <p>
+                a) Ninguna de las disposiciones del presente Contrato excluirá ni limitará la responsabilidad de ninguna de las partes en caso de:
+            </p>
+            <ol type="i" start='1'>
+                <li>
+                    muerte o daños personales derivados de la negligencia de las partes o de sus funcionarios, empleados o agentes;
+                </li>
+                <li>
+                    fraude o falsedad con fines fraudulentos;
+                </li>
+                <li>
+                    incumplimiento de la Sección {numeroIndemnizacion} (Indemnización); o
+                </li>
+                <li>
+                    cualquier asunto que no pueda limitarse ni excluirse de acuerdo con la legislación aplicable.
+                </li>
+
+            </ol>
+            <p>
+                b) Ninguna parte será responsable en virtud del presente Contrato (ya sea de forma contractual o extracontractual, incluyendo negligencias o cualquier otro agravio) de cualquier:
+            </p>
+            <ol type="i" start='1'>
+                <li>
+                    pérdida de beneficios;
+                </li>
+                <li>
+                    pérdida de ahorros previstos;
+                </li>
+                <li>
+                    pérdida de oportunidades de negocio; o
+                </li>
+                <li>
+                    pérdidas indirectas o derivadas sufridas por la otra parte o en las que incurra esta (independientemente de que dichas pérdidas fueran contempladas por las partes en la fecha de entrada en vigor de este Contrato).
+                </li>
+            </ol>
+            <p>
+                c) De acuerdo con las Subsecciones {numeroLimitacionResponsabilidad}a) y b) anteriores, la responsabilidad conjunta de cada parte con la otra, que surja en virtud de o en relación con el presente Contrato, no superará los 10 $ USD.
+            </p>
+        </Fragment>
+        <Fragment>
+            <h3>12. Confidencialidad y Funciones Beta</h3>
+            <p>
+                Ninguna de las partes usará ni divulgará Información Confidencial de la otra parte sin su
+                previo consentimiento por escrito, salvo cuando el objetivo del uso o de la revelación sea cumplir
+                con las obligaciones establecidas en el presente Acuerdo o si así lo requiere la ley o
+                normativa aplicable o una orden judicial, en cuyo caso, la parte que se vea obligada a divulgar Información Confidencial
+                lo notificará con la mayor anticipación posible, en la medida de lo razonable, a la otra parte
+                antes de dar a conocer la Información Confidencial.
+            </p>
+            <p>
+                {APP_NAME} identifica algunas funciones del Servicio como "Alfa," "Beta" o "Experimento"
+                (ya sea en el Servicio o en otros sitios) o, en su caso, como limitadas o confidenciales
+                (denominadas conjuntamente, "Funciones Beta"). Usted no podrá revelar ninguna información sobre
+                las Funciones Beta ni los términos o la existencia de ninguna Función Beta que no sea pública.
+            </p>
+            <p>
+                De acuerdo con la Sección 11(a), {APP_NAME} y las Entidades Asociadas de {APP_NAME} no tendrán ninguna responsabilidad
+                (ni tampoco ninguna obligación de indemnización) derivada o relacionada con las Funciones Beta.
+                Cualquier uso que haga de las Funciones Beta será exclusivamente bajo Su propia responsabilidad
+                y podrá estar sujeto a requisitos adicionales, según lo especifique {APP_NAME}.
+            </p>
+            <p>
+                {APP_NAME} no está obligado a ofrecer asistencia para Funciones Beta y se reserva el derecho de dejar de proporcionar
+                Funciones Beta como parte del Servicio según lo considere oportuno.
+            </p>
+        </Fragment>
+        <Fragment>
+            <h3>13. Miscelánea; ley y jurisdicción aplicables</h3>
             <p>
                 {APP_NAME} quedará eximido del cumplimiento de lo previsto en el presente Acuerdo en tanto dicho cumplimiento se vea impedido, retrasado u obstruido por causas ajenas a su control razonable. Este Acuerdo (incluida cualquier modificación acordada por las partes por escrito) constituye el acuerdo completo entre el Usuario y {APP_NAME} en relación con la cuestión y sustituye a todos los acuerdos y declaraciones previos entre las partes al respecto.
 
@@ -273,7 +347,7 @@ const terminosCondiciones = (
             </p>
         </Fragment>
         <Fragment>
-            <h5>Última actualización: 05 de marzo de 2021</h5>
+            <h5>Última actualización: 11 de Abril de 2021</h5>
         </Fragment>
     </Fragment>
 )

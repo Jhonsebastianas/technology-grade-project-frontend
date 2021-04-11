@@ -30,6 +30,9 @@ export default function FooterPublico() {
                         </Grid.Column>
                     </Grid.Row>
                 </Grid>
+                <Grid centered>
+                    © 2021 - Desarrollado por {APP_NAME} | versión 0.2 (Beta)
+                </Grid>
             </Container>
         </Segment>
     );
