@@ -10,13 +10,16 @@ const ABRIR_MODAL = true;
 
 const ModalRegistrarLecturaManual = (props) => {
 
-    const { servicioPublico, numeroContrato } = props
+    const {
+        hogar: { numeroContrato }, servicioPublico,
+        openLectura, setOpenLectura
+    } = props
+
     const { addToast } = useToasts()
     /* ESTADOS */
     const [lectura, setLectura] = useState(0)
     const [isLecturaFactura, setIsLecturaFactura] = React.useState(false)
     /* ESTADOS DE MODALS*/
-    const [openLectura, setOpenLectura] = useState(CERRAR_MODAL)
     const [openConfirmar, setOpenConfirmar] = React.useState(CERRAR_MODAL)
     const [openPrimerRegistro, setOpenPrimerRegistro] = React.useState(CERRAR_MODAL)
 
@@ -36,7 +39,7 @@ const ModalRegistrarLecturaManual = (props) => {
     const registrarLectura = () => {
         const parametros = {
             numeroContrato,
-            servicioPublico,
+            servicioPublico: servicioPublico,
             lecturaContador: lectura,
             isLecturaFactura,
         }
@@ -75,7 +78,6 @@ const ModalRegistrarLecturaManual = (props) => {
     }
     return (
         <>
-            <Button onClick={() => setOpenLectura(ABRIR_MODAL)} {...props}>consumo</Button>
             <Modal
                 closeIcon
                 dimmer='blurring'

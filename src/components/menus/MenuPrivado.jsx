@@ -96,10 +96,10 @@ const MenuPrivado = () => {
             <header className="menuPrivado">
                 <a href="#" class="logo"></a>
                 <ul>
-                    <li><a href="/home">Inicio</a></li>
-                    <li><a href="/home/notificaciones">Notificaciones</a></li>
-                    <li><a href="/home/perfil">Perfil</a></li>
-                    <li><a href="/" onClick={singOff}>Cerrar sesion</a></li>
+                    <li><Link href="/home"><a>Inicio</a></Link></li>
+                    <li><Link href="/home/notificaciones"><a>Notificaciones</a></Link></li>
+                    <li><Link href="/home/perfil"><a>Perfil</a></Link></li>
+                    <li><Link href="/"><a onClick={singOff}>Cerrar sesion</a></Link></li>
                 </ul>
             </header>
         </Grid>
