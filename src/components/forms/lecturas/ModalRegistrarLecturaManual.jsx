@@ -11,9 +11,11 @@ const ABRIR_MODAL = true;
 const ModalRegistrarLecturaManual = (props) => {
 
     const {
-        hogar: { numeroContrato }, servicioPublico,
+        hogar, servicioPublico,
         openLectura, setOpenLectura
     } = props
+
+    const { numero_contrato } = hogar
 
     const { addToast } = useToasts()
     /* ESTADOS */
@@ -38,7 +40,7 @@ const ModalRegistrarLecturaManual = (props) => {
 
     const registrarLectura = () => {
         const parametros = {
-            numeroContrato,
+            numeroContrato: numero_contrato,
             servicioPublico: servicioPublico,
             lecturaContador: lectura,
             isLecturaFactura,
