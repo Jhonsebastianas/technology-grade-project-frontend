@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Accordion, Button, Card, Grid, Header, Icon, Popup } from 'semantic-ui-react'
 import UTILS from '@utils/cp.utils'
+import Calculos from '@utils/calculos.util'
 
 import Styled from 'styled-components'
 
@@ -146,33 +147,18 @@ const ServicioHogar = (props) => {
 
 const ValoresMonetarios = (props) => {
     const { tarifas, lectura: { suma_consumos } } = props
-
-    const calcularTotalPagar = (tarifa) => {
-        let totalPagar = 0
-        if (suma_consumos <= tarifa.limite_subsidiado) {
-            const valorSubsidiado = (tarifa.valor_consumo * suma_consumos)
-            totalPagar = valorSubsidiado + tarifa.otros_valores_sumatoria
-        } else {
-            const valorConSubsidio = (tarifa.valor_consumo * tarifa.limite_subsidiado)
-            const valorExceso = tarifa.valor_consumo_exceso * (suma_consumos - tarifa.limite_subsidiado)
-            totalPagar = valorConSubsidio + valorExceso + tarifa.otros_valores_sumatoria
-        }
-        return totalPagar
-    }
+    const [totalPagar, setTotalPagar] = useState(Calculos.calcularTotalPagarTarifasPorServicio(tarifas, suma_consumos))
 
     return (
         <>
-            {tarifas.length > 0 && tarifas.map((tarifa) => {
-                const totalPagar = calcularTotalPagar(tarifa)
-                return (
-                    <>
-                        <Popup content='Valor aproximado' trigger={<Icon name="question circle outline"></Icon>} />
-                        <strong>Valor total a pagar:</strong> {UTILS.formatoMoneda(totalPagar)}
-                    </>
+            {tarifas.length > 0 &&
+                <>
+                    <Popup content='Valor aproximado' trigger={<Icon name="question circle outline"></Icon>} />
+                    <strong>Valor total a pagar:</strong> {UTILS.formatoMoneda(totalPagar)}
+                </>
+                || <><p><strong>Sin tarifas</strong>, prontamente podrás calcular el valor monetario a pagar por tu consumo.</p></>
+            }
 
-                )
-            })
-                || <p><strong>Sin tarifas</strong>, prontamente podrás calcular el valor monetario a pagar por tu consumo.</p>}
 
         </>
     )
