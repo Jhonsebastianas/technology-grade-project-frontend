@@ -15,7 +15,7 @@ import {
 
 import ServiciosHogares from "@services/servicios.hogares";
 import { useRouter } from 'next/router'
-import PerfilDetails from './PerfilDetails';
+import PerfilDetails from '@components/sections/perfil/PerfilDetails';
 import { Fragment } from "react";
 
 const Perfil = () => {

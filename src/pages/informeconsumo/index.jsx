@@ -75,6 +75,7 @@ const InformeConsumo = () => {
                                 <GraficaCircular 
                                     tiposervicio={tiposervicio} 
                                     numeroContrato={infohogar.numero_contrato} 
+                                    hogar={infohogar}
                                     lectura={getLectura()} 
                                 />
                             </div>

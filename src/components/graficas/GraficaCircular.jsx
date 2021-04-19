@@ -1,4 +1,4 @@
-import React, { useState , useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { Button, Modal, Header, Icon } from 'semantic-ui-react';
 
@@ -9,11 +9,12 @@ import ModalRegistroLectura from '@components/forms/lecturas/ModalRegistrarLectu
 
 const GraficaCircular = (props) => {
 
-    const {tiposervicio, numeroContrato, lectura} = props;
-    
-    
+    const { tiposervicio, hogar, lectura } = props;
+    const [openLectura, setOpenLectura] = useState(false)
+
+
     const percentage = 0;
-    
+
     return (
         <div>
             <h5>Servicio de {tiposervicio}</h5>
@@ -57,15 +58,16 @@ const GraficaCircular = (props) => {
                     <p>Total monetario: </p>
                     <p><strong></strong></p>
                 </div>
-                <ModalRegistroLectura 
-                    servicioPublico={lectura} 
-                    numeroContrato={numeroContrato} 
+                <ModalRegistroLectura
+                    hogar={hogar}
+                    openLectura={openLectura}
+                    setOpenLectura={setOpenLectura}
+                    servicioPublico={lectura}
                     positive
-                >
-                    Nuevo Consumo
-                </ModalRegistroLectura>
+                />
+                <Button onClick={() => setOpenLectura(true)} positive>Nuevo consumo</Button>
             </div>
-       
+
         </div>
     );
 }
