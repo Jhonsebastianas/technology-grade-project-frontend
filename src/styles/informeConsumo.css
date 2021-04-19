@@ -29,6 +29,11 @@
     font-family: 'Lato', Helvetica Neue,Arial,Helvetica,sans-serif !important; 
 }
 
+.tip{
+  max-width: 400px;
+  margin: auto;
+}
+
 .informeConsumoMin h5{
     font-size: 1.3rem;
     font-family: 'Lato', Helvetica Neue,Arial,Helvetica,sans-serif !important; 

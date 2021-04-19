@@ -4,6 +4,9 @@ import ModalRegistroLectura from '@components/forms/lecturas/ModalRegistrarLectu
 import ServiciosHogares from '@services/servicios.hogares'
 import loginUtils from '@utils/login.utils'
 import UTILS from '@utils/cp.utils'
+import Link from 'next/link'
+
+import ConstantsList from '@constants/Constants';
 
 const ListaHogares = () => {
 
@@ -179,6 +182,16 @@ const ServicioHogar = (props) => {
         return 'No registra'
     }
 
+    const getContrato =  () => {
+        const { HOGAR } = ConstantsList;
+        const { numeroContrato } = props;
+        const {principal} = servicio;
+        const hogar = {};
+        hogar[HOGAR] = numeroContrato;
+        hogar['servicio'] = principal;
+        localStorage.setItem(HOGAR, JSON.stringify(hogar));
+    }
+       
     return (
         <Grid.Column>
             <Card fluid>
@@ -218,9 +231,9 @@ const ServicioHogar = (props) => {
                         </Button>
                         ||
                         <Button.Group fluid>
-                            <Button>ver detalle</Button>
+                            <Link href="/informeconsumo/"><Button onClick={getContrato}>Ver detalle</Button></Link>
                             <Button.Or text="o" />
-                            <ModalRegistroLectura servicioPublico={servicio} numeroContrato={numeroContrato} positive>consumo</ModalRegistroLectura>
+                            <ModalRegistroLectura servicioPublico={servicio} numeroContrato={numeroContrato} positive>Consumo</ModalRegistroLectura>
                         </Button.Group>
                     }
                 </Card.Content>
@@ -239,7 +252,7 @@ const ValoresMonetarios = (props) => {
                     totalPagar = (tarifa.valor_consumo * suma_consumos) + tarifa.otros_valores_sumatoria
                 } else {
                     totalPagar = (tarifa.valor_consumo * tarifa.limite_subsidiado)
-                        + valor_consumo_exceso * (suma_consumos - tarifa.limite_subsidiado)
+                        + tarifa.valor_consumo_exceso * (suma_consumos - tarifa.limite_subsidiado)
                 }
 
                 return (

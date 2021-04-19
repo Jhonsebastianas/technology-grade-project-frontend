@@ -8,7 +8,8 @@ const devConf = Object.freeze({
     //LocalStorage
     USER_NAME: 'user',
     // URL de la app desplegada:
-    URL_APP: 'http://localhost:4200/'
+    URL_APP: 'http://localhost:4200/',
+    HOGAR: 'hogar'
 })
 
 const prodConf = Object.freeze({
