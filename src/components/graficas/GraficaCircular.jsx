@@ -1,19 +1,23 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { Button, Modal, Header, Icon } from 'semantic-ui-react';
 
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 
-const percentage = 66;
+import ModalRegistroLectura from '@components/forms/lecturas/ModalRegistrarLecturaManual'
 
-const GraficaCircular = () => {
+const GraficaCircular = (props) => {
 
-    const [open, setOpen] = React.useState(false);
+    const { tiposervicio, hogar, lectura } = props;
+    const [openLectura, setOpenLectura] = useState(false)
+
+
+    const percentage = 0;
 
     return (
         <div>
-            <h5>Gasto del servicio</h5>
+            <h5>Servicio de {tiposervicio}</h5>
             <div className="anchoGraficaCircular">
                 <CircularProgressbar
                     value={percentage}
@@ -45,15 +49,23 @@ const GraficaCircular = () => {
                     }}
                 />
                 <div className="informacionGraficaCircular">
-                    <p>Consumo promedio: </p>
+                    {/* <p>Consumo promedio: </p>
                     <p>14</p>
                     <p>Consumo actual: </p>
-                    <p>10</p>
+                    <p>10</p> */}
                     <p>Total consumido: </p>
-                    <p>14</p>
-                    <p>Total</p>
-                    <p><strong>$ 49.488</strong></p>
+                    <p>{lectura.lectura.suma_consumos}</p>
+                    <p>Total monetario: </p>
+                    <p><strong></strong></p>
                 </div>
+                <ModalRegistroLectura
+                    hogar={hogar}
+                    openLectura={openLectura}
+                    setOpenLectura={setOpenLectura}
+                    servicioPublico={lectura}
+                    positive
+                />
+                <Button onClick={() => setOpenLectura(true)} positive>Nuevo consumo</Button>
             </div>
 
         </div>

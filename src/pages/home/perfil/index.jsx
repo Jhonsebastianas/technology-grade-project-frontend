@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import loginUtils from "@utils/login.utils";
 import ServiciosHogares from "@services/servicios.hogares";
-import { useRouter } from "next/router";
-import PerfilDetails from "./PerfilDetails";
+import { useRouter } from 'next/router'
+import PerfilDetails from '@components/sections/perfil/PerfilDetails';
 import { Fragment } from "react";
 
 import { useFormik } from "formik";
@@ -145,14 +145,14 @@ const Perfil = () => {
   const handledServicio = (event) => {
     console.log(event.target);
     if (event.target.checked) {
-      setServicios([...servicios, event.target.value]);
+        const serviciosExistentes = hogarQueSeEditara.servicios;
+        serviciosExistentes.push(event.target.value);
+        setHogarQueSeEditara({...hogarQueSeEditara, servicios:serviciosExistentes});
     } else {
-      const posService = servicios.indexOf(event.target.value) + 1;
-      alert("Tre : " + servicios.indexOf(event.target.value) + 1 + " despues: " + posService)
-      setServicios([...servicios.splice(posService, 1)]);
-      
+        const serviciosRegistrar = hogarQueSeEditara.servicios.filter(servicio => servicio != event.target.value);
+        setHogarQueSeEditara({...hogarQueSeEditara, servicios:serviciosRegistrar});
     }
-  };
+  }
 
   const updateHogarByNumeroContratoHomeSchema = Yup.object().shape({
     nombre: Yup.string()
@@ -171,7 +171,7 @@ const Perfil = () => {
     const { nombre, numeroContrato } = values;
     const nuevoHogar = {
       ...hogarQueSeEditara,
-      servicios: servicios,
+      servicios: hogarQueSeEditara.servicios,
       nombre: nombre,
       numeroContrato: numeroContrato,
       username: loginUtils.getUsernameUser(),
@@ -225,11 +225,11 @@ const Perfil = () => {
 
    const validarExistenciaServicio = (tipoServicio) =>{
     
-    if(hogarQueSeEditara && !hogarQueSeEditara.servicios){
+    if(hogarQueSeEditara.servicios.length < 1){
         return false;
     }else{
-        const servicio = hogarQueSeEditara.servicios.filter(servicio => servicio.principal === tipoServicio);
-        if(servicio.length > 0){
+        const existeServicio = hogarQueSeEditara.servicios.some(servicio => servicio === tipoServicio);
+        if(existeServicio){
             return true; 
         }
     }

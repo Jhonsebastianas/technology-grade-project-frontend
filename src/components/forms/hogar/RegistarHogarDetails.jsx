@@ -257,7 +257,7 @@ const RegistarHogarDetails = (props) => {
                   name="servicioAgua"
                   id="servicioAgua"
                   defaultValue="agua"
-                  defaultChecked= {validarExistenciaServicio("agua")}
+                  defaultChecked= {hogarQueSeEditara ? validarExistenciaServicio("agua"):false}
                   onChange={handledServicio}
                 />
                 <label htmlFor="servicioAgua">Agua</label>
@@ -268,7 +268,7 @@ const RegistarHogarDetails = (props) => {
                   name="servicioEnergia"
                   id="servicioEnergia"
                   defaultValue="energia"
-                  defaultChecked= {validarExistenciaServicio("energia")}
+                  defaultChecked= {hogarQueSeEditara ? validarExistenciaServicio("energia"):false}
                   onChange={handledServicio}
                 />
                 <label htmlFor="servicioEnergia">Energía</label>

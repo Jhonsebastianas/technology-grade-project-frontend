@@ -42,8 +42,8 @@ const RegistrarHogarContainer = () => {
         if (event.target.checked) {
             setServicios([...servicios, event.target.value]);
         } else {
-            const posService = servicios.indexOf(event.target.value) + 1;
-            setServicios([...servicios.splice(posService, 1)]);
+            const serviciosRegistrar = servicios.filter(servicio => servicio != event.target.value);
+            setServicios(serviciosRegistrar);
         }
     }
 

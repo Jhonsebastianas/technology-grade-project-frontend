@@ -5,10 +5,10 @@ import { BarChart, Bar, ResponsiveContainer, XAxis, YAxis, CartesianGrid, Toolti
 import { Container, Input, Button } from 'semantic-ui-react';
 
 const data = [
-    { meses: "Semana 1", Enero: 4000, amt: 4000 },
-    { meses: "Semana 2", Enero: 3000, amt: 3000 },
-    { meses: "Semana 3", Enero: 2000, amt: 2000 },
-    { meses: "Semana 4", Enero: 2780, amt: 2780 },
+    { meses: "Semana 1", Enero: 0, amt: 0 },
+    { meses: "Semana 2", Enero: 0, amt: 0 },
+    { meses: "Semana 3", Enero: 0, amt: 0 },
+    { meses: "Semana 4", Enero: 0, amt: 0 },
 ];
 
 const GraficasBarras = () => {
@@ -38,7 +38,7 @@ const GraficasBarras = () => {
             <div className="fechasGraficaBarras">
                 <Input className="inputGraficaBarras" type="date" label='Desde' />
                 <Input className="inputGraficaBarras" type="date" label='Hasta' />
-                <Button className="botonGraficaBarras" primary icon='search' >Buscar</Button>
+                <Button className="botonGraficaBarras" primary  >Buscar</Button>
             </div>
         </Container>
     );

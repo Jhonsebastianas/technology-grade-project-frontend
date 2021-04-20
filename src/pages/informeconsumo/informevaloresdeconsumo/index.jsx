@@ -8,7 +8,7 @@ const InformeValoresConsumo = () => {
 
     return (
         <Layout>
-            <ValoresConsumo />
+            {/* <ValoresConsumo /> */}
         </Layout>
     );
 }

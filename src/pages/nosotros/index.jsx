@@ -10,7 +10,7 @@ const Nosotros = () => {
 
     return (
         <Layout>
-            <Segment vertical className="nosotrosSectionOne" >
+            <Segment vertical id="nosotrosSectionOne" >
                 <Grid stackable className="Nosotros" >
                     <Grid.Row >
                         <Grid.Column width={16}>
@@ -74,7 +74,7 @@ const Nosotros = () => {
             <Segment vertical>
                 <Grid container stackable  columns={3}>
                     <div className="intro">
-                        <h2>nuestro equipo </h2>
+                        <h2 className="NosotrosTitle">nuestro equipo </h2>
                     </div>
                     <Grid.Row verticalAlign='middle' className="people centrar" >
                         <Grid.Column className="items">
