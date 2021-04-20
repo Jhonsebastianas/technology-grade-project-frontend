@@ -50,6 +50,20 @@
     cursor: pointer;
 }
 
+.iconoColorRojo{
+    color: red;
+    cursor: pointer;
+}
+
+.ui.celled.table tr td.celdaIconosInfoHogares{
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.ui.celled.table tr td.celdaIconosInfoHogares span{
+    margin-left: 10%;
+}
+
 .ui.primary.editarDatosPersonales{
     background-color: #00aae4;
 }

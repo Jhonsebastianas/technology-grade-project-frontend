@@ -1,8 +1,17 @@
+import { values } from "@constants/PlantillasNotificaciones";
 import React from "react";
 import {  Card, Form, Grid, Icon, Input } from 'semantic-ui-react'
 
 const RegistarHogarDetails = (props) => {
-  const { formik, handledChanged, errors, handledServicio } = props;
+  const { 
+    formik, 
+    handledChanged, 
+    errors, 
+    handledServicio, 
+    hogarQueSeEditara, 
+    validarExistenciaServicio,
+  } = props;
+
   return (
     <Grid>
       <Grid.Column width={16}>
@@ -13,7 +22,9 @@ const RegistarHogarDetails = (props) => {
               name="nombreHogar"
               id="nombreHogar"
               placeholder="Casa abuela"
+              defaultValue={hogarQueSeEditara ? (hogarQueSeEditara.nombre ? hogarQueSeEditara.nombre:""):""}
               {...formik.getFieldProps("nombre")}
+              
             />
             {formik.touched.nombre && formik.errors.nombre ? (
               <div className="ui pointing red basic label">
@@ -23,11 +34,14 @@ const RegistarHogarDetails = (props) => {
           </Form.Field>
           <Form.Field width={16}>
             <label htmlFor="numeroContrato"># Contrato: *</label>
+            {/*alert(hogarQueSeEditara ? (hogarQueSeEditara.numeroContrato ? hogarQueSeEditara.numeroContrato:""):"")*/}
             <Input
               name="numeroContrato"
               id="numeroContrato"
               autoComplete="off"
+              defaultValue={hogarQueSeEditara ? (hogarQueSeEditara.numeroContrato ? hogarQueSeEditara.numeroContrato:""):""}
               {...formik.getFieldProps("numeroContrato")}
+              
             />
             {formik.touched.numeroContrato && formik.errors.numeroContrato ? (
               <div className="ui pointing red basic label">
@@ -37,7 +51,7 @@ const RegistarHogarDetails = (props) => {
           </Form.Field>
           <Form.Field>
             <label>¿Este es el hogar en el que actualmente vive? *</label>
-            <Form.Group inline>
+            {/*<Form.Group inline>*/}
               <div className="field">
                 <div className="ui radio checkbox">
                   <input
@@ -45,6 +59,7 @@ const RegistarHogarDetails = (props) => {
                     name="hogarActual"
                     id="hogarPrincipalSi"
                     value="Si"
+                    defaultChecked= {hogarQueSeEditara ? (hogarQueSeEditara.hogarActual == true ? true:false):false}
                     onChange={handledChanged}
                   />
                   <label htmlFor="hogarPrincipalSi">Sí</label>
@@ -57,12 +72,13 @@ const RegistarHogarDetails = (props) => {
                     name="hogarActual"
                     id="hogarPrincipalNo"
                     value="No"
+                    defaultChecked= {hogarQueSeEditara ? (hogarQueSeEditara.hogarActual == false ? true:false):false}
                     onChange={handledChanged}
                   />
                   <label htmlFor="hogarPrincipalNo">No</label>
                 </div>
               </div>
-            </Form.Group>
+            {/*</Form.Group>*/}
             {errors.hogarActual && (
               <div className="ui pointing red basic label">
                 {errors.hogarActual}
@@ -85,6 +101,7 @@ const RegistarHogarDetails = (props) => {
                         name="tipoHogar"
                         id="tipoHogarCasa"
                         value="casa"
+                        defaultChecked= {hogarQueSeEditara ? (hogarQueSeEditara.tipoHogar === "casa" ? true:false):false}
                         onChange={handledChanged}
                       />
                       <label htmlFor="tipoHogarCasa">
@@ -103,6 +120,7 @@ const RegistarHogarDetails = (props) => {
                         name="tipoHogar"
                         id="tipoHogarApartamento"
                         value="apartamento"
+                        defaultChecked= {hogarQueSeEditara ? (hogarQueSeEditara.tipoHogar === "apartamento" ? true:false):false}
                         onChange={handledChanged}
                       />
                       <label htmlFor="tipoHogarApartamento">
@@ -121,6 +139,7 @@ const RegistarHogarDetails = (props) => {
                         name="tipoHogar"
                         id="tipoHogarOtro"
                         value="otro"
+                        defaultChecked= {hogarQueSeEditara ? (hogarQueSeEditara.tipoHogar === "otro" ? true:false):false}
                         onChange={handledChanged}
                       />
                       <label htmlFor="tipoHogarOtro">
@@ -147,6 +166,7 @@ const RegistarHogarDetails = (props) => {
                     name="estrato"
                     id="estrato1"
                     value="1"
+                    defaultChecked= {hogarQueSeEditara ? (hogarQueSeEditara.estrato === "1" ? true:false):false}
                     onChange={handledChanged}
                   />
                   <label htmlFor="estrato1">1</label>
@@ -159,6 +179,7 @@ const RegistarHogarDetails = (props) => {
                     name="estrato"
                     id="estrato2"
                     value="2"
+                    defaultChecked= {hogarQueSeEditara ? (hogarQueSeEditara.estrato === "2" ? true:false):false}
                     onChange={handledChanged}
                   />
                   <label htmlFor="estrato2">2</label>
@@ -171,6 +192,7 @@ const RegistarHogarDetails = (props) => {
                     name="estrato"
                     id="estrato3"
                     value="3"
+                    defaultChecked= {hogarQueSeEditara ? (hogarQueSeEditara.estrato === "3" ? true:false):false}
                     onChange={handledChanged}
                   />
                   <label htmlFor="estrato3">3</label>
@@ -185,6 +207,7 @@ const RegistarHogarDetails = (props) => {
                     name="estrato"
                     id="estrato4"
                     value="4"
+                    defaultChecked= {hogarQueSeEditara ? (hogarQueSeEditara.estrato === "4" ? true:false):false}
                     onChange={handledChanged}
                   />
                   <label htmlFor="estrato4">4</label>
@@ -197,6 +220,7 @@ const RegistarHogarDetails = (props) => {
                     name="estrato"
                     id="estrato5"
                     value="5"
+                    defaultChecked= {hogarQueSeEditara ? (hogarQueSeEditara.estrato === "5" ? true:false):false}
                     onChange={handledChanged}
                   />
                   <label htmlFor="estrato5">5</label>
@@ -209,6 +233,7 @@ const RegistarHogarDetails = (props) => {
                     name="estrato"
                     id="estrato6"
                     value="6"
+                    defaultChecked= {hogarQueSeEditara ? (hogarQueSeEditara.estrato === "6" ? true:false):false}
                     onChange={handledChanged}
                   />
                   <label htmlFor="estrato6">6</label>
@@ -231,7 +256,8 @@ const RegistarHogarDetails = (props) => {
                   type="checkbox"
                   name="servicioAgua"
                   id="servicioAgua"
-                  value="agua"
+                  defaultValue="agua"
+                  defaultChecked= {validarExistenciaServicio("agua")}
                   onChange={handledServicio}
                 />
                 <label htmlFor="servicioAgua">Agua</label>
@@ -241,7 +267,8 @@ const RegistarHogarDetails = (props) => {
                   type="checkbox"
                   name="servicioEnergia"
                   id="servicioEnergia"
-                  value="energia"
+                  defaultValue="energia"
+                  defaultChecked= {validarExistenciaServicio("energia")}
                   onChange={handledServicio}
                 />
                 <label htmlFor="servicioEnergia">Energía</label>

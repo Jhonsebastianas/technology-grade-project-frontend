@@ -9,12 +9,7 @@ const serviciosHogares = {
             .then(success)
             .catch(error);
     },
-    getHogarByNumeroContrato: (numeroContrato, success, error) => {
-        const { API_ENDPOINT } = ConstantsList;
-        axios.post(API_ENDPOINT + 'home/editar-hogar', {numeroContrato: numeroContrato})
-            .then(success)
-            .catch(error);
-    },
+    updateHogarByNumeroContrato,
     getCantidadHogaresByUsername,
     getHogaresAndLecturas,
 }
@@ -29,6 +24,13 @@ function getCantidadHogaresByUsername (username, success, error) {
 function getHogaresAndLecturas (username, success, error) {
     const { API_ENDPOINT } = ConstantsList;
     axios.post(API_ENDPOINT + 'home/hogares-y-lecturas-usuario', {username: username})
+        .then(success)
+        .catch(error);
+}
+
+function updateHogarByNumeroContrato (hogar, success, error)  {
+    const { API_ENDPOINT } = ConstantsList;
+    axios.post(API_ENDPOINT + 'home/editar-hogar', hogar)
         .then(success)
         .catch(error);
 }

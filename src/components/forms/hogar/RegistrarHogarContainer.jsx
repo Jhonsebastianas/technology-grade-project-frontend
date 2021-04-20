@@ -101,6 +101,10 @@ const RegistrarHogarContainer = () => {
         onSubmit: registerNewHome,
     });
 
+    const validarExistenciaServicio = () =>{
+        return false;
+    }
+
     return (
         <Form onSubmit={formik.handleSubmit}>
             <Grid>
@@ -109,6 +113,8 @@ const RegistrarHogarContainer = () => {
                     handledChanged={handledChanged}
                     errors={errors}
                     handledServicio={handledServicio}
+                    hogarQueSeEditara={hogar}
+                    validarExistenciaServicio={validarExistenciaServicio}
                 />
                 <Grid.Column width={16}>
                     <Button type='submit' color="green" disabled={!formik.isValid} >

@@ -14,6 +14,7 @@ import '@styles/contactanos.css'
 import '@styles/informeConsumo.css'
 import '@styles/graficas.css'
 import '@styles/ListaHogares.css'
+import '@styles/modalEditarCuenta.css'
 
 
 import { ToastProvider } from 'react-toast-notifications';

@@ -1,0 +1,18 @@
+.ui.modal>.content.divContent{
+    padding: 0 !important;
+}
+
+.ui.modal>.content .formularioEditarCuenta{
+    padding: 21px;
+}
+
+.ui.modal>.content .divActions{
+    background: #f9fafb;
+    padding: 1rem 1rem;
+    border-top: 1px solid rgba(34,36,38,.15);
+    text-align: right;
+    border-bottom-left-radius: .28571429rem;
+    border-bottom-right-radius: .28571429rem;
+    box-sizing: border-box;
+    width: 100%;
+}
