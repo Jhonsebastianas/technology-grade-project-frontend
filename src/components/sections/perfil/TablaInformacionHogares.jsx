@@ -3,21 +3,39 @@ import { Button, Form, Input, Table, Icon } from "semantic-ui-react";
 
 import ModalPerfil from '@components/sections/perfil/ModalPerfil'
 import ModalEditHogar from "./ModalEditHogar";
+import ModalEliminarHogar from "./ModalEliminarHogar";
 
 const TablaInformacionHogares = (props) => {
 
-  const {handleCloseModal,
+  const {
+    handleCloseModal,
     handleOpenModal,
     modalIsOpen, 
     handleEditHogar,
     listaHogares,
     goToAddHome,
     hogarQueSeEditara,
-    handleHogarQueSeEditara} = props;
+    handleHogarQueSeEditara,
+    handleEliminarHogar,
+    formik,
+    handledChanged,
+    errors,
+    handledServicio,
+    validarExistenciaServicio,
+    tipoDeAccion,
+    setTipoDeAccion,
+    } = props;
 
-  function modalAndHogar(hogar){
+  function modalAndEditarHogar(hogar){
      handleOpenModal()
      handleHogarQueSeEditara(hogar)
+     setTipoDeAccion("editar");
+  }
+
+  function modalAndEliminarHogar(hogar){
+    handleOpenModal();
+    handleHogarQueSeEditara(hogar);
+    setTipoDeAccion("eliminar");
   }
 
   return (
@@ -35,7 +53,7 @@ const TablaInformacionHogares = (props) => {
         {listaHogares.length > 0 &&
           listaHogares.map((hogar, index) => {
             return (
-              <Table.Body>
+              <Table.Body key={index}>
                 <Table.Row>
                   <Table.Cell>{hogar.numero_contrato}</Table.Cell>
                   <Table.Cell>{hogar.nombre}</Table.Cell>
@@ -45,8 +63,9 @@ const TablaInformacionHogares = (props) => {
                       return <h5>{servicio.principal}</h5>;
                     })}
                   </Table.Cell>
-                  <Table.Cell className="center">
-                  <span key={index} onClick={() => modalAndHogar(hogar)} className="material-icons  iconoColorAzul" node="button">mode_edit</span>
+                  <Table.Cell className="center celdaIconosInfoHogares">
+                  <span  onClick={() => modalAndEditarHogar(hogar)} className="material-icons  iconoColorAzul" node="button">mode_edit</span>
+                  <span  onClick={() => modalAndEliminarHogar(hogar)} className="material-icons  iconoColorRojo" node="button">close</span>
                     {/*<ModalPerfil hogarQueSeEditara={listaHogares[index]} />*/}
                   </Table.Cell>
                 </Table.Row>
@@ -68,13 +87,26 @@ const TablaInformacionHogares = (props) => {
                 </Button>
               </div>
             )}
-      {listaHogares.length > 0 && (
+      {listaHogares.length > 0 && tipoDeAccion === "editar" && (
         <ModalEditHogar 
         modalIsOpen={modalIsOpen} 
         handleCloseModal={handleCloseModal}
         handleEditHogar={handleEditHogar}
         hogarQueSeEditara={hogarQueSeEditara}
-  
+        formik={formik}
+        handledChanged={handledChanged}
+        errors={errors}
+        handledServicio={handledServicio}
+        validarExistenciaServicio={validarExistenciaServicio}
+        />
+      )}
+
+      {listaHogares.length > 0 && tipoDeAccion === "eliminar" && (
+        <ModalEliminarHogar 
+        modalIsOpen={modalIsOpen} 
+        handleCloseModal={handleCloseModal}
+        hogarQueSeEditara={hogarQueSeEditara}
+        handleEliminarHogar={handleEliminarHogar}
         />
       )}
     </>

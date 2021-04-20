@@ -11,19 +11,31 @@ import {
   Table,
   Icon
 } from "semantic-ui-react";
+import Gravatar from "@components/sections/perfil/Gravatar";
+
 const PerfilDetails = (props) => {
 
-  const {handleCloseModal,
-  handleOpenModal,
-  modalIsOpen, 
-  handleEditHogar,
-  listaHogares,
-  goToAddHome,
-  fullName,
-  formularioInformacionPersonal,
-  visibilidadFormulario,
-  hogarQueSeEditara,
-  handleHogarQueSeEditara} = props;
+  const {
+    handleCloseModal,
+    handleOpenModal,
+    modalIsOpen, 
+    handleEditHogar,
+    listaHogares,
+    goToAddHome,
+    fullName,
+    formularioInformacionPersonal,
+    visibilidadFormulario,
+    hogarQueSeEditara,
+    handleHogarQueSeEditara,
+    handleEliminarHogar,
+    formik,
+    handledChanged,
+    errors,
+    handledServicio,
+    validarExistenciaServicio,
+    tipoDeAccion,
+    setTipoDeAccion,
+  } = props;
 
   return (
       <Layout>
@@ -31,7 +43,8 @@ const PerfilDetails = (props) => {
           <Grid.Row>
             <Grid.Column width={6}>
               <Grid.Column width={8} className="center">
-                <img className="imagen" src="/images/avatarUsuario.svg"></img>
+                <Gravatar className="imagen" email={fullName}/>
+                {/*<img className="imagen" src="/images/avatarUsuario.svg"></img>*/}
                 <p className="nombre">
                   <strong>{fullName}</strong>
                 </p>
@@ -74,6 +87,14 @@ const PerfilDetails = (props) => {
                 goToAddHome={goToAddHome}
                 hogarQueSeEditara={hogarQueSeEditara}
                 handleHogarQueSeEditara={handleHogarQueSeEditara}
+                formik={formik}
+                handledChanged={handledChanged}
+                errors={errors}
+                handledServicio={handledServicio}
+                validarExistenciaServicio={validarExistenciaServicio}
+                handleEliminarHogar={handleEliminarHogar}
+                tipoDeAccion={tipoDeAccion}
+                setTipoDeAccion={setTipoDeAccion}
               ></TablaInformacionHogares>
             </Grid.Column>
             <Grid.Column width={1}></Grid.Column>
