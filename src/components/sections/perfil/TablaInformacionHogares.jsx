@@ -42,7 +42,7 @@ const TablaInformacionHogares = (props) => {
     <>
       <Table celled fixed singleLine>
         <Table.Header>
-          <Table.Row className="centrarFilasTabla">
+          <Table.Row>
             <Table.HeaderCell className="flotarElemento">#Contrato</Table.HeaderCell>
             <Table.HeaderCell className="flotarElemento">Hogar</Table.HeaderCell>
             <Table.HeaderCell className="flotarElemento">Estrato</Table.HeaderCell>
@@ -54,13 +54,15 @@ const TablaInformacionHogares = (props) => {
           listaHogares.map((hogar, index) => {
             return (
               <Table.Body key={index}>
-                <Table.Row className="centrarFilasTabla">
+                <Table.Row>
                   <Table.Cell className="flotarElemento">{hogar.numero_contrato}</Table.Cell>
                   <Table.Cell className="flotarElemento">{hogar.nombre}</Table.Cell>
                   <Table.Cell className="flotarElemento">{hogar.estrato}</Table.Cell>
                   <Table.Cell>
                     {hogar.servicios.map((servicio) => {
-                      return <h5>{servicio.principal}</h5>;
+                      //Separamos el primer caracter y lo convertimos a mayuscula. Despues con el slice(1) traemos el nombre quitando el primer caracter
+                      const nombreServicio = servicio.principal.charAt(0).toUpperCase() + servicio.principal.slice(1);
+                      return <h5 className="nombreServicios">{nombreServicio}</h5>;
                     })}
                   </Table.Cell>
                   <Table.Cell className="center celdaIconosInfoHogares">

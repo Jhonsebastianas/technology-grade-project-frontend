@@ -92,15 +92,14 @@ p.parrafoPerfilSinHogar{
     font-size: 150%;
 }
 
+.nombreServicios{
+    margin-bottom: 0;
+    margin-top: 10px;
+}
+
 
 
 @media only screen and  (min-width:10px) and (max-width:766px){
-    .ui.table tr.centrarFilasTabla{
-        display: flex !important;
-        justify-content: space-between;
-    }
-    
-    .flotarElemento{
-     
-    }
+
 }
+
