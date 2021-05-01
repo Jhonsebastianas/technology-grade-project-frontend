@@ -91,3 +91,16 @@ div.divPerfilSinHogar{
 p.parrafoPerfilSinHogar{
     font-size: 150%;
 }
+
+
+
+@media only screen and  (min-width:10px) and (max-width:766px){
+    .ui.table tr.centrarFilasTabla{
+        display: flex !important;
+        justify-content: space-between;
+    }
+    
+    .flotarElemento{
+     
+    }
+}

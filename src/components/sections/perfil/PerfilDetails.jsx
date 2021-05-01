@@ -41,7 +41,7 @@ const PerfilDetails = (props) => {
       <Layout>
         <Grid>
           <Grid.Row>
-            <Grid.Column width={6}>
+            <Grid.Column width={6} mobile={16} tablet={16} computer={6}>
               <Grid.Column width={8} className="center">
                 <Gravatar className="imagen" email={fullName}/>
                 {/*<img className="imagen" src="/images/avatarUsuario.svg"></img>*/}
@@ -77,7 +77,7 @@ const PerfilDetails = (props) => {
                 )}
               </Grid.Column>
             </Grid.Column>
-            <Grid.Column width={9} className="espacioSuperiorTabla">
+            <Grid.Column width={9} className="espacioSuperiorTabla" mobile={16} tablet={16} computer={9}>
               <TablaInformacionHogares
                 handleCloseModal={handleCloseModal}
                 handleOpenModal={handleOpenModal}

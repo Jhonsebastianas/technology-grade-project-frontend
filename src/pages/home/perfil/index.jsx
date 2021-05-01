@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
 import loginUtils from "@utils/login.utils";
 import ServiciosHogares from "@services/servicios.hogares";
-import { useRouter } from 'next/router'
-import PerfilDetails from '@components/sections/perfil/PerfilDetails';
+import { useRouter } from "next/router";
+import PerfilDetails from "@components/sections/perfil/PerfilDetails";
 import { Fragment } from "react";
 
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useToasts } from "react-toast-notifications";
-
 
 const Perfil = () => {
   const [visibilidadFormulario, setVisibilidadformulario] = useState(false);
@@ -31,7 +30,7 @@ const Perfil = () => {
     setVisibilidadformulario(formulario);
   };
 
-  const consultarHogares = () =>{
+  const consultarHogares = () => {
     ServiciosHogares.getHogaresByUsername(
       loginUtils.getUsernameUser(),
       ({ data }) => {
@@ -40,12 +39,11 @@ const Perfil = () => {
       },
       (error) => {}
     );
-  }
+  };
 
   useEffect(() => {
     let mounted = true;
     if (mounted) {
-      
       consultarHogares();
       const dataUser = {
         fullName: loginUtils.getFullName(),
@@ -56,7 +54,7 @@ const Perfil = () => {
   }, []);
 
   const handleOpenModal = (e) => {
-    setModalIsOpen(true);  
+    setModalIsOpen(true);
   };
 
   const handleCloseModal = (e) => {
@@ -68,7 +66,7 @@ const Perfil = () => {
   const handleHogarQueSeEditara = (hogar) => {
     formik.values.nombre = hogar.nombre;
     formik.values.numeroContrato = hogar.numero_contrato;
-    
+
     const hogarPropiedadesEditadas = {
       activo: hogar.activo,
       /*autorizados:{
@@ -83,39 +81,40 @@ const Perfil = () => {
       },*/
       nombre: hogar.nombre,
       numeroContrato: hogar.numero_contrato,
-      servicios: hogar.servicios.map(servicio => servicio.principal),
+      servicios: hogar.servicios.map((servicio) => servicio.principal),
       tipoHogar: hogar.tipo_hogar,
       numeroContratoAnterior: hogar.numero_contrato,
     };
     setHogarQueSeEditara(hogarPropiedadesEditadas);
   };
 
-  const handleEliminarHogar =  (hogar) => {
+  const handleEliminarHogar = (hogar) => {
     //this.setState({loading:true, error:null});
-    alert("Aun no se realiza esa parte...")
+    deleteHogarByNumeroContrato();
   };
 
   const handleEditHogar = (e) => {
-    formik.submitForm()
+    formik.submitForm();
   };
 
   /*LOGICA PARA LA INFORAMCION DE LA MODAL (COPIADA DE REGISTAR HOGAR)*/
 
-  const validate = values => {
+  const validate = (values) => {
     const errors = {};
-    console.log("---------VALUES------")
-    console.log(values)
+    console.log("---------VALUES------");
+    console.log(values);
     if (values.hogarActual != true && values.hogarActual != false) {
-        errors.hogarActual = 'Seleccione si este hogar es en el que vive actualmente.'
+      errors.hogarActual =
+        "Seleccione si este hogar es en el que vive actualmente.";
     }
     if (!values.estrato) {
-        errors.estrato = 'Seleccione el estrato de la vivienda.'
+      errors.estrato = "Seleccione el estrato de la vivienda.";
     }
     if (!values.tipoHogar) {
-        errors.tipoHogar = 'Seleccione el tipo de hogar de la vivienda'
+      errors.tipoHogar = "Seleccione el tipo de hogar de la vivienda";
     }
     return errors;
-}
+  };
 
   const { addToast } = useToasts();
   //const router = useRouter()
@@ -126,18 +125,18 @@ const Perfil = () => {
 
   const handledChanged = ({ target }) => {
     const { name, value } = target;
-    
+
     // console.log(`${name}: ${value}`);
     if (name === "hogarActual") {
       setHogarQueSeEditara({
         ...hogarQueSeEditara,
         [name]: value === "Si" ? true : false,
       });
-    }else if(name==="nombreHogar"){
+    } else if (name === "nombreHogar") {
       formik.values.nombre = value;
-    }else if(name==="numeroContrato"){
+    } else if (name === "numeroContrato") {
       formik.values.numeroContrato = value;
-    }else {
+    } else {
       setHogarQueSeEditara({ ...hogarQueSeEditara, [name]: value });
     }
   };
@@ -145,14 +144,22 @@ const Perfil = () => {
   const handledServicio = (event) => {
     console.log(event.target);
     if (event.target.checked) {
-        const serviciosExistentes = hogarQueSeEditara.servicios;
-        serviciosExistentes.push(event.target.value);
-        setHogarQueSeEditara({...hogarQueSeEditara, servicios:serviciosExistentes});
+      const serviciosExistentes = hogarQueSeEditara.servicios;
+      serviciosExistentes.push(event.target.value);
+      setHogarQueSeEditara({
+        ...hogarQueSeEditara,
+        servicios: serviciosExistentes,
+      });
     } else {
-        const serviciosRegistrar = hogarQueSeEditara.servicios.filter(servicio => servicio != event.target.value);
-        setHogarQueSeEditara({...hogarQueSeEditara, servicios:serviciosRegistrar});
+      const serviciosRegistrar = hogarQueSeEditara.servicios.filter(
+        (servicio) => servicio != event.target.value
+      );
+      setHogarQueSeEditara({
+        ...hogarQueSeEditara,
+        servicios: serviciosRegistrar,
+      });
     }
-  }
+  };
 
   const updateHogarByNumeroContratoHomeSchema = Yup.object().shape({
     nombre: Yup.string()
@@ -182,10 +189,11 @@ const Perfil = () => {
     setErrors(error);
     if (!Object.keys(error).length) {
       //nuevoHogar.hogarActual = hogar.hogarActual === "Si" ? true : false;
-      const {activo, ...hogarFiltrado} = nuevoHogar;
-      ServiciosHogares.updateHogarByNumeroContrato(hogarFiltrado, () => {
-        consultarHogares();
-        router.push("/home/perfil");
+      const {...hogarFiltrado } = nuevoHogar;
+      ServiciosHogares.updateHogarByNumeroContrato(
+        hogarFiltrado,
+        () => {
+          consultarHogares();
           addToast("Hogar actualizado con exito", {
             appearance: "success",
             autoDismiss: true,
@@ -215,26 +223,68 @@ const Perfil = () => {
     }
   };
 
+  const deleteHogarByNumeroContrato = () => {
+    const nuevoHogar = {
+      ...hogarQueSeEditara,
+      activo: false,
+      username: loginUtils.getUsernameUser(),
+    };
+    setModalIsOpen(false);
+    console.log(nuevoHogar);
+
+    //nuevoHogar.hogarActual = hogar.hogarActual === "Si" ? true : false;
+    const { ...hogarFiltrado } = nuevoHogar;
+    ServiciosHogares.updateHogarByNumeroContrato(
+      hogarFiltrado,
+      () => {
+        consultarHogares();
+        addToast("Hogar eliminado con exito", {
+          appearance: "success",
+          autoDismiss: true,
+        });
+      },
+      (error) => {
+        if (error.response) {
+          const { status } = error.response;
+          if (status === 409) {
+            addToast("Hogar actualmente existente", { appearance: "info" });
+          } else if (status === 422) {
+            addToast("Valida la información, por favor", {
+              appearance: "warning",
+            });
+          } else if (status === 500) {
+            addToast("oh no :(, no eres tú somos nosotros, algo a ido mal", {
+              appearance: "error",
+            });
+          }
+        } else {
+          addToast("oh no :(, no eres tú somos nosotros, algo a ido mal", {
+            appearance: "error",
+          });
+        }
+      }
+    );
+  };
+
   const formik = useFormik({
-    initialValues: {
-    
-    },
-    validationSchema: updateHogarByNumeroContratoHomeSchema, 
+    initialValues: {},
+    validationSchema: updateHogarByNumeroContratoHomeSchema,
     onSubmit: updateHogarByNumeroContrato,
   });
 
-   const validarExistenciaServicio = (tipoServicio) =>{
-    
-    if(hogarQueSeEditara.servicios.length < 1){
-        return false;
-    }else{
-        const existeServicio = hogarQueSeEditara.servicios.some(servicio => servicio === tipoServicio);
-        if(existeServicio){
-            return true; 
-        }
+  const validarExistenciaServicio = (tipoServicio) => {
+    if (hogarQueSeEditara.servicios.length < 1) {
+      return false;
+    } else {
+      const existeServicio = hogarQueSeEditara.servicios.some(
+        (servicio) => servicio === tipoServicio
+      );
+      if (existeServicio) {
+        return true;
+      }
     }
     return false;
-   }
+  };
 
   return (
     <Fragment>
