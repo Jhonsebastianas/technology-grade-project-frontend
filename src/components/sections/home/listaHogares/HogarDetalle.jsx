@@ -98,14 +98,13 @@ const ServicioHogar = (props) => {
         }
         return 'No registra'
     }
-
+    
     const getContrato =  () => {
         const { HOGAR } = ConstantsList;
-        
-        const {principal} = servicio;
+    
         const hogar = {};
         hogar[HOGAR] = numeroContrato;
-        hogar['servicio'] = principal;
+        hogar['service'] = principal;
         localStorage.setItem(HOGAR, JSON.stringify(hogar));
     }
 

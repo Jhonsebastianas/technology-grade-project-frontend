@@ -1,7 +1,18 @@
 .informeConsumo{
     font-family: 'Lato', Helvetica Neue,Arial,Helvetica,sans-serif !important;
-    /* width: 95%; */
-    margin: 10px auto 10px auto !important;  
+    width: 95% !important;
+    margin: auto !important;  
+}
+
+#carga{
+  width: 100vw;
+  height: 100vh;
+  display: flex ;
+  align-items: center ;
+  justify-content: center ;
+  text-align: center ;
+  margin: auto;
+  padding: 0;
 }
 
 .informeConsumoMin{
@@ -10,7 +21,7 @@
     background: #ffffff;
     /* box-shadow:  5px 5px 25px #e8e8e8, 
                 -5px -5px 25px #ffffff; */
-    padding: 20px 40px 20px 40px!important;
+    padding: 5px !important;
     margin-bottom: 30px !important; 
     justify-content: center !important;
     text-align: center !important;
@@ -23,27 +34,25 @@
     background: #ffffff;
     /* box-shadow:  5px 5px 25px #e8e8e8, 
                 -5px -5px 25px #ffffff; */
-    padding: 10px 10px 20px 10px !important;
+    padding: 5px !important;
     margin-bottom: 30px !important;
     text-align: center;
     font-family: 'Lato', Helvetica Neue,Arial,Helvetica,sans-serif !important; 
 }
 
-.tip{
+.tipInfo{
   max-width: 400px;
-  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
+  background: #edf2fb !important;
+  box-shadow:  5px 5px 20px #e8e8e8, 
+                -5px -5px 20px #ffffff; 
+  color: rgb(31 68 133);
+  padding: 10px 10px 20px 10px !important;
+  border-radius: 10px;
+  min-height: 150px;
 }
 
-.informeConsumoMin h5{
-    font-size: 1.3rem;
-    font-family: 'Lato', Helvetica Neue,Arial,Helvetica,sans-serif !important; 
-    text-align: center;
-}
-
-.informeConsumoMax h5{
-  font-size: 1.3rem;
-    font-family: 'Lato', Helvetica Neue,Arial,Helvetica,sans-serif !important;
-}
 
 /* opciones flotantes */
 .botonFlotante{
@@ -59,7 +68,7 @@
     z-index:997
   }
 
-  .botonIC1{
+  .botonPrincipal{
     display:inline-block;
     color:#fff;
     background: #0088b6;
@@ -79,7 +88,7 @@
     text-align: center;
   }
   
-  .botonIC1 span .icon{
+  .botonPrincipal span .icon{
     font-size: 20px;
     margin: 0 !important;
     transition:.5s;  
@@ -92,10 +101,10 @@
     transition:.5s;  
   }
 
-  .botonIC1:hover span{
+  .botonPrincipal:hover span{
     transform:rotate(360deg);
   }
-  .botonIC1:active{
+  .botonPrincipal:active{
     transform:scale(1.1);
   }
   .btnsIC{
@@ -119,11 +128,11 @@
     transform: scale(0) ;
     font-weight: 0;
   }
-  .botonIC2{
+  .botonVerGraficas{
     margin-bottom:50px;
     transition:0.5s;
   }
-  .botonIC3{
+  .botonVerValores{
     margin-bottom:100px;
     transition:0.7s;
   }
@@ -137,9 +146,7 @@
     .informeConsumoMax{
         display: none;
     }
-    .contenedorMovil{
-        width: 100% !important;
-    }
+  
     .botonFlotante{
         display: block;
     }

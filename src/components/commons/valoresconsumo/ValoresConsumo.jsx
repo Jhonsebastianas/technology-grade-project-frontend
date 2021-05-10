@@ -2,82 +2,69 @@ import React from 'react'
 
 import { Container, Table, Grid, Segment } from 'semantic-ui-react';
 
+import UTILS from '@utils/cp.utils';
+import Calculos from '@utils/calculos.util';
+
 const ValoresConsumo = (props) => {
 
     const { tiposervicio, lectura } = props;
     const { tarifas } = lectura;
 
-    if (tiposervicio === 'energia') {
-        return (
-            <Container centered textAlign='center'>
-                <h5>Valores del Consumo</h5>
-                <Table fixed unstackable basic='very'>
-                    <Table.Row verticalAlign='middle'>
-                        <Table.Cell>Servicio por kwh</Table.Cell>
-                        <Table.Cell>$ {tarifas[0].valor_consumo}</Table.Cell>
-                    </Table.Row>
-                    <Table.Row>
-                        <Table.Cell>Exceso por kwh</Table.Cell>
-                        <Table.Cell>$ {tarifas[0].valor_consumo_exceso}</Table.Cell>
-                    </Table.Row>
-                    <Table.Row>
-                        <Table.Cell>Cargo fijo</Table.Cell>
-                        <Table.Cell>$ ----</Table.Cell>
-                    </Table.Row>
-                    <Table.Row>
-                        <Table.Cell>Exceso</Table.Cell>
-                        <Table.Cell>$ {tarifas[0].valor_consumo_exceso}</Table.Cell>
-                    </Table.Row>
-                    <Table.Row>
-                        <Table.Cell>Energía</Table.Cell>
-                        <Table.Cell>$ 0</Table.Cell>
-                    </Table.Row>
-
-
-                </Table>
-
-            </Container>
-        );
-    }
-
     return (
-        <Container centered textAlign='center'>
-            <h4>Valores del Consumo</h4>
+        <Container centered textAlign='center' className="containerInfo">
+            <h5>Valores del Consumo</h5>
             <Grid stackable columns='equal'>
+                {tarifas !== undefined &&
+                    tarifas.map((tarifa, index) => (
 
-                {tarifas.map((tarifa, index) => (
+                        <Grid.Column key={index} textAlign="center" centered >
 
-                    <Grid.Column key={index}>
-                        <Segment >
-                            <h5 style={{ textTransform: 'capitalize' }}>{tarifa.servicio_publico.secundario}</h5>
+                            <h4 className="valoresConsumoTitle">{tiposervicio === 'agua'
+                                && <>{tarifa.servicio_publico.secundario}</>
+                                || <>{tiposervicio}</>}
+                            </h4>
                             <Table fixed unstackable basic='very'>
                                 <Table.Row verticalAlign='middle'>
-                                    <Table.Cell>Servicio por m³</Table.Cell>
-                                    <Table.Cell>$ {tarifa.valor_consumo}</Table.Cell>
+                                    <Table.Cell>
+                                        Servicio por{tiposervicio === 'agua' && <> m<sup>3</sup></> || <>Kwh</>}
+                                    </Table.Cell>
+                                    <Table.Cell >{UTILS.formatoMoneda(tarifa.valor_consumo)} </Table.Cell>
                                 </Table.Row>
                                 <Table.Row>
-                                    <Table.Cell>Exceso por m³</Table.Cell>
-                                    <Table.Cell >$ {tarifa.valor_consumo_exceso}</Table.Cell>
+                                    <Table.Cell>
+                                        Exceso por{tiposervicio === 'agua' && <> m<sup>3</sup></> || <>Kwh</>}
+                                    </Table.Cell>
+                                    <Table.Cell >{UTILS.formatoMoneda(tarifa.valor_consumo_exceso)}</Table.Cell>
+                                </Table.Row>
+                                {tiposervicio === 'agua' &&
+                                    <Table.Row>
+                                        <Table.Cell>Cargo fijo</Table.Cell>
+                                        <Table.Cell >
+                                            {UTILS.formatoMoneda(tarifa.otros_valores[0].valor)}
+                                        </Table.Cell>
+                                    </Table.Row>
+                                }
+                                <Table.Row>
+                                    <Table.Cell>Exceso en consumo</Table.Cell>
+                                    <Table.Cell >
+                                        {UTILS.formatoMoneda(Calculos.calcularExcesoPorSubservicio(tarifa, lectura.lectura.suma_consumos))}
+                                    </Table.Cell>
                                 </Table.Row>
                                 <Table.Row>
-                                    <Table.Cell>Cargo fijo</Table.Cell>
-                                    <Table.Cell>$ {tarifa.otros_valores[0].valor}</Table.Cell>
+                                    <Table.Cell>
+                                        Total a pagar {tiposervicio === 'agua'
+                                            && <>{tarifa.servicio_publico.secundario}</>
+                                            || <>{tiposervicio}</>}
+                                    </Table.Cell>
+                                    <Table.Cell className="valorMonetario">
+                                        {UTILS.formatoMoneda(Calculos.calcularTotalPagarSubservicio(tarifa, lectura.lectura.suma_consumos))}
+                                    </Table.Cell>
                                 </Table.Row>
-                                <Table.Row>
-                                    <Table.Cell>Exceso</Table.Cell>
-                                    <Table.Cell>$ {tarifa.valor_consumo_exceso}</Table.Cell>
-                                </Table.Row>
-                                <Table.Row>
-                                    <Table.Cell>Acueducto</Table.Cell>
-                                    <Table.Cell>$ 0</Table.Cell>
-                                </Table.Row>
-
                             </Table>
-                        </Segment>
-                    </Grid.Column>
-                ))}
-            </Grid>
 
+                        </Grid.Column>
+                    )) || <> </>}
+            </Grid>
         </Container>
     );
 }

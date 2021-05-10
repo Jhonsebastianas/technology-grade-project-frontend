@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { Grid } from 'semantic-ui-react'
 import loginUtils from '@utils/login.utils'
+import SessionUtils from '@utils/session.util'
 import { useToasts } from 'react-toast-notifications';
 import Image from 'next/image'
 
@@ -17,6 +18,7 @@ const MenuPrivado = () => {
 
     const singOff = () => {
         loginUtils.SignOff();
+        SessionUtils.RemoveSession();
         addToast('Sesión cerrada con éxito', { appearance: 'success', autoDismiss: true, });
         router.push("/");
     }
@@ -71,7 +73,7 @@ const MenuPrivado = () => {
                 cerrar sesión
             </Menu.Item>
     </Menu>*/
-    <Grid>
+    <Grid stackable>
             <div className={(actualizarMenuCelular) ? "navigation active" : "navigation"} onClick={menuCelular}>
                 <div className={"ham-btn"}>
                     <span></span>

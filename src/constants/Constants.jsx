@@ -9,7 +9,9 @@ const devConf = Object.freeze({
     USER_NAME: 'user',
     // URL de la app desplegada:
     URL_APP: 'http://localhost:4200/',
-    HOGAR: 'hogar'
+    //LocalStogare contrato hogar
+    HOGAR: 'hogar',
+    
 })
 
 const prodConf = Object.freeze({
@@ -23,7 +25,9 @@ const prodConf = Object.freeze({
     USER_NAME: 'user',
     // URL de la app desplegada:
     URL_APP: 'https://controlsep.com/',
-    HOGAR: 'hogar'
+    //LocalStogare contrato hogar
+    HOGAR: 'hogar',
+   
 });
 
 

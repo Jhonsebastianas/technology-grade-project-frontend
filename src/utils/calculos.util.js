@@ -1,6 +1,7 @@
 const CalculosUtils = {
     calcularTotalPagarTarifasPorServicio,
     calcularTotalPagarSubservicio,
+    calcularExcesoPorSubservicio,
 }
 
 function calcularTotalPagarSubservicio (tarifa, consumo) {
@@ -30,6 +31,16 @@ function calcularTotalPagarTarifasPorServicio(tarifas, consumo) {
         }
         totalPagar += total
     })
+    return totalPagar
+}
+
+function calcularExcesoPorSubservicio (tarifa, consumo) {
+    let totalPagar = 0
+    if (consumo > tarifa.limite_subsidiado) {
+
+        const valorExceso = tarifa.valor_consumo_exceso * (consumo - tarifa.limite_subsidiado)
+        totalPagar = valorExceso
+    }
     return totalPagar
 }
 
