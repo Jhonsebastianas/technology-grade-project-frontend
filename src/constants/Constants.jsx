@@ -4,7 +4,7 @@ const devConf = Object.freeze({
     // API
     API_ENDPOINT: 'http://localhost:3000/ha-backend/',
     //Tokens
-    TOKEN_NAME: 'tkn_ha',
+    TOKEN_NAME: 'tkn_controlsep',
     //LocalStorage
     USER_NAME: 'user',
     // URL de la app desplegada:
@@ -20,7 +20,7 @@ const prodConf = Object.freeze({
     // API
     API_ENDPOINT: 'https://secops-backend.herokuapp.com/ha-backend/',
     //Tokens
-    TOKEN_NAME: 'tkn_ha',
+    TOKEN_NAME: 'tkn_controlsep',
     //LocalStorage
     USER_NAME: 'user',
     // URL de la app desplegada:
