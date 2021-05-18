@@ -8,6 +8,7 @@ import { Fragment } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useToasts } from "react-toast-notifications";
+import { Container } from "semantic-ui-react";
 
 const Perfil = () => {
   const [visibilidadFormulario, setVisibilidadformulario] = useState(false);
@@ -37,7 +38,7 @@ const Perfil = () => {
         setListaHogares(data);
         //setHogarQueSeEditara(data[0]);
       },
-      (error) => {}
+      (error) => { }
     );
   };
 
@@ -189,7 +190,7 @@ const Perfil = () => {
     setErrors(error);
     if (!Object.keys(error).length) {
       //nuevoHogar.hogarActual = hogar.hogarActual === "Si" ? true : false;
-      const {...hogarFiltrado } = nuevoHogar;
+      const { ...hogarFiltrado } = nuevoHogar;
       ServiciosHogares.updateHogarByNumeroContrato(
         hogarFiltrado,
         () => {
@@ -287,7 +288,7 @@ const Perfil = () => {
   };
 
   return (
-    <Fragment>
+    <Container>
       <div id="modal"></div>
       <PerfilDetails
         handleCloseModal={handleCloseModal}
@@ -311,7 +312,7 @@ const Perfil = () => {
         tipoDeAccion={tipoDeAccion}
         setTipoDeAccion={setTipoDeAccion}
       />
-    </Fragment>
+    </Container>
   );
 };
 

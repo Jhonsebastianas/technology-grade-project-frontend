@@ -40,7 +40,7 @@ const TablaInformacionHogares = (props) => {
 
   return (
     <>
-      <Table celled fixed singleLine>
+      <Table celled fixed singleLine className="tabla-perfil-hogares">
         <Table.Header>
           <Table.Row>
             <Table.HeaderCell className="flotarElemento">#Contrato</Table.HeaderCell>
@@ -66,8 +66,8 @@ const TablaInformacionHogares = (props) => {
                     })}
                   </Table.Cell>
                   <Table.Cell className="center celdaIconosInfoHogares">
-                  <span  onClick={() => modalAndEditarHogar(hogar)} className="material-icons  iconoColorAzul" node="button">mode_edit</span>
-                  <span  onClick={() => modalAndEliminarHogar(hogar)} className="material-icons  iconoColorRojo" node="button">close</span>
+                  <Icon  onClick={() => modalAndEditarHogar(hogar)} name="edit outline" className="iconoColorAzul" />
+                  <Icon  onClick={() => modalAndEliminarHogar(hogar)} name="delete" className="iconoColorRojo" />
                     {/*<ModalPerfil hogarQueSeEditara={listaHogares[index]} />*/}
                   </Table.Cell>
                 </Table.Row>
