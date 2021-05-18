@@ -20,7 +20,7 @@ const InformeGraficas = () => {
 
         if (mounted) {
             ServiciosHogares.getHogarLectura(SessionUtil.getNumeroContrato(),
-                LoginUtil.getUsernameUser(), SessionUtil.getTipoServicio(), ({ data }) => {
+                SessionUtil.getTipoServicio(), ({ data }) => {
                     setLectura(data);
                   
                 }, (error) => { });

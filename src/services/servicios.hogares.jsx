@@ -25,23 +25,24 @@ function getCantidadHogaresByUsername(username, success, error) {
         .catch(error);
 }
 
-function getHogarAndLectura (numeroContrato, username, success, error) {
-    const { API_ENDPOINT } = ConstantsList;
-    axios.post(API_ENDPOINT + 'home/hogar-consumo', {numeroContrato: numeroContrato, username : username})
-        .then(success)
-        .catch(error);
-}
-
-function getHogarLectura (numeroContrato, username, tiposervicio, success, error) {
-    const { API_ENDPOINT } = ConstantsList;
-    axios.post(API_ENDPOINT + 'home/hogar-lectura', {numeroContrato: numeroContrato, username : username, tiposervicio : tiposervicio})
-        .then(success)
-        .catch(error);
-}
-
-function updateHogarByNumeroContrato (hogar, success, error)  {
+function getHogaresAndLecturas(username, success, error) {
     const { API_ENDPOINT } = ConstantsList;
     axios.post(API_ENDPOINT + 'home/hogares-y-lecturas-usuario', { username: username }, AuthHeader.headers())
+        .then(success)
+        .catch(error);
+}
+
+function getHogarAndLectura(numeroContrato, success, error) {
+    const { API_ENDPOINT } = ConstantsList;
+    axios.post(API_ENDPOINT + 'home/hogar-consumo', { numeroContrato: numeroContrato }, AuthHeader.headers())
+        .then(success)
+        .catch(error);
+}
+
+function getHogarLectura(numeroContrato, tiposervicio, success, error) {
+    const { API_ENDPOINT } = ConstantsList;
+    axios.post(API_ENDPOINT + 'home/hogar-lectura', { numeroContrato: numeroContrato, tiposervicio: tiposervicio },
+        AuthHeader.headers())
         .then(success)
         .catch(error);
 }

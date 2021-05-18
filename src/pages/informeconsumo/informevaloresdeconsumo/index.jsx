@@ -23,20 +23,20 @@ const InformeValoresConsumo = () => {
 
             setTipoServicio(SessionUtil.getTipoServicio());
             ServiciosHogares.getHogarLectura(SessionUtil.getNumeroContrato(),
-                LoginUtil.getUsernameUser(), SessionUtil.getTipoServicio(), ({ data }) => {
+                SessionUtil.getTipoServicio(), ({ data }) => {
                     setLectura(data);
-                  
+
                 }, (error) => { });
         }
         return () => (mounted = false);
     }, []);
 
     return (
-        <Layout> 
-            <ValoresConsumo 
-                    tiposervicio={tiposervicio}
-                    lectura={lectura}
-                />
+        <Layout>
+            <ValoresConsumo
+                tiposervicio={tiposervicio}
+                lectura={lectura}
+            />
         </Layout>
     );
 }

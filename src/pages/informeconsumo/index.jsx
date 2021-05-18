@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import Layout from '@components/layouts/LayoutPrivado';
 
-import { Grid, Icon, Segment } from 'semantic-ui-react';
+import { Grid, Icon, Segment, Dimmer, Loader } from 'semantic-ui-react';
 
 import Link from 'next/link';
 
@@ -15,8 +15,6 @@ import Tips from '@components/commons/tips/Tips'
 import ServiciosHogares from '@services/servicios.hogares';
 
 import SessionUtil from '@utils/session.util'
-import LoginUtil from '@utils/login.utils'
-
 
 const InformeConsumo = () => {
 
@@ -28,11 +26,10 @@ const InformeConsumo = () => {
         let mounted = true;
         if (mounted) {
             setTipoServicio(SessionUtil.getTipoServicio());
-            ServiciosHogares.getHogarAndLectura(SessionUtil.getNumeroContrato(),
-                LoginUtil.getUsernameUser(), ({ data }) => {
-                    setInfoHogar(data);
-                    setCargandoHogar(false)
-                }, (error) => { });
+            ServiciosHogares.getHogarAndLectura(SessionUtil.getNumeroContrato(), ({ data }) => {
+                setInfoHogar(data);
+                setCargandoHogar(false)
+            }, (error) => { });
         }
         return () => (mounted = false);
     }, []);
@@ -45,11 +42,11 @@ const InformeConsumo = () => {
     }
 
     const getLectura = () => {
-        
+
         const { servicios } = infohogar
         if (servicios !== undefined) {
             let lectura = servicios.find(servicios => servicios.principal == tiposervicio);
-          
+
             return lectura
         }
         return ''
@@ -59,7 +56,10 @@ const InformeConsumo = () => {
 
         return <>
             <Segment vertical id="carga">
-                <h3>Cargando la información de tu hogar...</h3>
+                <Dimmer active inverted>
+                    <Loader size='large'>Cargando consumo</Loader>
+                </Dimmer>
+
             </Segment>
         </>;
     }

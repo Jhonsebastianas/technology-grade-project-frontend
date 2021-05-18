@@ -8,14 +8,11 @@ import { Container, Input, Button } from 'semantic-ui-react';
 
 const GraficasBarras = (props) => {
 
-    const [fechaInicio, setFechaInicio] = useState('');
-    const [fechaFin, setFechaFin] = useState('');
-
     let data = [];
 
     function functionforEach(item, index) {
         if (index !== 0) {
-            data.push({ medicion: `Medición ${index}`, Valor: item.consumo})
+            data.push({ medicion: `Medición ${index}`, Valor: item.consumo })
         }
     }
 
@@ -29,38 +26,13 @@ const GraficasBarras = (props) => {
 
     getData()
 
-    const handleChange = (e) => {
-        if (e.target.name === 'dateInicio') {
-            setFechaInicio(e.target.value)
-        } else {
-            setFechaFin(e.target.value)
-        }
-    }
-
-    const getMediciones = () => {
-
-        // let inicio = mediciones[0].fecha_hora.slice(0, 10);
-        // let fin = mediciones[mediciones.length - 1].fecha_hora.slice(0, 10);
-
-
-        // if (fechaInicio !== undefined && fechaFin !== undefined) {
-        //     if (inicio >= fechaInicio && fin <= fechaFin) {
-
-        //         // function functionforEach(item, index) {
-        //         //     data.push({ medicion: index, Valor: item.consumo })
-        //         // // }
-        //         // mediciones.forEach(functionforEach)
-        //         console.log(data)
-        //     }
-        // }
-    }
 
     return (
         <Container centered textAlign='center' className="containerInfo">
             <h5>Estadísticas de Consumo</h5>
             <ResponsiveContainer height={270}>
                 <BarChart
-                
+
                     data={data}
                     margin={{
                         top: 5,
@@ -68,11 +40,11 @@ const GraficasBarras = (props) => {
                         left: 5,
                         bottom: 5,
                     }}
-                    // barSize={30}
+                // barSize={30}
                 >
                     <CartesianGrid strokeDasharray="3 3" />
                     <XAxis dataKey="medicion" />
-                    <YAxis  />
+                    <YAxis />
                     <Tooltip />
                     <Legend />
                     <Bar dataKey="Valor" fill="#51d1f6" />
@@ -86,8 +58,6 @@ const GraficasBarras = (props) => {
                         type="date"
                         label='Desde'
                         name="dateInicio"
-                        value={fechaInicio}
-                        onChange={handleChange}
                     />
                 </label>
                 <label>
@@ -96,11 +66,10 @@ const GraficasBarras = (props) => {
                         type="date"
                         label='Hasta'
                         name="dateFin"
-                        value={fechaFin}
-                        onChange={handleChange} />
-                    <Button className="botonGraficas" primary onClick={getMediciones()}>Buscar</Button>
+                    />
+                    <Button className="botonGraficas" primary>Buscar</Button>
                 </label>
-                {/* onClick={getMediciones()} */}
+             
             </div>
         </Container>
     );
