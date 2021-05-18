@@ -289,7 +289,6 @@ const Header = () => {
             removeMobileMenu()
             scrollHeaderChange()
             addNightTheme()
-            console.log(router.pathname)
         }
         return () => mounted = false;
     }, [])
