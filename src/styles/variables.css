@@ -134,3 +134,12 @@ body.dark-theme {
         margin-right: auto !important;
     }
 }
+
+.home__blob {
+    width: 250px;
+    fill: var(--first-color);
+}
+
+.home__blob-img {
+    width: 250px;
+}

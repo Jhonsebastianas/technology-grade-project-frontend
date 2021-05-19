@@ -120,7 +120,7 @@ const Home = ({ mobile }) => {
                             </Header>
                             <p style={{ fontSize: '1.33em' }}>
                                 <ImageNext
-                                    src="/images/founders/JhonAgudelo.webp"
+                                    src="/images/founders/JhonAgudelo.jpeg"
                                     alt="Founder Jhon"
                                     width="37"
                                     height="37"
@@ -130,7 +130,7 @@ const Home = ({ mobile }) => {
                             </p>
                             <p style={{ fontSize: '1.33em' }}>
                                 <ImageNext
-                                    src="/images/founders/SaraCardenas.webp"
+                                    src="/images/founders/SaraCardenas.jpg"
                                     alt="Founder Sara"
                                     width="37"
                                     height="37"
@@ -140,7 +140,7 @@ const Home = ({ mobile }) => {
                             </p>
                             <p style={{ fontSize: '1.33em' }}>
                                 <ImageNext
-                                    src="/images/founders/BreynerTaborda.webp"
+                                    src="/images/founders/BreynerTaborda.jpg"
                                     alt="Founder Breyner"
                                     width="37"
                                     height="37"
