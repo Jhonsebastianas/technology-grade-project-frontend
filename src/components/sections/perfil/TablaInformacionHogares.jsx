@@ -3,50 +3,71 @@ import { Button, Form, Input, Table, Icon } from "semantic-ui-react";
 
 import ModalPerfil from '@components/sections/perfil/ModalPerfil'
 import ModalEditHogar from "./ModalEditHogar";
+import ModalEliminarHogar from "./ModalEliminarHogar";
 
 const TablaInformacionHogares = (props) => {
 
-  const {handleCloseModal,
+  const {
+    handleCloseModal,
     handleOpenModal,
     modalIsOpen, 
     handleEditHogar,
     listaHogares,
     goToAddHome,
     hogarQueSeEditara,
-    handleHogarQueSeEditara} = props;
+    handleHogarQueSeEditara,
+    handleEliminarHogar,
+    formik,
+    handledChanged,
+    errors,
+    handledServicio,
+    validarExistenciaServicio,
+    tipoDeAccion,
+    setTipoDeAccion,
+    } = props;
 
-  function modalAndHogar(hogar){
+  function modalAndEditarHogar(hogar){
      handleOpenModal()
      handleHogarQueSeEditara(hogar)
+     setTipoDeAccion("editar");
+  }
+
+  function modalAndEliminarHogar(hogar){
+    handleOpenModal();
+    handleHogarQueSeEditara(hogar);
+    setTipoDeAccion("eliminar");
   }
 
   return (
     <>
-      <Table celled fixed singleLine>
+      <Table celled fixed singleLine className="tabla-perfil-hogares">
         <Table.Header>
           <Table.Row>
-            <Table.HeaderCell>#Contrato</Table.HeaderCell>
-            <Table.HeaderCell>Hogar</Table.HeaderCell>
-            <Table.HeaderCell>Estrato</Table.HeaderCell>
-            <Table.HeaderCell>Servicios</Table.HeaderCell>
+            <Table.HeaderCell className="flotarElemento">#Contrato</Table.HeaderCell>
+            <Table.HeaderCell className="flotarElemento">Hogar</Table.HeaderCell>
+            <Table.HeaderCell className="flotarElemento">Estrato</Table.HeaderCell>
+            <Table.HeaderCell className="flotarElemento">Servicios</Table.HeaderCell>
             <Table.HeaderCell />
           </Table.Row>
         </Table.Header>
         {listaHogares.length > 0 &&
           listaHogares.map((hogar, index) => {
             return (
-              <Table.Body>
+              <Table.Body key={index}>
                 <Table.Row>
-                  <Table.Cell>{hogar.numero_contrato}</Table.Cell>
-                  <Table.Cell>{hogar.nombre}</Table.Cell>
-                  <Table.Cell>{hogar.estrato}</Table.Cell>
+                  <Table.Cell className="flotarElemento">{hogar.numero_contrato}</Table.Cell>
+                  <Table.Cell className="flotarElemento">{hogar.nombre}</Table.Cell>
+                  <Table.Cell className="flotarElemento">{hogar.estrato}</Table.Cell>
                   <Table.Cell>
                     {hogar.servicios.map((servicio) => {
-                      return <h5>{servicio.principal}</h5>;
+                      //Separamos el primer caracter y lo convertimos a mayuscula. Despues con el slice(1) traemos el nombre quitando el primer caracter
+                      const nombreServicio = servicio.principal.charAt(0).toUpperCase() + servicio.principal.slice(1);
+                      return <h5 className="nombreServicios">{nombreServicio}</h5>;
                     })}
                   </Table.Cell>
-                  <Table.Cell className="center">
-                  <span key={index} onClick={() => modalAndHogar(hogar)} className="material-icons  iconoColorAzul" node="button">mode_edit</span>
+                  <Table.Cell className="center celdaIconosInfoHogares">
+                  <Icon  onClick={() => modalAndEditarHogar(hogar)} name="edit outline" className="iconoColorAzul" />
+                  <Icon  onClick={() => modalAndEliminarHogar(hogar)} name="delete" className="iconoColorRojo" />
                     {/*<ModalPerfil hogarQueSeEditara={listaHogares[index]} />*/}
                   </Table.Cell>
                 </Table.Row>
@@ -68,13 +89,26 @@ const TablaInformacionHogares = (props) => {
                 </Button>
               </div>
             )}
-      {listaHogares.length > 0 && (
+      {listaHogares.length > 0 && tipoDeAccion === "editar" && (
         <ModalEditHogar 
         modalIsOpen={modalIsOpen} 
         handleCloseModal={handleCloseModal}
         handleEditHogar={handleEditHogar}
         hogarQueSeEditara={hogarQueSeEditara}
-  
+        formik={formik}
+        handledChanged={handledChanged}
+        errors={errors}
+        handledServicio={handledServicio}
+        validarExistenciaServicio={validarExistenciaServicio}
+        />
+      )}
+
+      {listaHogares.length > 0 && tipoDeAccion === "eliminar" && (
+        <ModalEliminarHogar 
+        modalIsOpen={modalIsOpen} 
+        handleCloseModal={handleCloseModal}
+        hogarQueSeEditara={hogarQueSeEditara}
+        handleEliminarHogar={handleEliminarHogar}
         />
       )}
     </>

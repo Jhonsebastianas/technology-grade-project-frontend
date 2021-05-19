@@ -42,8 +42,8 @@ const RegistrarHogarContainer = () => {
         if (event.target.checked) {
             setServicios([...servicios, event.target.value]);
         } else {
-            const posService = servicios.indexOf(event.target.value) + 1;
-            setServicios([...servicios.splice(posService, 1)]);
+            const serviciosRegistrar = servicios.filter(servicio => servicio != event.target.value);
+            setServicios(serviciosRegistrar);
         }
     }
 
@@ -101,6 +101,10 @@ const RegistrarHogarContainer = () => {
         onSubmit: registerNewHome,
     });
 
+    const validarExistenciaServicio = () =>{
+        return false;
+    }
+
     return (
         <Form onSubmit={formik.handleSubmit}>
             <Grid>
@@ -109,6 +113,8 @@ const RegistrarHogarContainer = () => {
                     handledChanged={handledChanged}
                     errors={errors}
                     handledServicio={handledServicio}
+                    hogarQueSeEditara={hogar}
+                    validarExistenciaServicio={validarExistenciaServicio}
                 />
                 <Grid.Column width={16}>
                     <Button type='submit' color="green" disabled={!formik.isValid} >

@@ -166,7 +166,7 @@ color: white;
   background:#000;
   min-height:200vh;
 }
-header{
+header.menuPublico {
   position: absolute;
   top:0;
   left:0;
@@ -182,13 +182,13 @@ header{
   transition-timing-function: ease;*/
 }
 
-header.sticky{
+header.menuPublico.sticky{
   padding: 5px 100px;
   background: var(--primary-color);
   transform:translate(0px, -60px) ;
 } 
 
-header .logo{
+header.menuPublico .logo{
   position:relative;
   font-weight:700;
   font-size:2em;
@@ -199,19 +199,19 @@ header .logo{
   transition:0.6s;
 }
 
-header ul{
+header.menuPublico ul{
   position: relative;
   display:flex;
   justify-content:center;
   align-items:center;
 }
 
-header ul li{
+header.menuPublico ul li{
   position:relative;
   list-style:none;
 }
 
-header ul li a{
+header.menuPublico ul li a{
   position:relative;
   margin:0 15px;
   text-decoration:none;
@@ -230,7 +230,7 @@ header ul li a{
   background-size:cover;
 }
 
-header ul li a:hover{
+header.menuPublico ul li a:hover{
   font-size: 1.5em;
   font-weight: bold;
 }
