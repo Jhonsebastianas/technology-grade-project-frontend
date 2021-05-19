@@ -22,14 +22,18 @@ const InformeConsumo = () => {
     const [infohogar, setInfoHogar] = useState({});
     const [cargandoHogar, setCargandoHogar] = useState(true);
 
+    const updateDetalleHogar = () => {
+        ServiciosHogares.getHogarAndLectura(SessionUtil.getNumeroContrato(), ({ data }) => {
+            setInfoHogar(data);
+            setCargandoHogar(false)
+        }, (error) => { });
+    }
+
     useEffect(() => {
         let mounted = true;
         if (mounted) {
             setTipoServicio(SessionUtil.getTipoServicio());
-            ServiciosHogares.getHogarAndLectura(SessionUtil.getNumeroContrato(), ({ data }) => {
-                setInfoHogar(data);
-                setCargandoHogar(false)
-            }, (error) => { });
+            updateDetalleHogar();
         }
         return () => (mounted = false);
     }, []);
@@ -74,6 +78,7 @@ const InformeConsumo = () => {
                                 tiposervicio={tiposervicio}
                                 hogar={infohogar}
                                 lectura={getLectura()}
+                                updateDetalleHogar={updateDetalleHogar}
                             />
                         </Grid.Column>
                         <Grid.Column centered textAlign='center' className="computer only" >

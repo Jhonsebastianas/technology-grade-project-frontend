@@ -12,7 +12,7 @@ import Calculos from '@utils/calculos.util';
 
 const GraficaCircular = (props) => {
 
-    const { tiposervicio, lectura, hogar } = props;
+    const { tiposervicio, lectura, hogar, updateDetalleHogar } = props;
     const { tarifas, lectura: { suma_consumos } } = lectura
     const [openLectura, setOpenLectura] = useState(false);
     const [totalPagar, setTotalPagar] = useState(Calculos.calcularTotalPagarTarifasPorServicio(tarifas, suma_consumos))
@@ -81,6 +81,7 @@ const GraficaCircular = (props) => {
                     openLectura={openLectura}
                     setOpenLectura={setOpenLectura}
                     servicioPublico={lectura}
+                    updateDetalleHogar={updateDetalleHogar}
                     positive
                 />
                 <Button onClick={() => setOpenLectura(true)} className="botonGraficas">Nuevo consumo</Button>

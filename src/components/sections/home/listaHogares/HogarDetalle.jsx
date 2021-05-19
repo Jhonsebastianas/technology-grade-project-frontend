@@ -14,7 +14,7 @@ const StyledContainerHogar = Styled.div`
 `
 
 const HogarDetalle = (props) => {
-    const { hogar, index, indexHogarActivo, changeHogarActivo, handleHogarSeleccionado } = props
+    const { hogar, index, indexHogarActivo, changeHogarActivo, handleHogarSeleccionado, updateDetalleHogar } = props
     const { estrato, nombre, numero_contrato, servicios, tipo_hogar } = hogar
 
     const getConsumoTotalServicio = () => {
@@ -65,6 +65,7 @@ const HogarDetalle = (props) => {
                                     index={index}
                                     numeroContrato={numero_contrato}
                                     handleHogarSeleccionado={handleHogarSeleccionado}
+                                    updateDetalleHogar={updateDetalleHogar}
                                 />
                             ))}
                         </Grid>
@@ -87,7 +88,7 @@ const getIconoTipoHogar = (tipoHogar) => {
 }
 
 const ServicioHogar = (props) => {
-    const { servicio, index, handleHogarSeleccionado, numeroContrato } = props
+    const { servicio, index, handleHogarSeleccionado, numeroContrato, updateDetalleHogar } = props
     const { lectura, principal, secundario, sensor, tarifas } = servicio
     const { has_sensor } = sensor
     const { suma_consumos, mediciones } = lectura
