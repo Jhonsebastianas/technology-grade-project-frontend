@@ -85,7 +85,7 @@ const InformeConsumo = () => {
                             <GraficaBarras lectura={getLectura()} />
                         </Grid.Column>
                     </Grid.Row>
-                    <Grid.Row columns='equal' >
+                    <Grid.Row columns='equal'>
                         <Grid.Column centered textAlign='center' >
                             <Tips />
                         </Grid.Column>
