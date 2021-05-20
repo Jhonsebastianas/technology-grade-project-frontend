@@ -7,191 +7,6 @@ import LoginUtils from '@utils/login.utils'
 import { useToasts } from 'react-toast-notifications'
 import { useRouter } from 'next/router'
 
-const StyledHeader = StyledComponents.header`
-    width: 100%;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    z-index: var(--z-fixed);
-    background-color: var(--body-color);
-    border-bottom: 2px solid var(--first-color);
-
-
-    .container-menu-nav {
-        max-width: 768px;
-        margin-left: var(--mb-1-5);
-        margin-right: var(--mb-1-5);
-    }
-
-    .grid-menu-nav {
-        display: grid;
-        gap: 1.5rem;
-    }
-
-    .show-menu {
-        bottom: 0;
-    }
-
-    .active-link {
-        color: var(--first-color);
-    }
-
-    // Change background header
-    .scroll-header {
-        box-shadow: 0 -1px 4px rgba(0, 0, 0, .15);
-    }
-
-    /*========== Button Dark/Light ==========*/
-
-    .nav__btns {
-        display: flex;
-        align-items: center;
-    }
-
-    .change-theme {
-        font-size: 1.25rem;
-        color: var(--title-color);
-        margin-right: var(--mb-1);
-        cursor: pointer;
-    }
-
-    .change-theme:hover {
-        color: var(--first-color);
-    }
-
-    /* For small devices */
-    @media screen and (max-width: 350px) {
-        /** MENÚ */
-        .nav__menu {
-            padding: 2rem .25rem 4rem !important;
-        }
-        .nav__list {
-            column-gap: 0 !important;
-        }
-    }
-
-    /* For medium devices */
-    @media screen and (min-width: 768px) {
-        top: 0 !important;
-        bottom: initial !important;
-        padding: 0 1rem;
-        
-        .nav__icon, .nav__close, .nav__toggle {
-            display: none;
-        }
-
-        .nav__list {
-            display: flex;
-            column-gap: 2rem;
-        }
-        .nav__menu {
-            margin-left: auto;
-        }
-        .change-theme {
-            margin: 0px !important;
-        }
-    }
-
-    // /* For large devices */
-    // @media screen and (min-width: 1024px) {
-    //     padding: 0;
-    // }
-`
-
-const StyledNav = StyledComponents.nav`
-    max-width: 968px !important;
-    height: var(--header-height);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    .nav__logo, 
-    .nav__toggle {
-        color: var(--title-color);
-        font-weight: var(--font-semi-bold);
-    }
-
-    .nav__logo {
-        font-size: 1.1rem;
-        &:hover {
-            color: var(--first-color);
-        }
-    }
-
-    .nav__toggle {
-        font-size: 1.1rem;
-        cursor: pointer;
-
-        &:hover {
-            color: var(--first-color);
-        }
-    }
-
-    /* For medium devices */
-    @media screen and (min-width: 768px) {
-        height: calc(var(--header-height) + 1.5rem) !important;
-        column-gap: 1rem !important;
-    }
-`
-
-const StyledNavMenu = StyledComponents.div`
-
-    .nav__list {
-        list-style-type: none;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 2rem;
-    }
-
-    .nav__link {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        font-size: var(--normal-font-size);
-        color: var(--title-color);
-        font-weight: var(--font-medium);
-
-        &:hover {
-            color: var(--first-color);
-        }
-    }
-
-    .nav__icon {
-        font-size: 1.2rem;
-    }
-
-    .nav__close {
-        position: absolute;
-        right: 1.3rem;
-        bottom: .5rem;
-        font-size: 1.5rem;
-        cursor: pointer;
-        color: var(--first-color);
-
-        &:hover {
-            color: var(--first-color-alt);
-        }
-    }
-
-    /** For small devices */
-    // @media screen and (max-width: 350px) {
-    //     padding: 2rem .25rem 4rem !important;
-    // }
-
-    // Responsive
-    @media screen and (max-width: 767px) {
-        position: fixed;
-        bottom: -100%;
-        left: 0;
-        width: 100%;
-        background-color: var(--body-color);
-        padding: 2rem 1.5rem 4rem;
-        box-shadow: 0 -1px 4px rgba(0, 0, 0, .15);
-        border-radius: 1.5rem 1.5rem 0 0;
-
-        transition: .3s;
-    }
-`
-
 /** Change background header */
 const scrollHeaderChange = () => {
     function scrollHeader() {
@@ -282,6 +97,12 @@ const Header = () => {
 
     const activeLink = getCurrentView()
 
+    const [cantidadItems, setCantidadItems] = useState(6)
+
+    const cantidadItemMenu = () => {
+        return document.querySelectorAll('.nav__item').length
+    }
+
     useEffect(() => {
         let mounted = true;
         if (mounted) {
@@ -289,6 +110,7 @@ const Header = () => {
             removeMobileMenu()
             scrollHeaderChange()
             addNightTheme()
+            setCantidadItems(cantidadItemMenu() / 2)
         }
         return () => mounted = false;
     }, [])
@@ -304,11 +126,11 @@ const Header = () => {
     }
 
     return (
-        <StyledHeader className="header" id="header">
-            <StyledNav className="nav container-menu-nav">
+        <header className="menu__privado header" id="header">
+            <nav className="nav container-menu-nav">
                 <a href="#" className="nav__logo">{APP_NAME}</a>
-                <StyledNavMenu className="nav__menu" id="nav-menu">
-                    <ul className="nav__list grid-menu-nav">
+                <div className="nav__menu" id="nav-menu">
+                    <ul className="nav__list grid-menu-nav" style={{ "gridTemplateColumns": `repeat(${cantidadItems}, 1fr)`}}>
                         <li className="nav__item">
                             <Link href="/home">
                                 <a className={`nav__link ${isActiveLink('home')}`}>
@@ -330,14 +152,14 @@ const Header = () => {
                                 </a>
                             </Link>
                         </li>
-                        <li className="nav__item">
+                        {/* <li className="nav__item">
                             <Link href="/home/tarifas">
                                 <a className={`nav__link ${isActiveLink('tarifas')}`}>
                                     <Icon className="nav__icon" name="file alternate" /> Tarifas
                                 </a>
                             </Link>
 
-                        </li>
+                        </li> */}
                         <li className="nav__item">
                             <Link href="/">
                                 <a className="nav__link" onClick={singOff}>
@@ -348,7 +170,7 @@ const Header = () => {
                     </ul>
                     {/* <i className="uil uil-times nav__close" id="nav-close"></i> */}
                     <Icon className="nav__close" name="delete" id="nav-close" />
-                </StyledNavMenu>
+                </div>
 
                 <div className="nav__btns">
                     {/* Theme change button */}
@@ -360,8 +182,8 @@ const Header = () => {
                         <Icon name="bars" />
                     </div>
                 </div>
-            </StyledNav>
-        </StyledHeader>
+            </nav>
+        </header>
     )
 }
 
