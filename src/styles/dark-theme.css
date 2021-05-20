@@ -21,3 +21,21 @@
     border-color: var(--text-color) !important;
     color: var(--text-color) !important;
 }
+
+/* Validaciones informe consumo */
+.dark-theme .tipInfo{
+    box-shadow:  none; 
+    background: var(--input-color) !important;
+    color: var(--text-color) !important;
+}
+
+.dark-theme .containerInfo table, 
+.dark-theme .containerInfo h5, 
+.dark-theme .containerInfo .valoresConsumoTitle,
+.dark-theme .containerInfo .rangoFechas{ 
+    color: var(--text-color) !important;
+}
+
+.dark-theme .valorMonetario{
+    color: var( --first-color-alt) !important;
+}

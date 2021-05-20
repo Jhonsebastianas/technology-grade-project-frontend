@@ -1,4 +1,4 @@
-#nosotrosSectionOne, .nosotrosSectionOne.ui.vertical.segment {
+#nosotrosSectionOne{
     background: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)),url('/images/JP_9.webp') ;
     background-repeat: no-repeat;
     background-size: cover;
@@ -6,6 +6,7 @@
     justify-content: center;
     text-align: center;
     align-content: center;
+    
 }
 
 .Nosotros{
@@ -98,7 +99,7 @@
 
 .boton {
    font-family: 'Lato', Helvetica Neue,Arial,Helvetica,sans-serif; 
-    border: 2px solid var( --primary-color) !important;
+    border: 2px solid var( --first-color) !important;
     text-transform: uppercase !important;
     background: none;
     padding: 10px;
@@ -123,7 +124,7 @@
     left: 0px;
     width: 0px;
     height: 100%;
-    background: var( --primary-color) ;
+    background: var( --first-color) ;
     transition: all 1s ease;
     z-index: -1;
 }
