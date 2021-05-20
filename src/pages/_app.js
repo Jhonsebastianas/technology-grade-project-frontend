@@ -9,12 +9,15 @@ import '@styles/RegistroUsuario.css'
 import '@styles/menuPublico.css'
 import '@styles/editarCuenta.css'
 import '@styles/nosotros.css'
+import '@styles/agradecimientos.css'
 import '@styles/contactanos.css'
 import '@styles/informeConsumo.css'
 import '@styles/graficas.css'
 import '@styles/ListaHogares.css'
 import '@styles/modalEditarCuenta.css'
 import '@styles/menuPrivado.css'
+
+import '@styles/dark-theme.css'
 
 
 import { ToastProvider } from 'react-toast-notifications';
