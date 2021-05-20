@@ -13,10 +13,10 @@
     --header-height: 3rem;
     /*========== Colors ==========*/
     /* Change favorite color */
-    --hue-color: 210;
+    --hue-color: 195;
     /*Purple 250 - Green 142 - Blue 230 - Pink 340*/
     /* HSL color mode */
-    --first-color: hsl(var(--hue-color), 69%, 61%);
+    --first-color: hsl(var(--hue-color), 100%, 45%);
     --first-color-second: hsl(var(--hue-color), 69%, 61%);
     --first-color-alt: hsl(var(--hue-color), 57%, 53%);
     --first-color-lighter: hsl(var(--hue-color), 92%, 85%);
@@ -91,8 +91,6 @@ body.dark-theme {
         --smaller-font-size: .813rem;
     }
 }
-
-
 
 /* Active link */
 
