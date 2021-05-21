@@ -25,7 +25,7 @@ const Nosotros = () => {
 
                 </Grid>
             </Segment>
-            <Segment vertical className="nosotrosSectionTwo">
+            <Segment vertical id="nosotrosSectionTwo">
                 <Grid container stackable>
                     <Grid.Row >
                         <Grid.Column width={16}>
@@ -100,7 +100,7 @@ const Nosotros = () => {
                                     <h3 className="name">Jhon Agudelo</h3>
                                     <p className="title"></p>
                                     <div className="social">
-                                        <a href="https://github.com/segaretsu" target="_blank"><Icon name="github" /></a>
+                                        <a href="https://www.jhonsebastianas.com/" target="_blank"><Icon name="world" /></a>
                                     </div>
                                 </div>
                             </div>
@@ -125,7 +125,6 @@ const Nosotros = () => {
                                     </g>
                                 </svg>
                                 <div className="cover">
-
                                     <h3 className="name">Sara Cárdenas</h3>
                                     <p className="title"> </p>
                                     <div className="social">
@@ -133,17 +132,6 @@ const Nosotros = () => {
                                     </div>
                                 </div>
                             </div>
-                            {/* <div className="box" style={{ backgroundImage: 'url(/images/founders/SaraCardenas.svg)' }}>
-                                <div className="cover">
-                                    <h3 className="name">Sara Cárdenas</h3>
-                                    <p className="title"> </p>
-                                    <div className="social">
-                                        <a href="#"><Icon name="facebook f" /></a>
-                                        <a href="#"><Icon name="twitter" /></a>
-                                        <a href="#"><Icon name="instagram" /></a>
-                                    </div>
-                                </div>
-                            </div> */}
                         </Grid.Column>
                         <Grid.Column className="items">
                             <div className="box" >
