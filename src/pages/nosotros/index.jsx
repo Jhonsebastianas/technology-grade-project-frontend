@@ -100,7 +100,7 @@ const Nosotros = () => {
                                     <h3 className="name">Jhon Agudelo</h3>
                                     <p className="title"></p>
                                     <div className="social">
-                                        <a href="https://github.com/segaretsu" target="_blank"><Icon name="github" /></a>
+                                        <a href="https://www.jhonsebastianas.com/" target="_blank"><Icon name="world" /></a>
                                     </div>
                                 </div>
                             </div>
