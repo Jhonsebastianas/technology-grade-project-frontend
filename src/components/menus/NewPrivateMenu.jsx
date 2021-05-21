@@ -68,9 +68,12 @@ const addNightTheme = () => {
 
     // We validate if the user previously chose a topic
     if (selectedTheme) {
+        console.log("Tema seleccionado: ", document.body.classList.contains(darkTheme) ? 'dark' : 'light')
         // if the validation is fulfilled, we ask what the issue was to know if we activated or deactivate the dark theme
-        document.body.classList[(selectedTheme === 'dark') ? 'add' : 'remove'](darkTheme)
-        themeButton.classList[(selectedIcon === 'moon outline') ? 'add' : 'remove'](iconTheme)
+        window.addEventListener('load', function () {
+            document.body.classList[(selectedTheme === 'dark') ? 'add' : 'remove'](darkTheme)
+            themeButton.classList[(selectedIcon === 'moon outline') ? 'add' : 'remove'](iconTheme)
+        })
     }
 
     // Active / deactivate the theme manually with the button
@@ -130,40 +133,50 @@ const Header = () => {
             <nav className="nav container-menu-nav">
                 <a href="#" className="nav__logo">{APP_NAME}</a>
                 <div className="nav__menu" id="nav-menu">
-                    <ul className="nav__list grid-menu-nav" style={{ "gridTemplateColumns": `repeat(${cantidadItems}, 1fr)`}}>
+                    <ul className="nav__list grid-menu-nav" style={{ "gridTemplateColumns": `repeat(${cantidadItems}, 1fr)` }}>
                         <li className="nav__item">
                             <Link href="/home">
-                                <a className={`nav__link ${isActiveLink('home')}`}>
-                                    <Icon className="nav__icon" name="home" /> Hogares
+                                <a>
+                                    <span className={`nav__link ${isActiveLink('home')}`}>
+                                        <Icon className="nav__icon" name="home" /> Hogares
+                                    </span>
                                 </a>
                             </Link>
                         </li>
                         <li className="nav__item">
                             <Link href="/home/perfil">
-                                <a className={`nav__link ${isActiveLink('perfil')}`}>
-                                    <Icon className="nav__icon" name="user" /> Perfil
+                                <a>
+                                    <span className={`nav__link ${isActiveLink('perfil')}`}>
+                                        <Icon className="nav__icon" name="user" /> Perfil
+                                    </span>
                                 </a>
                             </Link>
                         </li>
                         <li className="nav__item">
                             <Link href="/home/notificaciones">
-                                <a className={`nav__link ${isActiveLink('notificaciones')}`}>
-                                    <Icon className="nav__icon" name="alarm" /> Notifiaciones
+                                <a>
+                                    <span className={`nav__link ${isActiveLink('notificaciones')}`}>
+                                        <Icon className="nav__icon" name="alarm" /> Notifiaciones
+                                    </span>
                                 </a>
                             </Link>
                         </li>
                         {/* <li className="nav__item">
                             <Link href="/home/tarifas">
-                                <a className={`nav__link ${isActiveLink('tarifas')}`}>
-                                    <Icon className="nav__icon" name="file alternate" /> Tarifas
+                                <a>
+                                    <span className={`nav__link ${isActiveLink('tarifas')}`}>
+                                        <Icon className="nav__icon" name="file alternate" /> Tarifas
+                                    </span>
                                 </a>
                             </Link>
 
                         </li> */}
                         <li className="nav__item">
                             <Link href="/">
-                                <a className="nav__link" onClick={singOff}>
-                                    <Icon className="nav__icon" name="log out" /> Cerrar sesión
+                                <a>
+                                    <span className="nav__link" onClick={singOff}>
+                                        <Icon className="nav__icon" name="log out" /> Cerrar sesión
+                                    </span>
                                 </a>
                             </Link>
                         </li>
