@@ -97,7 +97,7 @@ const ListaHogares = (props) => {
             {mostrarHogares &&
                 <>
                     {/* <Divider /> */}
-                    <Accordion fluid styled>
+                    <Accordion fluid styled className="hogares__accordion">
                         {listaHogares.map((hogar, index) => (
                             <HogarDetalle
                                 changeHogarActivo={changeHogarActivo}

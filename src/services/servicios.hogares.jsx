@@ -1,6 +1,6 @@
 import axios from 'axios';
 import ConstantsList from '@constants/Constants';
-import AuthHeader from '@services/auth-header'
+import AuthHeader from '@services/auth-header';
 
 const serviciosHogares = {
     getHogaresByUsername,
@@ -9,6 +9,7 @@ const serviciosHogares = {
     getHogaresAndLecturas,
     getHogarAndLectura,
     getHogarLectura,
+    registerNewHome,
 }
 
 function getHogaresByUsername(username, success, error) {
@@ -50,6 +51,13 @@ function getHogarLectura(numeroContrato, tiposervicio, success, error) {
 function updateHogarByNumeroContrato(hogar, success, error) {
     const { API_ENDPOINT } = ConstantsList;
     axios.post(API_ENDPOINT + 'home/editar-hogar', hogar, AuthHeader.headers())
+        .then(success)
+        .catch(error);
+}
+
+function registerNewHome(newHome, success, error) {
+    const { API_ENDPOINT } = ConstantsList;
+    axios.post(API_ENDPOINT + 'home/create-home', newHome, AuthHeader.headers())
         .then(success)
         .catch(error);
 }

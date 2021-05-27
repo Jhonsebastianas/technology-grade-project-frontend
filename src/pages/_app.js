@@ -17,6 +17,8 @@ import '@styles/ListaHogares.css'
 import '@styles/modalEditarCuenta.css'
 import '@styles/menuPrivado.css'
 
+import '@styles/css/registro-hogar.css'
+
 import '@styles/dark-theme.css'
 
 
