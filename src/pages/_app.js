@@ -18,6 +18,8 @@ import '@styles/modalEditarCuenta.css'
 import '@styles/menuPrivado.css'
 import '@styles/datosimportantes.css'
 
+import '@styles/css/registro-hogar.css'
+
 import '@styles/dark-theme.css'
 
 

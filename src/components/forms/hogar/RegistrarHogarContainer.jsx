@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { useToasts } from 'react-toast-notifications'
-import ServiciosRegistro from '@services/serviciosRegistro'
+import ServiciosHogares from '@services/servicios.hogares'
 import loginUtils from '@utils/login.utils'
 import { Button, Card, Form, Grid, Icon, Input } from 'semantic-ui-react'
 import RegistarHogarDetails from './RegistarHogarDetails'
@@ -72,7 +72,7 @@ const RegistrarHogarContainer = () => {
         setErrors(error);
         if (!Object.keys(error).length) {
             nuevoHogar.hogarActual = (hogar.hogarActual === 'Si') ? true : false;
-            ServiciosRegistro.registerNewHome(nuevoHogar, () => {
+            ServiciosHogares.registerNewHome(nuevoHogar, () => {
                 addToast('Hogar registrado con exito', { appearance: 'success', autoDismiss: true });
                 router.push("/home");
             }, (error) => {
