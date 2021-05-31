@@ -16,6 +16,7 @@ import '@styles/graficas.css'
 import '@styles/ListaHogares.css'
 import '@styles/modalEditarCuenta.css'
 import '@styles/menuPrivado.css'
+import '@styles/datosimportantes.css'
 
 import '@styles/dark-theme.css'
 
