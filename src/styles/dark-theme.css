@@ -10,6 +10,16 @@
     color: var(--text-color) !important;
 }
 
+.dark-theme input, .dark-theme .ui.label.label  {
+    background-color: var(--input-color) !important;
+    color: var(--text-color) !important;
+}
+
+.dark-theme .ui.form label {
+   
+    color: var(--text-color) !important;
+}
+
 .dark-theme .ui.form textarea {
     background-color: var(--input-color) !important;
     color: var(--text-color) !important;
