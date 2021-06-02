@@ -1,0 +1,29 @@
+.header__titulo {
+    font-size: 4em !important;
+    font-weight: var(--font-semi-bold);
+    margin-top: 3em !important;
+    margin-bottom: 0;
+}
+
+.header__subtitulo {
+    font-size: 1.7em !important;
+    font-weight: normal !important;
+    margin-top: 1em !important;
+    color: #d8d8d8 !important;
+    /* color: var(--text-color) !important; */
+}
+
+.button__iniciar-app {
+    margin-top: 1rem !important;
+    margin-bottom: 1rem !important;
+    background-color: var(--first-color) !important;
+    color: #fff !important;
+}
+
+.icon__iniciar-app {
+    transition: .3s !important;
+}
+
+.button__iniciar-app:hover .icon__iniciar-app {
+    transform: translateX(.6rem);
+}
