@@ -1,0 +1,62 @@
+/* Pantalla principal */
+.ui.stackable.grid.datoImportante{
+   margin: auto;
+    
+}
+
+/* Formulario crear datos */
+
+.titleCrearDato{
+    text-align: center !important;
+}
+
+
+.botonEnviarDato{
+    background: var( --first-color-second) !important;
+    color: var( --title-color) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-top: 5% !important;
+    text-align: center !important;
+    display: block !important;
+    
+}
+
+.botonEnlace{
+    background: var( --first-color-second) !important;
+    color: var( --title-color) !important;
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 50% !important;
+    line-height:20px !important;
+    padding-top:10px !important;
+    padding-bottom: 10px !important;
+    margin: 3% auto 5% auto !important;
+    /* margin-right: auto !important;
+    margin-bottom: auto !important; */
+    display: block !important;
+    border: none !important;
+    text-align: center !important;
+}
+
+.botonEnlace i{
+   margin-left: auto !important;
+   margin-right: auto !important;
+}
+
+.botonEnlace:hover {
+    cursor: pointer !important;
+}
+
+.textAreaDato.field textarea{   
+    resize: none !important;
+}
+
+.deleteEnlace:hover{
+    cursor: pointer !important;
+}
+
+.infodato{
+    text-align: center !important;
+}
+
