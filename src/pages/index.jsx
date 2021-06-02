@@ -41,29 +41,20 @@ const Home = ({ mobile }) => {
             >
                 <Container text className={`${containerPrincipal}`}>
                     <Header
+                        className="header__titulo"
                         as='h1'
                         content={APP_NAME}
                         inverted
-                        style={{
-                            fontSize: mobile ? '2em' : '4em',
-                            fontWeight: 'normal',
-                            marginBottom: 0,
-                            marginTop: mobile ? '1.5em' : '3em',
-                        }}
                     />
                     <Header
+                        className="header__subtitulo"
                         as='h2'
-                        content='Una forma moderna e interactiva de administrar tu consumo en servicios públicos del agua y energía.'
+                        content='Una forma moderna e interactiva de administrar tu consumo en servicios públicos, mientras contribuyes al cuidado del medio ambiente.'
                         inverted
-                        style={{
-                            fontSize: mobile ? '1.5em' : '1.7em',
-                            fontWeight: 'normal',
-                            marginTop: mobile ? '0.5em' : '1.5em',
-                        }}
                     />
-                    <Button primary size='huge' onClick={goToApp}>
+                    <Button className="button__iniciar-app" size='huge' onClick={goToApp}>
                         Inicia la aplicación
-                        <Icon name='right arrow' />
+                        <Icon name='icon__iniciar-app right arrow' />
                     </Button>
                 </Container>
             </Segment>

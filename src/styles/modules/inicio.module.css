@@ -17,6 +17,14 @@
 }
 
 .containerPrincipal {
-    background-color: rgba(0,0,0, 0.8);
-     padding-bottom: 20px;
+    background-color: rgba(0, 0, 0, 0.84);
+    padding-bottom: 20px;
+    border-radius: 2rem;
+    box-shadow: rgb(0 0 0 / 15%) 0px 2px 4px;
+
+    transition: .4s;
+}
+.containerPrincipal:hover {
+    background-color: rgba(0, 0, 0, 1);
+    box-shadow: 0 4px 8px rgba(0,0,0,.15);
 }

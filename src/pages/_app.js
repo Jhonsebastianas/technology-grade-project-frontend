@@ -5,6 +5,7 @@ import { APP_NAME } from '@constants/Constants'
 import 'semantic-ui-css/semantic.min.css'
 /** Estilos propios */
 import '@styles/variables.css'
+import '@styles/css/first-page.css'
 import '@styles/RegistroUsuario.css'
 import '@styles/menuPublico.css'
 import '@styles/editarCuenta.css'
@@ -16,6 +17,8 @@ import '@styles/graficas.css'
 import '@styles/ListaHogares.css'
 import '@styles/modalEditarCuenta.css'
 import '@styles/menuPrivado.css'
+
+import '@styles/css/registro-hogar.css'
 
 import '@styles/dark-theme.css'
 
