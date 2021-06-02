@@ -1,7 +1,7 @@
 /* h3 */
 .dark-theme h3.ui.header, 
 .dark-theme h4.ui.header {
-    color: var(--first-color);
+    color: #fff;
 }
 
 /* Inputs*/

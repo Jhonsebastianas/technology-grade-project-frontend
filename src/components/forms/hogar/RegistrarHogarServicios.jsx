@@ -46,7 +46,7 @@ const RegistrarHogarServicios = (props) => {
                         </Form.Group>
                     </Grid.Column>
                 </Grid>
-                <Grid stackable columns="equal" centered>
+                {/* <Grid stackable columns="equal" centered>
                     <Grid.Column textAlign="center">
                         <h3>Servicio agua</h3>
                         <p>Cuéntanos un poco sobre cómo mides tu consumo de agua.</p>
@@ -97,7 +97,7 @@ const RegistrarHogarServicios = (props) => {
                         <h3>Servicio energía</h3>
                         <p>Cuéntanos un poco sobre cómo luce tu contador de energía.</p>
                     </Grid.Column>
-                </Grid>
+                </Grid> */}
             </Container>
         </>
     )
