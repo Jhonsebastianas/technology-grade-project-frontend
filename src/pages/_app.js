@@ -61,8 +61,9 @@ const MyApp = ({ Component, pageProps }) => {
           {/* Essential META Tags */}
           <meta property="og:title" content="Controlsep: Administra tu consumo en servicios públicos del agua y energía." />
           <meta property="og:description" content="Controlsep es un proyecto creado por jóvenes apasionados por el desarrollo de software, para incentivar y permitir a las personas, medir el consumo del agua y energía en sus hogares, de forma automática por medio de sensores, o manual, digitando los registros del contador público." />
-          <meta property="og:image" content="https://controlsep.com/images/controlsep_presentation.png" />
+          <meta property="og:image" itemprop="image" content="https://controlsep.com/images/controlsep_presentation.png" />
           <meta property="og:url" content="https://controlsep.com/" />
+          <meta property="og:type" content="website" />
           <meta name="twitter:card" content="summary_large_image"></meta>
           {/* Non-Essential, But Recommended */}
           <meta property="og:site_name" content="Controlsep."></meta>
