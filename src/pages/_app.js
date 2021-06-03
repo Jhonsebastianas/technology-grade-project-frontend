@@ -3,24 +3,28 @@ import dynamic from "next/dynamic";
 import Head from 'next/head'
 import { APP_NAME } from '@constants/Constants'
 import 'semantic-ui-css/semantic.min.css'
-/** Estilos propios */
+
+/** Generales */
 import '@styles/variables.css'
+import '@styles/dark-theme.css'
+
+/** Home public */
 import '@styles/css/first-page.css'
-import '@styles/RegistroUsuario.css'
-import '@styles/menuPublico.css'
-import '@styles/editarCuenta.css'
-import '@styles/nosotros.css'
+import '@styles/css/footer-public.css'
 import '@styles/agradecimientos.css'
 import '@styles/contactanos.css'
-import '@styles/informeConsumo.css'
-import '@styles/graficas.css'
-import '@styles/ListaHogares.css'
-import '@styles/modalEditarCuenta.css'
-import '@styles/menuPrivado.css'
+import '@styles/nosotros.css'
+import '@styles/menuPublico.css'
 
+/** Home private */
 import '@styles/css/registro-hogar.css'
-
-import '@styles/dark-theme.css'
+import '@styles/editarCuenta.css'
+import '@styles/graficas.css'
+import '@styles/informeConsumo.css'
+import '@styles/ListaHogares.css'
+import '@styles/menuPrivado.css'
+import '@styles/modalEditarCuenta.css'
+import '@styles/RegistroUsuario.css'
 
 
 import { ToastProvider } from 'react-toast-notifications';

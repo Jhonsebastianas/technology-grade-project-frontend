@@ -1,0 +1,9 @@
+.footer-bg {
+    background-color: var(--first-color-second) !important;
+    padding: 5em 0em !important;
+}
+
+.footer__social-icon {
+    font-size: 2rem !important;
+    color: #fff !important;
+}

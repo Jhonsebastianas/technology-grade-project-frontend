@@ -1,11 +1,11 @@
 import React from 'react';
 import Link from 'next/link'
 import { APP_NAME } from '@constants/Constants'
-import { Button, Container, Grid, Header, List, Segment } from 'semantic-ui-react';
+import { Button, Container, Grid, Header, Icon, List, Segment } from 'semantic-ui-react';
 
 export default function FooterPublico() {
     return (
-        <Segment inverted vertical style={{ padding: '5em 0em' }}>
+        <Segment className="footer-bg" inverted vertical>
             <Container>
                 <Grid divided inverted stackable>
                     <Grid.Row>
@@ -20,13 +20,12 @@ export default function FooterPublico() {
                             <Header as='h4' inverted>
                                 Redes sociales
                                 </Header>
-                                <p>
-                                {/* <Link href="https://www.facebook.com/Arjeware-753778911629883"><a>A</a></Link> */}
-                                <Button circular color='facebook' icon='facebook'
-                                    href="https://www.facebook.com/Arjeware-753778911629883" target="_blank"
-                                    rel="noreferrer"
-                                />
-                                </p>
+                            <p>
+                                <a rel="noreferrer" target="_blank"
+                                    href="https://www.facebook.com/Arjeware-753778911629883">
+                                    <Icon className="footer__social-icon" name="facebook square" />
+                                </a>
+                            </p>
                         </Grid.Column>
                     </Grid.Row>
                 </Grid>
