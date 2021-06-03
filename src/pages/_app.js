@@ -3,25 +3,36 @@ import dynamic from "next/dynamic";
 import Head from 'next/head'
 import { APP_NAME } from '@constants/Constants'
 import 'semantic-ui-css/semantic.min.css'
-/** Estilos propios */
+
+/** Generales */
 import '@styles/variables.css'
+import '@styles/dark-theme.css'
+
+/** Home public */
 import '@styles/css/first-page.css'
-import '@styles/RegistroUsuario.css'
-import '@styles/menuPublico.css'
-import '@styles/editarCuenta.css'
-import '@styles/nosotros.css'
+import '@styles/css/footer-public.css'
 import '@styles/agradecimientos.css'
 import '@styles/contactanos.css'
-import '@styles/informeConsumo.css'
+import '@styles/nosotros.css'
+import '@styles/menuPublico.css'
+
+/** Home private */
+import '@styles/css/registro-hogar.css'
+import '@styles/editarCuenta.css'
 import '@styles/graficas.css'
+import '@styles/informeConsumo.css'
 import '@styles/ListaHogares.css'
-import '@styles/modalEditarCuenta.css'
 import '@styles/menuPrivado.css'
+<<<<<<< HEAD
 import '@styles/datosimportantes.css'
 
 import '@styles/css/registro-hogar.css'
 
 import '@styles/dark-theme.css'
+=======
+import '@styles/modalEditarCuenta.css'
+import '@styles/RegistroUsuario.css'
+>>>>>>> 7ba556ac58afcf7d9a79101e8af3900b26232994
 
 
 import { ToastProvider } from 'react-toast-notifications';
@@ -58,8 +69,9 @@ const MyApp = ({ Component, pageProps }) => {
           {/* Essential META Tags */}
           <meta property="og:title" content="Controlsep: Administra tu consumo en servicios públicos del agua y energía." />
           <meta property="og:description" content="Controlsep es un proyecto creado por jóvenes apasionados por el desarrollo de software, para incentivar y permitir a las personas, medir el consumo del agua y energía en sus hogares, de forma automática por medio de sensores, o manual, digitando los registros del contador público." />
-          <meta property="og:image" content="https://controlsep.com/images/controlsep_presentation.png" />
+          <meta property="og:image" itemprop="image" content="https://controlsep.com/images/controlsep_presentation.png" />
           <meta property="og:url" content="https://controlsep.com/" />
+          <meta property="og:type" content="website" />
           <meta name="twitter:card" content="summary_large_image"></meta>
           {/* Non-Essential, But Recommended */}
           <meta property="og:site_name" content="Controlsep."></meta>
