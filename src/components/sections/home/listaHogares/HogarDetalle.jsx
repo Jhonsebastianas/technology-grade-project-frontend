@@ -143,7 +143,7 @@ const ServicioHogar = (props) => {
                 <Card.Content extra>
                     {has_sensor &&
                         <Button icon labelPosition='right' fluid>
-                            ver detalle
+                            <Link href="/informeconsumo/"><Button onClick={getContrato}>Ver detalle</Button></Link>
                         <Icon name='right arrow' />
                         </Button>
                         ||
