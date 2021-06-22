@@ -43,19 +43,11 @@
    }*/
 
  /*Segment contactanosSectionTwo*/  
- .contactanosSectionTwo{
-  justify-content: center !important;
+ .ui.vertical.segment.contactanosSectionTwo{
+  justify-content: center;
   align-content: center;
-  height: 520px;
-  margin-top: 50px !important;
-  padding: 0 !important;
-  }
-
-  .contactanosColumnOne{
-    text-align: center !important;
-    background: url(/images/contactanos/arcoAzulSuperiorIzquierdo.svg);
-    background-repeat: no-repeat;
-    margin-top: -2px;
+  margin-top: 50px;
+  padding: 0 0 1% 0;
   }
 
   .ui.ui.segment .canalesComunicacion{
@@ -70,22 +62,6 @@
     align-items: center;
     color:#00aae4;
     margin-left: 15%;
-  }
-
-  .arcoAzulSuperiorDerecho{
-    background-image: url(/images/contactanos/arcoAzulSuperiorDerecho.svg);
-    background-repeat: no-repeat;
-    background-position-x: right;
-    margin-top: -3px;
-    padding-right: 0;
-  }
-
-  .ui.segment.arcoAzulinferiorIzquierdo{
-    background: url(/images/contactanos/arcoAzulinferiorIzquierdo.svg);
-    background-repeat: no-repeat;
-    background-size: 44%;
-    background-position-x: left;
-    background-position-y: bottom;
   }
 
   .parrafoCorreo, .parrafoCelular{
@@ -119,20 +95,6 @@
     color: black;
   }
 
-  div.contenedorArcoAzulContactanosInverso{
-    background: url(/images/contactanos/arcoAzulinferiorDerecho.svg);
-    background-repeat: no-repeat;
-    background-size: 44%;
-    background-position-x: right;
-    background-position-y: bottom;
-    width: 127%;
-    height: 100%;
-    position: absolute;
-    right: -49px;
-    bottom: -2px;
-    z-index: 1;
-  }
-
   @media(max-width:600px){
     .contactanosSectionOneTitle{
       font-size: 4rem;
@@ -150,4 +112,20 @@
       height: auto;
   }
   }
+
+  @media(max-width:990px){
+    .ui.vertical.segment.contactanosSectionTwo{
+      padding-bottom: 2%;
+    }
+  }
   
+ .ui.form.formularioCorreo a {
+    background-color: var(--primary-color);
+    padding: 0.8rem 2rem 0.8rem 2rem;
+    border-radius: .5rem;
+    font-weight: var(--font-medium);
+    cursor: pointer;
+    background: var(--primary-color);
+    color: white;
+    display: inline-block;
+  }
