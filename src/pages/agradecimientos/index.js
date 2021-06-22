@@ -5,7 +5,7 @@ import Layout from '@components/layouts/PublicLayout';
 const Agradecimientos = () => {
     return (
         <Layout>
-            <Segment vertical className="nosotrosSectionOne" >
+            <Segment vertical className="agradecimientosOne" >
                 <Grid stackable className="Nosotros" >
                     <Grid.Row >
                         <Grid.Column width={16}>
@@ -29,7 +29,13 @@ const Agradecimientos = () => {
                                 <ul>
                                     <li>
                                         Familia de Jhon Agudelo
-                                        </li>
+                                    </li>
+                                    <li>
+                                        Familia de Sara Cárdenas
+                                    </li>
+                                    <li>
+                                        Familia de Breyner Taborda
+                                    </li>
                                     <li>
                                         Juan Esteban Henao Ruiz y toda su familia Henao Ruiz
                                     </li>
@@ -44,13 +50,13 @@ const Agradecimientos = () => {
                                         <ul>
                                             <li>
                                                 Gerson Uribe Perez
-                                        </li>
+                                            </li>
                                             <li>
                                                 John Faber Flórez
-                                        </li>
+                                            </li>
                                             <li>
                                                 Javier Saldarriaga
-                                        </li>
+                                            </li>
                                         </ul>
                                     </p>
                                 </Grid.Column>
@@ -59,10 +65,13 @@ const Agradecimientos = () => {
                                         <ul>
                                             <li>
                                                 Lina Marcela Vasquez
-                                        </li>
+                                            </li>
                                             <li>
                                                 Duban Andres Rojas Herrera
-                                        </li>
+                                            </li>
+                                            <li>
+                                                Leidy Johana Pamplona Cortés
+                                            </li>
                                         </ul>
                                     </p>
                                 </Grid.Column>
@@ -71,10 +80,10 @@ const Agradecimientos = () => {
                                         <ul>
                                             <li>
                                                 Ana Maria López Arango
-                                        </li>
+                                            </li>
                                             <li>
                                                 Marta Duque
-                                        </li>
+                                            </li>
                                         </ul>
                                     </p>
                                 </Grid.Column>

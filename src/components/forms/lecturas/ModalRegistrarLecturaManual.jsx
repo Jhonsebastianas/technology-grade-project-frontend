@@ -15,6 +15,8 @@ const ModalRegistrarLecturaManual = (props) => {
         openLectura, setOpenLectura
     } = props
 
+    const funcionDetalle = props.updateDetalleHogar;
+
     const { numero_contrato } = hogar
 
     const { addToast } = useToasts()
@@ -56,6 +58,9 @@ const ModalRegistrarLecturaManual = (props) => {
                     addToast('Primer registro de factura añadido correctamente.', { appearance: 'success', autoDismiss: true });
                 } else {
                     addToast('Nueva lectura añadida correctamente, consumo actualizado', { appearance: 'success', autoDismiss: true });
+                }
+                if(funcionDetalle) {
+                    funcionDetalle()
                 }
                 setIsLecturaFactura(false)
             }, (error) => {

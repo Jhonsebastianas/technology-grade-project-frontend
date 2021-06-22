@@ -1,0 +1,64 @@
+.hogar__servicios-title {
+    text-align: center;
+    justify-content: center;
+    justify-self: center;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.hogar__servicios-container {
+    text-align: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.hogar__servicio {
+    cursor: pointer;
+    border: 2px solid;
+    border-radius: .5rem;
+    border-color: var(--first-color);
+    padding: 4rem 2rem 1rem 2rem;
+    transition: .3s;
+}
+
+.hogar__servicio:hover {
+    transform: translateY(-.2rem);
+    -webkit-box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.15);
+    box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.15);
+}
+
+.dark-theme .hogar__servicio {
+    background-color: var(--input-color);
+}
+
+.hogar__servicio-icon {
+    font-size: 6rem !important;
+    margin-bottom: 2rem;
+}
+
+.icon-agua {
+    color: var(--first-color);
+}
+
+.icon-energia {
+    color: var(--first-color);
+}
+
+.hogar__servicio-input {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* .hogar__servicio-label {
+    color: var(--text-color) !important;
+} */
+/* 
+input[type="checkbox"]:checked + label { 
+    font-weight: bold;
+} */
+
+/* Show hidden content when the checkbox is checked */
+/* .hogar__servicio input[type="checkbox"]:checked {
+    -webkit-box-shadow: 0px 2px 3px 0px #000000;
+    box-shadow: 0px 2px 3px 0px #000000;
+  } */

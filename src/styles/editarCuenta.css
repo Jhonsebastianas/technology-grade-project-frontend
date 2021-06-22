@@ -41,6 +41,15 @@
     }
 }
 
+
+.ui.celled.fixed.single.line.table.tabla-perfil-hogares tr {
+    font-size: var(--h3-font-size);
+}
+
+.ui.celled.fixed.single.line.table.tabla-perfil-hogares tr h5 {
+    font-size: var(--h3-font-size);
+}
+
 .center{
     text-align: center !important;
 }
@@ -60,8 +69,9 @@
     vertical-align: middle;
 }
 
-.ui.celled.table tr td.celdaIconosInfoHogares span{
+.ui.celled.table tr td.celdaIconosInfoHogares i{
     margin-left: 10%;
+    font-size: var(--h1-font-size);
 }
 
 .ui.primary.editarDatosPersonales{

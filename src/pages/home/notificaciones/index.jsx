@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Layout from '@components/layouts/LayoutPrivado'
-import { Container, Grid, Segment } from 'semantic-ui-react';
+import { Container, Grid, Label, Segment } from 'semantic-ui-react';
 import ServiciosNotificaciones from '@services/servicios.notificaciones'
 import StyledComponents, { css } from 'styled-components'
 
@@ -35,13 +35,18 @@ const StyledNotificacion = StyledComponents.div`
 
     ${props => props.estado == 'nueva' && css`
         div {
-            background: white;
+            background: var(--input-color);
+        }
+
+        .label__notification {
+            background: var(--input-color);
+            color: var(--first-color);
         }
     `}
 
     ${props => props.estado == 'vista' && css`
         div {
-            background: lightgray;
+            background: var(--input-color);
         }
     `}
 
@@ -55,31 +60,41 @@ const StyledNotificacion = StyledComponents.div`
 const DetalleNotificacion = (props) => {
 
     const { notificacion, index } = props
-    const { descripcion, diaMes,  estado, titulo, tiempo } = notificacion
+    const { descripcion, diaMes, estado, titulo, tiempo } = notificacion
 
     return (
-        <StyledNotificacion estado={estado} key={index}>
-            {/* <h2>06 / Abril</h2> */}
-            <h2>{diaMes}</h2>
-            <Segment>
-                <Grid>
-                    <Grid.Column width={16}>
-                        <h2>{titulo}</h2>
-                        <Grid>
-                            <Grid.Column width={12}>
-                                <h4>Hora de notificación:</h4>
-                            </Grid.Column>
-                            <Grid.Column width={4} textAlign='right'>
-                                {tiempo}
-                            </Grid.Column>
-                        </Grid>
-                    </Grid.Column>
-                    <Grid.Column width={16}>
-                        <p>{descripcion}</p>
-                    </Grid.Column>
-                </Grid>
-            </Segment>
-        </StyledNotificacion>
+        <Container>
+            <StyledNotificacion estado={estado} key={index}>
+                {/* <h2>06 / Abril</h2> */}
+                <h2>{diaMes}</h2>
+                <Segment vertical>
+                    <Grid>
+                        <Grid.Column width={16}>
+                            <h2>
+                                {estado == 'nueva' &&
+                                    <Label className="label__notification" floating>
+                                        {estado}
+                                    </Label>
+                                    || ''}
+
+                                {titulo}
+                            </h2>
+                            <Grid>
+                                <Grid.Column width={12}>
+                                    <h4>Hora de notificación:</h4>
+                                </Grid.Column>
+                                <Grid.Column width={4} textAlign='right'>
+                                    {tiempo}
+                                </Grid.Column>
+                            </Grid>
+                        </Grid.Column>
+                        <Grid.Column width={16}>
+                            <p>{descripcion}</p>
+                        </Grid.Column>
+                    </Grid>
+                </Segment>
+            </StyledNotificacion>
+        </Container>
     )
 }
 

@@ -17,6 +17,8 @@ import { APP_NAME } from '@constants/Constants';
 import loginUtils from '@utils/login.utils'
 import styles from '@styles/modules/inicio.module.css'
 
+import Tips from '@components/commons/tips/Tips'
+
 const Home = ({ mobile }) => {
 
     const { headersPrincipales, containerPrincipal } = styles;
@@ -41,29 +43,20 @@ const Home = ({ mobile }) => {
             >
                 <Container text className={`${containerPrincipal}`}>
                     <Header
+                        className="header__titulo"
                         as='h1'
                         content={APP_NAME}
                         inverted
-                        style={{
-                            fontSize: mobile ? '2em' : '4em',
-                            fontWeight: 'normal',
-                            marginBottom: 0,
-                            marginTop: mobile ? '1.5em' : '3em',
-                        }}
                     />
                     <Header
+                        className="header__subtitulo"
                         as='h2'
-                        content='Una forma moderna e interactiva de administrar tu consumo en servicios públicos del agua y energía.'
+                        content='Una forma moderna e interactiva de administrar tu consumo en servicios públicos, mientras contribuyes al cuidado del medio ambiente.'
                         inverted
-                        style={{
-                            fontSize: mobile ? '1.5em' : '1.7em',
-                            fontWeight: 'normal',
-                            marginTop: mobile ? '0.5em' : '1.5em',
-                        }}
                     />
-                    <Button primary size='huge' onClick={goToApp}>
+                    <Button className="button__iniciar-app" size='huge' onClick={goToApp}>
                         Inicia la aplicación
-                        <Icon name='right arrow' />
+                        <Icon name='icon__iniciar-app right arrow' />
                     </Button>
                 </Container>
             </Segment>
@@ -115,39 +108,7 @@ const Home = ({ mobile }) => {
                             </p>
                         </Grid.Column>
                         <Grid.Column style={{ paddingBottom: '5em', paddingTop: '5em' }}>
-                            <Header as='h3' style={{ fontSize: '2em' }}>
-                                -Fundadores-
-                            </Header>
-                            <p style={{ fontSize: '1.33em' }}>
-                                <ImageNext
-                                    src="/images/founders/JhonAgudelo.webp"
-                                    alt="Founder Jhon"
-                                    width="37"
-                                    height="37"
-                                    className="ui avatar image"
-                                />
-                                <b>Jhon</b> Agudelo
-                            </p>
-                            <p style={{ fontSize: '1.33em' }}>
-                                <ImageNext
-                                    src="/images/founders/SaraCardenas.webp"
-                                    alt="Founder Sara"
-                                    width="37"
-                                    height="37"
-                                    className="ui avatar image"
-                                />
-                                <b>Sara</b> Cárdenas
-                            </p>
-                            <p style={{ fontSize: '1.33em' }}>
-                                <ImageNext
-                                    src="/images/founders/BreynerTaborda.webp"
-                                    alt="Founder Breyner"
-                                    width="37"
-                                    height="37"
-                                    className="ui avatar image"
-                                />
-                                <b>Breyner</b> Taborda
-                            </p>
+                            <Tips />
                         </Grid.Column>
                     </Grid.Row>
                 </Grid>
@@ -167,23 +128,20 @@ const Home = ({ mobile }) => {
                         Read More
                     </Button> */}
 
-                    <Divider
+                    {/* <Divider
                         as='h4'
                         className='header'
                         horizontal
                         style={{ margin: '3em 0em', textTransform: 'uppercase' }}
                     >
                         <a href='#casoEstudio'>Casos de estudio</a>
-                    </Divider>
+                    </Divider> */}
 
-                    <Header as='h3' style={{ fontSize: '2em' }} id="casoEstudio">
-                        ¿Conoces nuestros sensores?
+                    <Header as='h3' style={{ fontSize: '2em' }} id="casoEstudio" textAlign="center">
+                        Nuestros sensores
                     </Header>
-                    <p style={{ fontSize: '1.33em' }}>
-                        Nuestros sensores te permiten llevar un registro automático de tu consumo
-                        en los servicios públicos del agua y energía, el cual puedes visualizar desde nuestra app.
-                        Actualmente nos encontramos en mejora constante pensando en el consumidor, para reducir costos
-                        de fabricación y venta.
+                    <p style={{ fontSize: '1.33em', textAlign: 'center' }}>
+                        Lleva un registro automático de tu consumo en los servicios públicos, del agua y energía. Conocerás tu gasto diario, y podrás tomar medidas para reducirlo.
                     </p>
                     {/* <Button as='a' size='large'>
                         I'm Still Quite Interested

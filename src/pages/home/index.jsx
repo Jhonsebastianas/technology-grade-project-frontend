@@ -58,6 +58,14 @@ const Home = () => {
         }
     }
 
+    const updateDetalleHogar = () => {
+        ServiciosHogares.getHogarAndLectura(hogarSeleccionado.numero_contrato, ({ data }) => {
+            setHogarSeleccionado(data);
+            const nuevaLista = listaHogares.filter(hogar => hogar.numero_contrato != data.numero_contrato)
+            setListaHogares([...nuevaLista, data])
+        }, (error) => { });
+    }
+
 
     useEffect(() => {
         let mounted = true;
@@ -111,6 +119,7 @@ const Home = () => {
                         servicioPublico={servicioPublicoSeleccionado}
                         openLectura={openLectura}
                         setOpenLectura={setOpenLectura}
+                        updateDetalleHogar={updateDetalleHogar}
                         positive
                     />
                     <br></br>

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import ConstantsList from '@constants/Constants';
+import AuthHeader from '@services/auth-header';
 
 const ServiciosLecturas = {
     addLecturaManual,
@@ -14,7 +15,7 @@ function addLecturaManual (datos, success, error) {
         servicioPublico: datos.servicioPublico,
         isLecturaFactura: datos.isLecturaFactura,
     }
-    axios.post(ruta, parametros)
+    axios.post(ruta, parametros, AuthHeader.headers())
         .then(success)
         .catch(error)
 }

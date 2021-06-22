@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import Layout from '@components/layouts/LayoutPrivado';
 
-import { Button, Grid, Icon, Segment } from 'semantic-ui-react';
+import { Grid, Icon, Segment, Dimmer, Loader } from 'semantic-ui-react';
 
 import Link from 'next/link';
 
@@ -11,30 +11,29 @@ import GraficaBarras from '@components/graficas/GraficaBarras';
 import ValoresConsumo from '@components/commons/valoresconsumo/ValoresConsumo';
 import Tips from '@components/commons/tips/Tips'
 
-import Constants from '@constants/Constants';
+
 import ServiciosHogares from '@services/servicios.hogares';
-import loginUtils from '@utils/login.utils';
+
+import SessionUtil from '@utils/session.util'
 
 const InformeConsumo = () => {
 
     const [tiposervicio, setTipoServicio] = useState('');
     const [infohogar, setInfoHogar] = useState({});
     const [cargandoHogar, setCargandoHogar] = useState(true);
-    
+
+    const updateDetalleHogar = () => {
+        ServiciosHogares.getHogarAndLectura(SessionUtil.getNumeroContrato(), ({ data }) => {
+            setInfoHogar(data);
+            setCargandoHogar(false)
+        }, (error) => { });
+    }
+
     useEffect(() => {
         let mounted = true;
-
         if (mounted) {
-            
-            const { HOGAR } = Constants;
-            const hogar = JSON.parse(localStorage.getItem(HOGAR));
-            setTipoServicio(hogar.servicio);
-
-            ServiciosHogares.getHogaresAndLecturas(loginUtils.getUsernameUser(), ({ data }) => {
-                setInfoHogar(data.find(data => data.numero_contrato == hogar.hogar));
-                setCargandoHogar(false)
-            }, (error) => { });
-            getLectura()
+            setTipoServicio(SessionUtil.getTipoServicio());
+            updateDetalleHogar();
         }
         return () => (mounted = false);
     }, []);
@@ -46,23 +45,27 @@ const InformeConsumo = () => {
         }
     }
 
-    const getLectura = () =>{
-        const { servicios} = infohogar
-        if(servicios !== undefined){
+    const getLectura = () => {
+
+        const { servicios } = infohogar
+        if (servicios !== undefined) {
             let lectura = servicios.find(servicios => servicios.principal == tiposervicio);
-            console.log(lectura)
+
             return lectura
         }
-        return''
+        return ''
     }
-      
+
     if (cargandoHogar) {
 
         return <>
-                    <Segment vertical textAlign='center'>
-                        <h3>Cargando la información de tu hogar...</h3>
-                    </Segment>
-                </>;
+            <Segment vertical id="carga">
+                <Dimmer active inverted>
+                    <Loader size='large'>Cargando consumo</Loader>
+                </Dimmer>
+
+            </Segment>
+        </>;
     }
 
     return (
@@ -70,48 +73,41 @@ const InformeConsumo = () => {
             <Segment vertical>
                 <Grid stackable className="informeConsumo">
                     <Grid.Row columns='equal' >
-                        <Grid.Column centered textAlign='center' className="contenedorMovil">
-                            <div className="informeConsumoMin">
-                                <GraficaCircular 
-                                    tiposervicio={tiposervicio} 
-                                    numeroContrato={infohogar.numero_contrato} 
-                                    hogar={infohogar}
-                                    lectura={getLectura()} 
-                                />
-                            </div>
+                        <Grid.Column centered textAlign='center'>
+                            <GraficaCircular
+                                tiposervicio={tiposervicio}
+                                hogar={infohogar}
+                                lectura={getLectura()}
+                                updateDetalleHogar={updateDetalleHogar}
+                            />
                         </Grid.Column>
                         <Grid.Column centered textAlign='center' className="computer only" >
-                            <div className="informeConsumoMax">
-                                <GraficaBarras />
-                            </div>
+                            <GraficaBarras lectura={getLectura()} />
                         </Grid.Column>
                     </Grid.Row>
-                    <Grid.Row columns='equal' >
-                        <Grid.Column className="contenedorMovil">
-                            <div className="informeConsumoMin">
-                                <div className="tip">
-                                    <Tips />
-                                </div>
-                            </div>
+                    <Grid.Row columns='equal'>
+                        <Grid.Column centered textAlign='center' >
+                            <Tips />
                         </Grid.Column>
                         <Grid.Column className="computer only">
-                            <div className="informeConsumoMax">
-                                <ValoresConsumo tiposervicio={tiposervicio} lectura={getLectura()} />
-                            </div>
+                            <ValoresConsumo
+                                tiposervicio={tiposervicio}
+                                lectura={getLectura()}
+                            />
                         </Grid.Column>
                     </Grid.Row>
                     {/* Botón de opciones */}
                     <div className="botonFlotante">
                         <div className="informeConsumoOpciones">
-                            <button className="botonIC1" onClick={mostrarOpciones} >
+                            <button className="botonPrincipal" onClick={mostrarOpciones} aria-label="verOpciones">
                                 <span><Icon name="add" /></span>
                             </button>
-                            <button className="btnsIC botonIC2">
+                            <button className="btnsIC botonVerGraficas" aria-label="verGraficas">
                                 <Link href="/informeconsumo/informegraficas">
                                     <span><Icon name="chart bar" /></span>
                                 </Link>
                             </button>
-                            <button className="btnsIC botonIC3">
+                            <button className="btnsIC botonVerValores" aria-label="verValores">
                                 <Link href="/informeconsumo/informevaloresdeconsumo">
                                     <span><Icon name="file alternate outline" /></span>
                                 </Link>

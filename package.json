@@ -7,7 +7,7 @@
     "formik": "^2.2.6",
     "luxon": "^1.26.0",
     "md5": "^2.3.0",
-    "next": "^10.0.5",
+    "next": "^10.2.2",
     "next-pwa": "^5.0.5",
     "react": "^17.0.1",
     "react-circular-progressbar": "^2.0.3",

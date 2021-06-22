@@ -6,7 +6,7 @@ LoginUtils.getUsernameUser = getUsernameUser;
 LoginUtils.getFullName = getFullName;
 LoginUtils.SignOff = SignOff;
 LoginUtils.verifyAuth = verifyAuth;
-
+LoginUtils.getToken = getToken;
 
 function getUsernameUser() {
     const { USER_NAME } = Constants;
@@ -38,5 +38,15 @@ function verifyAuth() {
         return true;
     } else {
         return false;
+    }
+}
+
+function getToken () {
+    const { TOKEN_NAME, USER_NAME } = Constants;
+    const user = JSON.parse(localStorage.getItem(USER_NAME));
+    if(user && user[TOKEN_NAME]) {
+        return user[TOKEN_NAME]
+    } else {
+        return 
     }
 }

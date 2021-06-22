@@ -1,4 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document'
+import { ServerStyleSheet } from 'styled-components';
 
 class MyDocument extends Document {
   render() {
@@ -15,18 +16,41 @@ class MyDocument extends Document {
           {/*manifest.json provides metadata used when your web app is installed on a
              user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/ */}
           <link rel="manifest" href="/manifest.json" />
-          <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"></link>
           {/** scripts */}
         </Head>
         <body className="my-body-class">
           <Main />
           <NextScript />
-          {/* <!-- Materialize --> */}
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
         </body>
       </Html>
     )
   }
+}
+
+MyDocument.getInitialProps = async (ctx) => {
+    const sheet = new ServerStyleSheet()
+    const originalRenderPage = ctx.renderPage
+
+    try {
+        ctx.renderPage = () =>
+            originalRenderPage({
+                enhanceApp: (App) => (props) =>
+                    sheet.collectStyles(<App {...props} />),
+            })
+
+        const initialProps = await Document.getInitialProps(ctx)
+        return {
+            ...initialProps,
+            styles: (
+                <>
+                    {initialProps.styles}
+                    {sheet.getStyleElement()}
+                </>
+            ),
+        }
+    } finally {
+        sheet.seal()
+    }
 }
 
 export default MyDocument
