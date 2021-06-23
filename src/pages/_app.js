@@ -23,16 +23,11 @@ import '@styles/graficas.css'
 import '@styles/informeConsumo.css'
 import '@styles/ListaHogares.css'
 import '@styles/menuPrivado.css'
-<<<<<<< HEAD
-import '@styles/datosimportantes.css'
-
-import '@styles/css/registro-hogar.css'
-
-import '@styles/dark-theme.css'
-=======
 import '@styles/modalEditarCuenta.css'
 import '@styles/RegistroUsuario.css'
->>>>>>> 7ba556ac58afcf7d9a79101e8af3900b26232994
+import '@styles/datosimportantes.css'
+
+
 
 
 import { ToastProvider } from 'react-toast-notifications';
