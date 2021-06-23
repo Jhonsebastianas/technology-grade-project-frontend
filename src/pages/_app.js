@@ -24,8 +24,10 @@ import '@styles/informeConsumo.css'
 import '@styles/ListaHogares.css'
 import '@styles/menuPrivado.css'
 import '@styles/modalEditarCuenta.css'
+import '@styles/tarifas.css'
 import '@styles/RegistroUsuario.css'
 import '@styles/datosimportantes.css'
+
 
 
 
@@ -49,7 +51,7 @@ const MyApp = ({ Component, pageProps }) => {
       <ToastProvider>
         <Head>
           <meta charSet="utf-8" />
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
           <meta name="theme-color" content="#000000" />
           <meta
             name="description"

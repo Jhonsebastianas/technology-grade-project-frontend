@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import {
   Grid,
@@ -11,10 +11,63 @@ import {
   TextArea,
 } from "semantic-ui-react";
 import Layout from "@components/layouts/PublicLayout";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 
 const srcImageContactanos = "/images/contactanos/mujeresReunidas.svg";
 
 const Contactanos = () => {
+  const [urlCompleta, setUrlCompleta] = useState();
+
+  const validarMensajeCorreo = Yup.object().shape({
+    nombre: Yup.string()
+      .trim()
+      .min(1, "Mínimo 1 caracter")
+      .max(40, "Máximo 100 caracteres")
+      .required("Este campo es obligatorio"),
+    correo: Yup.string()
+      .trim()
+      .required("Este campo es obligatorio")
+      .email("Correo electronico invalido")
+      .min(5, "Mínimo 5 caracteres"),
+    mensaje: Yup.string()
+      .trim()
+      .min(1, "Mínimo 1 caracter")
+      .max(1000, "Máximo 1000 números")
+      .required("Este campo es obligatorio"),
+  });
+
+  const sendCorreo = () => {
+    
+    /*
+      .replace(/ /g,"%20") : Reemplaza todos los espacios vacios por %20
+       / /g se esta usando para reemplazar todas las posiciones donde se encuentre un vacio por 20%
+
+       Ayuda:
+       https://jmartinhc.blogspot.com/2013/08/reemplazar-todos-los-caracteres-con-javascript.html#:~:text=Para%20reemplazar%20caracteres%20dentro%20de,todas%20las%20ocurrencias%20del%20mismo.
+    */
+    let urlOrganizada = "mailto:controlsep.soporte@gmail.com?subject=Controlsep%20opinion%20de:%20" + formik.values.nombre.replace(/ /g,"%20") +
+                          "&body=";// + formik.values.mensaje.replace(/ /g,"%20") + "%0A%0AContacto: " + formik.values.correo;
+    
+    const separacionMensajePorLinea = formik.values.mensaje.split('\n');
+    separacionMensajePorLinea.forEach(element =>urlOrganizada += (element == ""?"%0A":`%0A${element}`));//element == ""? urlOrganizada + "%0A":urlOrganizada + "%0A" + element);
+
+    urlOrganizada += "%0A%0AContacto: " + formik.values.correo;
+
+    setUrlCompleta(urlOrganizada);
+    //return false;
+  };
+
+  const formik = useFormik({
+    initialValues: {
+      nombre: "",
+      correo: "",
+      mensaje: "",
+    },
+    validationSchema: validarMensajeCorreo,
+    onSubmit: sendCorreo,
+  });
+
   return (
     <Layout>
       <Segment vertical id="contactanosSectionOne">
@@ -24,7 +77,7 @@ const Contactanos = () => {
               <Container verticalAlign="middle">
                 <h1 className="contactanosSectionOneTitle">Contáctanos</h1>
                 <p className="contactanosSectionOneSubtitulo">
-                (Prototipo para el seguimiento y control de los servicios
+                  (Prototipo para el seguimiento y control de los servicios
                   públicos)
                 </p>
               </Container>
@@ -42,6 +95,7 @@ const Contactanos = () => {
                 size="big"
                 width="500px"
                 height="400px"
+                className="mujeresReunidas"
               ></Image>
               {/* </Container> */}
             </Grid.Column>
@@ -49,25 +103,49 @@ const Contactanos = () => {
               {/* <Container> */}
               <Form className="formularioCorreo">
                 <Form.Field className="center">
-                  <p className="parrafodejarOpinion">Dejanos tu opinión </p>
+                  <p className="parrafodejarOpinion" id="mensajeOpinion">Dejanos tu opinión </p>
                 </Form.Field>
                 <Form.Field>
                   <label>Nombre(s)</label>
-                  <input placeholder="Ej: Carlos Andres Perez Perez" />
+                  <input
+                    id="nombre"
+                    placeholder="Ej: Carlos Andres Perez Perez"
+                    {...formik.getFieldProps("nombre")}
+                  />
+                  {formik.touched.nombre && formik.errors.nombre ? (
+                    <div className="ui pointing red basic label">
+                      {formik.errors.nombre}
+                    </div>
+                  ) : null}
                 </Form.Field>
                 <Form.Field>
                   <label>Email</label>
-                  <input type="email" placeholder="Ej: carlos@gmail.com" />
+                  <input
+                    type="email"
+                    placeholder="Ej: carlos@gmail.com"
+                    {...formik.getFieldProps("correo")}
+                  />
+                  {formik.touched.correo && formik.errors.correo ? (
+                    <div className="ui pointing red basic label">
+                      {formik.errors.correo}
+                    </div>
+                  ) : null}
                 </Form.Field>
                 <Form.Field>
-                  <TextArea rows={8} placeholder="Mensaje..." />
+                  <TextArea
+                    rows={8}
+                    name="mensaje"
+                    placeholder="Mensaje..."
+                    {...formik.getFieldProps("mensaje")}
+                  />
+                  {formik.touched.mensaje && formik.errors.mensaje ? (
+                    <div className="ui pointing red basic label">
+                      {formik.errors.mensaje}
+                    </div>
+                  ) : null}
                 </Form.Field>
-                <Form.Field>
-                  <Checkbox label="I agree to the Terms and Conditions" />
-                </Form.Field>
-                <Button type="submit">Submit</Button>
+                <a onClick={formik.submitForm} href={urlCompleta?urlCompleta:"#mensajeOpinion"} className="" id="sendCorreo">Enviar</a>
               </Form>
-              {/* </Container> */}
             </Grid.Column>
           </Grid.Row>
         </Grid>
@@ -75,123 +153,5 @@ const Contactanos = () => {
     </Layout>
   );
 };
-{
-  /*<Layout>
-      <Segment vertical className="contactanosSectionOne">
-        <Grid stackable className="contactanos">
-          <Grid.Row>
-            <Grid.Column width={16}>
-              <Container verticalAlign="middle">
-                <h1 className="contactanosSectionOneTitle">Contáctanos</h1>
-                <p className="contactanosSectionOneSubtitulo">
-                  (Prototipo para el seguimiento y control de los servicios
-                  públicos a través de un aplicativo web)
-                </p>
-              </Container>
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
-      </Segment>
-      <Segment vertical className="contactanosSectionTwo segmentosSinEstilos">
-        <Grid stackable columns={2}>
-          <Grid.Column className="contactanosColumnOne">
-            <Image
-              src={srcImageContactanos}
-              size="big"
-              width="500px"
-              height="400px"
-            ></Image>
-          </Grid.Column>
-
-          <Grid.Column className="contactanosColumnSecond arcoAzulSuperiorDerecho">
-            <div className="segmentosSinEstilos canalesComunicacion">
-            <Form className="formularioCorreo">
-              <Form.Field>
-                <label>First Name</label>
-                <input placeholder="First Name" />
-              </Form.Field>
-              <Form.Field>
-                <label>Last Name</label>
-                <input placeholder="Last Name" />
-              </Form.Field>
-              <Form.Field>
-                <TextArea rows={8} placeholder='Mensaje...' />
-              </Form.Field>
-              <Form.Field>
-                <Checkbox label="I agree to the Terms and Conditions" />
-              </Form.Field>
-              <Button type="submit">Submit</Button>
-            </Form>
-              <Segment>
-                <h2>Canales de comunicación:</h2>
-              </Segment>
-              <Segment className="contactanosCorreo segmentosSinEstilos">
-                <a href="mailto:scp.secops@gmail.com">
-                  <Icon
-                    name="envelope"
-                    className="iconEmailContactanos"
-                    size="huge"
-                  />
-                </a>
-                <p className="parrafoCorreo">scp.secops@gmail.com</p>
-              </Segment>
-               <Segment className="contactanosCelular segmentosSinEstilos">
-                <Icon
-                  name="phone"
-                  className="iconCelularContactanos"
-                  size="huge"
-                />
-                <p className="parrafoCelular">300-561-56-52</p>
-              </Segment> 
-            </div>
-          </Grid.Column>
-        </Grid>
-      </Segment>
-      <Segment className="segmentSinMargenInferior segmentosSinEstilos arcoAzulinferiorIzquierdo">
-        <div className="map animate__animated animate__backInUp">
-          <div className="responsiveIframe">
-            
-
-            <form method="post">
-              <h2 class="text-center">Contact us</h2>
-              <div class="form-group">
-                <input
-                  class="form-control"
-                  type="text"
-                  name="name"
-                  placeholder="Name"
-                />
-              </div>
-              <div class="form-group">
-                <input
-                  class="form-control is-invalid"
-                  type="email"
-                  name="email"
-                  placeholder="Email"
-                />
-                <small class="form-text text-danger">
-                  Please enter a correct email address.
-                </small>
-              </div>
-              <div class="form-group">
-                <textarea
-                  class="form-control"
-                  name="message"
-                  placeholder="Message"
-                  rows="14"
-                ></textarea>
-              </div>
-              <div class="form-group">
-                <button class="btn btn-primary" type="submit">
-                  send{" "}
-                </button>
-              </div>
-            </form>
-          </div>
-          <div className="contenedorArcoAzulContactanosInverso"></div>
-        </div>
-            </Segment>
-    </Layout>*/
-}
 
 export default Contactanos;
