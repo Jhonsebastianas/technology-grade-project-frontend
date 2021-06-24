@@ -1,8 +1,8 @@
 import React from "react";
 import { Form, Button, Table, Icon } from "semantic-ui-react";
-
 import ModalEditOtroValor from "./ModalEditOtroValor";
 import ModalEliminarOtroValor from "./ModalEliminarOtroValor";
+import UTIL from '@utils/cp.utils'
 
 const ValoresFijosDetails = (props) => {
   const { 
@@ -123,7 +123,7 @@ const ValoresFijosDetails = (props) => {
                   </Table.Cell>
                   <Table.Cell>{otroValor.descripcion}</Table.Cell>
                   <Table.Cell>
-                    {otroValor.valor}
+                    {UTIL.formatoMoneda(otroValor.valor)}
                   </Table.Cell>
                   <Table.Cell className="center celdaIconosOtrosValores">
                   {/*<Icon  onClick={() => modalAndEditarHogar(hogar)} name="edit outline" className="iconoColorAzul" />*/}
