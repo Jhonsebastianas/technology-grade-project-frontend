@@ -27,7 +27,7 @@
 
 .botonGraficas{
     margin: 3px auto 6px auto !important;
-    background: var(--success-color) !important;
+    background: var(--primary-color-dark) !important;
     color: white !important;
 }
 
@@ -54,11 +54,6 @@
 .containerInfo h5{
     font-size: 1.45rem;
     font-family: 'Lato', Helvetica Neue,Arial,Helvetica,sans-serif !important;
-}
-
-/* Tips */
-.tipsTitle{
-    color: rgb(31 68 133)
 }
 
 @media(max-width:450px){

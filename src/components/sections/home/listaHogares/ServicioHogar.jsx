@@ -58,7 +58,7 @@ const ServicioHogar = (props) => {
                         </p>
                     </div>
                     {/* {secundario && <p className="card__description">{secundario}</p>} */}
-                    <Link href="/informeconsumo/">
+                    <Link href="/home/informeconsumo/">
                         <a className="card__button" onClick={getContrato}>Ver detalle</a>
                     </Link>
                 </div>

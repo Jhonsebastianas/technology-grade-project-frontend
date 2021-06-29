@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react';
 
 import Layout from '@components/layouts/LayoutPrivado';
 
-import { Grid, Icon, Segment, Dimmer, Loader } from 'semantic-ui-react';
+import { Grid, Icon, Segment } from 'semantic-ui-react';
+
+import Loading from '@components/loader/Loading'
 
 import Link from 'next/link';
 
@@ -46,26 +48,16 @@ const InformeConsumo = () => {
     }
 
     const getLectura = () => {
-
         const { servicios } = infohogar
         if (servicios !== undefined) {
             let lectura = servicios.find(servicios => servicios.principal == tiposervicio);
-
             return lectura
         }
         return ''
     }
 
     if (cargandoHogar) {
-
-        return <>
-            <Segment vertical id="carga">
-                <Dimmer active inverted>
-                    <Loader size='large'>Cargando consumo</Loader>
-                </Dimmer>
-
-            </Segment>
-        </>;
+        return <Loading pantalla="consumo"/>;
     }
 
     return (
@@ -103,12 +95,12 @@ const InformeConsumo = () => {
                                 <span><Icon name="add" /></span>
                             </button>
                             <button className="btnsIC botonVerGraficas" aria-label="verGraficas">
-                                <Link href="/informeconsumo/informegraficas">
+                                <Link href="/home/informeconsumo/informegraficas">
                                     <span><Icon name="chart bar" /></span>
                                 </Link>
                             </button>
                             <button className="btnsIC botonVerValores" aria-label="verValores">
-                                <Link href="/informeconsumo/informevaloresdeconsumo">
+                                <Link href="/home/informeconsumo/informevaloresdeconsumo">
                                     <span><Icon name="file alternate outline" /></span>
                                 </Link>
                             </button>

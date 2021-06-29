@@ -37,7 +37,7 @@ const RegistrarUsuario = () => {
 
     const registerNewUser = (values) => {
         Services.newUser(values, ({ data }) => {
-            addToast('¡Usuario registrado con exito!', { appearance: 'success' });
+            addToast('¡Usuario registrado con exito!', { appearance: 'success' }, {autoClose='5000'});
             router.push("/notificacion/activar-cuenta");
         }, (error) => {
             if (error.response) {

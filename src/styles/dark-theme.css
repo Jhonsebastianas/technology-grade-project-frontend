@@ -16,7 +16,6 @@
 }
 
 .dark-theme .ui.form label {
-   
     color: var(--text-color) !important;
 }
 
@@ -48,4 +47,16 @@
 
 .dark-theme .valorMonetario{
     color: var( --first-color-alt) !important;
+}
+
+/* Validaciones loading */
+
+.dark-theme #carga{
+    background: var(--body-color);
+}
+
+/* Validacion datos importantes */
+
+.dark-theme .datosImportantesListItem-container {
+    background-color: var(--input-color);
 }
