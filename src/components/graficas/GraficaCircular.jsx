@@ -15,7 +15,7 @@ const GraficaCircular = (props) => {
     const { tiposervicio, lectura, hogar, updateDetalleHogar } = props;
     const { tarifas, lectura: { suma_consumos } } = lectura
     const [openLectura, setOpenLectura] = useState(false);
-    const [totalPagar, setTotalPagar] = useState(Calculos.calcularTotalPagarTarifasPorServicio(tarifas, suma_consumos))
+    const totalPagar = Calculos.calcularTotalPagarTarifasPorServicio(tarifas, suma_consumos)
     
     let backgroundColor = `#00aae4`
     // let medida = (tiposervicio === 'agua') ? ` m3` : `kwh`;

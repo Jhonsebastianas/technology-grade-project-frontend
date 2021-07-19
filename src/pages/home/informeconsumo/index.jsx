@@ -4,7 +4,7 @@ import Layout from '@components/layouts/LayoutPrivado';
 
 import { Grid, Icon, Segment } from 'semantic-ui-react';
 
-import Loading from '@components/loader/Loading'
+import Loading from '@components/loader/Loading';
 
 import Link from 'next/link';
 
@@ -12,7 +12,6 @@ import GraficaCircular from '@components/graficas/GraficaCircular';
 import GraficaBarras from '@components/graficas/GraficaBarras';
 import ValoresConsumo from '@components/commons/valoresconsumo/ValoresConsumo';
 import Tips from '@components/commons/tips/Tips'
-
 
 import ServiciosHogares from '@services/servicios.hogares';
 
@@ -65,7 +64,7 @@ const InformeConsumo = () => {
             <Segment vertical>
                 <Grid stackable className="informeConsumo">
                     <Grid.Row columns='equal' >
-                        <Grid.Column centered textAlign='center'>
+                        <Grid.Column  textAlign='center'>
                             <GraficaCircular
                                 tiposervicio={tiposervicio}
                                 hogar={infohogar}
@@ -73,12 +72,12 @@ const InformeConsumo = () => {
                                 updateDetalleHogar={updateDetalleHogar}
                             />
                         </Grid.Column>
-                        <Grid.Column centered textAlign='center' className="computer only" >
+                        <Grid.Column textAlign='center' className="computer only" >
                             <GraficaBarras lectura={getLectura()} />
                         </Grid.Column>
                     </Grid.Row>
                     <Grid.Row columns='equal'>
-                        <Grid.Column centered textAlign='center' >
+                        <Grid.Column  textAlign='center' >
                             <Tips />
                         </Grid.Column>
                         <Grid.Column className="computer only">

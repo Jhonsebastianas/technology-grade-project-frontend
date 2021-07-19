@@ -31,6 +31,8 @@ Ejecuta la aplicación en el **puerto 3000**
 > npm install --save react-circular-progressbar
 - Recharts [recharts.js] (http://recharts.org/en-US)
 > npm install recharts
+- React Paginate [react-paginate] (https://www.npmjs.com/package/react-paginate)
+> npm install react-paginate --save
 
 
 ## Pruebas Unitarias

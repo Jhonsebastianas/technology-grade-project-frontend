@@ -38,6 +38,10 @@
     color: var(--text-color) !important;
 }
 
+.dark-theme .tipEnlaces{
+    color: var(--text-color) !important;
+}
+
 .dark-theme .containerInfo table, 
 .dark-theme .containerInfo h5, 
 .dark-theme .containerInfo .valoresConsumoTitle,
@@ -51,12 +55,61 @@
 
 /* Validaciones loading */
 
-.dark-theme #carga{
-    background: var(--body-color);
+.dark-theme .carga .ui.inverted.dimmer{
+    background-color: var(--body-color) !important;  
+}
+
+.dark-theme .carga .ui.inverted.dimmer .ui.loader{
+    color: white;
 }
 
 /* Validacion datos importantes */
 
 .dark-theme .datosImportantesListItem-container {
     background-color: var(--input-color);
+}
+
+.dark-theme .datosImportantesItem-title{
+    color: var(--text-color) !important;
+}
+
+.dark-theme .crearDato-botonRegresar{
+    background-color: var(--first-color-second);
+}
+
+.dark-theme .crearDato-botonRegresar:hover{
+    background-color: var(--input-color);
+}
+
+.dark-theme .paginationBttns a{
+    color : var(--text-color) !important;
+    border: 1px solid var(--input-color);
+}
+
+.dark-theme .paginationBttns a:hover{
+    color :  white;
+    background-color: var(--input-color);
+}
+
+.dark-theme .paginationActive a{
+    background-color: var(--input-color);
+}
+
+.dark-theme .ui.modal.modalEliminarDato .ui.icon.header,
+.dark-theme .ui.modal.modalEliminarDato .content,
+.dark-theme .ui.modal.modalEliminarDato .actions{
+    color : var(--text-color) !important;
+    background: var(--input-color) !important;
+}
+
+.dark-theme .ui.modal.modalEliminarDato .actions .ui.basic.negative.button,
+.dark-theme .ui.modal.modalEliminarDato .actions .ui.basic.positive.button{
+    color : var(--text-color) !important;
+    background: var(--first-color-second) !important;
+    box-shadow: 0 0 0 0 1px var(--first-color-second) !important;
+}
+
+.dark-theme .enlace-container{
+    background-color: rgba(85, 151, 173, 0.2);
+    box-shadow:  none; 
 }

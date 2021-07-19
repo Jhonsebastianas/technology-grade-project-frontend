@@ -2,12 +2,12 @@ import React from 'react'
 
 import { Segment, Dimmer, Loader } from 'semantic-ui-react';
 
-const Loading = (props) => {
+const Loading = ({pantalla}) => {
 
     return <>
-        <Segment vertical id="carga">
+        <Segment vertical className="carga">
             <Dimmer active inverted>
-                <Loader size='large'>Cargando {props.pantalla}</Loader>
+                <Loader size='large' active inline='centered'>Cargando {pantalla}</Loader>
             </Dimmer>
 
         </Segment>
