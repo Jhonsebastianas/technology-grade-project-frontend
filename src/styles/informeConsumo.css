@@ -159,7 +159,7 @@
   .informeConsumoAnimacion{
     transform:scale(1);
   }
-  
+
   /* responsive */
 @media(max-width:992px){
     .informeConsumoMax{

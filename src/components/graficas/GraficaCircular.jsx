@@ -18,7 +18,7 @@ const GraficaCircular = (props) => {
     const totalPagar = Calculos.calcularTotalPagarTarifasPorServicio(tarifas, suma_consumos)
     
     let backgroundColor = `#00aae4`
-    // let medida = (tiposervicio === 'agua') ? ` m3` : `kwh`;
+    const medida = (tiposervicio === 'agua') ? `${UTILS.formatoMedidaAgua(suma_consumos)}` + '³  ': `${UTILS.formatoMedidaEnergia(suma_consumos)}`;
     const getPercentage = () => {
         let percentage = 0;
         if(tarifas.length > 0 || tarifas.length > 1){
@@ -38,7 +38,7 @@ const GraficaCircular = (props) => {
             <div className="anchoGraficaCircular">
                 <CircularProgressbar
                     value={getPercentage()}
-                    text={`${suma_consumos}`}
+                    text={`${medida}`}
                     styles={{
                         root: {},
                         path: {
@@ -56,7 +56,7 @@ const GraficaCircular = (props) => {
                         },
                         text: {
                             fill: `${backgroundColor}`,
-                            fontSize: "18px",
+                            fontSize: "14px",
                             margin: "auto",
                         },
                         background: {
