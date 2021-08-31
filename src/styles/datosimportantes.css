@@ -1,0 +1,188 @@
+/* Pantalla principal */
+
+.ui.stackable.grid.main-datoImportante-container{
+   margin: auto; 
+}
+
+.sixteen.wide.column.datoImportante-opciones{
+    text-align: right !important;
+}
+
+.datoImportante-opciones--botonNuevoDato{
+    background: var( --first-color-second) !important;
+    margin: auto 3% 2% auto !important; 
+    color: var( --title-color) !important;
+}
+
+/* Barra de busqueda */
+
+.datoImportante-opciones--barraBusqueda {
+    display: inline-block !important;
+    margin: auto 3% 2% auto; 
+}
+.datoImportante-opciones--barraBusqueda input  {
+    width: 300px !important; 
+    font-size: 1rem;
+    border-radius: 30px !important;
+    padding: .67857143em 1em;
+    line-height: 1.21428571em;
+}
+
+.datoImportante-opciones--barraBusqueda:hover{
+    cursor: pointer;
+}
+
+/* Formulario crear datos */
+
+.crearDato-title{
+    text-align: center !important;
+    margin: 2% auto !important;
+}
+
+.crearDato-botonEnviarDato{
+    background: var( --first-color-second) !important;
+    color: var( --title-color) !important;
+    margin-top: .3rem !important;
+    margin-bottom: .3rem !important;
+    text-align: center !important;
+    display: inline-block !important;  
+}
+
+.crearDato-botonRegresar{
+    color: var( --title-color) !important;
+    margin-left: 3% !important;
+    margin-top: .3rem !important;
+    margin-bottom: .3rem !important;
+    text-align: center !important;
+    display: inline-block !important;  
+}
+
+.crearDato-botonEnlace{
+    background: var( --first-color-second) !important;
+    color: var( --title-color) !important;
+    width: 140px !important;
+    height: 40px !important; 
+    border-radius: 6px !important; 
+    line-height:20px !important;
+    padding-top:10px !important;
+    padding-bottom: 10px !important;
+    margin: 2% auto 2% auto !important;
+    display: block !important;
+    border: none !important;
+    text-align: center !important;
+}
+
+.crearDato-botonEnlace i{
+   margin-left: auto !important;
+   margin-right: auto !important;
+}
+
+.crearDato-botonEnlace:hover {
+    cursor: pointer !important;
+}
+
+.crearDato-textAreaDato.field textarea{   
+    resize: none !important;
+}
+
+.crearDato-deleteEnlace:hover{
+    cursor: pointer !important;
+}
+
+.infodato{
+    text-align: center !important;
+}
+
+/* Datos importantes list*/
+
+.datosImportantesList-container{
+    display: flex;
+    justify-content: center;
+}
+
+.datosImportantesList-container ul{
+    padding: 0;
+    width: 60%;
+}
+
+.datosImportantesList-container ul>li {
+    margin-bottom: 1rem;
+}
+
+.datosImportantesList-container ul li {
+   list-style: none;
+}
+
+/* Datos importantes item*/
+
+.datosImportantesListItem-container { 
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.23);
+    border-radius: 5px;
+    display: flex;
+    padding: 1rem;
+}
+  
+.datosImportantesItem-title{
+    color: var(--primary-color-dark);
+    line-height: 1.3rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: .4rem;
+}
+
+.datosImportantesItem-descripcion{
+    margin: 3px auto;
+}
+
+.datosImportantesListItem-container i.icon{
+    margin-top: 3px;
+    align-self: flex-end;
+}
+
+.datosImportantesItem-link--editar:hover, .datosImportantesItem-modal--eliminar:hover{
+    cursor: pointer;
+}
+
+/* Modal Eliminar Dato */
+
+.modalEliminarDato .content p{
+    text-align: center;
+}
+
+.ui.modal.modalEliminarDato .content{
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+/* Enlace */
+
+.enlace-container{
+    padding: .5rem;
+    margin: .7rem auto !important;
+    background-color: rgba(188, 238, 255, 0.2);
+    border-radius: 5px;
+    box-shadow:  3px 3px 10px #e8e8e8, 
+                -3px -3px 10px #ffffff; 
+    
+}
+
+@media(width:768px){
+    .sixteen.wide.column.datoImportante-opciones{
+       margin-top: 5%;
+    }
+    .datosImportantesList-container ul{
+        padding: 0;
+        width: 80%;
+    }
+}
+
+@media(max-width:767px){
+    .datosImportantesList-container ul{
+        padding: 0;
+        width: 80%;
+    }
+    .sixteen.wide.column.datoImportante-opciones .ui.container{
+        margin-left: 0!important; 
+        margin-right: 0!important;
+    }   
+}

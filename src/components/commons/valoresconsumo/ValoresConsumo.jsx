@@ -11,55 +11,57 @@ const ValoresConsumo = (props) => {
     const { tarifas } = lectura;
 
     return (
-        <Container centered textAlign='center' className="containerInfo">
+        <Container  textAlign='center' className="containerInfo">
             <h5>Valores del Consumo</h5>
             <Grid stackable columns='equal'>
                 {tarifas !== undefined &&
                     tarifas.map((tarifa, index) => (
 
-                        <Grid.Column key={index} textAlign="center" centered >
+                        <Grid.Column key={index} textAlign="center" >
 
                             <h4 className="valoresConsumoTitle">{tiposervicio === 'agua'
                                 && <>{tarifa.servicio_publico.secundario}</>
                                 || <>{tiposervicio}</>}
                             </h4>
                             <Table fixed unstackable basic='very'>
-                                <Table.Row verticalAlign='middle'>
-                                    <Table.Cell>
-                                        Servicio por{tiposervicio === 'agua' && <> m<sup>3</sup></> || <>Kwh</>}
-                                    </Table.Cell>
-                                    <Table.Cell >{UTILS.formatoMoneda(tarifa.valor_consumo)} </Table.Cell>
-                                </Table.Row>
-                                <Table.Row>
-                                    <Table.Cell>
-                                        Exceso por{tiposervicio === 'agua' && <> m<sup>3</sup></> || <>Kwh</>}
-                                    </Table.Cell>
-                                    <Table.Cell >{UTILS.formatoMoneda(tarifa.valor_consumo_exceso)}</Table.Cell>
-                                </Table.Row>
-                                {tiposervicio === 'agua' &&
+                                <Table.Body>
+                                    <Table.Row verticalAlign='middle'>
+                                        <Table.Cell>
+                                            Servicio por{tiposervicio === 'agua' && <> m<sup>3</sup></> || <>Kwh</>}
+                                        </Table.Cell>
+                                        <Table.Cell >{UTILS.formatoMoneda(tarifa.valor_consumo)} </Table.Cell>
+                                    </Table.Row>
                                     <Table.Row>
-                                        <Table.Cell>Cargo fijo</Table.Cell>
+                                        <Table.Cell>
+                                            Exceso por{tiposervicio === 'agua' && <> m<sup>3</sup></> || <>Kwh</>}
+                                        </Table.Cell>
+                                        <Table.Cell >{UTILS.formatoMoneda(tarifa.valor_consumo_exceso)}</Table.Cell>
+                                    </Table.Row>
+                                    {tiposervicio === 'agua' &&
+                                        <Table.Row>
+                                            <Table.Cell>Cargo fijo</Table.Cell>
+                                            <Table.Cell >
+                                                {UTILS.formatoMoneda(tarifa.otros_valores[0].valor)}
+                                            </Table.Cell>
+                                        </Table.Row>
+                                    }
+                                    <Table.Row>
+                                        <Table.Cell>Exceso en consumo</Table.Cell>
                                         <Table.Cell >
-                                            {UTILS.formatoMoneda(tarifa.otros_valores[0].valor)}
+                                            {UTILS.formatoMoneda(Calculos.calcularExcesoPorSubservicio(tarifa, lectura.lectura.suma_consumos))}
                                         </Table.Cell>
                                     </Table.Row>
-                                }
-                                <Table.Row>
-                                    <Table.Cell>Exceso en consumo</Table.Cell>
-                                    <Table.Cell >
-                                        {UTILS.formatoMoneda(Calculos.calcularExcesoPorSubservicio(tarifa, lectura.lectura.suma_consumos))}
-                                    </Table.Cell>
-                                </Table.Row>
-                                <Table.Row>
-                                    <Table.Cell>
-                                        Total a pagar {tiposervicio === 'agua'
-                                            && <>{tarifa.servicio_publico.secundario}</>
-                                            || <>{tiposervicio}</>}
-                                    </Table.Cell>
-                                    <Table.Cell className="valorMonetario">
-                                        {UTILS.formatoMoneda(Calculos.calcularTotalPagarSubservicio(tarifa, lectura.lectura.suma_consumos))}
-                                    </Table.Cell>
-                                </Table.Row>
+                                    <Table.Row>
+                                        <Table.Cell>
+                                            Total a pagar {tiposervicio === 'agua'
+                                                && <>{tarifa.servicio_publico.secundario}</>
+                                                || <>{tiposervicio}</>}
+                                        </Table.Cell>
+                                        <Table.Cell className="valorMonetario">
+                                            {UTILS.formatoMoneda(Calculos.calcularTotalPagarSubservicio(tarifa, lectura.lectura.suma_consumos))}
+                                        </Table.Cell>
+                                    </Table.Row>
+                                </Table.Body>
                             </Table>
 
                         </Grid.Column>

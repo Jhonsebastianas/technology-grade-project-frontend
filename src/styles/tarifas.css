@@ -1,0 +1,116 @@
+.ui.form .inline.fields .field{
+    margin-right: 15%;
+}
+
+.ui.form .grouped.fields.estratos{
+    min-width: 31%;
+}
+
+.ui.form .inline.fields{
+    justify-content: center;
+}
+
+h1.tituloTarifas{
+    margin-top: 0;
+    margin-bottom: 25px;
+}
+
+div.divAgregarValorFijo{
+    margin-left: 1%;
+    padding-top: 24px;
+    margin-top: 2%;
+}
+
+@media only screen and  (min-width:10px) and (max-width:766px){
+    .ui.form .grouped.fields.estratos{
+        min-width: 100%;
+    }
+
+    div.elementoLimiteSubsidiado,
+    div.elementoUnidadMedida,
+    div.elementoSubsidioGobierno,
+    div.elementoValorConsumoExceso,
+    div.elementoValorConsumo,
+    div.elementoDescripcion,
+    div.elementoNombreOtroValor,
+    div.elementoValor {
+        min-width: 50% !important;
+    }
+
+    div.elementoValorConsumoExceso{
+        min-width: 100% !important;
+    }
+    
+    div.divAgregarNuevaTarifa{
+        padding-top: 5%;
+        padding-bottom: 5%;
+    }
+}
+
+div.divAgregarNuevaTarifa{
+    display: flex;
+    align-items: flex-end;
+    margin-left: 7px;
+}
+
+div.divAgregarNuevaTarifa button.ui.button, div.divAgregarValorFijo button.ui.button{
+    color: white;
+    background-color: var(--primary-color);
+}
+
+div.elementoLimiteSubsidiado,
+div.elementoUnidadMedida,
+div.elementoSubsidioGobierno,
+div.elementoValorConsumoExceso,
+div.elementoValorConsumo,
+div.elementoDescripcion,
+div.elementoNombreOtroValor,
+div.elementoValor{
+    min-width: 31%;
+    margin-top: 2%;
+}
+
+div.limiteSubsidiado, div.valorConsumo, div.valorConsumoExceso, 
+div.subsidioGobierno, div.unidadMedida, div.descripcion, div.nombreOtroValor,
+div.valor{
+    min-width: 100%;
+}
+
+/*
+ESTILOS DE OTROS VALORES
+*/
+.ui.celled.table tr td.celdaIconosOtrosValores i{
+    margin-left: 10%;
+}
+
+.ui.celled.table tr td.celdaIconosOtrosValores{
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.celdaIconosOtrosValores .iconoColorAzul{
+    color: #00aae4;
+    cursor: pointer;
+}
+
+.celdaIconosOtrosValores .iconoColorRojo{
+    color: red;
+    cursor: pointer;
+}
+
+/*ESTILOS DE LA MODAL EN GENERAL*/
+.ui.modal>.content .formularioEditarOtrosValores{
+    padding: 21px;
+    padding-top: 0;
+}
+
+/*ESTILOS ELEMENTOS MODAL EDITAR OTROS VALORES*/
+div.elementoNombreOtroValorModal, div.elementoValorModal, div.elementoDescripcionModal{
+    min-width: 50%;
+    margin-top: 2%;
+}
+
+div.elementoValorModal div.four.wide.field.descripcion label {
+    font-weight: bold;
+    color: black;
+}

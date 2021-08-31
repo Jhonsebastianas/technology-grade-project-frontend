@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Accordion, Grid, Header, Icon } from 'semantic-ui-react'
 import ServicioHogar from '@components/sections/home/listaHogares/ServicioHogar'
+import CpUtils from '@utils/cp.utils'
 
 import Styled from 'styled-components'
 
@@ -15,11 +16,16 @@ const HogarDetalle = (props) => {
     const getConsumoTotalServicio = () => {
         return servicios.map(servicio => {
             const { lectura: { suma_consumos }, principal } = servicio
-            const color = (principal === 'agua') ? 'blue' : 'yellow'
-            const icon = (principal === 'agua') ? 'theme' : 'plug'
+            const datos = {
+                "agua": { color: "blue", icon: "theme", formato: "formatoMedidaAgua" },
+                "energia": { color: "yellow", icon: "plug", formato: "formatoMedidaEnergia" }
+            }
+            const color = datos[principal].color
+            const icon = datos[principal].icon
+            const formato = datos[principal].formato
             return (
                 <>
-                    <Icon name={icon} color={color} /> {suma_consumos}
+                    <Icon name={icon} color={color} /> {CpUtils[formato](suma_consumos)}
                 </>
             )
         })

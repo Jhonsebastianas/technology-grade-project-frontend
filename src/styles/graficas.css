@@ -27,7 +27,7 @@
 
 .botonGraficas{
     margin: 3px auto 6px auto !important;
-    background: var(--success-color) !important;
+    background: var(--primary-color-dark) !important;
     color: white !important;
 }
 
@@ -56,14 +56,15 @@
     font-family: 'Lato', Helvetica Neue,Arial,Helvetica,sans-serif !important;
 }
 
-/* Tips */
-.tipsTitle{
-    color: rgb(31 68 133)
-}
-
 @media(max-width:450px){
     .anchoGraficaCircular{
         width: 65%;
+    }
+}
+
+@media(width:768px){
+    .containerInfo{
+        margin-top: var(--header-height);
     }
 }
 
@@ -81,7 +82,6 @@
 }
 
 @media(max-width:992px){
-    
     .informacionGraficaCircular{
          max-width: 320px;
     }
