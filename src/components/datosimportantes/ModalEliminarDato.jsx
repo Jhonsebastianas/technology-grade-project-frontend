@@ -65,7 +65,7 @@ const ModalEliminarDato = (props) => {
                     Descartar
                 </Button>
                 <Button  
-                 content="Eliminar"
+                   content="Eliminar"
                     labelPosition="right"
                     icon="checkmark"
                     negative  

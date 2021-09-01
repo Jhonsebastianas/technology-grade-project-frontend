@@ -6,7 +6,7 @@ import { Container, Input, Button } from 'semantic-ui-react';
 
 const GraficasBarras = (props) => {
 
-    let data = []
+    let data = [];
 
     const Datos = (array) => {
         for (const property in array) {

@@ -117,11 +117,10 @@
     box-shadow: 0 0 0 0 1px var(--first-color-second) !important;
 }
 
-.dark-theme .ui.modal>:last-child{
+.dark-theme .ui.modal.modalEliminarDato>:last-child{
     border-bottom-left-radius: none;
     border-bottom-right-radius: none;
 }
-
 
 .dark-theme .enlace-container{
     background-color: rgba(85, 151, 173, 0.2);
