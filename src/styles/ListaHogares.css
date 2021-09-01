@@ -11,6 +11,14 @@
     background-color: var(--input-color) !important;
 }
 
+.dark-theme .cargarHogares {
+    background-color: var(--input-color) !important;
+    color: var(--text-color) !important;
+}
+.dark-theme .ui.inverted.dimmer .ui.loader {
+    color: var(--text-color) !important;
+}
+
 .dark-theme .contenedorHogares .ui.header {
     color: var(--text-color) !important;
 }

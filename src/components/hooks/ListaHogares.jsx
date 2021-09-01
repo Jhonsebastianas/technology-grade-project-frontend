@@ -88,9 +88,12 @@ const ListaHogares = (props) => {
                     <Divider />
                     <Segment basic>
                         <br></br>
-                        <Dimmer inverted active>
+                        <br></br>
+                        <Dimmer className="cargarHogares" inverted active>
                             <Loader inverted content='Cargando hogares' />
                         </Dimmer>
+                        <br></br>
+                        <br></br>
                     </Segment>
                 </>
                 || ''}
