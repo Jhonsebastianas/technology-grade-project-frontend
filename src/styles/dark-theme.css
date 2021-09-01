@@ -99,15 +99,29 @@
 .dark-theme .ui.modal.modalEliminarDato .content,
 .dark-theme .ui.modal.modalEliminarDato .actions{
     color : var(--text-color) !important;
-    background: var(--input-color) !important;
+    background: var(--body-color) !important;
 }
 
-.dark-theme .ui.modal.modalEliminarDato .actions .ui.basic.negative.button,
-.dark-theme .ui.modal.modalEliminarDato .actions .ui.basic.positive.button{
-    color : var(--text-color) !important;
-    background: var(--first-color-second) !important;
+.dark-theme .ui.modal.modalEliminarDato>.header{
+    border-bottom: 2px solid rgba(255,255,255,0.1);
+}
+
+.dark-theme .ui.modal.modalEliminarDato>.actions{
+    border-top: 2px solid rgba(255,255,255,0.1);
+}
+
+
+.dark-theme .ui.modal.modalEliminarDato .ui.black.button{
+    color : white !important;
+    background: #999999 !important;
     box-shadow: 0 0 0 0 1px var(--first-color-second) !important;
 }
+
+.dark-theme .ui.modal>:last-child{
+    border-bottom-left-radius: none;
+    border-bottom-right-radius: none;
+}
+
 
 .dark-theme .enlace-container{
     background-color: rgba(85, 151, 173, 0.2);

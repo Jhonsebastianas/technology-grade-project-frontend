@@ -59,8 +59,17 @@ const ModalEliminarDato = (props) => {
                 </p>
             </Modal.Content>
             <Modal.Actions>
-                <Button basic positive   onClick={() => setOpen(false)}>Cancelar</Button>
-                <Button  negative  onClick={deleteDato}>Eliminar</Button>
+                <Button 
+                    color="black" 
+                    onClick={() => setOpen(false)}>
+                    Descartar
+                </Button>
+                <Button  
+                 content="Eliminar"
+                    labelPosition="right"
+                    icon="checkmark"
+                    negative  
+                    onClick={deleteDato}/>
             </Modal.Actions>
         </Modal>
     )

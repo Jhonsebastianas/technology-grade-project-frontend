@@ -6,29 +6,40 @@ import { Container, Input, Button } from 'semantic-ui-react';
 
 const GraficasBarras = (props) => {
 
-    let data = [];
+    let data = []
 
-    function functionforEach(item, index) {
-        if (index !== 0) {
-            data.push({ medicion: `Medición ${index}`, Valor: item.consumo })
+    const Datos = (array) => {
+        for (const property in array) {
+            data.push({ Medición: `${property}`, Consumo: array[property] });
         }
+    }
+
+    function groupBy(objectArray, property) {
+        return objectArray.reduce(function (acc, obj) {
+            let key = obj[property];
+            if (!acc[key.slice(0, 10)]) {
+                acc[key.slice(0, 10)] = 0;
+            }
+            acc[key.slice(0, 10)] += obj.consumo;
+            return acc
+        }, {})
     }
 
     const getData = () => {
-        const { lectura } = props
-        if (lectura.lectura !== undefined && lectura.lectura.mediciones !== undefined) {
-            lectura.lectura.mediciones.forEach(functionforEach)
+        const { lectura } = props;
+        if (lectura.lectura.mediciones !== undefined) {
+            let groupedMedicion = groupBy(lectura.lectura.mediciones, 'fecha_hora');
+            Datos(groupedMedicion);
         }
     }
 
-    getData()
+    getData();
 
     return (
         <Container textAlign='center' className="containerInfo">
             <h5>Estadísticas de Consumo</h5>
             <ResponsiveContainer height={270}>
                 <BarChart
-
                     data={data}
                     margin={{
                         top: 5,
@@ -38,14 +49,14 @@ const GraficasBarras = (props) => {
                     }}
                 >
                     <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="medicion" />
+                    <XAxis dataKey="Medición" />
                     <YAxis />
                     <Tooltip />
-                    <Legend />
-                    <Bar dataKey="Valor" fill="#51d1f6" />
+                    <Legend  wrapperStyle={{ lineHeight: '40px' }}/>
+                    <Bar dataKey="Consumo" fill="#00aae4" barSize={30} />
                 </BarChart>
             </ResponsiveContainer>
-            <h6 className="rangoFechas">Rango de fechas</h6>
+            {/* <h6 className="rangoFechas">Rango de fechas</h6>
             <div className="fechasGraficaBarras">
                 <label>
                     <Input
@@ -64,8 +75,8 @@ const GraficasBarras = (props) => {
                     />
                     <Button className="botonGraficas" primary>Buscar</Button>
                 </label>
-             
-            </div>
+
+            </div> */}
         </Container>
     );
 }
