@@ -53,9 +53,7 @@ const HogarDetalle = (props) => {
             <Accordion.Content active={indexHogarActivo === index} key={index.toString()}>
                 <Grid stackable>
                     <Grid.Column width={16}>
-                        <Header as='h4' >
-                            Información de tu hogar
-                        </Header>
+                        <h4>Información de tu hogar</h4>
                         <p><Icon name="address book" color="teal"></Icon><strong>Contrato:</strong> {numero_contrato} | Estrato: {estrato} | Tipo hogar: {tipo_hogar}</p>
                         <p><Icon name="globe" color="blue"></Icon><strong>Localidad:</strong> Colombia, Medellín</p>
                         <h4>Información de tus servicios</h4>
