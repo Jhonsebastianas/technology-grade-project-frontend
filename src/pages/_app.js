@@ -30,6 +30,9 @@ import '@styles/datosimportantes.css'
 import '@styles/paginacion.css'
 
 
+import '@styles/css/modal-registrar-lectura.css'
+
+
 
 
 

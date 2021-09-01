@@ -1,0 +1,18 @@
+.dark-theme .modal__registrar-lectura-container {
+    background-color: var(--body-color) !important;
+    color: var(--text-color) !important;
+}
+
+.dark-theme .modal__registrar-lectura-header {
+    background-color: var(--body-color) !important;
+    color: var(--text-color) !important;
+    border-color: var(--input-color) !important;
+}
+
+.modal__registrar-lectura-container i {
+    color: var(--text-color) !important;
+}
+
+.dark-theme .input-contador {
+    background-color: var(--input-color) !important;
+}
