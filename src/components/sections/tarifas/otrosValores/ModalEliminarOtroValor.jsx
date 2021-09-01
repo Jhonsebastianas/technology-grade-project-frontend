@@ -1,6 +1,7 @@
 import React from "react";
 import ModalPerfil from "./ModalOtrosValores";
 import { Button, Form, Modal, Table } from "semantic-ui-react";
+import UTIL from '@utils/cp.utils'
 
 
 const ModalEliminarOtroValor = (props) => {
@@ -23,13 +24,13 @@ const ModalEliminarOtroValor = (props) => {
         <Table celled fixed>
           <Table.Header>
             <Table.Row>
-              <Table.HeaderCell>
+              <Table.HeaderCell className="encabezado">
                 Nombre
               </Table.HeaderCell>
-              <Table.HeaderCell>
+              <Table.HeaderCell className="encabezado">
                 Descripcion
               </Table.HeaderCell>
-              <Table.HeaderCell>
+              <Table.HeaderCell className="encabezado">
                 Valor
               </Table.HeaderCell>
             </Table.Row>
@@ -41,7 +42,7 @@ const ModalEliminarOtroValor = (props) => {
                 </Table.Cell>
                 <Table.Cell>{formik.values.descripcion}</Table.Cell>
                 <Table.Cell>
-                  {formik.values.valor}
+                  {UTIL.formatoMoneda(formik.values.valor)}
                 </Table.Cell>
               </Table.Row>
             </Table.Body>

@@ -100,16 +100,16 @@ const ValoresFijosDetails = (props) => {
       <Table celled fixed>
         <Table.Header>
           <Table.Row>
-            <Table.HeaderCell>
+            <Table.HeaderCell className="encabezado">
               Nombre
             </Table.HeaderCell>
-            <Table.HeaderCell>
+            <Table.HeaderCell className="encabezado">
               Descripcion
             </Table.HeaderCell>
-            <Table.HeaderCell>
+            <Table.HeaderCell className="encabezado">
               Valor
-            </Table.HeaderCell>
-            <Table.HeaderCell />
+            </Table.HeaderCell >
+            <Table.HeaderCell className="encabezado" />
           </Table.Row>
         </Table.Header>
         {tarifaExistente && tarifaExistente.otros_valores &&
