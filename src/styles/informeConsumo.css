@@ -4,26 +4,21 @@
     margin: auto !important;  
 }
 
-#carga{
+.carga{
   width: 100vw;
   height: 100vh;
-  display: flex ;
-  align-items: center ;
-  justify-content: center ;
-  text-align: center ;
-  margin: auto;
-  padding: 0;
+  background-color: transparent !important;
 }
 
 .informeConsumoMin{
-    width: 100%;
-    border-radius: 20px;
-    background: #ffffff;
-    padding: 5px !important;
-    margin-bottom: 30px !important; 
-    justify-content: center !important;
-    text-align: center !important;
-    font-family: 'Lato', Helvetica Neue,Arial,Helvetica,sans-serif !important; 
+  width: 100%;
+  border-radius: 20px;
+  background: #ffffff;
+  padding: 5px !important;
+  margin-bottom: 30px !important; 
+  justify-content: center !important;
+  text-align: center !important;
+  font-family: 'Lato', Helvetica Neue,Arial,Helvetica,sans-serif !important; 
 }
 
 .informeConsumoMax{
@@ -34,6 +29,11 @@
     margin-bottom: 30px !important;
     text-align: center;
     font-family: 'Lato', Helvetica Neue,Arial,Helvetica,sans-serif !important; 
+}
+
+/* Tips */
+.tipsTitle{
+  color: rgb(31 68 133)
 }
 
 .tipInfo{
@@ -49,6 +49,29 @@
   min-height: 150px;
 }
 
+.tipInfo-title{
+  font-weight: bold;
+}
+
+.tipInfo-description{
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: justify;
+}
+
+.tipFuentes{
+  text-align: left;
+  display: inline-block;
+  margin-left: 0;
+  margin-right: 0.5rem;
+}
+
+.tipEnlaces{
+  margin-right: 0.3rem;
+  color: #08213a !important;
+  font-weight: 300;
+}
 
 /* opciones flotantes */
 .botonFlotante{
@@ -136,7 +159,7 @@
   .informeConsumoAnimacion{
     transform:scale(1);
   }
-  
+
   /* responsive */
 @media(max-width:992px){
     .informeConsumoMax{

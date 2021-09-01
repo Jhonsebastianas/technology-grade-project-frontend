@@ -4,8 +4,6 @@ import { BarChart, Bar, ResponsiveContainer, XAxis, YAxis, CartesianGrid, Toolti
 
 import { Container, Input, Button } from 'semantic-ui-react';
 
-
-
 const GraficasBarras = (props) => {
 
     let data = [];
@@ -18,7 +16,6 @@ const GraficasBarras = (props) => {
 
     const getData = () => {
         const { lectura } = props
-
         if (lectura.lectura !== undefined && lectura.lectura.mediciones !== undefined) {
             lectura.lectura.mediciones.forEach(functionforEach)
         }
@@ -26,9 +23,8 @@ const GraficasBarras = (props) => {
 
     getData()
 
-
     return (
-        <Container centered textAlign='center' className="containerInfo">
+        <Container textAlign='center' className="containerInfo">
             <h5>Estadísticas de Consumo</h5>
             <ResponsiveContainer height={270}>
                 <BarChart
@@ -40,7 +36,6 @@ const GraficasBarras = (props) => {
                         left: 5,
                         bottom: 5,
                     }}
-                // barSize={30}
                 >
                     <CartesianGrid strokeDasharray="3 3" />
                     <XAxis dataKey="medicion" />

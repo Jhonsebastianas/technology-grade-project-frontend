@@ -26,6 +26,10 @@ import '@styles/menuPrivado.css'
 import '@styles/modalEditarCuenta.css'
 import '@styles/tarifas.css'
 import '@styles/RegistroUsuario.css'
+import '@styles/datosimportantes.css'
+import '@styles/paginacion.css'
+
+
 
 
 

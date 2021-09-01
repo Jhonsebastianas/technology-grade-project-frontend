@@ -3,6 +3,7 @@ import { Button, Form, Header, Icon, Input, Modal } from 'semantic-ui-react'
 import ServiciosLecturas from '@services/servicios.lecturas'
 import { useToasts } from 'react-toast-notifications'
 import { validateLectura, validateLecturaInicial } from '@components/forms/lecturas/ModalRegistrarLecturaManualValidator'
+import CpUtils from '@utils/cp.utils'
 import HttpStatus from '@constants/HttpStatus'
 
 const CERRAR_MODAL = false;
@@ -72,7 +73,7 @@ const ModalRegistrarLecturaManual = (props) => {
                         setLectura(0)
                     } else if (status === HttpStatus.PRECONDITION_FAILED) {
                         console.log(error.response)
-                        addToast(`El registro del contador no puede ser menor o igual al actual (lectura actual: ${lectura_actual_contador})`, { appearance: 'warning' });
+                        addToast(`El registro del contador no puede ser menor o igual al actual (lectura actual: ${CpUtils.formatoLectura(lectura_actual_contador)})`, { appearance: 'warning' });
                         setLectura(lectura_actual_contador)
                     } else {
                         addToast('oh no :(, no eres tú somos nosotros, algo a ido mal', { appearance: 'error' });
@@ -96,7 +97,7 @@ const ModalRegistrarLecturaManual = (props) => {
                     <Form>
                         <Form.Field>
                             <label htmlFor='lectura'>Lectura actual del contador público:</label>
-                            <Input type="number" name="lectura" id='lectura' placeholder="0190201" value={lectura}
+                            <Input type="number" name="lectura" id='lectura' placeholder="0190201" value={CpUtils.formatoLectura(lectura)}
                                 onChange={handledChanged}
                             />
                             {errors.lectura && (<div className="ui pointing red basic label">{errors.lectura}</div>)}

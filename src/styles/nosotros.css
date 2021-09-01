@@ -1,11 +1,12 @@
 #nosotrosSectionOne{
-    background: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)),url('/images/JP_9.webp') ;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 430px;
-    justify-content: center;
-    text-align: center;
-    align-content: center;
+  background: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)),url('/images/JP_9.webp') ;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 400px;
+  justify-content: center;
+  text-align: center;
+  align-content: center;
+  border-bottom: 0;
     
 }
 
@@ -36,16 +37,16 @@
   padding: 0 ;
 }
 
-.nosotrosSectionBoton{
-    /* background: url('/images/JP_9.webp') no-repeat cover !important; */
-    height: 200px;
-    justify-content: center;
-    text-align: center;
+.ui.vertical.segment.nosotrosSectionBoton{
+  /* background: url('/images/JP_9.webp') no-repeat cover !important; */
+  height: 200px;
+  justify-content: center;
+  text-align: center;
 }
 
 .nosotrosSectionBoton p{
-    margin: 10px auto 20px auto;
-    font-size: 1.5rem;
+  margin: 10px auto 20px auto;
+  font-size: 1.5rem;
 }
  
 
