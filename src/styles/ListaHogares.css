@@ -149,4 +149,15 @@
     opacity: 1;
 }
 
+/*==================== CANTIDAD HOGARES ====================*/
+.dark-theme .cantidad {
+    border-color: rgba(255,255,255,0.2) !important;
+    background-color: var(--input-color) !important;
+}
+
+.dark-theme .icono-hogar {
+    color: var(--text-color) !important;
+    background-color: var(--body-color) !important;
+}
+
 /*==================== RESPONSIVE ====================*/
