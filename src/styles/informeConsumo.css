@@ -54,10 +54,10 @@
 }
 
 .tipInfo-description{
-  width: 90%;
+  width: 95%;
   margin-left: auto;
   margin-right: auto;
-  text-align: justify;
+  text-align: initial;
 }
 
 .tipFuentes{
@@ -113,7 +113,6 @@
     transition:.5s;  
   }
 
-  
   .btnsIC span .icon{
     font-size: 20px;
     margin: 0 !important;
@@ -123,9 +122,11 @@
   .botonPrincipal:hover span{
     transform:rotate(360deg);
   }
+  
   .botonPrincipal:active{
     transform:scale(1.1);
   }
+
   .btnsIC{
     display:inline-block;
     color:#FFF;
@@ -147,10 +148,12 @@
     transform: scale(0) ;
     font-weight: 0;
   }
+
   .botonVerGraficas{
     margin-bottom:50px;
     transition:0.5s;
   }
+
   .botonVerValores{
     margin-bottom:100px;
     transition:0.7s;
