@@ -24,13 +24,13 @@ const ModalEliminarOtroValor = (props) => {
         <Table celled fixed>
           <Table.Header>
             <Table.Row>
-              <Table.HeaderCell className="encabezado">
+              <Table.HeaderCell>
                 Nombre
               </Table.HeaderCell>
-              <Table.HeaderCell className="encabezado">
+              <Table.HeaderCell>
                 Descripcion
               </Table.HeaderCell>
-              <Table.HeaderCell className="encabezado">
+              <Table.HeaderCell>
                 Valor
               </Table.HeaderCell>
             </Table.Row>
