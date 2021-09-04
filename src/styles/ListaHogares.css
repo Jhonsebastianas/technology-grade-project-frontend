@@ -11,6 +11,14 @@
     background-color: var(--input-color) !important;
 }
 
+.dark-theme .cargarHogares {
+    background-color: var(--input-color) !important;
+    color: var(--text-color) !important;
+}
+.dark-theme .ui.inverted.dimmer .ui.loader {
+    color: var(--text-color) !important;
+}
+
 .dark-theme .contenedorHogares .ui.header {
     color: var(--text-color) !important;
 }
@@ -139,6 +147,17 @@
 .card__service:hover .card__button {
     transition-delay: .2s;
     opacity: 1;
+}
+
+/*==================== CANTIDAD HOGARES ====================*/
+.dark-theme .cantidad {
+    border-color: rgba(255,255,255,0.2) !important;
+    background-color: var(--input-color) !important;
+}
+
+.dark-theme .icono-hogar {
+    color: var(--text-color) !important;
+    background-color: var(--body-color) !important;
 }
 
 /*==================== RESPONSIVE ====================*/

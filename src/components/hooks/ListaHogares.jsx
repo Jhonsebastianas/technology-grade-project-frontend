@@ -70,10 +70,10 @@ const ListaHogares = (props) => {
                         </Grid.Column>
                         <Grid.Column floated='right' width={5}>
                             <Button as='div' floated="right" labelPosition='left'>
-                                <Label as='a' basic pointing='right'>
+                                <Label className="cantidad" as='a' basic pointing='right'>
                                     {cantidadHogares}
                                 </Label>
-                                <Button icon>
+                                <Button className="icono-hogar" icon>
                                     <Icon name='home' />
                                     {/* Like */}
                                 </Button>
@@ -88,9 +88,12 @@ const ListaHogares = (props) => {
                     <Divider />
                     <Segment basic>
                         <br></br>
-                        <Dimmer inverted active>
+                        <br></br>
+                        <Dimmer className="cargarHogares" inverted active>
                             <Loader inverted content='Cargando hogares' />
                         </Dimmer>
+                        <br></br>
+                        <br></br>
                     </Segment>
                 </>
                 || ''}
