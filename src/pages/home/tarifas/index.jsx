@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import LayoutPrivado from "@components/layouts/LayoutPrivado";
+import LayoutAdmin from "@components/layouts/LayoutAdmin";
 import TarifasDetails from "@components/sections/tarifas/TarfiasDetails";
 import DateUtils from "@utils/dates.util";
 import serviciosTarifas from "@services/servicios.tarifas";
@@ -346,7 +346,7 @@ const Tarifas = () => {
   };
 
   return (
-    <LayoutPrivado>
+    <LayoutAdmin>
       <div id="modal"></div>
       <TarifasDetails
         opcionServicios={opcionServicios}
@@ -367,7 +367,7 @@ const Tarifas = () => {
         mostrarValoresFijos = {mostrarValoresFijos}
         mostrarFormularioTarifa  = {mostrarFormularioTarifa }
       />
-    </LayoutPrivado>
+    </LayoutAdmin>
   );
 };
 
