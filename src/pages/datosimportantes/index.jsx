@@ -104,7 +104,6 @@ const DatosImportantes = () => {
                         />
                     </Grid.Column>
                 </Grid.Row>
-
             </Grid>
         </Layout>
     )

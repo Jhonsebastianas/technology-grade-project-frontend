@@ -33,12 +33,10 @@ const CrearDatoImportanteContainer = ({ metodo, formDato, tituloPagina }) => {
 
     const handleOnChange = (index, name, value) => {
         const copyEnlaces = [...enlaces];
-        console.log('index:' + index + name + ':' + value)
         copyEnlaces[index] = {
             ...copyEnlaces[index],
             [name]: value
         };
-        console.log(copyEnlaces)
         setEnlaces(copyEnlaces);
     };
 
