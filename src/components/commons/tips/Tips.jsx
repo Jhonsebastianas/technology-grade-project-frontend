@@ -17,7 +17,7 @@ const Tips = () => {
                 setTitulo(data[0].titulo);
                 setDescripcion(data[0].descripcion);
                 setEnlace(data[0].fuentes.enlace);
-                
+
             }, (error) => { });
         }
         return () => (mounted = false);
@@ -26,12 +26,12 @@ const Tips = () => {
     return (
 
         <div className="containerInfo">
-            <h5 className="tipsTitle"> <Icon name="lightbulb outline" aria-label='tip de ahorro' />TIP</h5>
+            <h5 className="tipsTitle"> <Icon name="lightbulb outline" aria-label='tip de ahorro'/>TIP</h5>
             <div className="tipInfo">
                 <p className='tipInfo-title'>{titulo}</p>
                 <p className='tipInfo-description'>{descripcion}</p>
-                {/* <p className="tipFuentes">Fuentes:</p>
-                {enlace !== undefined &&
+                <p className="tipFuentes">Fuentes:</p>
+                {enlace.length > 0 &&
                     enlace.map((enlace, index) => (
                         <a
                             href={enlace.url}
@@ -42,8 +42,8 @@ const Tips = () => {
                         >
                             {enlace.nombre_pagina}
                         </a>
-                    )) || <p>Anónimo</p>
-                } */}
+                    )) || <p className="tipFuentes">Anónimo</p>
+                }
             </div>
         </div>
 
