@@ -60,7 +60,7 @@ const ModalRegistrarLecturaManual = (props) => {
                 } else {
                     addToast('Nueva lectura añadida correctamente, consumo actualizado', { appearance: 'success', autoDismiss: true });
                 }
-                if(funcionDetalle) {
+                if (funcionDetalle) {
                     funcionDetalle()
                 }
                 setIsLecturaFactura(false)
@@ -98,7 +98,7 @@ const ModalRegistrarLecturaManual = (props) => {
                     <Form>
                         <Form.Field>
                             <label htmlFor='lectura'>Lectura actual del contador público:</label>
-                            <Input className="input-contador" type="number" name="lectura" id='lectura' placeholder="0190201" value={(lectura == 0) ? '': CpUtils.formatoLectura(lectura)}
+                            <Input className="input-contador" type="number" name="lectura" id='lectura' placeholder="0190201" value={(lectura.length > 6) ? lectura.substring(0, 6) : lectura}
                                 onChange={handledChanged}
                             />
                             {errors.lectura && (<div className="ui pointing red basic label">{errors.lectura}</div>)}
@@ -124,7 +124,7 @@ const ModalRegistrarLecturaManual = (props) => {
             >
                 <Header icon>
                     <Icon name='file alternate' />
-                        Toma tu factura de servicios públicos
+                    Toma tu factura de servicios públicos
                 </Header>
                 <Modal.Content>
                     <p style={{ fontSize: 'medium' }}>
@@ -162,10 +162,10 @@ const ModalRegistrarLecturaManual = (props) => {
                 <Modal.Actions className="modal__registrar-lectura-container">
                     <Button color='red' onClick={() => setOpenPrimerRegistro(CERRAR_MODAL)}>
                         <Icon name='remove' /> Cancelar
-                </Button>
+                    </Button>
                     <Button color='green' onClick={registrarLectura}>
                         <Icon name='checkmark' /> Registrar
-                </Button>
+                    </Button>
                 </Modal.Actions>
             </Modal>
         </>
