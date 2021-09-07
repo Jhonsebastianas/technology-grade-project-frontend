@@ -37,16 +37,26 @@ import '@styles/css/modal-registrar-lectura.css'
 
 
 import { ToastProvider } from 'react-toast-notifications';
+import { useEffect } from "react";
+import ServicesWorkers from "src/tools/services.workers";
 
 /**
  * Método que genera metricas importantes del proyecto
  * @param {*} metric 
  */
 export function reportWebVitals(metric) {
+  console.group("Web vitals");
   console.log(metric);
+  console.groupEnd("End Web vitals");
 }
 
 const MyApp = ({ Component, pageProps }) => {
+
+  useEffect(() => {
+    if ("serviceWorker" in navigator) {
+      ServicesWorkers.configServicesWorkers();
+    }
+  }, [])
   // Aditional props
   // Aditional layout
   // Manejar errores - componentDidCatch
