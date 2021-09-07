@@ -91,20 +91,21 @@ const ModalRegistrarLecturaManual = (props) => {
                 dimmer='blurring'
                 open={openLectura}
                 onClose={() => setOpenLectura(CERRAR_MODAL)}
+                className="modal__registrar-lectura-container"
             >
-                <Modal.Header>Lectura del contador ({servicioPublico.principal})</Modal.Header>
-                <Modal.Content>
+                <Modal.Header className="modal__registrar-lectura-header">Lectura del contador ({servicioPublico.principal})</Modal.Header>
+                <Modal.Content className="modal__registrar-lectura-container">
                     <Form>
                         <Form.Field>
                             <label htmlFor='lectura'>Lectura actual del contador público:</label>
-                            <Input type="number" name="lectura" id='lectura' placeholder="0190201" value={CpUtils.formatoLectura(lectura)}
+                            <Input className="input-contador" type="number" name="lectura" id='lectura' placeholder="0190201" value={CpUtils.formatoLectura(lectura)}
                                 onChange={handledChanged}
                             />
                             {errors.lectura && (<div className="ui pointing red basic label">{errors.lectura}</div>)}
                         </Form.Field>
                     </Form>
                 </Modal.Content>
-                <Modal.Actions>
+                <Modal.Actions className="modal__registrar-lectura-container">
                     <Button negative onClick={() => setOpenLectura(CERRAR_MODAL)}>
                         Cancelar
                     </Button>
@@ -145,9 +146,10 @@ const ModalRegistrarLecturaManual = (props) => {
                 // trigger={<Button>Show Modal</Button>}
                 onClose={() => setOpenPrimerRegistro(CERRAR_MODAL)}
                 onOpen={() => setOpenPrimerRegistro(ABRIR_MODAL)}
+                className="modal__registrar-lectura-container"
             >
-                <Header icon='file alternate' content={`Primera lectura del mes (${servicioPublico.principal})`} />
-                <Modal.Content>
+                <Header className="modal__registrar-lectura-header" icon='file alternate' content={`Primera lectura del mes (${servicioPublico.principal})`} />
+                <Modal.Content className="modal__registrar-lectura-container">
                     <Form>
                         <Form.Field>
                             <label htmlFor='lecturaInicial' style={{ fontSize: 'medium' }}>Lectura actual en la factura de servicios públicos:</label>
@@ -157,7 +159,7 @@ const ModalRegistrarLecturaManual = (props) => {
                         </Form.Field>
                     </Form>
                 </Modal.Content>
-                <Modal.Actions>
+                <Modal.Actions className="modal__registrar-lectura-container">
                     <Button color='red' onClick={() => setOpenPrimerRegistro(CERRAR_MODAL)}>
                         <Icon name='remove' /> Cancelar
                 </Button>

@@ -1,3 +1,7 @@
+body h3{
+    color: unset;
+}
+
 .ui.form .inline.fields .field{
     margin-right: 15%;
 }
@@ -114,3 +118,132 @@ div.elementoValorModal div.four.wide.field.descripcion label {
     font-weight: bold;
     color: black;
 }
+
+
+/*
+ESTILOS TEMA OSCURO
+*/
+
+body.dark-theme .ui.form .grouped.fields>label{
+    color: unset;
+}
+
+body.dark-theme .ui.checkbox label, .ui.checkbox+label{
+    color: unset;
+}
+
+body.dark-theme  .ui.selection.dropdown {
+    background-color: var(--input-color);
+    color: var(--text-color);
+}
+
+body.dark-theme .ui.form .field>label{
+    color: unset;
+}
+
+
+body.dark-theme .ui.checkbox input:checked~.box:after,body.dark-theme .ui.checkbox input:checked~label:after,
+body.dark-theme .ui.radio.checkbox .box:after,body.dark-theme  .ui.radio.checkbox label:after,
+body.dark-theme .ui.checkbox .box:after, body.dark-theme .ui.checkbox label:after,
+body.dark-theme .ui.radio.checkbox input:focus:checked~.box:after, .ui.radio.checkbox input:focus:checked~label:after
+{
+    background-color: var(--text-color);
+}
+
+ 
+
+body.dark-theme .ui.radio.checkbox input:focus:checked~.box:before,body.dark-theme .ui.radio.checkbox input:focus:checked~label:before,
+body.dark-theme .ui.radio.checkbox .box:before, .ui.radio.checkbox label:before,
+body.dark-theme .ui.radio.checkbox input:focus~.box:before, body.dark-theme .ui.radio.checkbox input:focus~label:before,
+body.dark-theme .ui.dropdown .menu,
+body.dark-theme .ui.celled.table tr td, 
+body.dark-theme .ui.celled.table tr th
+{
+    background-color: var(--input-color);
+}   
+
+body.dark-theme .ui.radio.checkbox input:checked~.box:before,
+body.dark-theme .ui.radio.checkbox input:checked~label:before{
+    background-color: var(--input-color);
+    border: 1px solid;
+}
+
+body.dark-theme .ui.selection.visible.dropdown>.text:not(.default),
+body.dark-theme .ui.dropdown .menu>.item,
+body.dark-theme .ui.dropdown .menu .selected.item, 
+body.dark-theme .ui.dropdown.selected,
+body.dark-theme .ui.dropdown .menu>.message:not(.ui),
+body.dark-theme .ui.table,
+body.dark-theme .ui.celled.table tr td, 
+body.dark-theme .ui.celled.table tr th{
+    color: unset;
+}
+
+body.dark-theme .ui.selection.dropdown .menu>.item{
+    border-top: 0px;
+    border: 2px solid rgba(255,255,255,0.1);
+}
+
+body.dark-theme table.ui.table{
+    border:none;
+}
+
+body.dark-theme .ui.table thead tr,
+body.dark-theme .ui.table thead tr:first-child>th:first-child,
+body.dark-theme .ui.table thead tr:first-child>th:last-child{
+    border-radius: inherit;
+}
+
+body.dark-theme .ui.modal{
+    background: unset;
+    border-radius: inherit;
+}
+
+/*TEMA OSCURO MODAL*/
+body.dark-theme .ui.modal>.header,
+body.dark-theme .ui.modal>.content>.description,
+body.dark-theme .ui.modal>.content .divActions{
+    background-color: var(--body-color);
+}
+
+body.dark-theme .ui.modal>.header{
+    color: var(--text-color);
+}
+body.dark-theme .ui.modal>.content .divActions{
+    border-top: 2px solid rgba(255,255,255,0.1);
+}
+
+body.dark-theme .ui.modal>.header {
+    border-bottom: 2px solid rgba(255,255,255,0.1);
+}
+
+.divActions .ui.black.button, 
+.divActions .ui.black.buttons .button
+{
+    background-color: #999999;
+}
+
+body.dark-theme div.actions.divActions  .ui.black:hover
+{
+    background: var(--secundary-color);
+}
+
+
+/* .divActions .ui.negative.button, 
+.divActions .ui.negative.buttons .button,
+.divActions .ui.positive.button, 
+.divActions .ui.positive.buttons .button{
+    background: var(--primary-color);
+} */
+
+ @media only screen and (max-width: 767px){
+    .ui.table:not(.unstackable) thead{
+        border-bottom: 0.5px solid;
+    }
+
+    .ui.table:not(.unstackable) tr{
+        padding-top: 0em;
+        padding-bottom: 0em;
+    }
+} 
+

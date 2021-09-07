@@ -101,19 +101,26 @@ const Header = () => {
     const activeLink = getCurrentView()
 
     const [cantidadItems, setCantidadItems] = useState(6)
+    const [isAdmin, setIsAdmin] = useState(false);
 
     const cantidadItemMenu = () => {
         return document.querySelectorAll('.nav__item').length
     }
 
+    const setRoles = () => {
+        const roles = LoginUtils.getRoles();
+        setIsAdmin(roles.includes('ADMIN'));
+    }
+
     useEffect(() => {
         let mounted = true;
         if (mounted) {
-            menuToggle()
-            removeMobileMenu()
-            scrollHeaderChange()
-            addNightTheme()
-            setCantidadItems(cantidadItemMenu() / 2)
+            setRoles();
+            menuToggle();
+            removeMobileMenu();
+            scrollHeaderChange();
+            addNightTheme();
+            setCantidadItems(cantidadItemMenu() / 2);
         }
         return () => mounted = false;
     }, [])
@@ -161,16 +168,19 @@ const Header = () => {
                                 </a>
                             </Link>
                         </li>
-                        {/* <li className="nav__item">
-                            <Link href="/home/tarifas">
-                                <a>
-                                    <span className={`nav__link ${isActiveLink('tarifas')}`}>
-                                        <Icon className="nav__icon" name="file alternate" /> Tarifas
-                                    </span>
-                                </a>
-                            </Link>
+                        {isAdmin &&
+                            <li className="nav__item">
+                                <Link href="/home/tarifas">
+                                    <a>
+                                        <span className={`nav__link ${isActiveLink('tarifas')}`}>
+                                            <Icon className="nav__icon" name="file alternate" /> Tarifas
+                                        </span>
+                                    </a>
+                                </Link>
 
-                        </li> */}
+                            </li>
+                        }
+
                         <li className="nav__item">
                             <Link href="/">
                                 <a>

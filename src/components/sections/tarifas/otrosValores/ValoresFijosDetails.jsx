@@ -108,7 +108,7 @@ const ValoresFijosDetails = (props) => {
             </Table.HeaderCell>
             <Table.HeaderCell>
               Valor
-            </Table.HeaderCell>
+            </Table.HeaderCell >
             <Table.HeaderCell />
           </Table.Row>
         </Table.Header>
