@@ -6,11 +6,9 @@ import { useToasts } from 'react-toast-notifications';
 
 import ServiciosDatosImportantes from '@services/servicios.datos_importantes'
 
-const ModalEliminarDato = (props) => {
+const ModalEliminarDato = ({idDato, obtenerDatos}) => {
 
-    const { idDato } = props;
-
-    const funcionDatos = props.obtenerDatos;
+    const funcionDatos = obtenerDatos;
 
     const [open, setOpen] = useState(false);
 
@@ -35,7 +33,6 @@ const ModalEliminarDato = (props) => {
 
     return (
         <Modal
-            
             onClose = {() => setOpen(false)}
             onOpen = {() => setOpen(true)}
             open = {open}
@@ -61,9 +58,9 @@ const ModalEliminarDato = (props) => {
             <Modal.Actions>
                 <Button 
                     color="black" 
-                    onClick={() => setOpen(false)}>
-                    Descartar
-                </Button>
+                    onClick={() => setOpen(false)}
+                    content="Descartar"
+                />
                 <Button  
                    content="Eliminar"
                     labelPosition="right"
@@ -75,4 +72,4 @@ const ModalEliminarDato = (props) => {
     )
 }
 
-export default ModalEliminarDato
+export default ModalEliminarDato;

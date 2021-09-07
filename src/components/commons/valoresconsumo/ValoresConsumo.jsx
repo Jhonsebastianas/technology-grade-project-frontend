@@ -5,10 +5,12 @@ import { Container, Table, Grid, Segment } from 'semantic-ui-react';
 import UTILS from '@utils/cp.utils';
 import Calculos from '@utils/calculos.util';
 
-const ValoresConsumo = (props) => {
+const ValoresConsumo = ({tiposervicio, lectura}) => {
 
-    const { tiposervicio, lectura } = props;
     const { tarifas } = lectura;
+
+    const servicio = (tiposervicio === 'agua') ?  'm³' : 'Kwh';
+    
 
     return (
         <Container  textAlign='center' className="containerInfo">
@@ -18,8 +20,8 @@ const ValoresConsumo = (props) => {
                     tarifas.map((tarifa, index) => (
 
                         <Grid.Column key={index} textAlign="center" >
-
-                            <h4 className="valoresConsumoTitle">{tiposervicio === 'agua'
+                            <h4 className="valoresConsumoTitle">
+                                {tiposervicio === 'agua'
                                 && <>{tarifa.servicio_publico.secundario}</>
                                 || <>{tiposervicio}</>}
                             </h4>
@@ -27,13 +29,13 @@ const ValoresConsumo = (props) => {
                                 <Table.Body>
                                     <Table.Row verticalAlign='middle'>
                                         <Table.Cell>
-                                            Servicio por{tiposervicio === 'agua' && <> m<sup>3</sup></> || <>Kwh</>}
+                                            Servicio por {servicio}
                                         </Table.Cell>
                                         <Table.Cell >{UTILS.formatoMoneda(tarifa.valor_consumo)} </Table.Cell>
                                     </Table.Row>
                                     <Table.Row>
                                         <Table.Cell>
-                                            Exceso por{tiposervicio === 'agua' && <> m<sup>3</sup></> || <>Kwh</>}
+                                            Exceso por {servicio}
                                         </Table.Cell>
                                         <Table.Cell >{UTILS.formatoMoneda(tarifa.valor_consumo_exceso)}</Table.Cell>
                                     </Table.Row>

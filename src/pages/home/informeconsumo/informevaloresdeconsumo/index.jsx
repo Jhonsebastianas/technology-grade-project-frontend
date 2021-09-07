@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import Layout from '@components/layouts/LayoutPrivado';
 
-import { Grid } from 'semantic-ui-react';
+import Loading from '@components/loader/Loading';
 
 import ValoresConsumo from '@components/commons/valoresconsumo/ValoresConsumo';
 
@@ -15,6 +15,7 @@ const InformeValoresConsumo = () => {
 
     const [tiposervicio, setTipoServicio] = useState('');
     const [lectura, setLectura] = useState({});
+    const [cargando, setCargando] = useState(true);
 
     useEffect(() => {
         let mounted = true;
@@ -25,12 +26,18 @@ const InformeValoresConsumo = () => {
             ServiciosHogares.getHogarLectura(SessionUtil.getNumeroContrato(),
                 SessionUtil.getTipoServicio(), ({ data }) => {
                     setLectura(data);
-
+                    setCargando(false);
                 }, (error) => { });
         }
         return () => (mounted = false);
     }, []);
 
+    if (cargando) {
+        return <Loading pantalla="valores"/>;
+    }
+
+
+    
     return (
         <Layout>
             <ValoresConsumo
