@@ -56,7 +56,7 @@ const Home = ({ mobile }) => {
                     />
                     <Button className="button__iniciar-app" size='huge' onClick={goToApp}>
                         Inicia la aplicación
-                        <Icon name='icon__iniciar-app right arrow' />
+                        <Icon className='icon__iniciar-app right arrow' />
                     </Button>
                 </Container>
             </Segment>

@@ -96,7 +96,7 @@ const MenuPrivado = () => {
                 </div>
             </div>
             <header className="menuPrivado">
-                <a href="#" class="logo"></a>
+                <a href="#" className="logo"></a>
                 <ul>
                     <li><Link href="/home"><a>Inicio</a></Link></li>
                     <li><Link href="/home/notificaciones"><a>Notificaciones</a></Link></li>
