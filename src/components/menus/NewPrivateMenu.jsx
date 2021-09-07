@@ -138,7 +138,7 @@ const Header = () => {
     return (
         <header className="menu__privado header" id="header">
             <nav className="nav container-menu-nav">
-                <a href="#" className="nav__logo">{APP_NAME}</a>
+                <a href="/home" className="nav__logo">{APP_NAME}</a>
                 <div className="nav__menu" id="nav-menu">
                     <ul className="nav__list grid-menu-nav" style={{ "gridTemplateColumns": `repeat(${cantidadItems}, 1fr)` }}>
                         <li className="nav__item">
