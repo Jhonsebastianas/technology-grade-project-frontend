@@ -98,7 +98,7 @@ const ModalRegistrarLecturaManual = (props) => {
                     <Form>
                         <Form.Field>
                             <label htmlFor='lectura'>Lectura actual del contador público:</label>
-                            <Input className="input-contador" type="number" name="lectura" id='lectura' placeholder="0190201" value={CpUtils.formatoLectura(lectura)}
+                            <Input className="input-contador" type="number" name="lectura" id='lectura' placeholder="0190201" value={(lectura == 0) ? '': CpUtils.formatoLectura(lectura)}
                                 onChange={handledChanged}
                             />
                             {errors.lectura && (<div className="ui pointing red basic label">{errors.lectura}</div>)}
