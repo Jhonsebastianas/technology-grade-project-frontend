@@ -1,13 +1,12 @@
 import axios from 'axios';
-import ConstantsList from '@constants/Constants';
+import { API_ENDPOINT } from '@constants/Constants';
 import loginUtils from '@utils/login.utils'
 
 const ServiciosNotificaciones = {
     getAllNotificaciones,
 }
 
-function getAllNotificaciones (datos, success, error) {
-    const { API_ENDPOINT } = ConstantsList
+function getAllNotificaciones(datos, success, error) {
     const ruta = API_ENDPOINT + "notificaciones/find-notificaciones"
     const parametros = {
         username: loginUtils.getUsernameUser(),

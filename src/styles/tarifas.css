@@ -119,6 +119,10 @@ div.elementoValorModal div.four.wide.field.descripcion label {
     color: black;
 }
 
+.css-1jgv6z-ToastContainer{
+    z-index: 1001 !important;
+}
+
 
 /*
 ESTILOS TEMA OSCURO
