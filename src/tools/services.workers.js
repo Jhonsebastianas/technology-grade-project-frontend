@@ -5,6 +5,7 @@
  */
 
 import { PUBLIC_VAPID_KEY, API_ENDPOINT } from "@constants/Constants";
+import LoginUtils from '@utils/login.utils'
 
 export default class ServicesWorkers {
     static configServicesWorkers() {
@@ -49,7 +50,10 @@ function subscribe(registration) {
                         body: JSON.stringify(subscription),
                         headers: {
                             "Content-Type": "application/json",
+                            "x-access-token": LoginUtils.getToken(),
                         }
+                    }).catch(function(error) {
+                        console.log(error);
                     })
                     // ServiciosNotificaciones.subscribePushNotification(subscription, function(data) {
                     //     console.log('Push notification data:', data);
