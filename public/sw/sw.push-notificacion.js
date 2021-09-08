@@ -4,6 +4,6 @@ self.addEventListener("push", function (event) {
     console.log('Push Recieved...');
     self.registration.showNotification(data.title, {
         body: data.message,
-        icon: 'https://controlsep.com/logo-app.png'
+        icon: 'https://controlsep.com/android-chrome-192x192.png'
     });
 });

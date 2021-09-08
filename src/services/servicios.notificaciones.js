@@ -4,7 +4,6 @@ import loginUtils from '@utils/login.utils'
 
 const ServiciosNotificaciones = {
     getAllNotificaciones,
-    subscribePushNotification,
 }
 
 function getAllNotificaciones(datos, success, error) {
@@ -13,13 +12,6 @@ function getAllNotificaciones(datos, success, error) {
         username: loginUtils.getUsernameUser(),
     }
     axios.post(ruta, parametros)
-        .then(success)
-        .catch(error)
-}
-
-function subscribePushNotification(subscription, success, error) {
-    const ruta = API_ENDPOINT + "notificaciones/subscribe-push-notification";
-    axios.post(ruta, JSON.stringify(subscription))
         .then(success)
         .catch(error)
 }
