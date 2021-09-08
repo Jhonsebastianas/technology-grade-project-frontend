@@ -56,7 +56,7 @@ const GraficasBarras = (props) => {
                     <Bar dataKey="Consumo" fill="#00aae4" barSize={30} />
                 </BarChart>
             </ResponsiveContainer>
-            <h6 className="rangoFechas">Rango de fechas</h6>
+            {/* <h6 className="rangoFechas">Rango de fechas</h6>
             <div className="fechasGraficaBarras">
                 <label>
                     <Input
@@ -76,7 +76,7 @@ const GraficasBarras = (props) => {
                     <Button className="botonGraficas" primary>Buscar</Button>
                 </label>
 
-            </div>
+            </div> */}
         </Container>
     );
 }
