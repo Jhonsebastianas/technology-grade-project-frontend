@@ -6,14 +6,16 @@ import { Grid } from 'semantic-ui-react';
 
 import GraficaBarras from '@components/graficas/GraficaBarras';
 
+import Loading from '@components/loader/Loading';
+
 import SessionUtil from '@utils/session.util'
-import LoginUtil from '@utils/login.utils'
 
 import ServiciosHogares from '@services/servicios.hogares';
 
 const InformeGraficas = () => {
 
     const [lectura, setLectura] = useState({});
+    const [cargando, setCargando] = useState(true);
 
     useEffect(() => {
         let mounted = true;
@@ -22,12 +24,18 @@ const InformeGraficas = () => {
             ServiciosHogares.getHogarLectura(SessionUtil.getNumeroContrato(),
                 SessionUtil.getTipoServicio(), ({ data }) => {
                     setLectura(data);
-                  
+                    setCargando(false);
                 }, (error) => { });
         }
         return () => (mounted = false);
 
     }, []);
+
+    
+    if (cargando) {
+        return <Loading pantalla="gráficas"/>;
+    }
+
 
     return (
         <Layout>

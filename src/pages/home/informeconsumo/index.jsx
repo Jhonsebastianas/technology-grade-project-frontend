@@ -26,7 +26,7 @@ const InformeConsumo = () => {
     const updateDetalleHogar = () => {
         ServiciosHogares.getHogarAndLectura(SessionUtil.getNumeroContrato(), ({ data }) => {
             setInfoHogar(data);
-            setCargandoHogar(false)
+            setCargandoHogar(false);
         }, (error) => { });
     }
 

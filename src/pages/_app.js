@@ -37,16 +37,26 @@ import '@styles/css/modal-registrar-lectura.css'
 
 
 import { ToastProvider } from 'react-toast-notifications';
+import { useEffect } from "react";
+import ServicesWorkers from "src/tools/services.workers";
 
 /**
  * Método que genera metricas importantes del proyecto
  * @param {*} metric 
  */
 export function reportWebVitals(metric) {
+  console.group("Web vitals");
   console.log(metric);
+  console.groupEnd("End Web vitals");
 }
 
 const MyApp = ({ Component, pageProps }) => {
+
+  useEffect(() => {
+    if ("serviceWorker" in navigator) {
+      ServicesWorkers.configServicesWorkers();
+    }
+  }, [])
   // Aditional props
   // Aditional layout
   // Manejar errores - componentDidCatch
@@ -70,7 +80,7 @@ const MyApp = ({ Component, pageProps }) => {
           {/* Essential META Tags */}
           <meta property="og:title" content="Controlsep: Administra tu consumo en servicios públicos del agua y energía." />
           <meta property="og:description" content="Controlsep es un proyecto creado por jóvenes apasionados por el desarrollo de software, para incentivar y permitir a las personas, medir el consumo del agua y energía en sus hogares, de forma automática por medio de sensores, o manual, digitando los registros del contador público." />
-          <meta property="og:image" itemprop="image" content="https://controlsep.com/images/controlsep_presentation.png" />
+          <meta property="og:image" itemProp="image" content="https://controlsep.com/images/controlsep_presentation.png" />
           <meta property="og:url" content="https://controlsep.com/" />
           <meta property="og:type" content="website" />
           <meta name="twitter:card" content="summary_large_image"></meta>
