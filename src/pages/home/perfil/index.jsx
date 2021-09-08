@@ -55,6 +55,7 @@ const Perfil = () => {
   }, []);
 
   const handleOpenModal = (e) => {
+    console.log(listaHogares)
     setModalIsOpen(true);
   };
 
@@ -177,6 +178,7 @@ const Perfil = () => {
 
   const updateHogarByNumeroContrato = (values) => {
     const { nombre, numeroContrato } = values;
+    console.log(listaHogares);
     const nuevoHogar = {
       ...hogarQueSeEditara,
       servicios: hogarQueSeEditara.servicios,
@@ -184,10 +186,9 @@ const Perfil = () => {
       numeroContrato: numeroContrato,
       username: loginUtils.getUsernameUser(),
     };
-    setModalIsOpen(false);
-    console.log(nuevoHogar);
     const error = validate(nuevoHogar);
     setErrors(error);
+    
     if (!Object.keys(error).length) {
       //nuevoHogar.hogarActual = hogar.hogarActual === "Si" ? true : false;
       const { ...hogarFiltrado } = nuevoHogar;
@@ -195,6 +196,7 @@ const Perfil = () => {
         hogarFiltrado,
         () => {
           consultarHogares();
+          setModalIsOpen(false);
           addToast("Hogar actualizado con exito", {
             appearance: "success",
             autoDismiss: true,
