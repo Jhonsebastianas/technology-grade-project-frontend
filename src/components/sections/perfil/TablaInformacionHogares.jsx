@@ -40,7 +40,7 @@ const TablaInformacionHogares = (props) => {
 
   return (
     <>
-      <Table celled fixed singleLine className="tabla-perfil-hogares">
+      <Table celled fixed className="tabla-perfil-hogares">
         <Table.Header>
           <Table.Row>
             <Table.HeaderCell className="flotarElemento">#Contrato</Table.HeaderCell>
