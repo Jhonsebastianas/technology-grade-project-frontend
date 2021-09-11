@@ -49,6 +49,10 @@
     height: 100% !important;
 }
 
+.fields.viviendaEstrato {
+    justify-content: space-between;
+}
+
 /* .hogar__servicio-label {
     color: var(--text-color) !important;
 } */

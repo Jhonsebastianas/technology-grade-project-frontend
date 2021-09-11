@@ -163,7 +163,7 @@ const Header = () => {
                             <Link href="/home/notificaciones">
                                 <a>
                                     <span className={`nav__link ${isActiveLink('notificaciones')}`}>
-                                        <Icon className="nav__icon" name="alarm" /> Notifiaciones
+                                        <Icon className="nav__icon" name="alarm" /> Notificaciones
                                     </span>
                                 </a>
                             </Link>

@@ -90,7 +90,7 @@ const RegistarHogarDetails = (props) => {
           </Form.Group>
         </Grid.Column>
         <Grid.Column width={16}>
-          <Form.Group>
+          <Form.Group className="viviendaEstrato">
             <Form.Field>
               <label>Tipo de vivienda: *</label>
               <Card.Group>
@@ -158,7 +158,7 @@ const RegistarHogarDetails = (props) => {
                 </div>
               )}
             </Form.Field>
-            <Form.Field>
+            <Form.Field className="estratos">
               <label>Estrato de la vivienda: *</label>
               <Form.Group inline>
                 <div className="field">
