@@ -25,7 +25,7 @@ const HogarDetalle = (props) => {
             const formato = datos[principal].formato
             return (
                 <>
-                    <Icon name={icon} color={color} /> {CpUtils[formato](suma_consumos)}
+                    <Icon name={icon} color={color} /> {CpUtils[formato](suma_consumos)} {(principal == "agua") && <sup>3</sup> || ''}
                 </>
             )
         })
