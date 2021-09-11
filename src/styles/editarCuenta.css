@@ -71,7 +71,7 @@
 
 .ui.celled.table tr td.celdaIconosInfoHogares i{
     margin-left: 10%;
-    font-size: var(--h1-font-size);
+    font-size: var(--h2-font-size);
 }
 
 .ui.primary.editarDatosPersonales{

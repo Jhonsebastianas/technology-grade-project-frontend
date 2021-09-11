@@ -49,13 +49,13 @@ const PerfilDetails = (props) => {
                   <strong>{fullName}</strong>
                 </p>
                 <Grid.Column>
-                  <Button
+                  {/*<Button
                     primary
                     className="editarDatosPersonales"
                     onClick={formularioInformacionPersonal}
                   >
                     Editar
-                  </Button>
+                  </Button>*/}
                 </Grid.Column>
               </Grid.Column>
               <Grid.Column width={8}>
