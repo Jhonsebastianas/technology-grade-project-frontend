@@ -222,6 +222,7 @@ header.menuPublico ul li a{
   transition:0.6s;
   font-size: 1.2em;
 }
+
 .banner{
   position:relative;
   width:100%;
@@ -267,4 +268,13 @@ header.menuPublico ul li i {
     -moz-transition: 0.6s;
     transition: 0.6s;
     font-size: 1.2em;
+}
+
+
+body.dark-theme .navigation{
+  background: var(--primary-color-dark);
+}
+
+body.dark-theme .navigation.active{
+  background: var(--primary-color-dark);
 }
