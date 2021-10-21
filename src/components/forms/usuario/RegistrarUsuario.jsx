@@ -133,7 +133,7 @@ const RegistrarUsuario = () => {
                 {...formik.getFieldProps('clave')}
                 validator={formik.touched.clave && formik.errors.clave ? (<div className="ui pointing red basic label">{formik.errors.clave}</div>) : null}
             />
-            <PasswordField label='Repetir clave:' name='claveConfirmada' id='claveConfirmada'
+            <PasswordField label='Confirmar clave:' name='claveConfirmada' id='claveConfirmada'
                 {...formik.getFieldProps('claveConfirmada')}
                 validator={formik.touched.claveConfirmada && formik.errors.claveConfirmada ? (<div className="ui pointing red basic label">{formik.errors.claveConfirmada}</div>) : null}
             />
