@@ -15,7 +15,7 @@ export function PasswordField(props) {
     return (
         <>
             <Form.Field>
-                <label htmlFor={id}>Clave:</label>
+                <label htmlFor={id}>{label}</label>
                 <Input type={visiblePassword} name={name} id={id} 
                     icon={<Icon name={(visiblePassword === 'password')? 'eye slash': 'eye'} circular link onClick={showPassword} />} iconPosition='left'
                     {...newProps}

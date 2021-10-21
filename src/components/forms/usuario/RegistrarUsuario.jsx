@@ -32,12 +32,16 @@ const RegistrarUsuario = () => {
             .min(5, 'Mínimo 5 caracteres'),
         clave: Yup.string()
             .required('Este campo es obligatorio')
-            .matches('^(?=\\w*\\d)(?=\\w*[A-Z])(?=\\w*[a-z])\\S{8,20}$', 'La clave debe tener al entre 8 y 20 caracteres, un dígito, una letra minúscula y una letra mayúscula.')
+            .matches('^(?=\\w*\\d)(?=\\w*[A-Z])(?=\\w*[a-z])\\S{8,20}$', 'La clave debe tener al entre 8 y 20 caracteres, un dígito, una letra minúscula y una letra mayúscula.'),
+        claveConfirmada: Yup.string()
+            .test('ok', 'Las constaseñas no coinciden', function (value) {
+                return this.parent.clave === value;
+            }),
     });
 
     const registerNewUser = (values) => {
         Services.newUser(values, ({ data }) => {
-            addToast('¡Usuario registrado con exito!', { appearance: 'success' }, {autoClose : '5000'});
+            addToast('¡Usuario registrado con exito!', { appearance: 'success' }, { autoClose: '5000' });
             router.push("/notificacion/activar-cuenta");
         }, (error) => {
             if (error.response) {
@@ -62,6 +66,7 @@ const RegistrarUsuario = () => {
             apellidos: '',
             correo: '',
             clave: '',
+            claveConfirmada: '',
         },
         validationSchema: registerSchema,
         onSubmit: registerNewUser,
@@ -124,9 +129,13 @@ const RegistrarUsuario = () => {
                 />
                 {formik.touched.correo && formik.errors.correo ? (<div className="ui pointing red basic label">{formik.errors.correo}</div>) : null}
             </Form.Field>
-            <PasswordField name='clave' id='clave'
+            <PasswordField label='Clave:' name='clave' id='clave'
                 {...formik.getFieldProps('clave')}
                 validator={formik.touched.clave && formik.errors.clave ? (<div className="ui pointing red basic label">{formik.errors.clave}</div>) : null}
+            />
+            <PasswordField label='Repetir clave:' name='claveConfirmada' id='claveConfirmada'
+                {...formik.getFieldProps('claveConfirmada')}
+                validator={formik.touched.claveConfirmada && formik.errors.claveConfirmada ? (<div className="ui pointing red basic label">{formik.errors.claveConfirmada}</div>) : null}
             />
             <ModalTerminosCondiciones trigger={<a className="already">Al registrarte aceptas todos nuestros <strong>términos y condiciones.</strong></a>} />
             <br></br>
@@ -160,7 +169,7 @@ const RegistrarUsuario = () => {
                             className={imagenGoogle}
                         />
                         <span>Registrate con Google</span>
-                        </button>
+                    </button>
                 )}
                 onSuccess={respuestaGoogle}
                 onFailure={respuestaGoogle}
