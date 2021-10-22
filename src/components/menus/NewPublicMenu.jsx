@@ -2,18 +2,14 @@ import React, { useEffect, useState } from 'react'
 import { APP_NAME } from '@constants/Constants'
 import Link from 'next/link'
 import { Icon } from 'semantic-ui-react'
-import StyledComponents from 'styled-components'
-import LoginUtils from '@utils/login.utils'
-import { useToasts } from 'react-toast-notifications'
 import { useRouter } from 'next/router'
 
 import { addNightTheme, menuToggle, removeMobileMenu, scrollHeaderChange } from '@components/menus/effectsMenu';
 
 
-const Header = () => {
+const PublicMenu = () => {
 
     const router = useRouter();
-    const { addToast } = useToasts();
 
     const getCurrentView = () => {
         const routeArray = router.pathname.split('/')
@@ -23,21 +19,14 @@ const Header = () => {
     const activeLink = getCurrentView()
 
     const [cantidadItems, setCantidadItems] = useState(6)
-    const [isAdmin, setIsAdmin] = useState(false);
 
     const cantidadItemMenu = () => {
         return document.querySelectorAll('.nav__item').length
     }
 
-    const setRoles = () => {
-        const roles = LoginUtils.getRoles();
-        setIsAdmin(roles.includes('ADMIN'));
-    }
-
     useEffect(() => {
         let mounted = true;
         if (mounted) {
-            setRoles();
             menuToggle();
             removeMobileMenu();
             scrollHeaderChange();
@@ -46,12 +35,6 @@ const Header = () => {
         }
         return () => mounted = false;
     }, [])
-
-    const singOff = () => {
-        LoginUtils.SignOff();
-        addToast('Sesión cerrada con éxito', { appearance: 'success', autoDismiss: true, });
-        router.push("/");
-    }
 
     const isActiveLink = (name) => {
         return (name === activeLink) ? 'active-link' : ''
@@ -64,50 +47,28 @@ const Header = () => {
                 <div className="nav__menu" id="nav-menu">
                     <ul className="nav__list grid-menu-nav" style={{ "gridTemplateColumns": `repeat(${cantidadItems}, 1fr)` }}>
                         <li className="nav__item">
-                            <Link href="/home">
-                                <a>
-                                    <span className={`nav__link ${isActiveLink('home')}`}>
-                                        <Icon className="nav__icon" name="home" /> Hogares
-                                    </span>
-                                </a>
-                            </Link>
-                        </li>
-                        <li className="nav__item">
-                            <Link href="/home/perfil">
-                                <a>
-                                    <span className={`nav__link ${isActiveLink('perfil')}`}>
-                                        <Icon className="nav__icon" name="user" /> Perfil
-                                    </span>
-                                </a>
-                            </Link>
-                        </li>
-                        <li className="nav__item">
-                            <Link href="/home/notificaciones">
-                                <a>
-                                    <span className={`nav__link ${isActiveLink('notificaciones')}`}>
-                                        <Icon className="nav__icon" name="alarm" /> Notificaciones
-                                    </span>
-                                </a>
-                            </Link>
-                        </li>
-                        {isAdmin &&
-                            <li className="nav__item">
-                                <Link href="/home/tarifas">
-                                    <a>
-                                        <span className={`nav__link ${isActiveLink('tarifas')}`}>
-                                            <Icon className="nav__icon" name="file alternate" /> Tarifas
-                                        </span>
-                                    </a>
-                                </Link>
-
-                            </li>
-                        }
-
-                        <li className="nav__item">
                             <Link href="/">
                                 <a>
-                                    <span className="nav__link" onClick={singOff}>
-                                        <Icon className="nav__icon" name="log out" /> Cerrar sesión
+                                    <span className={`nav__link ${isActiveLink('')}`}>
+                                        <Icon className="nav__icon" name="home" /> Inicio
+                                    </span>
+                                </a>
+                            </Link>
+                        </li>
+                        <li className="nav__item">
+                            <Link href="/nosotros">
+                                <a>
+                                    <span className={`nav__link ${isActiveLink('nosotros')}`}>
+                                        <Icon className="nav__icon" name="user" /> Nosotros
+                                    </span>
+                                </a>
+                            </Link>
+                        </li>
+                        <li className="nav__item">
+                            <Link href="/contactanos">
+                                <a>
+                                    <span className={`nav__link ${isActiveLink('contactanos')}`}>
+                                        <Icon className="nav__icon" name="alarm" /> Contáctanos
                                     </span>
                                 </a>
                             </Link>
@@ -132,4 +93,4 @@ const Header = () => {
     )
 }
 
-export default Header
+export default PublicMenu

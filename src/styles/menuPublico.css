@@ -222,6 +222,7 @@ header.menuPublico ul li a{
   transition:0.6s;
   font-size: 1.2em;
 }
+
 .banner{
   position:relative;
   width:100%;
@@ -246,9 +247,34 @@ header.menuPublico ul li a:hover{
   }
 }
 
-/*header.sticky .logo{
-  display: none;
+header.menuPublico ul li i:hover{
+  font-size: 1.5em !important;
+  font-weight: bold;
 }
-header.sticky{
-  display: none;
-}*/
+
+header.menuPublico .moon.outline.icon.change-theme{
+  color: white;
+}
+
+header.menuPublico ul li i {
+    position: relative;
+    margin: 0 15px;
+    text-decoration: none;
+    color: #fff;
+    letter-spacing: 2px;
+    font-weight: 500;
+    -moz-transition-property: all;
+    transition-property: all;
+    -moz-transition: 0.6s;
+    transition: 0.6s;
+    font-size: 1.2em;
+}
+
+
+body.dark-theme .navigation{
+  background: var(--primary-color-dark);
+}
+
+body.dark-theme .navigation.active{
+  background: var(--primary-color-dark);
+}

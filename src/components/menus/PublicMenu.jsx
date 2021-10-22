@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
-import { Grid } from 'semantic-ui-react';
+import { Grid, Icon } from 'semantic-ui-react';
 
+import { addNightTheme } from '@components/menus/effectsMenu';
 
 const PublicMenu = () => {
 
@@ -11,6 +12,14 @@ const PublicMenu = () => {
         const formulario = (actualizarMenuCelular) ? false : true;
         setMenuCelular(formulario);
     }
+
+    useEffect(() => {
+        let mounted = true;
+        if (mounted) {
+            addNightTheme();
+        }
+        return () => mounted = false;
+    }, [])
 
     return (
         <Grid>
@@ -38,6 +47,8 @@ const PublicMenu = () => {
                     <li><Link href="/"><a>Inicio</a></Link></li>
                     <li><Link href="/nosotros"><a>Nosotros</a></Link></li>
                     <li><Link href="/contactanos"><a>Contáctanos</a></Link></li>
+                    <li><Icon className="change-theme" name="moon outline" id="theme-button" /></li>
+                    
                 </ul>
             </header>
         </Grid>
