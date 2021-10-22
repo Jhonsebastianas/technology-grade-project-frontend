@@ -40,7 +40,8 @@ const RegistrarUsuario = () => {
     });
 
     const registerNewUser = (values) => {
-        Services.newUser(values, ({ data }) => {
+        const { claveConfirmada, ...usuarioNuevo } =  values
+        Services.newUser(usuarioNuevo, ({ data }) => {
             addToast('¡Usuario registrado con exito!', { appearance: 'success' }, { autoClose: '5000' });
             router.push("/notificacion/activar-cuenta");
         }, (error) => {
