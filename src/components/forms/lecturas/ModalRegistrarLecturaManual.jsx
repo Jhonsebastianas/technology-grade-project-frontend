@@ -38,7 +38,7 @@ const ModalRegistrarLecturaManual = (props) => {
     const [errors, setErrors] = useState({});
     const handledChanged = ({ target }) => {
         const { name, value } = target;
-        setLectura(value);
+        setLectura((value > 0) ? Math.abs(value) : '');
     }
 
     const registrarLectura = () => {
