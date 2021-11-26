@@ -1,9 +1,13 @@
 import React from "react";
 import { useRouter } from 'next/router';
 import { Button } from "semantic-ui-react";
-import Styled from 'styled-components';
+import Styled, { css } from 'styled-components';
 
 const StyledContenedorAtras = Styled.div`
+    ${props => props.isPublic && css`
+        top: 10px;
+    `}
+
     padding-left: 20px;
     position: absolute;
     z-index: 99;
@@ -31,8 +35,10 @@ const BotonAtras = (props) => {
         router.back();
     }
 
+    console.log(props)
+
     return (
-        <StyledContenedorAtras>
+        <StyledContenedorAtras isPublic={props?.isPublic}>
             <Button className="btn-atras" size="large" floated='left' circular icon='arrow left' onClick={volver}></Button>
         </StyledContenedorAtras>
     )
