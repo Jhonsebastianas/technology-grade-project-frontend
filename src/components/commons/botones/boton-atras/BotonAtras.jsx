@@ -32,7 +32,11 @@ const BotonAtras = (props) => {
     const router = useRouter();
 
     const volver = () => {
-        router.back();
+        if(props?.isPublic) {
+            router.push("/"); 
+        } else {
+            router.back();
+        }
     }
 
     console.log(props)
