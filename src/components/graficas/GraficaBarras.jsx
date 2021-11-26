@@ -53,7 +53,7 @@ const GraficasBarras = (props) => {
                     <YAxis />
                     <Tooltip />
                     <Legend  wrapperStyle={{ lineHeight: '40px' }}/>
-                    <Bar dataKey="Consumo" fill="#00aae4" barSize={30} />
+                    <Bar dataKey="Consumo" fill="#00aae4" />
                 </BarChart>
             </ResponsiveContainer>
             {/* <h6 className="rangoFechas">Rango de fechas</h6>
