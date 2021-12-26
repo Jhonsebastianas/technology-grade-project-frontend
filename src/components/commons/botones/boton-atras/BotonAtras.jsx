@@ -39,11 +39,9 @@ const BotonAtras = (props) => {
         }
     }
 
-    console.log(props)
-
     return (
         <StyledContenedorAtras isPublic={props?.isPublic}>
-            <Button className="btn-atras" size="large" floated='left' circular icon='arrow left' onClick={volver}></Button>
+            <Button className="btn-atras" size="large" floated='left' circular icon='arrow left' aria-label="Volver a la pantalla anterior" onClick={volver}></Button>
         </StyledContenedorAtras>
     )
 }
