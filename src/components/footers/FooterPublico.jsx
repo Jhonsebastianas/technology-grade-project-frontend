@@ -23,6 +23,7 @@ export default function FooterPublico() {
                                 </Header>
                                 <p>
                                     <a rel="noreferrer" target="_blank"
+                                        aria-label="Facebook controlsep"
                                         href="https://www.facebook.com/Arjeware-753778911629883">
                                         <Icon className="footer__social-icon" name="facebook square" />
                                     </a>
