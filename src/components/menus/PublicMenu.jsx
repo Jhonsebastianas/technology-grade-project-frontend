@@ -42,7 +42,7 @@ const PublicMenu = () => {
                 </div>
             </div>
             <header className="menuPublico">
-                <a href="#" className="logo"></a>
+                <a href="#" className="logo" aria-label="Logo"></a>
                 <ul>
                     <li><Link href="/"><a>Inicio</a></Link></li>
                     <li><Link href="/nosotros"><a>Nosotros</a></Link></li>

@@ -26,7 +26,7 @@ const Tips = () => {
     return (
 
         <div className="containerInfo">
-            <h5 className="tipsTitle"> <Icon name="lightbulb outline" aria-label='tip de ahorro'/>TIP</h5>
+            <h5 className="tipsTitle"> <Icon name="lightbulb outline" />TIP</h5>
             <div className="tipInfo">
                 <p className='tipInfo-title'>{titulo}</p>
                 <p className='tipInfo-description'>{descripcion}</p>
