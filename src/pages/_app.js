@@ -28,7 +28,7 @@ import '@styles/tarifas.css'
 import '@styles/RegistroUsuario.css'
 import '@styles/datosimportantes.css'
 import '@styles/paginacion.css'
-
+import '@styles/administradores.css'
 
 import '@styles/css/modal-registrar-lectura.css'
 
