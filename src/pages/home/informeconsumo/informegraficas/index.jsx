@@ -1,16 +1,10 @@
-import React, { useState, useEffect } from 'react';
-
-import Layout from '@components/layouts/LayoutPrivado';
-
-import { Grid } from 'semantic-ui-react';
-
+import BotonAtras from '@components/commons/botones/boton-atras/BotonAtras';
 import GraficaBarras from '@components/graficas/GraficaBarras';
-
+import Layout from '@components/layouts/LayoutPrivado';
 import Loading from '@components/loader/Loading';
-
-import SessionUtil from '@utils/session.util'
-
 import ServiciosHogares from '@services/servicios.hogares';
+import SessionUtil from '@utils/session.util';
+import React, { useEffect, useState } from 'react';
 
 const InformeGraficas = () => {
 
@@ -31,17 +25,16 @@ const InformeGraficas = () => {
 
     }, []);
 
-    
+
     if (cargando) {
-        return <Loading pantalla="gráficas"/>;
+        return <Loading pantalla="gráficas" />;
     }
 
 
     return (
         <Layout>
-            <Grid stackable>
-                <GraficaBarras lectura={lectura} />
-            </Grid>
+            <BotonAtras />
+            <GraficaBarras lectura={lectura} />
         </Layout>
     );
 }

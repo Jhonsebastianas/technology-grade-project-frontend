@@ -1,21 +1,15 @@
-import React, { useState, useEffect } from 'react';
-
-import Layout from '@components/layouts/LayoutPrivado';
-
-import { Grid, Icon, Segment } from 'semantic-ui-react';
-
-import Loading from '@components/loader/Loading';
-
-import Link from 'next/link';
-
-import GraficaCircular from '@components/graficas/GraficaCircular';
-import GraficaBarras from '@components/graficas/GraficaBarras';
+import BotonAtras from '@components/commons/botones/boton-atras/BotonAtras';
+import Tips from '@components/commons/tips/Tips';
 import ValoresConsumo from '@components/commons/valoresconsumo/ValoresConsumo';
-import Tips from '@components/commons/tips/Tips'
-
+import GraficaBarras from '@components/graficas/GraficaBarras';
+import GraficaCircular from '@components/graficas/GraficaCircular';
+import Layout from '@components/layouts/LayoutPrivado';
+import Loading from '@components/loader/Loading';
 import ServiciosHogares from '@services/servicios.hogares';
-
-import SessionUtil from '@utils/session.util'
+import SessionUtil from '@utils/session.util';
+import Link from 'next/link';
+import React, { useEffect, useState } from 'react';
+import { Grid, Icon, Segment } from 'semantic-ui-react';
 
 const InformeConsumo = () => {
 
@@ -61,6 +55,7 @@ const InformeConsumo = () => {
 
     return (
         <Layout>
+            <BotonAtras />
             <Segment vertical>
                 <Grid stackable className="informeConsumo">
                     <Grid.Row columns='equal' >

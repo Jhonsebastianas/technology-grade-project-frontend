@@ -101,6 +101,8 @@ const Nosotros = () => {
                                     <p className="title"></p>
                                     <div className="social">
                                         <a href="https://www.jhonsebastianas.com/" target="_blank"><Icon name="world" /></a>
+                                        <a href="https://github.com/segaretsu" target="_blank"><Icon name="github" /></a>
+                                        <a href="https://www.linkedin.com/in/jhonsabastianas/" target="_blank"><Icon name="linkedin" /></a>
                                     </div>
                                 </div>
                             </div>
@@ -128,7 +130,9 @@ const Nosotros = () => {
                                     <h3 className="name">Sara Cárdenas</h3>
                                     <p className="title"> </p>
                                     <div className="social">
+                                        <a href="https://saracds.vercel.app/" target="_blank"><Icon name="world" /></a>
                                         <a href="https://github.com/saracds" target="_blank"><Icon name="github" /></a>
+                                        <a href="https://www.linkedin.com/in/sara-c%C3%A1rdenas/" target="_blank"><Icon name="linkedin" /></a>
                                     </div>
                                 </div>
                             </div>

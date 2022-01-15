@@ -105,6 +105,10 @@ const RegistrarHogarContainer = () => {
         return false;
     }
 
+    const goToHome = function () {
+        router.back();
+    }
+
     return (
         <Form onSubmit={formik.handleSubmit}>
             <Grid>
@@ -119,6 +123,9 @@ const RegistrarHogarContainer = () => {
                 <Grid.Column width={16}>
                     <Button type='submit' color="green" disabled={!formik.isValid} >
                         Agregar hogar [+]
+                    </Button>
+                    <Button type='button' color="red" onClick={goToHome} >
+                        Cancelar
                     </Button>
                 </Grid.Column>
             </Grid>

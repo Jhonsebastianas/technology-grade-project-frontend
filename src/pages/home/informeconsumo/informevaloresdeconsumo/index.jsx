@@ -1,15 +1,10 @@
-import React, { useState, useEffect } from 'react';
-
-import Layout from '@components/layouts/LayoutPrivado';
-
-import Loading from '@components/loader/Loading';
-
+import BotonAtras from '@components/commons/botones/boton-atras/BotonAtras';
 import ValoresConsumo from '@components/commons/valoresconsumo/ValoresConsumo';
-
-import SessionUtil from '@utils/session.util'
-import LoginUtil from '@utils/login.utils'
-
+import Layout from '@components/layouts/LayoutPrivado';
+import Loading from '@components/loader/Loading';
 import ServiciosHogares from '@services/servicios.hogares';
+import SessionUtil from '@utils/session.util';
+import React, { useEffect, useState } from 'react';
 
 const InformeValoresConsumo = () => {
 
@@ -40,6 +35,7 @@ const InformeValoresConsumo = () => {
     
     return (
         <Layout>
+            <BotonAtras />
             <ValoresConsumo
                 tiposervicio={tiposervicio}
                 lectura={lectura}
