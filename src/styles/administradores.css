@@ -17,12 +17,12 @@
     color: black;
 }
 
-#consultar{
+#consultar, #limpiarCamposConsultar{
     padding-top: 36px;
 }
 
 @media only screen and  (min-width:10px) and (max-width:767.20px){
-    #consultar{
+    #consultar, #limpiarCamposConsultar{
         padding-top: 0px;
         margin-top: 1rem;
         margin-bottom: 1.5rem;

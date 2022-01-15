@@ -53,26 +53,17 @@ const Administradores = () => {
         ({ data }) => {
             let usuariosAdministradores = [];
             data.forEach(usuario => {
-              //setOpcionesUsuarios(key:usuario.)
                 const us = {
-                  nombres:usuario.nombres, //+ " " + usuario.apellidos,
+                  nombres:usuario.nombres, 
                   apellidos:usuario.apellidos,
                   correo:usuario.correo,
                   perfiles:usuario.perfiles
                 }
-                //console.log("BBBBBBBBBBBBBBBB")
-                //console.log(us);
+
                 usuariosAdministradores.push(us);
             });
-            console.log("asdasdasdsa")
-            //console.log(usuariosAdministradores);
-            //setAdministradores(usuariosAdministradores);
-            console.log(usuariosAdministradores);
-            setUsuarios(usuariosAdministradores);
-            console.log(usuariosAdministradores);
-            //console.log(usuariosAdministradores);
-            
-        
+
+            setUsuarios(usuariosAdministradores);     
         },
         (error) => {}
       );
@@ -81,12 +72,7 @@ const Administradores = () => {
     const obtenerTotalUsuariosRegistrados = () =>{
       serviciosUsuario.getNumeroUsuariosAdmin(
         ({ data }) => {
-          //setCantidadUsuariosAdmin(data);
-          //console.log("TENEMOS DE USUARIOS:")
-          //console.log(data)
-          //console.log((Math.ceil(data/10))); 
-          setPaginacion({...paginacion, totalPages:Math.ceil(data/10)})
-
+          setPaginacion({...paginacion, totalPages:Math.ceil(data/10), activePage:1})
         },
         (error) => {}
       );
@@ -95,85 +81,25 @@ const Administradores = () => {
     useEffect(() => {
         let mounted = true;
         if (mounted) {
-            //console.log(cantidadUsuariosPaginacion)
           obtenerTotalUsuariosRegistrados();
           obtenerUsuariosLimitado(0,10);
         }
         return () => (mounted = false);
     }, []);
 
-    // const handledChanged = (e) => {
-    //   let elemento = document.querySelector("div.ui.active.visible.fluid.multiple.search.selection.dropdown > input");
-    //   let texto = ""
-    //   if(elemento){
-    //     texto = elemento.value;
-    //   }
-    //   //console.log(texto.length);
-    //   if(texto.length > 2){
-    //     const frase = {
-    //       frase: texto.toUpperCase()
-    //     };
-    //       serviciosUsuario.getUsuariosFrase(frase,
-    //         ({ data }) => {
-    //           let usuariosAdministradores = [];
-    //           //console.log(data);
-    //             data.forEach(usuario => {
-    //               //setOpcionesUsuarios(key:usuario.)
-    //                 const us = {
-    //                   key:usuario.correo,
-    //                   text:usuario.correo,
-    //                   value:usuario.correo
-    //                 }
-    //                 usuariosAdministradores.push(us);
-    //                 //console.log(usuariosAdministradores)
-    //             });
-    //             if(usuariosSeleccionados && usuariosSeleccionados.length > 0){
-    //               //console.log("CONCATENATIOOOO");
-    //               let usuariosTotales = usuariosSeleccionados.concat(usuariosAdministradores);
-    //               setUsuarios(usuariosTotales);
-    //               //console.log(usuariosTotales);
-                  
-    //             }else{
-    //               setUsuarios(usuariosAdministradores);
-    //             }    
-    //         },
-    //         (error) => {}
-    //     );
-    //   }else{
-    //     if(usuariosSeleccionados && usuariosSeleccionados.length > 0){
-    //       setUsuarios(usuariosSeleccionados);
-    //     }else{
-    //       setUsuarios(null);
-    //     }
-    //   }
-
-     
-
-
-    // };
-
-    // const selectElement = document.querySelector('div.ui.active.visible.fluid.multiple.search.selection.dropdown > input');
-
-    // selectElement.addEventListener('change', (event) => {
-    //    //console.log("asdasd"); 
-    // });
-
-
     const handleChangeTexto = (e) =>{
       const {value} = e.target;
+      setTextoConsultar(value);
       
       if(value.length >= 3){
         setInhabilitarBotonConsultar(false);
-        setTextoConsultar(value);
       }else{
         setInhabilitarBotonConsultar(true);
       }
     }
 
     const handleChangeColuman = (e) =>{
-      console.log(e.target.outerText);
       setValorSelectColumna(e.target.outerText);
-
     }
 
     const handleClickConsultar = () =>{
@@ -181,7 +107,7 @@ const Administradores = () => {
       if(textoConsultar.length >= 3){
         setCambioPaginacion(false);
         setRealizaConsulta(true);
-        console.log("ASDGCCC");
+
         const opciones = {
           frase:textoConsultar.toUpperCase(),
           opcion:valorSelectColumna.toLowerCase()
@@ -196,13 +122,9 @@ const Administradores = () => {
                       listaUsuarios.push(usuario);
                       return index == 9
                     });
-                    console.log(paginacion);
                     
                     setUsuarios(listaUsuarios);
-                    setPaginacion({...paginacion, totalPages:Math.ceil(data.length/10), activePage:1})
-                    console.log(paginacion);
-
-                    
+                    setPaginacion({...paginacion, totalPages:Math.ceil(data.length/10), activePage:1}) 
                   },
                   (error) => {}
         );
@@ -214,6 +136,24 @@ const Administradores = () => {
 
       }
       
+    }
+  
+    const handleLimpiarCampos = () => {
+      
+      const activePage = 1;
+      
+      setRealizaConsulta(false);
+      setCambioPaginacion(false);
+      setInhabilitarBotonConsultar(true);
+      setConsultaRealizada(false);
+      obtenerTotalUsuariosRegistrados();
+      obtenerUsuariosLimitado(0,10);
+      setTextoConsultar("");
+
+      const timer = setTimeout(() => {
+        setCambioPaginacion(true);
+      }, 250);
+      return () => clearTimeout(timer);
     }
 
     const handleCheckboxChange = (usuario) =>{
@@ -234,10 +174,9 @@ const Administradores = () => {
 
         if(usuariosModificados && usuariosModificados.length > 0 ){
           let usuarioExistenteLista = usuariosModificados.some(usuarioModificado => usuarioModificado.correo == usuario.correo);;
-          console.log(usuariosModificados);
+
           let listaUsuarios = [];
           if(usuarioExistenteLista){
-            console.log(listaUsuarios);
             listaUsuarios = usuariosModificados.filter(usuarioModificado => usuarioModificado.correo != usuario.correo);
             setUsuariosModificados(listaUsuarios);
           }else{
@@ -248,82 +187,18 @@ const Administradores = () => {
             }else{
               setUsuariosModificados([usuario]);
             }
-          }
-        
-          // usuarios.forEach(function(usuarioModificado){
-          //   if(usuarioModificado.correo == usuario.correo){
-          //     usuarioExistenteLista = true;
-          //     console.log("MOD")
-          //     console.log(usuarioModificado.perfiles)
-          //     console.log("use")
-          //     console.log(usuario.perfiles)
-          //     usuarioModificado.perfiles = usuario.perfiles;
-          //   }
-          // });
-          // if(listaUsuarios && listaUsuarios.length > 0){
-          //   console.log("1")
-          //   setUsuariosModificados([...usuario]);
-          // }else{
-          //   console.log("2")
-          //   setUsuariosModificados([listaUsuarios]);
-          // }
-        
+          }        
         }else{
           setUsuariosModificados([usuario]);
         }      
     }
-    //  const handleCheckboxChange = (e, {target}) =>{
-        
-    //   if(e.target.innerText.length > 0){
-    //     const usuarioSeleccionado = {
-    //       key:e.target.innerText,
-    //       text:e.target.innerText,
-    //       value:e.target.innerText
-    //     }
-      
-    //     setUsuariosSeleccionados([...usuariosSeleccionados, usuarioSeleccionado])
-    //     //console.log(e.target.innerText);
-    //     //console.log(e);
 
-    //   }else{
-    //     let usuarios = document.querySelectorAll("#usuarios a.ui.label");
-    //     //console.log("ASDASDASDASDASD___");
-    //     //console.log(e.target.parentElement.innerText);
-
-    //     //const usuariosT = usuarios.filter(usuario => usuario != e.target.parentElement.innerText)
-
-    //     let usuariosT = [];
-    //     usuarios.forEach(function(element){ 
-    //       if(element.innerText != e.target.parentElement.innerText){
-    //         const usuario = {
-    //           key:element.innerText,
-    //           text:element.innerText,
-    //           value:element.innerText
-    //         }
-    //         usuariosT.push(usuario);
-    //       }
-    //     });
-    //     /*//console.log("ULTIMOS LISTA - ESTE")
-    //     //console.log(usuariosT);*/
-
-    //     setUsuariosSeleccionados(usuariosT);
-    //     setUsuarios(usuariosT);
-
-    //     /*//console.log("ULTIMOS LISTA")
-    //     //console.log(usuariosSeleccionados)
-    //     //console.log(usuarios)*/
-
-    //   }
-    //  }
-
-     const handleClickAgregar = () =>{
+    const handleClickAgregar = () =>{
       setInhabilitarBotonGuardar(true);
       
        if(usuariosModificados && usuariosModificados.length > 0){
             serviciosUsuario.agregarPerfilAdministrador(usuariosModificados,
               () => {
-                
-                //setUsuariosSeleccionados([]);
                 setUsuariosModificados([]);
                 addToast("Usuario(s) actualizado(s) con exito", {
                   appearance: "success",
@@ -340,9 +215,7 @@ const Administradores = () => {
           });
         }
      }
-     
-     //const  handleInputChange = (e, { name, value }) => setState({ [name]: value })
-
+    
      const paginarUsuariosConsulta = (inicio, final) =>{
      
       let listaUsuarios = usuariosConsulta.slice(inicio, final);
@@ -357,7 +230,6 @@ const Administradores = () => {
         const final = (10 * activePage);
         const inicio = final - 10;
 
-        console.log(inicio, final);
         setPaginacion({ ...paginacion,activePage });
         paginarUsuariosConsulta(inicio, final);
         const timer = setTimeout(() => {
@@ -366,29 +238,17 @@ const Administradores = () => {
         return () => clearTimeout(timer);
       } else {
         setCambioPaginacion(false);
-        console.log("TENIAMOS")
-        console.log(inicioUsuariosPaginacion);
-        console.log(finalUsuariosPaginacion);
-        console.log(activePage);
+
         const valorInicio = activePage != 1 ? (10 * activePage -10):0;
         const valorFinal = 10
-        // setInicioUsuariosPaginacion(2 * (activePage - 1));
-        // setFinalUsuariosPaginacion((2 * activePage) - 1);
-        setPaginacion({ ...paginacion,activePage });
-          
-    
-          
-          
-          obtenerUsuariosLimitado(valorInicio,valorFinal);
-          console.log("NOS QUEDOOO");
-          console.log(inicioUsuariosPaginacion);
-          console.log(finalUsuariosPaginacion);
-          
 
-          const timer = setTimeout(() => {
-            setCambioPaginacion(true);
-          }, 250);
-          return () => clearTimeout(timer);
+        setPaginacion({ ...paginacion,activePage });
+        obtenerUsuariosLimitado(valorInicio,valorFinal);
+          
+        const timer = setTimeout(() => {
+          setCambioPaginacion(true);
+        }, 250);
+        return () => clearTimeout(timer);
       }
         
     }
@@ -415,11 +275,15 @@ const Administradores = () => {
                  </Grid.Column>
                  <Grid.Column mobile={16} tablet={6} computer={6} id="texto">
                  <label>Texto</label>
-                  < Input fluid placeholder='Search...' onChange={handleChangeTexto}/>
+                  < Input fluid placeholder='Search...' onChange={handleChangeTexto} value={textoConsultar}/>
                  </Grid.Column>
-                 <Grid.Column  id="consultar">
+                 <Grid.Column  id="consultar" mobile={16} tablet={3} computer={2}>
                  <label></label>
                  <Button className={inhabilitarBotonConsultar ? "disabled":""} primary onClick={handleClickConsultar}>Consultar</Button>
+                 </Grid.Column>
+                 <Grid.Column  id="limpiarCamposConsultar" mobile={16} tablet={4} computer={3}>
+                 <label></label>
+                 <Button className={inhabilitarBotonConsultar ? "disabled":""} primary onClick={handleLimpiarCampos}>Limpiar campos</Button>
                  </Grid.Column>
                 
               </Grid>
