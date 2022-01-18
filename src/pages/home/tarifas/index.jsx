@@ -29,6 +29,7 @@ const Tarifas = () => {
     { key: "acueducto", text: "Acueducto", value: "acueducto" },
     { key: "alcantarillado", text: "Alcantarillado", value: "alcantarillado" },
     { key: "energia", text: "Energia", value: "energia" },
+    { key: "gas", text: "Gas", value: "gas" },
   ];
 
   const opcionMeses = [
@@ -230,8 +231,8 @@ const Tarifas = () => {
       otros_valores_sumatoria: 0,
       //ciudad: tarifaExistente.ciudad,
       servicio_publico: {
-        principal: nuevaTarifa.servicio == "energia" ? "energia" : "agua",
-        secundario: nuevaTarifa.servicio,
+        principal: nuevaTarifa.servicio == "energia" ? "energia" : ("gas" ? "gas" : "agua"),
+        secundario: nuevaTarifa.servicio == "energia" ? "nn" : ("gas" ? "nn" : nuevaTarifa.servicio),
       },
       subsidio_gobierno: formik.values.subsidio_gobierno,
       tarifa_activa: false,

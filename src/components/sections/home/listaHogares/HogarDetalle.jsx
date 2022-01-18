@@ -14,18 +14,20 @@ const HogarDetalle = (props) => {
     const { estrato, nombre, numero_contrato, servicios, tipo_hogar } = hogar
 
     const getConsumoTotalServicio = () => {
+        console.log(servicios)
         return servicios.map(servicio => {
             const { lectura: { suma_consumos }, principal } = servicio
             const datos = {
                 "agua": { color: "blue", icon: "theme", formato: "formatoMedidaAgua" },
-                "energia": { color: "yellow", icon: "plug", formato: "formatoMedidaEnergia" }
+                "energia": { color: "yellow", icon: "plug", formato: "formatoMedidaEnergia" },
+                "gas": { color: "red", icon: "hotjar", formato: "formatoMedidaGas" },
             }
             const color = datos[principal].color
             const icon = datos[principal].icon
             const formato = datos[principal].formato
             return (
                 <>
-                    <Icon name={icon} color={color} /> {CpUtils[formato](suma_consumos)} {(principal == "agua") && <sup>3</sup> || ''}
+                    <Icon name={icon} color={color} /> {CpUtils[formato](suma_consumos)} {(principal == "agua" || principal == "gas") && <sup>3</sup> || ''}
                 </>
             )
         })
