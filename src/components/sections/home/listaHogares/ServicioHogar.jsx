@@ -32,9 +32,11 @@ const ServicioHogar = (props) => {
 
     const getImage = () => {
         if (principal === 'agua') {
-            return "/images/servicios/agua.png"
+            return "/images/servicios/agua.png";
+        } else if (principal === 'gas') {
+            return "/images/servicios/gas.png";
         } else {
-            return "/images/servicios/energia.png"
+            return "/images/servicios/energia.png";
         }
     }
 

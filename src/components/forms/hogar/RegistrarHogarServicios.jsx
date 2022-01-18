@@ -43,6 +43,21 @@ const RegistrarHogarServicios = (props) => {
                                     <label className="hogar__servicio-label" htmlFor="servicioEnergia">Energía</label>
                                 </div>
                             </Form.Field>
+                            <Form.Field>
+                                <div className="ui checkbox hogar__servicio">
+                                    <input
+                                        className="hogar__servicio-input"
+                                        type="checkbox"
+                                        name="servicioGas"
+                                        id="servicioGas"
+                                        defaultValue="gas"
+                                        defaultChecked={hogarQueSeEditara ? validarExistenciaServicio("gas") : false}
+                                        onChange={handledServicio}
+                                    />
+                                    <Icon name="hotjar" className="hogar__servicio-icon icon-agua" />
+                                    <label className="hogar__servicio-label" htmlFor="servicioGas">Gas</label>
+                                </div>
+                            </Form.Field>
                         </Form.Group>
                     </Grid.Column>
                 </Grid>

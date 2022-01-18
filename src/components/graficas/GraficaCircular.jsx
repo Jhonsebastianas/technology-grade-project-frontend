@@ -19,7 +19,7 @@ const GraficaCircular = (props) => {
 
     let backgroundColor = `#00aae4`;
 
-    const medida = (tiposervicio === 'agua') ? `${UTILS.formatoMedidaAgua(suma_consumos)}` + '³  ' : `${UTILS.formatoMedidaEnergia(suma_consumos)}`;
+    const medida = (tiposervicio === 'agua' || tiposervicio === 'gas') ? `${UTILS.formatoMedidaAgua(suma_consumos)}` + '³  ' : `${UTILS.formatoMedidaEnergia(suma_consumos)}`;
 
     const getPercentage = () => {
         let percentage = 0;
@@ -71,7 +71,7 @@ const GraficaCircular = (props) => {
             <div className="informacionGraficaCircular">
                 <p>Total consumido: </p>
                 <p>
-                    {tiposervicio === 'agua'
+                    {tiposervicio === 'agua' || tiposervicio === 'gas'
                         && <>{UTILS.formatoMedidaAgua(suma_consumos)}<sup>3</sup></>
                         || <>{UTILS.formatoMedidaEnergia(suma_consumos)}</>}
                 </p>
