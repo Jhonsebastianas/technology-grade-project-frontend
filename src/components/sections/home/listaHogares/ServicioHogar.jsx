@@ -54,7 +54,7 @@ const ServicioHogar = (props) => {
                     <div className="card__description">
                         <p className='date'>Última actualización: {getUltimaActualizacion()}</p>
                         {(secundario != "nn") ? <p><strong>Subservicio(s):</strong> {secundario}</p> : ""}
-                        <p><strong>Consumo:</strong> {principal === 'agua'
+                        <p><strong>Consumo:</strong> {principal === 'agua' || principal === 'gas'
                             && <>{UTILS.formatoMedidaAgua(suma_consumos)}<sup>3</sup></>
                             || <>{UTILS.formatoMedidaEnergia(suma_consumos)}</>}
                         </p>
