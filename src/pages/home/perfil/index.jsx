@@ -71,10 +71,6 @@ const Perfil = () => {
 
     const hogarPropiedadesEditadas = {
       activo: hogar.activo,
-      /*autorizados:{
-        correo:hogar.autorizados.correo,
-        isAutorizado:hogar.autorizados.isAutorizado,
-      },*/
       estrato: hogar.estrato,
       hogarActual: hogar.hogar_actual,
       /*localidad:{
@@ -144,7 +140,6 @@ const Perfil = () => {
   };
 
   const handledServicio = (event) => {
-    console.log(event.target);
     if (event.target.checked) {
       const serviciosExistentes = hogarQueSeEditara.servicios;
       serviciosExistentes.push(event.target.value);

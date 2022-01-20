@@ -4,6 +4,7 @@ ControlsepUtils.formatoLectura = formatoLectura;
 ControlsepUtils.formatoMoneda = formatoMoneda;
 ControlsepUtils.formatoMedidaAgua = formatoMedidaAgua;
 ControlsepUtils.formatoMedidaEnergia = formatoMedidaEnergia;
+ControlsepUtils.formatoMedidaGas = formatoMedidaGas;
 
 /** FORMATOS */
 function formatoLectura (valor) {
@@ -32,4 +33,11 @@ function formatoMedidaEnergia (valor) {
         return `${new Intl.NumberFormat().format(0)} Kwh`;
     }
     return `${new Intl.NumberFormat().format(valor)} Kwh`;
+}
+
+function formatoMedidaGas (valor) {
+    if (isNaN(parseFloat(valor))) {
+        return `${new Intl.NumberFormat().format(0)} m`;
+    }
+    return `${new Intl.NumberFormat().format(valor)} m`;
 }

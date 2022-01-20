@@ -32,9 +32,11 @@ const ServicioHogar = (props) => {
 
     const getImage = () => {
         if (principal === 'agua') {
-            return "/images/servicios/agua.png"
+            return "/images/servicios/agua.png";
+        } else if (principal === 'gas') {
+            return "/images/servicios/gas.png";
         } else {
-            return "/images/servicios/energia.png"
+            return "/images/servicios/energia.png";
         }
     }
 
@@ -52,7 +54,7 @@ const ServicioHogar = (props) => {
                     <div className="card__description">
                         <p className='date'>Última actualización: {getUltimaActualizacion()}</p>
                         {(secundario != "nn") ? <p><strong>Subservicio(s):</strong> {secundario}</p> : ""}
-                        <p><strong>Consumo:</strong> {principal === 'agua'
+                        <p><strong>Consumo:</strong> {principal === 'agua' || principal === 'gas'
                             && <>{UTILS.formatoMedidaAgua(suma_consumos)}<sup>3</sup></>
                             || <>{UTILS.formatoMedidaEnergia(suma_consumos)}</>}
                         </p>
