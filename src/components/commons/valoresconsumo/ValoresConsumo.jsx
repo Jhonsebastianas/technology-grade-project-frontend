@@ -9,7 +9,7 @@ const ValoresConsumo = ({tiposervicio, lectura}) => {
 
     const { tarifas } = lectura;
 
-    const servicio = (tiposervicio === 'agua') ?  'm³' : 'Kwh';
+    const servicio = (tiposervicio === 'agua' || tiposervicio === 'gas') ?  'm³' : 'Kwh';
     
 
     return (
