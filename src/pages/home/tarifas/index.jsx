@@ -116,12 +116,8 @@ const Tarifas = () => {
       formik.values.valor_consumo = values.valor_consumo;
       formik.values.valor_consumo_exceso = values.valor_consumo_exceso;
       formik.values.version_schema = values.version_schema;
+      setMostrarValoresFijos(true)
       formik.setFieldTouched(formik.version_schema, true, true);
-      const timer = setTimeout(() => {
-        setMostrarValoresFijos(true);
-      }, 5000);
-      return () => clearTimeout(timer);
-      
     } else {
       formik.values.limite_subsidiado = "";
       formik.values.fecha_fin = "";
@@ -137,11 +133,8 @@ const Tarifas = () => {
       formik.values.valor_consumo = "";
       formik.values.valor_consumo_exceso = "";
       formik.values.version_schema = "";
+      setMostrarValoresFijos(false)
       formik.resetForm();
-      const timer = setTimeout(() => {
-        setMostrarValoresFijos(true);
-      }, 1000);
-      return () => clearTimeout(timer);
     }
   };
 
@@ -258,12 +251,7 @@ const Tarifas = () => {
           autoDismiss: true,
         });
         setValidarExistenciaTarfia(true);
-        
-        const timer = setTimeout(() => {
-          setMostrarValoresFijos(true);
-        }, 1000);
-        return () => clearTimeout(timer);
-        
+        setMostrarValoresFijos(true);
         //router.push("/home");
       },
       (error) => {

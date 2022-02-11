@@ -18,7 +18,6 @@ const TarifasDetails = (props) => {
     validarExistenciaTarfia,
     handleClickRegistrarTarifa,
     formik,
-    formikOtrosValores,
     updateTarifa,
     mostrarValoresFijos,
     mostrarFormularioTarifa,
@@ -239,7 +238,7 @@ const TarifasDetails = (props) => {
           <ValoresFijosContainer 
           tarifaExistente={tarifaExistente}
           setTarifaExistente={setTarifaExistente}
-          formikOtrosValores={formikOtrosValores} 
+          tarifaEjemplo = {formik}
           />}
         </Grid.Column>
       </Grid.Row>
