@@ -9,9 +9,6 @@ import { useToasts } from "react-toast-notifications";
 const ValoresFijosContainer = (props) =>{
     const { addToast } = useToasts();
     const {tarifaExistente,setTarifaExistente} = props;
-    setInterval(() => {
-      console.log("TOMAMOS ---- : " , {...tarifaExistente});
-    }, 2000);
     
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [valorQueSeEditara, setValorQueSeEditara] = useState({});

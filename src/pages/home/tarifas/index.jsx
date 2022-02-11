@@ -119,7 +119,7 @@ const Tarifas = () => {
       formik.setFieldTouched(formik.version_schema, true, true);
       const timer = setTimeout(() => {
         setMostrarValoresFijos(true);
-      }, 250);
+      }, 5000);
       return () => clearTimeout(timer);
       
     } else {
@@ -140,7 +140,7 @@ const Tarifas = () => {
       formik.resetForm();
       const timer = setTimeout(() => {
         setMostrarValoresFijos(true);
-      }, 250);
+      }, 1000);
       return () => clearTimeout(timer);
     }
   };
@@ -261,7 +261,7 @@ const Tarifas = () => {
         
         const timer = setTimeout(() => {
           setMostrarValoresFijos(true);
-        }, 250);
+        }, 1000);
         return () => clearTimeout(timer);
         
         //router.push("/home");
