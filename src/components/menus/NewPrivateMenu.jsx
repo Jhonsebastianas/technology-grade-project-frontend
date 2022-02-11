@@ -91,7 +91,7 @@ const Header = () => {
                             </Link>
                         </li>
                         {isAdmin &&
-                            <li className="nav__item">
+                            [<li className="nav__item">
                                 <Link href="/home/tarifas">
                                     <a>
                                         <span className={`nav__link ${isActiveLink('tarifas')}`}>
@@ -100,7 +100,17 @@ const Header = () => {
                                     </a>
                                 </Link>
 
+                            </li>,
+                            <li className="nav__item">
+                                <Link href="/datosimportantes">
+                                    <a>
+                                        <span className={`nav__link ${isActiveLink('tips')}`}>
+                                            <Icon className="nav__icon" name="lightbulb outline" /> Tips
+                                        </span>
+                                    </a>
+                                </Link>
                             </li>
+                            ]
                         }
 
                         <li className="nav__item">
