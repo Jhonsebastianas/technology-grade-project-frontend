@@ -134,7 +134,7 @@ const Tarifas = () => {
       formik.values.valor_consumo_exceso = "";
       formik.values.version_schema = "";
       setMostrarValoresFijos(false)
-      formik.validateOnChange = !formik.validateOnChange;
+      formik.resetForm();
     }
   };
 
@@ -211,9 +211,9 @@ const Tarifas = () => {
   const registerNuevaTarifa = () => {
     const fechaInicio = DateUtils.getDateWithFirstDayByMounth(nuevaTarifa.mes);
     const fechaFin = DateUtils.getDateWithLastDayByMounth(nuevaTarifa.mes);
-
-    console.log("FechaFin");
-    console.log(localidad);
+    debugger
+    console.log("nuevaTarif");
+    console.log(nuevaTarifa);
 
     const tarifaParaRegistrar = {
       estrato: nuevaTarifa.estrato,
@@ -231,8 +231,8 @@ const Tarifas = () => {
       otros_valores_sumatoria: 0,
       //ciudad: tarifaExistente.ciudad,
       servicio_publico: {
-        principal: nuevaTarifa.servicio == "energia" ? "energia" : ("gas" ? "gas" : "agua"),
-        secundario: nuevaTarifa.servicio == "energia" ? "nn" : ("gas" ? "nn" : nuevaTarifa.servicio),
+        principal: nuevaTarifa.servicio == "energia" ? "energia" : (nuevaTarifa.servicio == "gas" ? "gas" : "agua"),
+        secundario: nuevaTarifa.servicio == "energia" ? "nn" : (nuevaTarifa.servicio == "gas" ? "nn" : nuevaTarifa.servicio),
       },
       subsidio_gobierno: formik.values.subsidio_gobierno,
       tarifa_activa: false,
