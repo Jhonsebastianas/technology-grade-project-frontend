@@ -235,7 +235,7 @@ const TarifasDetails = (props) => {
             </Form.Group>
             </div>}
           </Form>
-          {mostrarValoresFijos &&
+          {mostrarValoresFijos && tarifaExistente &&
           <ValoresFijosContainer 
           tarifaExistente={tarifaExistente}
           setTarifaExistente={setTarifaExistente}
