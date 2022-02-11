@@ -9,7 +9,7 @@ import { useToasts } from "react-toast-notifications";
 const ValoresFijosContainer = (props) =>{
     const { addToast } = useToasts();
     const {tarifaExistente,setTarifaExistente} = props;
-    setTimeout(() => {
+    setInterval(() => {
       console.log("TOMAMOS ---- : " , {...tarifaExistente});
     }, 2000);
     
