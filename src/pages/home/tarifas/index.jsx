@@ -211,7 +211,7 @@ const Tarifas = () => {
   const registerNuevaTarifa = () => {
     const fechaInicio = DateUtils.getDateWithFirstDayByMounth(nuevaTarifa.mes);
     const fechaFin = DateUtils.getDateWithLastDayByMounth(nuevaTarifa.mes);
-    debugger
+    
     console.log("nuevaTarif");
     console.log(nuevaTarifa);
 
