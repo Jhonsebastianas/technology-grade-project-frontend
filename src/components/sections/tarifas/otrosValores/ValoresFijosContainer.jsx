@@ -8,7 +8,7 @@ import { useToasts } from "react-toast-notifications";
 
 const ValoresFijosContainer = (props) =>{
     const { addToast } = useToasts();
-    const {tarifaExistente,setTarifaExistente} = props;
+    const {tarifaExistente,setTarifaExistente,tarifaEjemplo} = props;
     
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [valorQueSeEditara, setValorQueSeEditara] = useState({});
@@ -31,7 +31,10 @@ const ValoresFijosContainer = (props) =>{
       });
   
 
-      const registarOtrosValores = () =>{
+      const registarOtrosValores = (values) =>{
+        console.log(values);
+        console.log(tarifaEjemplo.values);
+        tarifaExistente = tarifaEjemplo.values;
         let allValores = []
         console.log("ENTRAMOS 1", tarifaExistente);
         if(tarifaExistente?.otros_valores){
