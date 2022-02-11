@@ -32,10 +32,13 @@ const ValoresFijosContainer = (props) =>{
 
       const registarOtrosValores = () =>{
         let allValores = []
-        if(tarifaExistente.otros_valores){
+        console.log("ENTRAMOS 1", tarifaExistente);
+        if(tarifaExistente?.otros_valores){
           allValores = [...tarifaExistente.otros_valores]
           const {} = tarifaExistente
+          console.log("ENTRAMOS 2",tarifaExistente);
         }
+        console.log("ENTRAMOS 3",tarifaExistente);
         const otroValor = {
             nombre: formik.values.nombre,
             descripcion: formik.values.descripcion,
