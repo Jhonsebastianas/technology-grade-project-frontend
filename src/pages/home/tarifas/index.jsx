@@ -102,6 +102,7 @@ const Tarifas = () => {
 
   const actualizarValoresFormik = (values) => {
     if (values) {
+      formik.values.estrato = values.estrato;
       formik.values.limite_subsidiado = values.limite_subsidiado;
       formik.values.fecha_fin = values.fecha_fin;
       formik.values.fecha_inicio = values.fecha_inicio;
@@ -119,6 +120,7 @@ const Tarifas = () => {
       setMostrarValoresFijos(true)
       formik.setFieldTouched(formik.version_schema, true, true);
     } else {
+      formik.values.estrato = "";
       formik.values.limite_subsidiado = "";
       formik.values.fecha_fin = "";
       formik.values.fecha_inicio = "";
