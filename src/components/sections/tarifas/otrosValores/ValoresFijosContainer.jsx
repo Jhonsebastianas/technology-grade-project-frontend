@@ -77,6 +77,7 @@ const ValoresFijosContainer = (props) =>{
             console.log(tarifaEjemplo);
             tarifaEjemplo.values.otros_valores = allValores;
             console.log(tarifaEjemplo);
+            formik.resetForm();
             addToast("Valor fijo registrado con éxito", {
               appearance: "success",
               autoDismiss: true,
@@ -189,6 +190,7 @@ const ValoresFijosContainer = (props) =>{
                 autoDismiss: true,
               });
                 handleCloseModal()
+                formik.resetForm();
             },
             (error) => {
               if (error.response) {
