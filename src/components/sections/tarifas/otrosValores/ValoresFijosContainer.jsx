@@ -31,16 +31,14 @@ const ValoresFijosContainer = (props) =>{
       });
   
 
-      const registarOtrosValores = (values) =>{
-        console.log(values);
-        console.log(tarifaEjemplo.values);
+      const registarOtrosValores = () =>{
+        console.log("tarifaEjemplo",tarifaEjemplo);
         tarifaExistente = tarifaEjemplo.values;
         let allValores = []
         console.log("ENTRAMOS 1", tarifaExistente);
         if(tarifaExistente?.otros_valores){
           allValores = [...tarifaExistente.otros_valores]
-          const {} = tarifaExistente
-          console.log("ENTRAMOS 2",tarifaExistente);
+          console.log("ENTRAMOS 2",allValores);
         }
         console.log("ENTRAMOS 3",tarifaExistente);
         const otroValor = {
@@ -50,9 +48,10 @@ const ValoresFijosContainer = (props) =>{
         }
 
         allValores.push(otroValor)
+        console.log("allvalores final: ",allValores);
 
-        const otrosValoresCantidad = parseInt(tarifaExistente.otros_valores_cantidad) + 1;
-        const otrosValoresSumatoria =  parseFloat(tarifaExistente.otros_valores_sumatoria) + parseFloat(otroValor.valor);
+        const otrosValoresCantidad = allValores.length;
+        const otrosValoresSumatoria =  allValores.reduce((valorTotal,otroValor) => valorTotal += parseInt(otroValor.valor),0);
 
         const tarifaParaActualizar = {
           ...tarifaExistente,
@@ -74,6 +73,10 @@ const ValoresFijosContainer = (props) =>{
             formik.values.descripcion = "";
             formik.values.valor = "";
             formik.values.nombre = "";
+            console.log("TARIFAAAAAA");
+            console.log(tarifaEjemplo);
+            tarifaEjemplo.values.otros_valores = allValores;
+            console.log(tarifaEjemplo);
             addToast("Valor fijo registrado con éxito", {
               appearance: "success",
               autoDismiss: true,
@@ -122,7 +125,7 @@ const ValoresFijosContainer = (props) =>{
 
       const handleDeleteOtrosValores = () => {
         if(JSON.stringify(formik.errors)=='{}'){
-          let allValores = [...tarifaExistente.otros_valores]
+          let allValores = [...tarifaEjemplo.values.otros_valores]
 
           const posicionValorfijoModificar = allValores.indexOf(valorQueSeEditara)
           const otroValorEliminar = allValores[posicionValorfijoModificar]
@@ -139,7 +142,7 @@ const ValoresFijosContainer = (props) =>{
       const handleEditOtrosValores  = () =>{
         if(JSON.stringify(formik.errors)=='{}'){
 
-          let allValores = [...tarifaExistente.otros_valores]
+          let allValores = [...tarifaEjemplo.values.otros_valores]
 
           const posicionValorfijoModificar = allValores.indexOf(valorQueSeEditara)
 
@@ -150,7 +153,7 @@ const ValoresFijosContainer = (props) =>{
           }
 
           allValores[posicionValorfijoModificar] = otroValorModificado
-
+          console.log("VALORES QUEDARON: ", allValores);
           let otrosValoresSumatoria = 0;
 
           allValores.forEach(otroValor => otrosValoresSumatoria += parseFloat(otroValor.valor))
@@ -161,17 +164,21 @@ const ValoresFijosContainer = (props) =>{
       }
 
       const guardarModificacionOtrosValores  = (allValores, otrosValoresSumatoria) =>{
-         
+        
+          tarifaEjemplo.values.otros_valores = allValores;
+
           const tarifaParaActualizar = {
             ...tarifaExistente,
             otros_valores:allValores,
             otros_valores_sumatoria:parseFloat(otrosValoresSumatoria).toFixed(3),
+            otros_valores_cantidad:tarifaEjemplo.values.otros_valores.length,
           };
 
           setTarifaExistente({
             ...tarifaExistente,
             otros_valores:allValores,
             otros_valores_sumatoria:parseFloat(otrosValoresSumatoria).toFixed(3),
+            otros_valores_cantidad:tarifaEjemplo.values.otros_valores.length,
           })
 
           serviciosTarifas.updateTarifa(
