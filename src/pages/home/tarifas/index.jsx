@@ -58,7 +58,8 @@ const Tarifas = () => {
       "Validar la cantidad de decimales permitidos",
       "Máximo 5 números decimales",
       (number) => Number.isInteger(number * (10 ** 5)),
-    ),
+    )
+    .typeError('Solo números'),
 
     valor_consumo: Yup.number().required("Este campo es obligatorio")
     .test(
@@ -70,7 +71,8 @@ const Tarifas = () => {
       "Validar la cantidad de decimales permitidos",
       "Máximo 5 números decimales",
       (number) => Number.isInteger(number * (10 ** 5)),
-    ),
+    )
+    .typeError('Solo números'),
     valor_consumo_exceso: Yup.number().required("Este campo es obligatorio")
     .test(
       "Validar la cantidad de numeros enteros permitidos",
@@ -81,7 +83,8 @@ const Tarifas = () => {
       "Validar la cantidad de decimales permitidos",
       "Máximo 5 números decimales",
       (number) => Number.isInteger(number * (10 ** 5)),
-    ),
+    )
+    .typeError('Solo números'),
     subsidio_gobierno: Yup.number().required("Este campo es obligatorio")
     .test(
       "Validar la cantidad de numeros enteros permitidos",
@@ -92,7 +95,8 @@ const Tarifas = () => {
       "Validar la cantidad de decimales permitidos",
       "Máximo 5 números decimales",
       (number) => Number.isInteger(number * (10 ** 5)),
-    ),
+    )
+    .typeError('Solo números'),
     unidad_medida: Yup.string()
       
       .min(1, "Mínimo 1 número")

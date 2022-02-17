@@ -24,10 +24,18 @@ const ValoresFijosContainer = (props) =>{
         .min(1, 'Mínimo 1 caracter')
         .max(500,'Máximo 500 caracteres')
         .required('Este campo es obligatorio'),
-        valor: Yup.string().trim()
-        .min(1, 'Mínimo 1 caracter')
-        .max(10, 'Máximo 10 números')
-        .required('Este campo es obligatorio')
+        valor: Yup.number().required("Este campo es obligatorio")
+        .test(
+          "Validar la cantidad de numeros enteros permitidos",
+          "Máximo 9 numeros enteros",
+          (number) =>  (parseInt(number).toString().length <= 9),
+        )
+        .test(
+          "Validar la cantidad de decimales permitidos",
+          "Máximo 5 números decimales",
+          (number) => Number.isInteger(number * (10 ** 5)),
+        )
+        .typeError('Solo números'),
       });
   
 
