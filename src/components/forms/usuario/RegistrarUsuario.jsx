@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
 import { useRouter } from 'next/router'
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
@@ -42,7 +41,7 @@ const RegistrarUsuario = () => {
     const registerNewUser = (values) => {
         const { claveConfirmada, ...usuarioNuevo } =  values
         Services.newUser(usuarioNuevo, ({ data }) => {
-            addToast('¡Usuario registrado con exito!', { appearance: 'success' }, { autoClose: '5000' });
+            addToast('¡Usuario registrado con exito!', { appearance: 'success', autoClose: '5000' });
             router.push("/notificacion/activar-cuenta");
         }, (error) => {
             if (error.response) {
@@ -54,6 +53,8 @@ const RegistrarUsuario = () => {
                     addToast('Valida la información, por favor', { appearance: 'warning' });
                 } else if (status === 500) {
                     addToast('oh no :(, no eres tú somos nosotros, algo a ido mal', { appearance: 'error' });
+                } else if (status === 503) {
+                    addToast('En este momento tenemos problemas para enviar el correo electrónico para crear su cuenta, por favor inténtelo más tarde.', { appearance: 'error' });
                 }
             } else {
                 addToast('oh no :(, no eres tú somos nosotros, algo a ido mal', { appearance: 'error' });
