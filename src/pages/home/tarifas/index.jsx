@@ -57,8 +57,9 @@ const Tarifas = () => {
     .test(
       "Validar la cantidad de decimales permitidos",
       "Máximo 5 números decimales",
-      (number) => Number.isInteger(number * (10 ** 5)),
-    ),
+      (number) => validarDecimales(number, 5),
+    )
+    .typeError('Solo números'),
 
     valor_consumo: Yup.number().required("Este campo es obligatorio")
     .test(
@@ -69,8 +70,9 @@ const Tarifas = () => {
     .test(
       "Validar la cantidad de decimales permitidos",
       "Máximo 5 números decimales",
-      (number) => Number.isInteger(number * (10 ** 5)),
-    ),
+      (number) => validarDecimales(number, 5),
+    )
+    .typeError('Solo números'),
     valor_consumo_exceso: Yup.number().required("Este campo es obligatorio")
     .test(
       "Validar la cantidad de numeros enteros permitidos",
@@ -80,8 +82,9 @@ const Tarifas = () => {
     .test(
       "Validar la cantidad de decimales permitidos",
       "Máximo 5 números decimales",
-      (number) => Number.isInteger(number * (10 ** 5)),
-    ),
+      (number) => validarDecimales(number, 5),
+    )
+    .typeError('Solo números'),
     subsidio_gobierno: Yup.number().required("Este campo es obligatorio")
     .test(
       "Validar la cantidad de numeros enteros permitidos",
@@ -91,8 +94,9 @@ const Tarifas = () => {
     .test(
       "Validar la cantidad de decimales permitidos",
       "Máximo 5 números decimales",
-      (number) => Number.isInteger(number * (10 ** 5)),
-    ),
+      (number) => validarDecimales(number, 5),
+    )
+    .typeError('Solo números'),
     unidad_medida: Yup.string()
       
       .min(1, "Mínimo 1 número")
@@ -100,8 +104,23 @@ const Tarifas = () => {
       .required("Este campo es obligatorio"),
   });
 
+  function validarDecimales(numero,cantidadDecimales){
+    if(!numero){
+      return true;
+    }
+
+    let numeroFinal = numero.toString().split(".")[1];
+
+    if(!numeroFinal){
+      return true;
+    }
+    
+    return numeroFinal.length < (cantidadDecimales + 1);
+  }
+
   const actualizarValoresFormik = (values) => {
     if (values) {
+      formik.values.estrato = values.estrato;
       formik.values.limite_subsidiado = values.limite_subsidiado;
       formik.values.fecha_fin = values.fecha_fin;
       formik.values.fecha_inicio = values.fecha_inicio;
@@ -119,6 +138,7 @@ const Tarifas = () => {
       setMostrarValoresFijos(true)
       formik.setFieldTouched(formik.version_schema, true, true);
     } else {
+      formik.values.estrato = "";
       formik.values.limite_subsidiado = "";
       formik.values.fecha_fin = "";
       formik.values.fecha_inicio = "";
@@ -134,7 +154,7 @@ const Tarifas = () => {
       formik.values.valor_consumo_exceso = "";
       formik.values.version_schema = "";
       setMostrarValoresFijos(false)
-      formik.validateOnChange = !formik.validateOnChange;
+      formik.resetForm();
     }
   };
 
@@ -211,9 +231,9 @@ const Tarifas = () => {
   const registerNuevaTarifa = () => {
     const fechaInicio = DateUtils.getDateWithFirstDayByMounth(nuevaTarifa.mes);
     const fechaFin = DateUtils.getDateWithLastDayByMounth(nuevaTarifa.mes);
-
-    console.log("FechaFin");
-    console.log(localidad);
+    
+    console.log("nuevaTarif");
+    console.log(nuevaTarifa);
 
     const tarifaParaRegistrar = {
       estrato: nuevaTarifa.estrato,
@@ -231,8 +251,8 @@ const Tarifas = () => {
       otros_valores_sumatoria: 0,
       //ciudad: tarifaExistente.ciudad,
       servicio_publico: {
-        principal: nuevaTarifa.servicio == "energia" ? "energia" : ("gas" ? "gas" : "agua"),
-        secundario: nuevaTarifa.servicio == "energia" ? "nn" : ("gas" ? "nn" : nuevaTarifa.servicio),
+        principal: nuevaTarifa.servicio == "energia" ? "energia" : (nuevaTarifa.servicio == "gas" ? "gas" : "agua"),
+        secundario: nuevaTarifa.servicio == "energia" ? "nn" : (nuevaTarifa.servicio == "gas" ? "nn" : nuevaTarifa.servicio),
       },
       subsidio_gobierno: formik.values.subsidio_gobierno,
       tarifa_activa: false,

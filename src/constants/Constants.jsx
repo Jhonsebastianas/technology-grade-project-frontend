@@ -13,6 +13,9 @@ const devConf = Object.freeze({
     HOGAR: 'hogar',
     // Push notification
     PUBLIC_VAPID_KEY: "BDaLUJ1Jl9iVIeLF-zZik0qDgsS_rbzNnFcFMorD0PtfRnoRWQkhOsKqV-EQRCxexzc1fb7TF8Up_hRsk3Hc8fs",
+
+    // URL MANUAL
+    PATH_MANUAL: 'resources/documents/manual_de_usuario_controlsep.pdf'
 })
 
 const prodConf = Object.freeze({
@@ -30,6 +33,9 @@ const prodConf = Object.freeze({
     HOGAR: 'hogar',
     // Push notification
     PUBLIC_VAPID_KEY: "BDaLUJ1Jl9iVIeLF-zZik0qDgsS_rbzNnFcFMorD0PtfRnoRWQkhOsKqV-EQRCxexzc1fb7TF8Up_hRsk3Hc8fs",
+
+    // URL MANUAL
+    PATH_MANUAL: 'resources/documents/manual_de_usuario_controlsep.pdf'
 });
 
 
