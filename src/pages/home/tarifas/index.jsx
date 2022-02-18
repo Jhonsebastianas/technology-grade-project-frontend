@@ -57,7 +57,7 @@ const Tarifas = () => {
     .test(
       "Validar la cantidad de decimales permitidos",
       "Máximo 5 números decimales",
-      (number) => Number.isInteger(number * (10 ** 5)),
+      (number) => validarDecimales(number, 5),
     )
     .typeError('Solo números'),
 
@@ -70,7 +70,7 @@ const Tarifas = () => {
     .test(
       "Validar la cantidad de decimales permitidos",
       "Máximo 5 números decimales",
-      (number) => Number.isInteger(number * (10 ** 5)),
+      (number) => validarDecimales(number, 5),
     )
     .typeError('Solo números'),
     valor_consumo_exceso: Yup.number().required("Este campo es obligatorio")
@@ -82,7 +82,7 @@ const Tarifas = () => {
     .test(
       "Validar la cantidad de decimales permitidos",
       "Máximo 5 números decimales",
-      (number) => Number.isInteger(number * (10 ** 5)),
+      (number) => validarDecimales(number, 5),
     )
     .typeError('Solo números'),
     subsidio_gobierno: Yup.number().required("Este campo es obligatorio")
@@ -94,7 +94,7 @@ const Tarifas = () => {
     .test(
       "Validar la cantidad de decimales permitidos",
       "Máximo 5 números decimales",
-      (number) => Number.isInteger(number * (10 ** 5)),
+      (number) => validarDecimales(number, 5),
     )
     .typeError('Solo números'),
     unidad_medida: Yup.string()
@@ -103,6 +103,20 @@ const Tarifas = () => {
       .max(40, "Máximo 40 números")
       .required("Este campo es obligatorio"),
   });
+
+  function validarDecimales(numero,cantidadDecimales){
+    if(!numero){
+      return true;
+    }
+
+    let numeroFinal = numero.toString().split(".")[1];
+
+    if(!numeroFinal){
+      return true;
+    }
+    
+    return numeroFinal.length < (cantidadDecimales + 1);
+  }
 
   const actualizarValoresFormik = (values) => {
     if (values) {
