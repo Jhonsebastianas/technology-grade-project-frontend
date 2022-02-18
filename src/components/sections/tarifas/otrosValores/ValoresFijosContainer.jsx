@@ -68,6 +68,9 @@ const ValoresFijosContainer = (props) =>{
           otros_valores_sumatoria:parseFloat(otrosValoresSumatoria),
         };
 
+        tarifaEjemplo.values.otros_valores_cantidad = otrosValoresCantidad;
+        tarifaEjemplo.values.otros_valores_sumatoria = otrosValoresSumatoria;
+
         setTarifaExistente({
           ...tarifaExistente,
           otros_valores:allValores,
@@ -175,6 +178,7 @@ const ValoresFijosContainer = (props) =>{
       const guardarModificacionOtrosValores  = (allValores, otrosValoresSumatoria) =>{
         
           tarifaEjemplo.values.otros_valores = allValores;
+          tarifaExistente = tarifaEjemplo.values; 
 
           const tarifaParaActualizar = {
             ...tarifaExistente,
@@ -182,6 +186,9 @@ const ValoresFijosContainer = (props) =>{
             otros_valores_sumatoria:parseFloat(otrosValoresSumatoria).toFixed(3),
             otros_valores_cantidad:tarifaEjemplo.values.otros_valores.length,
           };
+
+          tarifaEjemplo.values.otros_valores_cantidad = tarifaEjemplo.values.otros_valores.length;
+          tarifaEjemplo.values.otros_valores_sumatoria = parseFloat(otrosValoresSumatoria).toFixed(3);
 
           setTarifaExistente({
             ...tarifaExistente,
