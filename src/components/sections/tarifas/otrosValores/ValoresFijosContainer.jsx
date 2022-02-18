@@ -61,15 +61,16 @@ const ValoresFijosContainer = (props) =>{
         const otrosValoresCantidad = allValores.length;
         const otrosValoresSumatoria =  allValores.reduce((valorTotal,otroValor) => valorTotal += parseInt(otroValor.valor),0);
 
+        tarifaEjemplo.values.otros_valores_cantidad = otrosValoresCantidad;
+        tarifaEjemplo.values.otros_valores_sumatoria = otrosValoresSumatoria;
+
+        console.log("IMPORTANTEEEEE ",tarifaEjemplo.values,otrosValoresCantidad,otrosValoresSumatoria);
         const tarifaParaActualizar = {
           ...tarifaExistente,
           otros_valores:allValores,
           otros_valores_cantidad:parseInt(otrosValoresCantidad),
           otros_valores_sumatoria:parseFloat(otrosValoresSumatoria),
         };
-
-        tarifaEjemplo.values.otros_valores_cantidad = otrosValoresCantidad;
-        tarifaEjemplo.values.otros_valores_sumatoria = otrosValoresSumatoria;
 
         setTarifaExistente({
           ...tarifaExistente,
