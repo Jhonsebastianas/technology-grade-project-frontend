@@ -57,7 +57,7 @@ const CrearDatoImportanteContainer = ({ metodo, formDato, tituloPagina }) => {
             .required('Este campo es obligatorio'),
         descripcion: Yup.string().trim()
             .min(50, 'Mínimo 50 caracteres')
-            .max(300, 'Máximo 40 caracteres')
+            .max(300, 'Máximo 300 caracteres')
             .required('Este campo es obligatorio'),
         tipo_dato: Yup.string().trim()
             .min(3, 'Mínimo 3 caracteres')
