@@ -92,6 +92,16 @@ const Header = () => {
                         </li>
                         {isAdmin &&
                             [<li className="nav__item">
+                            <Link href="/home/administradores">
+                                <a>
+                                    <span className={`nav__link ${isActiveLink('administradores')}`}>
+                                        <Icon className="nav__icon" name="file alternate" /> Administradores
+                                    </span>
+                                </a>
+                            </Link>
+
+                            </li>,
+                            <li className="nav__item">
                                 <Link href="/home/tarifas">
                                     <a>
                                         <span className={`nav__link ${isActiveLink('tarifas')}`}>

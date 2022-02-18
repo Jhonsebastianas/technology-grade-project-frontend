@@ -8,7 +8,8 @@ import { useToasts } from "react-toast-notifications";
 
 const ValoresFijosContainer = (props) =>{
     const { addToast } = useToasts();
-    const {tarifaExistente,setTarifaExistente} = props;
+    const {tarifaExistente,setTarifaExistente,tarifaEjemplo} = props;
+    
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [valorQueSeEditara, setValorQueSeEditara] = useState({});
     const [tipoDeAccionModal, setTipoDeAccionModal] = useState(false);
@@ -23,19 +24,31 @@ const ValoresFijosContainer = (props) =>{
         .min(1, 'Mínimo 1 caracter')
         .max(500,'Máximo 500 caracteres')
         .required('Este campo es obligatorio'),
-        valor: Yup.string().trim()
-        .min(1, 'Mínimo 1 caracter')
-        .max(10, 'Máximo 10 números')
-        .required('Este campo es obligatorio')
+        valor: Yup.number().required("Este campo es obligatorio")
+        .test(
+          "Validar la cantidad de numeros enteros permitidos",
+          "Máximo 9 numeros enteros",
+          (number) =>  (parseInt(number).toString().length <= 9),
+        )
+        .test(
+          "Validar la cantidad de decimales permitidos",
+          "Máximo 5 números decimales",
+          (number) => Number.isInteger(number * (10 ** 5)),
+        )
+        .typeError('Solo números'),
       });
   
 
       const registarOtrosValores = () =>{
+        console.log("tarifaEjemplo",tarifaEjemplo);
+        tarifaExistente = tarifaEjemplo.values;
         let allValores = []
-        if(tarifaExistente.otros_valores){
+        console.log("ENTRAMOS 1", tarifaExistente);
+        if(tarifaExistente?.otros_valores){
           allValores = [...tarifaExistente.otros_valores]
-          const {} = tarifaExistente
+          console.log("ENTRAMOS 2",allValores);
         }
+        console.log("ENTRAMOS 3",tarifaExistente);
         const otroValor = {
             nombre: formik.values.nombre,
             descripcion: formik.values.descripcion,
@@ -43,9 +56,10 @@ const ValoresFijosContainer = (props) =>{
         }
 
         allValores.push(otroValor)
+        console.log("allvalores final: ",allValores);
 
-        const otrosValoresCantidad = parseInt(tarifaExistente.otros_valores_cantidad) + 1;
-        const otrosValoresSumatoria =  parseFloat(tarifaExistente.otros_valores_sumatoria) + parseFloat(otroValor.valor);
+        const otrosValoresCantidad = allValores.length;
+        const otrosValoresSumatoria =  allValores.reduce((valorTotal,otroValor) => valorTotal += parseInt(otroValor.valor),0);
 
         const tarifaParaActualizar = {
           ...tarifaExistente,
@@ -67,6 +81,11 @@ const ValoresFijosContainer = (props) =>{
             formik.values.descripcion = "";
             formik.values.valor = "";
             formik.values.nombre = "";
+            console.log("TARIFAAAAAA");
+            console.log(tarifaEjemplo);
+            tarifaEjemplo.values.otros_valores = allValores;
+            console.log(tarifaEjemplo);
+            formik.resetForm();
             addToast("Valor fijo registrado con éxito", {
               appearance: "success",
               autoDismiss: true,
@@ -115,7 +134,7 @@ const ValoresFijosContainer = (props) =>{
 
       const handleDeleteOtrosValores = () => {
         if(JSON.stringify(formik.errors)=='{}'){
-          let allValores = [...tarifaExistente.otros_valores]
+          let allValores = [...tarifaEjemplo.values.otros_valores]
 
           const posicionValorfijoModificar = allValores.indexOf(valorQueSeEditara)
           const otroValorEliminar = allValores[posicionValorfijoModificar]
@@ -132,7 +151,7 @@ const ValoresFijosContainer = (props) =>{
       const handleEditOtrosValores  = () =>{
         if(JSON.stringify(formik.errors)=='{}'){
 
-          let allValores = [...tarifaExistente.otros_valores]
+          let allValores = [...tarifaEjemplo.values.otros_valores]
 
           const posicionValorfijoModificar = allValores.indexOf(valorQueSeEditara)
 
@@ -143,7 +162,7 @@ const ValoresFijosContainer = (props) =>{
           }
 
           allValores[posicionValorfijoModificar] = otroValorModificado
-
+          console.log("VALORES QUEDARON: ", allValores);
           let otrosValoresSumatoria = 0;
 
           allValores.forEach(otroValor => otrosValoresSumatoria += parseFloat(otroValor.valor))
@@ -154,17 +173,21 @@ const ValoresFijosContainer = (props) =>{
       }
 
       const guardarModificacionOtrosValores  = (allValores, otrosValoresSumatoria) =>{
-         
+        
+          tarifaEjemplo.values.otros_valores = allValores;
+
           const tarifaParaActualizar = {
             ...tarifaExistente,
             otros_valores:allValores,
             otros_valores_sumatoria:parseFloat(otrosValoresSumatoria).toFixed(3),
+            otros_valores_cantidad:tarifaEjemplo.values.otros_valores.length,
           };
 
           setTarifaExistente({
             ...tarifaExistente,
             otros_valores:allValores,
             otros_valores_sumatoria:parseFloat(otrosValoresSumatoria).toFixed(3),
+            otros_valores_cantidad:tarifaEjemplo.values.otros_valores.length,
           })
 
           serviciosTarifas.updateTarifa(
@@ -175,6 +198,7 @@ const ValoresFijosContainer = (props) =>{
                 autoDismiss: true,
               });
                 handleCloseModal()
+                formik.resetForm();
             },
             (error) => {
               if (error.response) {

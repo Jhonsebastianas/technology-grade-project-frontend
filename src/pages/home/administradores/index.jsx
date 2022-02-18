@@ -16,6 +16,7 @@ const Administradores = () => {
     const [usuariosModificados,setUsuariosModificados] = useState([]);
     const [inhabilitarbotonguardar, setInhabilitarBotonGuardar] = useState(true);
     const [inhabilitarBotonConsultar, setInhabilitarBotonConsultar] = useState(true);
+    const [inhabilitarBotonLimpiarCampos, setInhabilitarBotonLimpiarCampos] = useState(true);
     const [consultaRealizada, setConsultaRealizada] = useState(false);
     const [textoConsultar, setTextoConsultar] = useState(""); 
     const [cantidadUsuariosAdmin,setCantidadUsuariosAdmin] = useState([]);
@@ -93,6 +94,7 @@ const Administradores = () => {
       
       if(value.length >= 3){
         setInhabilitarBotonConsultar(false);
+        setInhabilitarBotonLimpiarCampos(false);
       }else{
         setInhabilitarBotonConsultar(true);
       }
@@ -145,6 +147,7 @@ const Administradores = () => {
       setRealizaConsulta(false);
       setCambioPaginacion(false);
       setInhabilitarBotonConsultar(true);
+      setInhabilitarBotonLimpiarCampos(true);
       setConsultaRealizada(false);
       obtenerTotalUsuariosRegistrados();
       obtenerUsuariosLimitado(0,10);
@@ -283,7 +286,7 @@ const Administradores = () => {
                  </Grid.Column>
                  <Grid.Column  id="limpiarCamposConsultar" mobile={16} tablet={4} computer={3}>
                  <label></label>
-                 <Button className={inhabilitarBotonConsultar ? "disabled":""} primary onClick={handleLimpiarCampos}>Limpiar campos</Button>
+                 <Button className={inhabilitarBotonLimpiarCampos ? "disabled":""} primary onClick={handleLimpiarCampos}>Limpiar campos</Button>
                  </Grid.Column>
                 
               </Grid>
