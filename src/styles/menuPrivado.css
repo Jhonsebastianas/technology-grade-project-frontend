@@ -176,7 +176,7 @@ ul.nav__list.grid-menu-nav {
 
 /** For small devices */
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
   .nav__menu {
     position: fixed;
     bottom: -100%;
