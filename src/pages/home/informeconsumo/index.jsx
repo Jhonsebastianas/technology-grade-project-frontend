@@ -21,6 +21,7 @@ const InformeConsumo = () => {
         ServiciosHogares.getHogarAndLectura(SessionUtil.getNumeroContrato(), ({ data }) => {
             setInfoHogar(data);
             setCargandoHogar(false);
+            console.log(data);
         }, (error) => { });
     }
 
@@ -29,6 +30,7 @@ const InformeConsumo = () => {
         if (mounted) {
             setTipoServicio(SessionUtil.getTipoServicio());
             updateDetalleHogar();
+
         }
         return () => (mounted = false);
     }, []);

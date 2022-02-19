@@ -56,7 +56,6 @@ const CrearDatoImportanteContainer = ({ metodo, formDato, tituloPagina }) => {
             .max(40, 'Máximo 40 caracteres')
             .required('Este campo es obligatorio'),
         descripcion: Yup.string().trim()
-            .min(50, 'Mínimo 50 caracteres')
             .max(300, 'Máximo 300 caracteres')
             .required('Este campo es obligatorio'),
         tipo_dato: Yup.string().trim()
@@ -82,7 +81,7 @@ const CrearDatoImportanteContainer = ({ metodo, formDato, tituloPagina }) => {
             'fuentes': fuentes
         };
         ServiciosDatosImportantes.nuevoDato(nuevoDato, ({ data }) => {
-            addToast('¡Dato creado con exito!', { appearance: 'success', autoDismiss: true });
+            addToast('¡Dato creado con éxito!', { appearance: 'success', autoDismiss: true });
             router.push("/datosimportantes");
         }, (error) => {
             if (error.response) {
@@ -106,7 +105,7 @@ const CrearDatoImportanteContainer = ({ metodo, formDato, tituloPagina }) => {
             'datoId' : formDato._id,
         };
         ServiciosDatosImportantes.updateDato(actualizarDato, ({ data }) => {
-            addToast('¡Dato actualizado con exito!', { appearance: 'success', autoDismiss: true });
+            addToast('¡Dato actualizado con éxito!', { appearance: 'success', autoDismiss: true });
             router.push("/datosimportantes");
         }, (error) => {
             if (error.response) {
