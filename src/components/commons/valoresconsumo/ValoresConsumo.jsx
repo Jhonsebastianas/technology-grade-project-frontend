@@ -21,7 +21,7 @@ const ValoresConsumo = ({tiposervicio, lectura}) => {
 
                         <Grid.Column key={index} textAlign="center" >
                             <h4 className="valoresConsumoTitle">
-                                {tiposervicio === 'agua'
+                                {(tiposervicio === 'agua' || tiposervicio === 'gas')
                                 && <>{tarifa.servicio_publico.secundario}</>
                                 || <>{tiposervicio}</>}
                             </h4>
@@ -39,7 +39,7 @@ const ValoresConsumo = ({tiposervicio, lectura}) => {
                                         </Table.Cell>
                                         <Table.Cell >{UTILS.formatoMoneda(tarifa.valor_consumo_exceso)}</Table.Cell>
                                     </Table.Row>
-                                    {tiposervicio === 'agua' &&
+                                    { tarifa.otros_valores.length > 0 &&
                                         <Table.Row>
                                             <Table.Cell>Cargo fijo</Table.Cell>
                                             <Table.Cell >
@@ -55,7 +55,7 @@ const ValoresConsumo = ({tiposervicio, lectura}) => {
                                     </Table.Row>
                                     <Table.Row>
                                         <Table.Cell>
-                                            Total a pagar {tiposervicio === 'agua'
+                                            Total a pagar {(tiposervicio === 'agua' || tiposervicio === 'gas')
                                                 && <>{tarifa.servicio_publico.secundario}</>
                                                 || <>{tiposervicio}</>}
                                         </Table.Cell>
