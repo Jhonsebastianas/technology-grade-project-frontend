@@ -128,7 +128,7 @@ const TarifasDetails = (props) => {
               <div className="elementoLimiteSubsidiado">
                 <Form.Input
                   fluid
-                  label="Limite subsidiado"
+                  label="Límite subsidiado"
                   placeholder="Ej: 130"
                   width={5}
                   name="limite_subsidiado"

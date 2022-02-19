@@ -78,7 +78,7 @@ const ValoresFijosDetails = (props) => {
           <div className="elementoDescripcion">
             <Form.TextArea
               fluid
-              label="Descripcion"
+              label="Descripción"
               placeholder="Ej: Cobro por impuestos"
               width={4}
               className="descripcion"
@@ -104,7 +104,7 @@ const ValoresFijosDetails = (props) => {
               Nombre
             </Table.HeaderCell>
             <Table.HeaderCell>
-              Descripcion
+              Descripción
             </Table.HeaderCell>
             <Table.HeaderCell>
               Valor

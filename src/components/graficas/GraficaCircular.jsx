@@ -71,7 +71,7 @@ const GraficaCircular = (props) => {
             <div className="informacionGraficaCircular">
                 <p>Total consumido: </p>
                 <p>
-                    {tiposervicio === 'agua' || tiposervicio === 'gas'
+                    {(tiposervicio === 'agua' || tiposervicio === 'gas')
                         && <>{UTILS.formatoMedidaAgua(suma_consumos)}<sup>3</sup></>
                         || <>{UTILS.formatoMedidaEnergia(suma_consumos)}</>}
                 </p>
