@@ -41,7 +41,7 @@ const RegistrarUsuario = () => {
     const registerNewUser = (values) => {
         const { claveConfirmada, ...usuarioNuevo } =  values
         Services.newUser(usuarioNuevo, ({ data }) => {
-            addToast('¡Usuario registrado con exito!', { appearance: 'success', autoClose: '5000' });
+            addToast('¡Usuario registrado con éxito!', { appearance: 'success', autoClose: '5000' });
             router.push("/notificacion/activar-cuenta");
         }, (error) => {
             if (error.response) {
@@ -87,7 +87,7 @@ const RegistrarUsuario = () => {
                 googleId: response.profileObj.googleId,
             };
             Services.newGoogleUser(googleUser, () => {
-                addToast('¡Usuario registrado y verificado con exito!', { appearance: 'success', autoDismiss: true });
+                addToast('¡Usuario registrado y verificado con éxito!', { appearance: 'success', autoDismiss: true });
                 router.push("/login");
             }, (error) => {
                 if (error.response) {
