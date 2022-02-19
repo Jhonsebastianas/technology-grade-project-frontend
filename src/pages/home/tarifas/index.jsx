@@ -260,6 +260,24 @@ const Tarifas = () => {
       valor_consumo: parseFloat(formik.values.valor_consumo),
       valor_consumo_exceso: parseFloat(formik.values.valor_consumo_exceso),
     };
+
+    formik.values.estrato = tarifaParaRegistrar.estrato;
+    formik.values.fecha_fin= tarifaParaRegistrar.fecha_fin;
+    formik.values.fecha_inicio = tarifaParaRegistrar.fecha_inicio;
+    formik.values.limite_subsidiado = tarifaParaRegistrar.limite_subsidiado;
+    formik.values.localidad = tarifaParaRegistrar.localidad;
+    formik.values.otros_valores = tarifaParaRegistrar.otros_valores;
+    formik.values.otros_valores_cantidad = tarifaParaRegistrar.otros_valores_cantidad;
+    formik.values.otros_valores_sumatoria = tarifaParaRegistrar.otros_valores_sumatoria;
+    formik.values.servicio_publico = tarifaParaRegistrar.servicio_publico;
+    formik.values.subsidio_gobierno = tarifaParaRegistrar.subsidio_gobierno;
+    formik.values.tarifa_activa = tarifaParaRegistrar.tarifa_activa;
+    formik.values.unidad_medida = tarifaParaRegistrar.unidad_medida;
+    formik.values.valor_consumo = tarifaParaRegistrar.valor_consumo;
+    formik.values.valor_consumo_exceso = tarifaParaRegistrar.valor_consumo_exceso;
+
+
+    console.log("NOS TRAJOO", formik.values);
     //const error = validateTarifa(tarifaParaRegistrar);
     //setErrors(error);
     setTarifaExistente(tarifaParaRegistrar);
@@ -300,17 +318,17 @@ const Tarifas = () => {
   const updateTarifa = () =>{
     if(JSON.stringify(formik.errors)=='{}'){
       const tarifaParaRegistrar = {
-        estrato: tarifaExistente.estrato,
-        fecha_fin: tarifaExistente.fecha_fin,
-        fecha_inicio: tarifaExistente.fecha_inicio,
+        estrato: formik.values.estrato,
+        fecha_fin: formik.values.fecha_fin,
+        fecha_inicio: formik.values.fecha_inicio,
         limite_subsidiado: parseFloat(formik.values.limite_subsidiado), // > 13 m^3 (EPM)
-        localidad: tarifaExistente.localidad,
-        otros_valores: tarifaExistente.otros_valores,
-        otros_valores_cantidad: tarifaExistente.otros_valores_cantidad,
-        otros_valores_sumatoria: tarifaExistente.otros_valores_sumatoria,
-        servicio_publico: tarifaExistente.servicio_publico,
+        localidad: formik.values.localidad,
+        otros_valores: formik.values.otros_valores,
+        otros_valores_cantidad: formik.values.otros_valores_cantidad,
+        otros_valores_sumatoria: formik.values.otros_valores_sumatoria,
+        servicio_publico: formik.values.servicio_publico,
         subsidio_gobierno: parseFloat(formik.values.subsidio_gobierno),
-        tarifa_activa: tarifaExistente.tarifa_activa,
+        tarifa_activa: formik.values.tarifa_activa,
         unidad_medida: formik.values.unidad_medida, // Liters or M^3
         valor_consumo: parseFloat(formik.values.valor_consumo),
         valor_consumo_exceso: parseFloat(formik.values.valor_consumo_exceso),
