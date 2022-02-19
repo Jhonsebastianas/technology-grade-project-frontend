@@ -21,7 +21,7 @@ const ValoresConsumo = ({tiposervicio, lectura}) => {
 
                         <Grid.Column key={index} textAlign="center" >
                             <h4 className="valoresConsumoTitle">
-                                {(tiposervicio === 'agua' || tiposervicio === 'gas')
+                                {tiposervicio === 'agua' 
                                 && <>{tarifa.servicio_publico.secundario}</>
                                 || <>{tiposervicio}</>}
                             </h4>
