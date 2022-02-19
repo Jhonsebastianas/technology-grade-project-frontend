@@ -57,7 +57,7 @@ const ModalEditOtroValor = (props) => {
           <div className="elementoDescripcionModal">
             <Form.TextArea
               fluid
-              label="Descripcion"
+              label="Descripción"
               placeholder="Ej: Cobro por impuestos"
               width={4}
               className="descripcion"

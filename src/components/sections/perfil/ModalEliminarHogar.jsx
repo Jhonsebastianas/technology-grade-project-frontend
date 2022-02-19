@@ -17,7 +17,7 @@ const ModalEliminarHogar = (props) => {
       handleCloseModal={handleCloseModal}
     >
       <Form target="_blank" className="formularioEditarCuenta">
-            <p>Seguro que deseas eleminar el hogar "{hogarQueSeEditara.nombre}"  con el numero de contrato : {hogarQueSeEditara.numeroContrato}</p>
+            <p>Seguro que deseas eleminar el hogar "{hogarQueSeEditara.nombre}"  con el número de contrato : {hogarQueSeEditara.numeroContrato}</p>
       </Form>
       <Modal.Actions className="divActions">
           <Button color="black" onClick={handleCloseModal}>
