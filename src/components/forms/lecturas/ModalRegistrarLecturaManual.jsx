@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button, Form, Header, Icon, Input, Modal } from 'semantic-ui-react'
 import ServiciosLecturas from '@services/servicios.lecturas'
 import { useToasts } from 'react-toast-notifications'
@@ -18,63 +18,70 @@ const ModalRegistrarLecturaManual = (props) => {
 
     const funcionDetalle = props.updateDetalleHogar;
 
-    const { numero_contrato } = hogar
+    const { numeroContrato } = hogar
 
     const { addToast } = useToasts()
     /* ESTADOS */
     const [lectura, setLectura] = useState(0)
     const [isLecturaFactura, setIsLecturaFactura] = React.useState(false)
     /* ESTADOS DE MODALS*/
-    const [openConfirmar, setOpenConfirmar] = React.useState(CERRAR_MODAL)
     const [openPrimerRegistro, setOpenPrimerRegistro] = React.useState(CERRAR_MODAL)
 
     const openRegistroInicial = () => {
-        setOpenConfirmar(CERRAR_MODAL)
-        setOpenPrimerRegistro(ABRIR_MODAL)
-        setIsLecturaFactura(true)
+        setOpenLectura(CERRAR_MODAL);
+        setOpenPrimerRegistro(ABRIR_MODAL);
     }
+
+    const init = () => {
+        const parametros = {
+            numeroContrato: numeroContrato,
+            servicioPublico: servicioPublico,
+        }
+        ServiciosLecturas.isPrimeraLecturaManual(parametros, ({ data }) => {
+            setIsLecturaFactura(data);
+        });
+    };
+
+    useEffect(() => {
+        let mounted = true;
+        if (mounted) {
+            init();
+        }
+        return () => mounted = false;
+    }, [])
 
     /* VALIDACIÓN FORMULARIOS */
     const [errors, setErrors] = useState({});
     const handledChanged = ({ target }) => {
-        const { name, value } = target;
+        const { value } = target;
         setLectura((value > 0) ? Math.abs(value) : '');
     }
 
     const registrarLectura = () => {
         const parametros = {
-            numeroContrato: numero_contrato,
+            numeroContrato: numeroContrato,
             servicioPublico: servicioPublico,
             lecturaContador: lectura,
-            isLecturaFactura,
         }
-        let error = (isLecturaFactura) ? validateLecturaInicial(lectura) : validateLectura(lectura)
+        let error = validateLectura(lectura);
         setErrors(error);
         if (!Object.keys(error).length) {
             setOpenLectura(CERRAR_MODAL)
             setOpenPrimerRegistro(CERRAR_MODAL)
             ServiciosLecturas.addLecturaManual(parametros, ({ data, status }) => {
-                console.log(status, data)
-                if (isLecturaFactura) {
-                    addToast('Primer registro de factura añadido correctamente.', { appearance: 'success', autoDismiss: true });
+                if (data.code == HttpStatus.NO_CONTENT) {
+                    addToast(data.message, { appearance: 'info', autoDismiss: true });
                 } else {
                     addToast('Nueva lectura añadida correctamente, consumo actualizado', { appearance: 'success', autoDismiss: true });
                 }
-                if (funcionDetalle) {
-                    funcionDetalle()
-                }
-                setIsLecturaFactura(false)
+                funcionDetalle && funcionDetalle();
+                init();
             }, (error) => {
                 if (error.response) {
-                    const { status, data: { lectura_actual_contador } } = error.response;
-                    if (status === HttpStatus.CONFLICT) {
-                        // Actualmente no cuenta con un primer registro manual para este mes...
-                        setOpenConfirmar(ABRIR_MODAL)
-                        setLectura(0)
-                    } else if (status === HttpStatus.PRECONDITION_FAILED) {
-                        console.log(error.response)
-                        addToast(`El registro del contador no puede ser menor o igual al actual (lectura actual: ${CpUtils.formatoLectura(lectura_actual_contador)})`, { appearance: 'warning' });
-                        setLectura(lectura_actual_contador)
+                    const { status, data: { message } } = error.response;
+                    if (status === HttpStatus.PRECONDITION_FAILED) {
+                        addToast(`El registro del contador no puede ser menor o igual al actual (lectura actual: ${CpUtils.formatoLectura(message)})`, { appearance: 'warning' });
+                        setLectura(message);
                     } else {
                         addToast('oh no :(, no eres tú somos nosotros, algo a ido mal', { appearance: 'error' });
                     }
@@ -84,12 +91,35 @@ const ModalRegistrarLecturaManual = (props) => {
             })
         }
     }
+
+    const registrarLecturaInicial = () => {
+        const parametros = {
+            numeroContrato: numeroContrato,
+            servicioPublico: servicioPublico,
+            lecturaContador: lectura,
+        }
+        let error = validateLecturaInicial(lectura);
+        setErrors(error);
+        if (!Object.keys(error).length) {
+            setOpenLectura(CERRAR_MODAL)
+            setOpenPrimerRegistro(CERRAR_MODAL)
+            ServiciosLecturas.agregarLecturaFactura(parametros, (response) => {
+                addToast('Primer registro de factura añadido correctamente.', { appearance: 'success', autoDismiss: true });
+                if (funcionDetalle) {
+                    funcionDetalle()
+                }
+            });
+        }
+    }
+
+
+
     return (
         <>
             <Modal
                 closeIcon
                 dimmer='blurring'
-                open={openLectura}
+                open={openLectura && !isLecturaFactura}
                 onClose={() => setOpenLectura(CERRAR_MODAL)}
                 className="modal__registrar-lectura-container"
             >
@@ -117,9 +147,10 @@ const ModalRegistrarLecturaManual = (props) => {
             {/* Modal de confirmación */}
             <Modal
                 basic
-                onClose={() => setOpenConfirmar(CERRAR_MODAL)}
-                onOpen={() => setOpenConfirmar(ABRIR_MODAL)}
-                open={openConfirmar}
+                onClose={() => {
+                    setOpenLectura(CERRAR_MODAL)
+                }}
+                open={(openLectura && isLecturaFactura)}
                 size='small'
             >
                 <Header icon>
@@ -132,7 +163,7 @@ const ModalRegistrarLecturaManual = (props) => {
                     </p>
                 </Modal.Content>
                 <Modal.Actions>
-                    <Button basic color='red' inverted onClick={() => setOpenConfirmar(CERRAR_MODAL)}>
+                    <Button basic color='red' inverted onClick={() => setOpenLectura(CERRAR_MODAL)}>
                         <Icon name='remove' /> No
                     </Button>
                     <Button color='green' inverted onClick={() => openRegistroInicial()}>
@@ -163,7 +194,7 @@ const ModalRegistrarLecturaManual = (props) => {
                     <Button color='red' onClick={() => setOpenPrimerRegistro(CERRAR_MODAL)}>
                         <Icon name='remove' /> Cancelar
                     </Button>
-                    <Button color='green' onClick={registrarLectura}>
+                    <Button color='green' onClick={registrarLecturaInicial}>
                         <Icon name='checkmark' /> Registrar
                     </Button>
                 </Modal.Actions>
@@ -172,4 +203,4 @@ const ModalRegistrarLecturaManual = (props) => {
     )
 }
 
-export default ModalRegistrarLecturaManual
+export default ModalRegistrarLecturaManual;

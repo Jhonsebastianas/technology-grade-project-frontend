@@ -6,42 +6,42 @@ const CalculosUtils = {
 
 function calcularTotalPagarSubservicio (tarifa, consumo) {
     let totalPagar = 0
-    if (consumo <= tarifa.limite_subsidiado) {
-        const valorSubsidiado = (tarifa.valor_consumo * consumo)
-        totalPagar = valorSubsidiado + tarifa.otros_valores_sumatoria
+    if (consumo <= tarifa.limiteSubsidiado) {
+        const valorSubsidiado = (tarifa.valorConsumo * consumo)
+        totalPagar = valorSubsidiado + tarifa.otrosValoresSumatoria
     } else {
-        const valorConSubsidio = (tarifa.valor_consumo * tarifa.limite_subsidiado)
-        const valorExceso = tarifa.valor_consumo_exceso * (consumo - tarifa.limite_subsidiado)
-        totalPagar = valorConSubsidio + valorExceso + tarifa.otros_valores_sumatoria
+        const valorConSubsidio = (tarifa.valorConsumo * tarifa.limiteSubsidiado)
+        const valorExceso = tarifa.valorConsumoExceso * (consumo - tarifa.limiteSubsidiado)
+        totalPagar = valorConSubsidio + valorExceso + tarifa.otrosValoresSumatoria
     }
     return totalPagar
 }
 
 function calcularTotalPagarTarifasPorServicio(tarifas, consumo) {
-    let totalPagar = 0
+    let totalPagar = 0;
     tarifas.forEach((tarifa) => {
-        let total = 0
-        if (consumo <= tarifa.limite_subsidiado) {
-            const valorSubsidiado = (tarifa.valor_consumo * consumo)
-            total = valorSubsidiado + tarifa.otros_valores_sumatoria
+        let total = 0;
+        if (consumo <= tarifa.limiteSubsidiado) {
+            const valorSubsidiado = (tarifa.valorConsumo * consumo);
+            total = valorSubsidiado + tarifa.otrosValoresSumatoria;
         } else {
-            const valorConSubsidio = (tarifa.valor_consumo * tarifa.limite_subsidiado)
-            const valorExceso = tarifa.valor_consumo_exceso * (consumo - tarifa.limite_subsidiado)
-            total = valorConSubsidio + valorExceso + tarifa.otros_valores_sumatoria
+            const valorConSubsidio = (tarifa.valorConsumo * tarifa.limiteSubsidiado);
+            const valorExceso = tarifa.valorConsumoExceso * (consumo - tarifa.limiteSubsidiado);
+            total = valorConSubsidio + valorExceso + tarifa.otrosValoresSumatoria;
         }
-        totalPagar += total
+        totalPagar += total;
     })
-    return totalPagar
+    return totalPagar;
 }
 
 function calcularExcesoPorSubservicio (tarifa, consumo) {
     let totalPagar = 0
-    if (consumo > tarifa.limite_subsidiado) {
+    if (consumo > tarifa.limiteSubsidiado) {
 
-        const valorExceso = tarifa.valor_consumo_exceso * (consumo - tarifa.limite_subsidiado)
+        const valorExceso = tarifa.valorConsumoExceso * (consumo - tarifa.limiteSubsidiado)
         totalPagar = valorExceso
     }
     return totalPagar
 }
 
-export default CalculosUtils
+export default CalculosUtils;

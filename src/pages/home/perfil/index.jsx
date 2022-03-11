@@ -33,7 +33,6 @@ const Perfil = () => {
 
   const consultarHogares = () => {
     ServiciosHogares.getHogaresByUsername(
-      loginUtils.getUsernameUser(),
       ({ data }) => {
         setListaHogares(data);
         //setHogarQueSeEditara(data[0]);
@@ -67,21 +66,21 @@ const Perfil = () => {
 
   const handleHogarQueSeEditara = (hogar) => {
     formik.values.nombre = hogar.nombre;
-    formik.values.numeroContrato = hogar.numero_contrato;
+    formik.values.numeroContrato = hogar.numeroContrato;
 
     const hogarPropiedadesEditadas = {
       activo: hogar.activo,
       estrato: hogar.estrato,
-      hogarActual: hogar.hogar_actual,
+      hogarActual: hogar.hogarActual,
       /*localidad:{
         idPais:hogar.localidad._idPais,
         codigo_divipola:hogar.localidad.codigo_divipola,
       },*/
       nombre: hogar.nombre,
-      numeroContrato: hogar.numero_contrato,
+      numeroContrato: hogar.numeroContrato,
       servicios: hogar.servicios.map((servicio) => servicio.principal),
-      tipoHogar: hogar.tipo_hogar,
-      numeroContratoAnterior: hogar.numero_contrato,
+      tipoHogar: hogar.tipoHogar,
+      numeroContratoAnterior: hogar.numeroContrato,
     };
     setHogarQueSeEditara(hogarPropiedadesEditadas);
   };
@@ -183,7 +182,7 @@ const Perfil = () => {
     };
     const error = validate(nuevoHogar);
     setErrors(error);
-    
+
     if (!Object.keys(error).length) {
       //nuevoHogar.hogarActual = hogar.hogarActual === "Si" ? true : false;
       const { ...hogarFiltrado } = nuevoHogar;

@@ -55,7 +55,7 @@ const TablaInformacionHogares = (props) => {
             return (
               <Table.Body key={index}>
                 <Table.Row>
-                  <Table.Cell className="flotarElemento">{hogar.numero_contrato}</Table.Cell>
+                  <Table.Cell className="flotarElemento">{hogar.numeroContrato}</Table.Cell>
                   <Table.Cell className="flotarElemento">{hogar.nombre}</Table.Cell>
                   <Table.Cell className="flotarElemento">{hogar.estrato}</Table.Cell>
                   <Table.Cell>

@@ -28,7 +28,7 @@ const GraficasBarras = (props) => {
     const getData = () => {
         const { lectura } = props;
         if (lectura.lectura.mediciones !== undefined) {
-            let groupedMedicion = groupBy(lectura.lectura.mediciones, 'fecha_hora');
+            let groupedMedicion = groupBy(lectura.lectura.mediciones, 'fechaHora');
             Datos(groupedMedicion);
         }
     }

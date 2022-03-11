@@ -13,18 +13,18 @@ import Calculos from '@utils/calculos.util';
 const GraficaCircular = (props) => {
 
     const { tiposervicio, lectura, hogar, updateDetalleHogar } = props;
-    const { tarifas, lectura: { suma_consumos } } = lectura
+    const { tarifas, lectura: { sumaConsumos } } = lectura
     const [openLectura, setOpenLectura] = useState(false);
-    const totalPagar = Calculos.calcularTotalPagarTarifasPorServicio(tarifas, suma_consumos);
+    const totalPagar = Calculos.calcularTotalPagarTarifasPorServicio(tarifas, sumaConsumos);
 
     let backgroundColor = `#00aae4`;
 
-    const medida = (tiposervicio === 'agua' || tiposervicio === 'gas') ? `${UTILS.formatoMedidaAgua(suma_consumos)}` + '³  ' : `${UTILS.formatoMedidaEnergia(suma_consumos)}`;
+    const medida = (tiposervicio === 'agua' || tiposervicio === 'gas') ? `${UTILS.formatoMedidaAgua(sumaConsumos)}` + '³  ' : `${UTILS.formatoMedidaEnergia(sumaConsumos)}`;
 
     const getPercentage = () => {
         let percentage = 0;
         if (tarifas.length > 0 || tarifas.length > 1) {
-            percentage = ((suma_consumos * 100) / tarifas[0].limite_subsidiado).toFixed();
+            percentage = ((sumaConsumos * 100) / tarifas[0].limiteSubsidiado).toFixed();
         } else {
             percentage = 0;
         }
@@ -72,8 +72,8 @@ const GraficaCircular = (props) => {
                 <p>Total consumido: </p>
                 <p>
                     {(tiposervicio === 'agua' || tiposervicio === 'gas')
-                        && <>{UTILS.formatoMedidaAgua(suma_consumos)}<sup>3</sup></>
-                        || <>{UTILS.formatoMedidaEnergia(suma_consumos)}</>}
+                        && <>{UTILS.formatoMedidaAgua(sumaConsumos)}<sup>3</sup></>
+                        || <>{UTILS.formatoMedidaEnergia(sumaConsumos)}</>}
                 </p>
                 <p>Total monetario: </p>
                 <p className="valorMonetario">{UTILS.formatoMoneda(totalPagar)}</p>

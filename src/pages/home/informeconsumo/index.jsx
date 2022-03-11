@@ -30,7 +30,6 @@ const InformeConsumo = () => {
         if (mounted) {
             setTipoServicio(SessionUtil.getTipoServicio());
             updateDetalleHogar();
-
         }
         return () => (mounted = false);
     }, []);
@@ -43,12 +42,12 @@ const InformeConsumo = () => {
     }
 
     const getLectura = () => {
-        const { servicios } = infohogar
+        const { servicios } = infohogar;
         if (servicios !== undefined) {
             let lectura = servicios.find(servicios => servicios.principal == tiposervicio);
-            return lectura
+            return lectura;
         }
-        return ''
+        return '';
     }
 
     if (cargandoHogar) {

@@ -41,7 +41,7 @@ const Home = () => {
     const handleClickMostrarHogares = () => {
         if (listaHogares.length < 1) {
             setCargandoHogares(true)
-            ServiciosHogares.getHogaresAndLecturas(loginUtils.getUsernameUser(), ({ data }) => {
+            ServiciosHogares.getHogaresAndLecturas(({ data }) => {
                 if (data) {
                     setListaHogares(data)
                     setCantidadHogares(data.length)
@@ -59,9 +59,9 @@ const Home = () => {
     }
 
     const updateDetalleHogar = () => {
-        ServiciosHogares.getHogarAndLectura(hogarSeleccionado.numero_contrato, ({ data }) => {
+        ServiciosHogares.getHogarAndLectura(hogarSeleccionado.numeroContrato, ({ data }) => {
             setHogarSeleccionado(data);
-            const nuevaLista = listaHogares.filter(hogar => hogar.numero_contrato != data.numero_contrato)
+            const nuevaLista = listaHogares.filter(hogar => hogar.numeroContrato != data.numeroContrato)
             setListaHogares([...nuevaLista, data])
         }, (error) => { });
     }
@@ -71,7 +71,7 @@ const Home = () => {
         let mounted = true;
         console.log(mounted)
         if (mounted) {
-            ServiciosHogares.getCantidadHogaresByUsername(loginUtils.getUsernameUser(), ({ data }) => {
+            ServiciosHogares.getCantidadHogaresByUsername(({ data }) => {
                 if (data) {
                     setCantidadHogares(data);
                 } else {
@@ -112,16 +112,7 @@ const Home = () => {
                         ''
                     }
                     <Grid.Column width={12}>
-                        {/* <RegistroManual servicio='agua' /> */}
                     </Grid.Column>
-                    <ModalRegistroLectura
-                        hogar={hogarSeleccionado}
-                        servicioPublico={servicioPublicoSeleccionado}
-                        openLectura={openLectura}
-                        setOpenLectura={setOpenLectura}
-                        updateDetalleHogar={updateDetalleHogar}
-                        positive
-                    />
                     <br></br>
                 </Container>
             </div>

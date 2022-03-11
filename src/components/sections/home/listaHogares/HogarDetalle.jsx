@@ -11,12 +11,12 @@ const StyledContainerHogar = Styled.div`
 
 const HogarDetalle = (props) => {
     const { hogar, index, indexHogarActivo, changeHogarActivo, handleHogarSeleccionado, updateDetalleHogar } = props
-    const { estrato, nombre, numero_contrato, servicios, tipo_hogar } = hogar
+    const { estrato, nombre, numeroContrato, servicios, tipoHogar } = hogar
 
     const getConsumoTotalServicio = () => {
         console.log(servicios)
         return servicios.map(servicio => {
-            const { lectura: { suma_consumos }, principal } = servicio
+            const { lectura: { sumaConsumos }, principal } = servicio
             const datos = {
                 "agua": { color: "blue", icon: "theme", formato: "formatoMedidaAgua" },
                 "energia": { color: "yellow", icon: "plug", formato: "formatoMedidaEnergia" },
@@ -27,7 +27,7 @@ const HogarDetalle = (props) => {
             const formato = datos[principal].formato
             return (
                 <>
-                    <Icon name={icon} color={color} /> {CpUtils[formato](suma_consumos)} {(principal == "agua" || principal == "gas") && <sup>3</sup> || ''}
+                    <Icon name={icon} color={color} /> {CpUtils[formato](sumaConsumos)} {(principal == "agua" || principal == "gas") && <sup>3</sup> || ''}
                 </>
             )
         })
@@ -43,7 +43,7 @@ const HogarDetalle = (props) => {
                 <Grid>
                     <Grid.Column floated='left' width={10} verticalAlign="middle">
                         <Icon name='dropdown' />
-                        <Icon name={getIconoTipoHogar(tipo_hogar)} />
+                        <Icon name={getIconoTipoHogar(tipoHogar)} />
                         {nombre}
                     </Grid.Column>
                     <Grid.Column floated='right' width={6} verticalAlign="middle" textAlign="right">
@@ -56,7 +56,7 @@ const HogarDetalle = (props) => {
                 <Grid stackable>
                     <Grid.Column width={16}>
                         <h4>Información de tu hogar</h4>
-                        <p><Icon name="address book" color="teal"></Icon><strong>Contrato:</strong> {numero_contrato} | Estrato: {estrato} | Tipo hogar: {tipo_hogar}</p>
+                        <p><Icon name="address book" color="teal"></Icon><strong>Contrato:</strong> {numeroContrato} | Estrato: {estrato} | Tipo hogar: {tipoHogar}</p>
                         <p><Icon name="globe" color="blue"></Icon><strong>Localidad:</strong> Colombia, Medellín</p>
                         <h4>Información de tus servicios</h4>
                         <Grid columns="equal" width={16} stackable>
@@ -64,7 +64,7 @@ const HogarDetalle = (props) => {
                                 <ServicioHogar
                                     servicio={servicio}
                                     index={index}
-                                    numeroContrato={numero_contrato}
+                                    numeroContrato={numeroContrato}
                                     handleHogarSeleccionado={handleHogarSeleccionado}
                                     updateDetalleHogar={updateDetalleHogar}
                                 />
