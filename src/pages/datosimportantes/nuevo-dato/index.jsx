@@ -9,7 +9,7 @@ const NuevoDatoImportante = () => {
     const formDato = {
         autor: 'Anónimo',
         descripcion: '' ,
-        tipo_dato: 'Tip' ,
+        tipoDato: 'Tip' ,
         titulo: ''
     }
     

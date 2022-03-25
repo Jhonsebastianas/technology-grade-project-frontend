@@ -11,7 +11,7 @@ import Enlace from '@components/forms/datosimportantes/Enlace'
 import CrearDatoImportanteDetails from '@components/forms/datosimportantes/CrearDatoImportanteDetails'
 
 const defaultState = {
-    nombre_pagina: "",
+    nombrePagina: "",
     url: "",
 };
 
@@ -58,7 +58,7 @@ const CrearDatoImportanteContainer = ({ metodo, formDato, tituloPagina }) => {
         descripcion: Yup.string().trim()
             .max(300, 'Máximo 300 caracteres')
             .required('Este campo es obligatorio'),
-        tipo_dato: Yup.string().trim()
+        tipoDato: Yup.string().trim()
             .min(3, 'Mínimo 3 caracteres')
             .max(20, 'Máximo 20 caracteres')
             .required('Este campo es obligatorio'),
@@ -68,15 +68,15 @@ const CrearDatoImportanteContainer = ({ metodo, formDato, tituloPagina }) => {
     });
 
     const agregarNuevoDato = (values) => {
-        const { autor, descripcion, tipo_dato, titulo } = values
+        const { autor, descripcion, tipoDato, titulo } = values
         const fuentes = {
             'cantidad': enlaces.length,
-            'enlace': enlaces
+            'enlaces': enlaces
         }
         const nuevoDato = {
             'autor': autor,
             'descripcion': descripcion,
-            'tipo_dato': tipo_dato,
+            'tipoDato': tipoDato,
             'titulo': titulo,
             'fuentes': fuentes
         };
@@ -91,15 +91,15 @@ const CrearDatoImportanteContainer = ({ metodo, formDato, tituloPagina }) => {
     }
 
     const actualizarDato = (values) => {
-        const { autor, descripcion, tipo_dato, titulo } = values
+        const { autor, descripcion, tipoDato, titulo } = values
         const fuentes = {
             'cantidad': enlaces.length,
-            'enlace': enlaces
+            'enlaces': enlaces
         }
         const actualizarDato = {
             'autor': autor,
             'descripcion': descripcion,
-            'tipo_dato': tipo_dato,
+            'tipoDato': tipoDato,
             'titulo': titulo,
             'fuentes': fuentes,
             'datoId' : formDato._id,
@@ -118,7 +118,7 @@ const CrearDatoImportanteContainer = ({ metodo, formDato, tituloPagina }) => {
         initialValues: {
             autor: formDato.autor,
             descripcion: formDato.descripcion,
-            tipo_dato: formDato.tipo_dato,
+            tipoDato: formDato.tipoDato,
             titulo: formDato.titulo,
         },
         validationSchema: datosSchema,

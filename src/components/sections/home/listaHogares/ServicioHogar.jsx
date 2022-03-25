@@ -25,6 +25,7 @@ const ServicioHogar = (props) => {
         const hogar = {};
         hogar[HOGAR] = numeroContrato;
         hogar['service'] = principal;
+        console.log(hogar)
         localStorage.setItem(HOGAR, JSON.stringify(hogar));
     }
 

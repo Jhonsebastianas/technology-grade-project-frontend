@@ -31,10 +31,10 @@ const CrearDatoImpornateDetails = (props) => {
                 />
                 {formik.touched.autor && formik.errors.autor ? (<div className="ui pointing red basic label">{formik.errors.autor}</div>) : null}
                 
-                    <Form.Input label='Tipo de Dato' htmlFor='tipo_dato' type="text" name="tipo_dato" id='tipo_dato' placeholder=""
-                        {...formik.getFieldProps('tipo_dato')}
+                    <Form.Input label='Tipo de Dato' htmlFor='tipoDato' type="text" name="tipoDato" id='tipoDato' placeholder=""
+                        {...formik.getFieldProps('tipoDato')}
                     />
-                    {formik.touched.tipo_dato && formik.errors.tipo_dato ? (<div className="ui pointing red basic label">{formik.errors.tipo_dato}</div>) : null}
+                    {formik.touched.tipoDato && formik.errors.tipoDato ? (<div className="ui pointing red basic label">{formik.errors.tipoDato}</div>) : null}
                 </Form.Group>
                
 

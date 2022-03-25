@@ -16,7 +16,7 @@ const Tips = () => {
             ServiciosDatosImportantes.getDatoAleatorio(({ data }) => {
                 setTitulo(data[0].titulo);
                 setDescripcion(data[0].descripcion);
-                setEnlace(data[0].fuentes.enlace);
+                setEnlace(data[0].fuentes.enlaces);
 
             }, (error) => { });
         }
@@ -40,7 +40,7 @@ const Tips = () => {
                             key={index}
                             className="tipEnlaces"
                         >
-                            {enlace.nombre_pagina}
+                            {enlace.nombrePagina}
                         </a>
                     )) || <p className="tipFuentes">Anónimo</p>
                 }

@@ -14,10 +14,8 @@ const ModalEliminarDato = ({idDato, obtenerDatos}) => {
 
     const { addToast } = useToasts();
 
-    const datoId = { 'datoId': idDato };
-
     const deleteDato = () => {
-        ServiciosDatosImportantes.deleteDatoById(datoId, ({ data }) => {
+        ServiciosDatosImportantes.deleteDatoById(idDato, ({ data }) => {
             addToast('Dato eliminado con exito', { appearance: 'success', autoDismiss: true });
             setOpen(false);
             if (funcionDatos) {
